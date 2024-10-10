@@ -31,5 +31,6 @@ public class cLoginView extends cFrameLoginApp {
         cardLogin.add(labelPasswordAdmin);
         cardLogin.add(fieldPasswordAdmin);
         cardLogin.add(buttonLoginAdmin);
+        System.out.println("hello world");
     }
 }
