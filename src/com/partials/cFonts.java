@@ -13,6 +13,7 @@ public class cFonts {
     public static final Font LINK_START_FONT = new Font("Poppins Semibold", Font.PLAIN, 10);
     public static final Font BUTTON_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
     public static final Font APP_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
+    public static final Font APP_LOGO_FONT = new Font("Poppins Semibold", Font.PLAIN, 14);
     public static final Font ROLE_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
     public static final Font MENU_TITLE_FONT = new Font("Poppins Black", Font.PLAIN, 25);
     public static final Font COPYRIGHT_FONT = new Font("Poppins Semibold", Font.PLAIN, 15);

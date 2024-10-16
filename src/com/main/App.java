@@ -7,5 +7,8 @@ public class App {
     public static void main(String[] args) {
 
         Controller.showLoginAdmin();
+
+        // cFrameDashboardApp testFrame = new cFrameDashboardApp();
+        // testFrame.setVisible(true);
     }
 }
