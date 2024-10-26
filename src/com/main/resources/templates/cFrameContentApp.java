@@ -2,40 +2,23 @@ package com.main.resources.templates;
 
 import javax.swing.*;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import com.partials.*;
 
-public class cFrameContentApp extends JFrame {
-    private int mouseX, mouseY;
+public abstract class cFrameContentApp extends JPanel {
 
     public JPanel bgFrame = new JPanel();
     public JPanel contentFrame = new JPanel();
 
     public cFrameContentApp() {
         super();
-        setSize(800, 768);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setLocationRelativeTo(null);
+        setSize(1126, 698);
         setLayout(null);
 
-        bgFrame.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                mouseX = e.getX();
-                mouseY = e.getY();
-            }
-        });
+        bgFrame.setBounds(0, 0, 1126, 698);
+        bgFrame.setBackground(cColor.GREY);
+        bgFrame.setLayout(null);
 
-        bgFrame.addMouseMotionListener(new MouseAdapter() {
-            public void mouseDragged(MouseEvent e) {
-                int newX = e.getXOnScreen() - mouseX;
-                int newY = e.getYOnScreen() - mouseY;
-                setLocation(newX, newY);
-            }
-        });
-
+        add(bgFrame);
     }
 
 }

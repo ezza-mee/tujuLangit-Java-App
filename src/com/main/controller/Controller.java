@@ -1,23 +1,21 @@
 package com.main.controller;
 
-import com.partials.cSidebarMenu;
 import com.view.*;
 
 public class Controller {
 
     private static cLoginView frameLogin = new cLoginView();
 
-    private static cSidebarView sidebarContent = new cSidebarView();
+    private static cDashboardAdmin frameDashboardApp = new cDashboardAdmin();
 
     public static void showLoginAdmin() {
-        frameLogin.setVisible(false);
         frameLogin.initsLoginAdmin();
         frameLogin.setVisible(true);
     }
 
-    public static void showSidebarView() {
-        sidebarContent.setVisible(false);
-        sidebarContent.initsBeranda();
-        sidebarContent.setVisible(true);
+    public static void showDashboardAdmin() {
+        frameDashboardApp.initsSidebar();
+        frameDashboardApp.setVisible(true);
     }
+
 }
