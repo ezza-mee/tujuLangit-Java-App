@@ -7,14 +7,14 @@ import java.awt.event.MouseEvent;
 
 import com.partials.*;
 
-public class cFrameDashboardApp extends JFrame {
+public abstract class cFrameDashboardApp extends JFrame {
 
     private int mouseX, mouseY;
 
     public JPanel bgFrame = new JPanel();
     public JPanel sidebarPanel = new JPanel();
     public JPanel headerPanel = new JPanel();
-    public JPanel contentPanel = new JPanel();
+    public JLabel logoutLabel = new cLogout(1000);
 
     private JLabel brandText = new JLabel("TujuLangit");
     private JLabel logoBrandText = new JLabel("ForestPark");
@@ -37,20 +37,26 @@ public class cFrameDashboardApp extends JFrame {
         sidebarPanel.setBounds(0, 0, 240, 768);
         sidebarPanel.setLayout(null);
 
+        headerPanel.setBounds(240, 0, 1126, 70);
+        headerPanel.setBackground(cColor.WHITE);
+        headerPanel.setLayout(null);
+
         brandText.setFont(cFonts.APP_FONT);
-        brandText.setBounds(0, 0, 230, 70);
+        brandText.setBounds(0, 0, 240, 70);
         brandText.setHorizontalAlignment(JLabel.CENTER);
         brandText.setVerticalAlignment(JLabel.CENTER);
         brandText.setForeground(cColor.WHITE);
 
         logoBrandText.setFont(cFonts.APP_LOGO_FONT);
-        logoBrandText.setBounds(0, 20, 230, 70);
+        logoBrandText.setBounds(0, 20, 240, 70);
         logoBrandText.setHorizontalAlignment(JLabel.CENTER);
         logoBrandText.setVerticalAlignment(JLabel.CENTER);
         logoBrandText.setForeground(cColor.WHITE);
 
+        headerPanel.add(logoutLabel);
         sidebarPanel.add(brandText);
         sidebarPanel.add(logoBrandText);
+        bgFrame.add(headerPanel);
         bgFrame.add(sidebarPanel);
         add(bgFrame);
 
