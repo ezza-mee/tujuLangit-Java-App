@@ -3,7 +3,6 @@ package com.view;
 import com.main.resources.templates.cFrameLoginApp;
 import com.partials.cButtonLogin;
 import com.partials.cFormLabel;
-import com.partials.cImage;
 import com.partials.cPasswordField;
 import com.partials.cTextField;
 

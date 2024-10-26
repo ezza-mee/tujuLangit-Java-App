@@ -32,13 +32,14 @@ public class cSidebarMenu extends JLabel {
 
     public cSidebarMenu(String text, int y) {
         super();
-        setText("              " + text);
-        setBounds(0, y, 230, 50);
+        setText("" + text);
+        setBounds(0, y, 240, 50);
         setOpaque(true);
         setFont(cFonts.SIDEBAR_FONT);
         setForeground(cColor.WHITE);
         setBackground(cColor.GREEN);
         setVerticalAlignment(JLabel.CENTER);
+        setHorizontalAlignment(JLabel.CENTER);
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
