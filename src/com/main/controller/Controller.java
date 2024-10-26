@@ -6,18 +6,16 @@ public class Controller {
 
     private static cLoginView frameLogin = new cLoginView();
 
-    private static cDashboardAdmin FrameDashboard = new cDashboardAdmin();
-
+    private static cDashboardAdmin frameDashboardApp = new cDashboardAdmin();
 
     public static void showLoginAdmin() {
-        frameLogin.setVisible(false);
         frameLogin.initsLoginAdmin();
         frameLogin.setVisible(true);
     }
 
-    public static void showDashboardAdmin(){
-        FrameDashboard.setVisible(false);
-        FrameDashboard.initDashboardAdmin();
-        FrameDashboard.setVisible(true);
+    public static void showDashboardAdmin() {
+        frameDashboardApp.initsSidebar();
+        frameDashboardApp.setVisible(true);
     }
+
 }

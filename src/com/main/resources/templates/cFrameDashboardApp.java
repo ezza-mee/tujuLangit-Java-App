@@ -14,8 +14,7 @@ public abstract class cFrameDashboardApp extends JFrame {
     public JPanel bgFrame = new JPanel();
     public JPanel sidebarPanel = new JPanel();
     public JPanel headerPanel = new JPanel();
-    public JPanel contentPanel = new JPanel();
-    public JLabel logoutLabel = new cLogout(1030);
+    public JLabel logoutLabel = new cLogout(1000);
 
     private JLabel brandText = new JLabel("TujuLangit");
     private JLabel logoBrandText = new JLabel("ForestPark");
@@ -49,11 +48,10 @@ public abstract class cFrameDashboardApp extends JFrame {
         brandText.setForeground(cColor.WHITE);
 
         logoBrandText.setFont(cFonts.APP_LOGO_FONT);
-        logoBrandText.setBounds(0, 20, 240, 70);    
+        logoBrandText.setBounds(0, 20, 240, 70);
         logoBrandText.setHorizontalAlignment(JLabel.CENTER);
         logoBrandText.setVerticalAlignment(JLabel.CENTER);
         logoBrandText.setForeground(cColor.WHITE);
-
 
         headerPanel.add(logoutLabel);
         sidebarPanel.add(brandText);
