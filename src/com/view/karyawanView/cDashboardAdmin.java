@@ -1,4 +1,4 @@
-package com.view;
+package com.view.karyawanView;
 
 import com.main.resources.templates.cFrameDashboardApp;
 
