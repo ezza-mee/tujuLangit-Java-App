@@ -1,9 +1,9 @@
 package com.view.karyawanView;
 
-import com.main.resources.templates.cFrameSidebarApp;
+import com.main.resources.templates.cPanelSidebarApp;
 import com.partials.*;
 
-public class cSidebarView extends cFrameSidebarApp {
+public class cSidebarKaryawanView extends cPanelSidebarApp {
 
     // ini adalah component sidebar
     private cSidebarMenu menuBeranda = new cSidebarMenu("Beranda", 100);
@@ -13,19 +13,19 @@ public class cSidebarView extends cFrameSidebarApp {
     private cSidebarMenu menuHistory = new cSidebarMenu("History", 100 + 50 + 50 + 50 + 50);
     private cSidebarMenu menuAbout = new cSidebarMenu("About", 100 + 50 + 50 + 50 + 50 + 50);
 
-    public cSidebarView() {
+    public cSidebarKaryawanView() {
         super();
-        initsSidebarView();
+        initsSidebarKaryawan();
     }
 
-    public void initsSidebarView() {
+    public void initsSidebarKaryawan() {
         setVisible(true);
-        bgFrame.add(menuBeranda);
-        bgFrame.add(menuDataMenu);
-        bgFrame.add(menuDataKursi);
-        bgFrame.add(menuTransaksi);
-        bgFrame.add(menuHistory);
-        bgFrame.add(menuAbout);
+        bgPanel.add(menuBeranda);
+        bgPanel.add(menuDataMenu);
+        bgPanel.add(menuDataKursi);
+        bgPanel.add(menuTransaksi);
+        bgPanel.add(menuHistory);
+        bgPanel.add(menuAbout);
     }
 
 }
