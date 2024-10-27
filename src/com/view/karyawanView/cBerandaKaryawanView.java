@@ -4,9 +4,9 @@ import com.partials.*;
 
 import javax.swing.JLabel;
 
-import com.main.resources.templates.cFrameContentApp;
+import com.main.resources.templates.cPanelContentApp;
 
-public class cBerandaView extends cFrameContentApp {
+public class cBerandaKaryawanView extends cPanelContentApp {
 
     // ini adalah component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
@@ -41,12 +41,12 @@ public class cBerandaView extends cFrameContentApp {
     // ini adalah component button data beranda
     private cButtonLogin btnListTransaksi = new cButtonLogin("see all", 900, 20, 110, 40, 10);
 
-    public cBerandaView() {
+    public cBerandaKaryawanView() {
         super();
-        initsBeranda();
+        initsBerandaKaryawan();
     }
 
-    public void initsBeranda() {
+    public void initsBerandaKaryawan() {
         setVisible(true);
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
@@ -82,11 +82,11 @@ public class cBerandaView extends cFrameContentApp {
         panelListTransaksi.add(btnListTransaksi);
 
 
-        bgFrame.add(panelDataMenu);
-        bgFrame.add(panelDataKursi);
-        bgFrame.add(panelDataTransaksi);
-        bgFrame.add(panelDataHistory);
-        bgFrame.add(panelListTransaksi);
-        bgFrame.add(labelCopyright);
+        bgPanel.add(panelDataMenu);
+        bgPanel.add(panelDataKursi);
+        bgPanel.add(panelDataTransaksi);
+        bgPanel.add(panelDataHistory);
+        bgPanel.add(panelListTransaksi);
+        bgPanel.add(labelCopyright);
     }
 }
