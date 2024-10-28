@@ -6,66 +6,68 @@ import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
 
-public class cBerandaKaryawanView extends cPanelContentApp {
+public class cHomeView extends cPanelContentApp {
 
-    // ini adalah component copyright
+    // component label header Beranda
+    private cBigFont labelHeaderHome = new cBigFont("Home", 40, 5);
+
+    // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
-    // ini adalah component beranda
+    // component beranda
     private cPanelRounded panelDataMenu = new cPanelRounded(40, 40, 240, 130, 10, 10);
-    private cPanelRounded panelDataKursi = new cPanelRounded(310, 40, 240, 130, 10, 10);
+    private cPanelRounded panelDataSeats = new cPanelRounded(310, 40, 240, 130, 10, 10);
     private cPanelRounded panelDataTransaksi = new cPanelRounded(580, 40, 240, 130, 10, 10);
     private cPanelRounded panelDataHistory = new cPanelRounded(850, 40, 240, 130, 10, 10);
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 210, 1050, 430, 10, 10);
 
-    // ini adalah component label beranda
+    // component label beranda
     private cLabelInfo labelDataMenu = new cLabelInfo("Data Menu", 0, 10, 240, 40);
-    private cLabelInfo labelDataKursi = new cLabelInfo("Data Kursi", 0, 10, 240, 40);
+    private cLabelInfo labelDataSeats = new cLabelInfo("Data Seats", 0, 10, 240, 40);
     private cLabelInfo labelDataTransaksi = new cLabelInfo("Data Transaksi", 0, 10, 240, 40);
     private cLabelInfo labelDataHistory = new cLabelInfo("Data History", 0, 10, 240, 40);
     private cLabelInfo labelListTransaksi = new cLabelInfo("List Transaksi", 30, 20, 580, 40);
 
-    // ini adalah component value data beranda
+    // component value data beranda
     private cLabelInfo valueDataMenu = new cLabelInfo("0", 0, 60, 240, 40);
-    private cLabelInfo valueDataKursi = new cLabelInfo("0", 0, 60, 240, 40);
+    private cLabelInfo valueDataSeats = new cLabelInfo("0", 0, 60, 240, 40);
     private cLabelInfo valueDataTransaksi = new cLabelInfo("0", 0, 60, 240, 40);
     private cLabelInfo valueDataHistory = new cLabelInfo("0", 0, 60, 240, 40);
 
-    // ini adalah component gambar data beranda
+    // component gambar data beranda
     private cImage imgDataMenu = new cImage("src/com/main/resources/images/menu(green).png", 20, 50, 55, 50);
-    private cImage imgDataKursi = new cImage("src/com/main/resources/images/datakursi(green).png", 20, 50, 55, 50);
+    private cImage imgDataSeats = new cImage("src/com/main/resources/images/datakursi(green).png", 20, 50, 55, 50);
     private cImage imgDataTransaksi = new cImage("src/com/main/resources/images/transaksi(green).png", 20, 50, 55, 50);
     private cImage imgDataHistory = new cImage("src/com/main/resources/images/history(green).png", 20, 50, 55, 50);
 
-
-    // ini adalah component button data beranda
+    // component button data beranda
     private cButtonLogin btnListTransaksi = new cButtonLogin("see all", 900, 20, 110, 40, 10);
 
-    public cBerandaKaryawanView() {
+    public cHomeView() {
         super();
-        initsBerandaKaryawan();
+        initsHomeView();
     }
 
-    public void initsBerandaKaryawan() {
+    public void initsHomeView() {
         setVisible(true);
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
 
         labelDataMenu.setHorizontalAlignment(JLabel.CENTER);
-        labelDataKursi.setHorizontalAlignment(JLabel.CENTER);
+        labelDataSeats.setHorizontalAlignment(JLabel.CENTER);
         labelDataTransaksi.setHorizontalAlignment(JLabel.CENTER);
         labelDataHistory.setHorizontalAlignment(JLabel.CENTER);
 
         valueDataMenu.setHorizontalAlignment(JLabel.CENTER);
-        valueDataKursi.setHorizontalAlignment(JLabel.CENTER);
+        valueDataSeats.setHorizontalAlignment(JLabel.CENTER);
         valueDataTransaksi.setHorizontalAlignment(JLabel.CENTER);
         valueDataHistory.setHorizontalAlignment(JLabel.CENTER);
 
         panelDataMenu.add(labelDataMenu);
         panelDataMenu.add(imgDataMenu);
 
-        panelDataKursi.add(labelDataKursi);
-        panelDataKursi.add(imgDataKursi);
+        panelDataSeats.add(labelDataSeats);
+        panelDataSeats.add(imgDataSeats);
 
         panelDataTransaksi.add(labelDataTransaksi);
         panelDataTransaksi.add(imgDataTransaksi);
@@ -74,19 +76,19 @@ public class cBerandaKaryawanView extends cPanelContentApp {
         panelDataHistory.add(imgDataHistory);
 
         panelDataMenu.add(valueDataMenu);
-        panelDataKursi.add(valueDataKursi);
+        panelDataSeats.add(valueDataSeats);
         panelDataTransaksi.add(valueDataTransaksi);
         panelDataHistory.add(valueDataHistory);
 
         panelListTransaksi.add(labelListTransaksi);
         panelListTransaksi.add(btnListTransaksi);
 
-
         bgPanel.add(panelDataMenu);
-        bgPanel.add(panelDataKursi);
+        bgPanel.add(panelDataSeats);
         bgPanel.add(panelDataTransaksi);
         bgPanel.add(panelDataHistory);
         bgPanel.add(panelListTransaksi);
+        bgPanel.add(labelHeaderHome);
         bgPanel.add(labelCopyright);
     }
 }

@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
 
         // Controller.showLoginAdmin();
-        // Controller.showDashboardKaryawan();
+        Controller.showDashboardKaryawan();
         // Controller.showDashboardAdmin();
     
 

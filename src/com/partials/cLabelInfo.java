@@ -10,6 +10,6 @@ public class cLabelInfo extends JLabel {
         setBounds(x, y, width, height);
         setVerticalAlignment(JLabel.CENTER);
         setFont(cFonts.FROM_LABEL_FONT);
-        setForeground(cColor.BLACK);
+        setForeground(cColor.GREEN);
     }
 }

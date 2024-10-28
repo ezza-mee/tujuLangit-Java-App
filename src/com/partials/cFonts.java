@@ -19,10 +19,10 @@ public class cFonts {
     public static final Font COPYRIGHT_FONT = new Font("Poppins Semibold", Font.PLAIN, 15);
     public static final Font LABEL_INFO_FONT = new Font("Poppins Semibold", Font.PLAIN, 18);
     public static final Font HEADER_TABLE_FONT = new Font("Poppins Semibold", Font.PLAIN, 15);
-    public static final Font BIG_FONT = new Font("Poppins Semibold", Font.PLAIN, 40);
+    public static final Font BIG_FONT = new Font("Poppins Black", Font.PLAIN, 25);
     public static final Font LABEL_SIDEBAR_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
     public static final Font LABEL_TANGGAL_FONT = new Font("Poppins Semibold", Font.PLAIN, 18);
     public static final Font RADIO_BUTTON_FONT = new Font("Poppins Semibold", Font.PLAIN, 18);
     public static final Font PEMBAYARAN_FONT = new Font("Poppins Semibold", Font.PLAIN, 9);
-    public static final Font CARI_FONT = new Font("Poppins Semibold", Font.PLAIN, 14);
+    public static final Font BUTTON_INPUT_FONT = new Font("Poppins Semibold", Font.PLAIN, 16);
 }
