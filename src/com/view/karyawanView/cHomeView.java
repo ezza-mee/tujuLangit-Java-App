@@ -41,7 +41,7 @@ public class cHomeView extends cPanelContentApp {
     private cImage imgDataHistory = new cImage("src/com/main/resources/images/history(green).png", 20, 50, 55, 50);
 
     // component button data beranda
-    private cButtonLogin btnListTransaksi = new cButtonLogin("see all", 900, 20, 110, 40, 10);
+    private cButtonRounded btnListTransaksi = new cButtonRounded("see all", 900, 20, 110, 40, 10);
 
     public cHomeView() {
         super();

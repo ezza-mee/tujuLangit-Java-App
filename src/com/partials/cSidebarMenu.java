@@ -1,45 +1,63 @@
 package com.partials;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
-public class cSidebarMenu extends JLabel {
+public class cSidebarMenu extends JPanel {
+
+    private JLabel label;
+    private cImage iconLabel;
+    private cImage defaultIcon;
+    private cImage hoverIcon;
 
     public java.awt.event.MouseAdapter sidebarAktif = new java.awt.event.MouseAdapter() {
         @Override
         public void mouseEntered(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
-            setForeground(cColor.GREEN);
+            label.setForeground(cColor.GREEN);
+            iconLabel.setIcon(hoverIcon.getIcon());
         }
 
         public void mouseExited(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
-            setForeground(cColor.GREEN);
+            label.setForeground(cColor.GREEN);
+            iconLabel.setIcon(defaultIcon.getIcon());
         }
     };
 
-    public java.awt.event.MouseAdapter sidebarNonAktif = new java.awt.event.MouseAdapter() {
+    public java.awt.event.MouseAdapter sidebarInAktif = new java.awt.event.MouseAdapter() {
         @Override
         public void mouseEntered(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
-            setForeground(cColor.GREEN);
+            label.setForeground(cColor.GREEN);
+            iconLabel.setIcon(defaultIcon.getIcon());
         }
 
         public void mouseExited(java.awt.event.MouseEvent e) {
             setBackground(cColor.GREEN);
-            setForeground(cColor.WHITE);
+            label.setForeground(cColor.WHITE);
+            iconLabel.setIcon(hoverIcon.getIcon());
         }
     };
 
-    public cSidebarMenu(String text, int y) {
+    public cSidebarMenu(cImage defaultIcon, cImage hoverIcon, String text, int y) {
         super();
-        setText("" + text);
+        this.defaultIcon = defaultIcon;
+        this.hoverIcon = hoverIcon;
+
+        setLayout(null);
         setBounds(0, y, 240, 50);
         setOpaque(true);
-        setFont(cFonts.SIDEBAR_FONT);
-        setForeground(cColor.WHITE);
         setBackground(cColor.GREEN);
-        setVerticalAlignment(JLabel.CENTER);
-        setHorizontalAlignment(JLabel.CENTER);
+
+        iconLabel = new cImage(defaultIcon.getIcon().toString(), 50, 5, 40, 40);
+        iconLabel.setBounds(50, 5, 40, 40);
+        add(iconLabel);
+
+        label = new JLabel(text);
+        label.setFont(cFonts.SIDEBAR_FONT);
+        label.setForeground(cColor.WHITE);
+        label.setVerticalAlignment(JLabel.CENTER);
+        label.setBounds(110, 0, 240, 50);
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -50,12 +68,13 @@ public class cSidebarMenu extends JLabel {
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
             }
         });
+        add(label);
         setSidebarNonAktif();
     }
 
     public void setSidebarAktif() {
         try {
-            removeMouseListener(sidebarNonAktif);
+            removeMouseListener(sidebarInAktif);
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -68,6 +87,7 @@ public class cSidebarMenu extends JLabel {
         } catch (Exception e) {
             // TODO: handle exception
         }
-        addMouseListener(sidebarNonAktif);
+        addMouseListener(sidebarInAktif);
     }
+
 }

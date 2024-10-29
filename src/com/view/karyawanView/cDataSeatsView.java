@@ -22,9 +22,9 @@ public class cDataSeatsView extends cPanelContentApp {
     private cLabelInfo labelListUsed = new cLabelInfo("Seats Used", 30, 30, 400, 30);
 
     // component button data Seats
-    private cButtonLogin btnInputDataSeats = new cButtonLogin("input", 210, 25, 110, 40, 10);
-    private cButtonLogin btnUpdateDataSeats = new cButtonLogin("Update", 330, 25, 110, 40, 10);
-    private cButtonLogin btnDeleteDataSeats = new cButtonLogin("Delete", 450, 25, 110, 40, 10);
+    private cButtonRounded btnInputDataSeats = new cButtonRounded("input", 210, 25, 110, 40, 10);
+    private cButtonRounded btnUpdateDataSeats = new cButtonRounded("Update", 330, 25, 110, 40, 10);
+    private cButtonRounded btnDeleteDataSeats = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
     public cDataSeatsView() {
         super();

@@ -22,9 +22,9 @@ public class cDataTransaksiView extends cPanelContentApp {
     private cLabelInfo labelStatusTransaksi = new cLabelInfo("Status", 30, 30, 430, 30);
 
     // ini adalah component button data transaksi
-    private cButtonLogin btnInputDataTransaksi = new cButtonLogin("input", 210, 25, 110, 40, 10);
-    private cButtonLogin btnUpdateDataTransaksi = new cButtonLogin("Update", 330, 25, 110, 40, 10);
-    private cButtonLogin btnDeleteDataTransaksi = new cButtonLogin("Delete", 450, 25, 110, 40, 10);
+    private cButtonRounded btnInputDataTransaksi = new cButtonRounded("input", 210, 25, 110, 40, 10);
+    private cButtonRounded btnUpdateDataTransaksi = new cButtonRounded("Update", 330, 25, 110, 40, 10);
+    private cButtonRounded btnDeleteDataTransaksi = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
     public cDataTransaksiView() {
         super();
