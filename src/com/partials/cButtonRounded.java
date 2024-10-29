@@ -6,13 +6,13 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.border.EmptyBorder;
 
-public class cButtonLogin extends cButton {
+public class cButtonRounded extends cButton {
     private int radius;
     private Color originalBackground;
     private Color hoverBackground;
     private Color pressedBackground;
 
-    public cButtonLogin(String text, int x, int y, int width, int height, int radius) {
+    public cButtonRounded(String text, int x, int y, int width, int height, int radius) {
         super(text, x, y, width, height);
         this.radius = radius;
         setFont(cFonts.BUTTON_FONT);

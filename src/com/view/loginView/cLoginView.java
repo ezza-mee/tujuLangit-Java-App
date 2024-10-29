@@ -1,7 +1,7 @@
 package com.view.loginView;
 
 import com.main.resources.templates.cFrameLoginApp;
-import com.partials.cButtonLogin;
+import com.partials.cButtonRounded;
 import com.partials.cErrorLabel;
 import com.partials.cFormLabel;
 import com.partials.cPasswordField;
@@ -14,7 +14,7 @@ public class cLoginView extends cFrameLoginApp {
     private cTextField fieldUsernameAdmin = new cTextField(155, 270, 300);
     private cFormLabel labelPasswordAdmin = new cFormLabel("Password", 150, 320, 300);
     private cPasswordField fieldPasswordAdmin = new cPasswordField(155, 350, 300);
-    private cButtonLogin buttonLoginAdmin = new cButtonLogin("Login", 155, 430, 300, 40, 10);
+    private cButtonRounded buttonLoginAdmin = new cButtonRounded("Login", 155, 430, 300, 40, 10);
     private cErrorLabel errorLabelAdmin = new cErrorLabel("Error", 155, 295, 300);
     private cErrorLabel errorLabelPassAdmin = new cErrorLabel("Error", 155, 375, 300);
 

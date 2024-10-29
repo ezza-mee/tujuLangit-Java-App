@@ -22,9 +22,9 @@ public class cDataMenuView extends cPanelContentApp {
     private cLabelInfo labelListUsed = new cLabelInfo("Menu Sold", 30, 30, 400, 30);
 
     // component button data Menu
-    private cButtonLogin btnInputDataMenu = new cButtonLogin("input", 210, 25, 110, 40, 10);
-    private cButtonLogin btnUpdateDataMenu = new cButtonLogin("Update", 330, 25, 110, 40, 10);
-    private cButtonLogin btnDeleteDataMenu = new cButtonLogin("Delete", 450, 25, 110, 40, 10);
+    private cButtonRounded btnInputDataMenu = new cButtonRounded("input", 210, 25, 110, 40, 10);
+    private cButtonRounded btnUpdateDataMenu = new cButtonRounded("Update", 330, 25, 110, 40, 10);
+    private cButtonRounded btnDeleteDataMenu = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
     public cDataMenuView() {
         super();
