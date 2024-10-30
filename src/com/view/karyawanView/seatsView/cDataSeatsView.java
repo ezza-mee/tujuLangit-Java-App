@@ -1,4 +1,4 @@
-package com.view.karyawanView;
+package com.view.karyawanView.seatsView;
 
 import javax.swing.JLabel;
 
