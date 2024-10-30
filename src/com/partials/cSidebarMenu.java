@@ -1,6 +1,7 @@
 package com.partials;
 
 import javax.swing.*;
+import com.partials.*;
 
 public class cSidebarMenu extends JPanel {
 
@@ -14,13 +15,13 @@ public class cSidebarMenu extends JPanel {
         public void mouseEntered(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
             label.setForeground(cColor.GREEN);
-            iconLabel.setIcon(hoverIcon.getIcon());
+            iconLabel.setIcon(defaultIcon.getIcon());
         }
 
         public void mouseExited(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
             label.setForeground(cColor.GREEN);
-            iconLabel.setIcon(defaultIcon.getIcon());
+            iconLabel.setIcon(hoverIcon.getIcon());
         }
     };
 
@@ -29,13 +30,13 @@ public class cSidebarMenu extends JPanel {
         public void mouseEntered(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
             label.setForeground(cColor.GREEN);
-            iconLabel.setIcon(defaultIcon.getIcon());
+            iconLabel.setIcon(hoverIcon.getIcon());
         }
 
         public void mouseExited(java.awt.event.MouseEvent e) {
             setBackground(cColor.GREEN);
             label.setForeground(cColor.WHITE);
-            iconLabel.setIcon(hoverIcon.getIcon());
+            iconLabel.setIcon(defaultIcon.getIcon());
         }
     };
 
@@ -46,10 +47,9 @@ public class cSidebarMenu extends JPanel {
 
         setLayout(null);
         setBounds(0, y, 240, 50);
-        setOpaque(true);
         setBackground(cColor.GREEN);
 
-        iconLabel = new cImage(defaultIcon.getIcon().toString(), 50, 5, 40, 40);
+        iconLabel = new cImage(defaultIcon.getIcon(), 50, 5, 40, 40);
         iconLabel.setBounds(50, 5, 40, 40);
         add(iconLabel);
 
@@ -58,6 +58,7 @@ public class cSidebarMenu extends JPanel {
         label.setForeground(cColor.WHITE);
         label.setVerticalAlignment(JLabel.CENTER);
         label.setBounds(110, 0, 240, 50);
+        add(label);
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -68,8 +69,9 @@ public class cSidebarMenu extends JPanel {
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
             }
         });
-        add(label);
-        setSidebarNonAktif();
+        setSidebarInAktif();
+        revalidate();
+        repaint();
     }
 
     public void setSidebarAktif() {
@@ -81,7 +83,7 @@ public class cSidebarMenu extends JPanel {
         addMouseListener(sidebarAktif);
     }
 
-    public void setSidebarNonAktif() {
+    public void setSidebarInAktif() {
         try {
             removeMouseListener(sidebarAktif);
         } catch (Exception e) {
