@@ -14,6 +14,7 @@ public class cDashboardKaryawan extends cFrameDashboardApp {
 
     private cHistoryTransaksiView componentHistoryTransaksiView = new cHistoryTransaksiView();
 
+    
     public cDashboardKaryawan() {
         super();
         initsSidebarKaryawan();

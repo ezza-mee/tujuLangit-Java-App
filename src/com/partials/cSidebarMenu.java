@@ -15,7 +15,7 @@ public class cSidebarMenu extends JPanel {
         public void mouseEntered(java.awt.event.MouseEvent e) {
             setBackground(cColor.WHITE);
             label.setForeground(cColor.GREEN);
-            iconLabel.setIcon(defaultIcon.getIcon());
+            iconLabel.setIcon(hoverIcon.getIcon());
         }
 
         public void mouseExited(java.awt.event.MouseEvent e) {
@@ -51,14 +51,13 @@ public class cSidebarMenu extends JPanel {
 
         iconLabel = new cImage(defaultIcon.getIcon(), 50, 5, 40, 40);
         iconLabel.setBounds(50, 5, 40, 40);
-        add(iconLabel);
 
         label = new JLabel(text);
         label.setFont(cFonts.SIDEBAR_FONT);
         label.setForeground(cColor.WHITE);
         label.setVerticalAlignment(JLabel.CENTER);
         label.setBounds(110, 0, 240, 50);
-        add(label);
+
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -69,6 +68,9 @@ public class cSidebarMenu extends JPanel {
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
             }
         });
+
+        add(iconLabel);
+        add(label);
         setSidebarInAktif();
         revalidate();
         repaint();
@@ -81,6 +83,9 @@ public class cSidebarMenu extends JPanel {
             // TODO: handle exception
         }
         addMouseListener(sidebarAktif);
+        setBackground(cColor.WHITE);
+        label.setForeground(cColor.GREEN);
+        iconLabel.setIcon(hoverIcon.getIcon());
     }
 
     public void setSidebarInAktif() {
@@ -90,6 +95,9 @@ public class cSidebarMenu extends JPanel {
             // TODO: handle exception
         }
         addMouseListener(sidebarInAktif);
+        setBackground(cColor.GREEN);
+        label.setForeground(cColor.WHITE);
+        iconLabel.setIcon(defaultIcon.getIcon());
     }
 
 }
