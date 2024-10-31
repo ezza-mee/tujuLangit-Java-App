@@ -127,8 +127,9 @@ public class cSidebarView extends cPanelSidebarApp {
 
                 menuSeats.setForeground(cColor.GREEN);
                 menuSeats.setBackground(cColor.WHITE);
-
                 menuSeats.setSidebarAktif();
+
+                contentView.showSeatsView();
 
                 setVisible(true);
 
@@ -139,8 +140,9 @@ public class cSidebarView extends cPanelSidebarApp {
 
                 menuTransaksi.setForeground(cColor.GREEN);
                 menuTransaksi.setBackground(cColor.WHITE);
-
                 menuTransaksi.setSidebarAktif();
+
+                contentView.showTransaksiView();
 
                 setVisible(true);
 
@@ -151,8 +153,9 @@ public class cSidebarView extends cPanelSidebarApp {
 
                 menuHistory.setForeground(cColor.GREEN);
                 menuHistory.setBackground(cColor.WHITE);
-
                 menuHistory.setSidebarAktif();
+
+                contentView.showHistoryTransaksiView();
 
                 setVisible(true);
 

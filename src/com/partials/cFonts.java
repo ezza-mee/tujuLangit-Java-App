@@ -6,7 +6,7 @@ public class cFonts {
     public static final Font TITLE_START_FONT = new Font("Poppins Semibold", Font.PLAIN, 30);
     public static final Font LINK_EXIT_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
     public static final Font FROM_LABEL_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
-    public static final Font TEXTFIELD_FONT = new Font("Poppins Semibold", Font.PLAIN, 18);
+    public static final Font TEXTFIELD_FONT = new Font("Poppins Semibold", Font.PLAIN, 16);
     public static final Font ERROR_LABEL_FONT = new Font("Poppins Semibold", Font.PLAIN, 10);
     public static final Font DAFTAR_LOGIN_FONT = new Font("Poppins Semibold", Font.PLAIN, 15);
     public static final Font SIDEBAR_FONT = new Font("Poppins Semibold", Font.PLAIN, 15);
