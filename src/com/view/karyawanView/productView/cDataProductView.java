@@ -4,11 +4,14 @@ import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
+import com.view.karyawanView.cPanelContentView;
 
 public class cDataProductView extends cPanelContentApp {
 
+    private cPanelContentView parentPanel;
+
     // component label header Data menu
-    private cBigFont labelHeaderDataMenu = new cBigFont("Menu Data", 40, 5);
+    private cBigFont labelHeaderDataMenu = new cBigFont("Product", 40, 5);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
@@ -26,13 +29,36 @@ public class cDataProductView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataMenu = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataMenu = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
-    public cDataProductView() {
+    public cDataProductView(cPanelContentView parentPanel) {
         super();
+        this.parentPanel = parentPanel;
+
         initsDataMenuView();
     }
 
     public void initsDataMenuView() {
         setVisible(true);
+
+        btnInputDataMenu.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showInputDataProductView();
+            }
+        });
+
+        btnUpdateDataMenu.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showUpdateDataProductView();
+            }
+        });
+
+        btnDeleteDataMenu.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showDeleteDataProductView();
+            }
+        });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
@@ -53,4 +79,5 @@ public class cDataProductView extends cPanelContentApp {
         bgPanel.add(panelListSold);
         bgPanel.add(labelCopyright);
     }
+
 }
