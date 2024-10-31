@@ -5,6 +5,8 @@ import com.partials.*;
 
 public class cSidebarView extends cPanelSidebarApp {
 
+        public cPanelContentView contentView;
+
         private cIconImage iconImage = new cIconImage();
 
         // component sidebar
@@ -44,17 +46,16 @@ public class cSidebarView extends cPanelSidebarApp {
                 menuHistory.setForeground(cColor.WHITE);
                 menuHistory.setBackground(cColor.GREEN);
                 menuHistory.setSidebarInAktif();
-
         }
 
-        public cSidebarView() {
+        public cSidebarView(cPanelContentView contentView) {
                 super();
+                this.contentView = contentView;
 
                 menuHome.addMouseListener(new java.awt.event.MouseAdapter() {
                         @Override
                         public void mouseClicked(java.awt.event.MouseEvent me) {
                                 initsHomeView();
-
                         }
                 });
 
@@ -62,6 +63,7 @@ public class cSidebarView extends cPanelSidebarApp {
                         @Override
                         public void mouseClicked(java.awt.event.MouseEvent me) {
                                 initsProductView();
+
                         }
                 });
 
@@ -101,6 +103,8 @@ public class cSidebarView extends cPanelSidebarApp {
                 menuHome.setBackground(cColor.WHITE);
                 menuHome.setSidebarAktif();
 
+                contentView.showHomeView();
+
                 setVisible(true);
 
         }
@@ -110,8 +114,9 @@ public class cSidebarView extends cPanelSidebarApp {
 
                 menuProduct.setForeground(cColor.GREEN);
                 menuProduct.setBackground(cColor.WHITE);
-
                 menuProduct.setSidebarAktif();
+
+                contentView.showProductView();
 
                 setVisible(true);
 

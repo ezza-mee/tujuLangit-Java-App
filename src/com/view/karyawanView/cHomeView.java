@@ -8,9 +8,6 @@ import com.main.resources.templates.cPanelContentApp;
 
 public class cHomeView extends cPanelContentApp {
 
-    // component label header Beranda
-    private cBigFont labelHeaderHome = new cBigFont("Home", 40, 5);
-
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
@@ -45,10 +42,10 @@ public class cHomeView extends cPanelContentApp {
 
     public cHomeView() {
         super();
-        initsHomeView();
+        initsShowHomeView();
     }
 
-    public void initsHomeView() {
+    public void initsShowHomeView() {
         setVisible(true);
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
@@ -88,7 +85,6 @@ public class cHomeView extends cPanelContentApp {
         bgPanel.add(panelDataTransaksi);
         bgPanel.add(panelDataHistory);
         bgPanel.add(panelListTransaksi);
-        bgPanel.add(labelHeaderHome);
         bgPanel.add(labelCopyright);
     }
 }
