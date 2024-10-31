@@ -3,8 +3,8 @@ package com.view.karyawanView;
 import com.main.resources.templates.cPanelContentApp;
 import com.view.karyawanView.productView.cDataProductView;
 import com.view.karyawanView.productView.cDeleteProductView;
-import com.view.karyawanView.productView.cInputMenuProductView;
-import com.view.karyawanView.productView.cUpadateProductView;
+import com.view.karyawanView.productView.cInputProductView;
+import com.view.karyawanView.productView.cUpdateProductView;
 import com.view.karyawanView.seatsView.cDataSeatsView;
 import com.view.karyawanView.transaksiView.cDataTransaksiView;
 
@@ -16,14 +16,16 @@ public class cPanelContentView extends cPanelContentApp {
     private cDataTransaksiView componentTransaksiView = new cDataTransaksiView();
     private cHistoryTransaksiView componentHistoryTransaksiView = new cHistoryTransaksiView();
 
-    private cInputMenuProductView componentInputProductView;
-    private cUpadateProductView componentUpdateProductView = new cUpadateProductView();
-    private cDeleteProductView componentDeleteProductView = new cDeleteProductView();
+    private cInputProductView componentInputProductView;
+    private cUpdateProductView componentUpdateProductView;
+    private cDeleteProductView componentDeleteProductView;
 
     public cPanelContentView() {
         super();
         componentProductView = new cDataProductView(this);
-        componentInputProductView = new cInputMenuProductView(this);
+        componentInputProductView = new cInputProductView(this);
+        componentUpdateProductView = new cUpdateProductView(this);
+        componentDeleteProductView = new cDeleteProductView(this);
     }
 
     private void refreshContent() {
