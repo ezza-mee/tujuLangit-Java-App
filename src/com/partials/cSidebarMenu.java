@@ -1,7 +1,6 @@
 package com.partials;
 
 import javax.swing.*;
-import com.partials.*;
 
 public class cSidebarMenu extends JPanel {
 

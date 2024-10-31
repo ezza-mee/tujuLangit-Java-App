@@ -13,16 +13,16 @@ public class Controller {
     private static cDashboardAdmin DashboardAdmin = new cDashboardAdmin();
 
     // public static void showLoginAdmin() {
-    //     frameLogin.initsLoginAdmin();
-    //     frameLogin.setVisible(true);
+    // frameLogin.initsLoginAdmin();
+    // frameLogin.setVisible(true);
     // }
 
     public static void showDashboardKaryawan() {
-        DashboardKaryawan.initsSidebarKaryawan();
+        DashboardKaryawan.initsViewDashboardKaryawan();
         DashboardKaryawan.setVisible(true);
     }
 
-    public static void showDashboardAdmin(){
+    public static void showDashboardAdmin() {
         DashboardAdmin.initsSidebarAdmin();
         DashboardAdmin.setVisible(true);
     }
