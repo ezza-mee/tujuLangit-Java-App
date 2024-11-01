@@ -1,18 +1,15 @@
 package com.view.karyawanView;
 
 import com.main.resources.templates.cPanelContentApp;
-import com.view.karyawanView.productView.cDataProductView;
-import com.view.karyawanView.productView.cDeleteProductView;
-import com.view.karyawanView.productView.cInputProductView;
-import com.view.karyawanView.productView.cUpdateProductView;
-import com.view.karyawanView.seatsView.cDataSeatsView;
-import com.view.karyawanView.transaksiView.cDataTransaksiView;
+import com.view.karyawanView.productView.*;
+import com.view.karyawanView.seatsView.*;
+import com.view.karyawanView.transaksiView.*;
 
 public class cPanelContentView extends cPanelContentApp {
 
     private cHomeView componentHomeView = new cHomeView();
     private cDataProductView componentProductView;
-    private cDataSeatsView componentSeatsView = new cDataSeatsView();
+    private cDataSeatsView componentSeatsView;
     private cDataTransaksiView componentTransaksiView = new cDataTransaksiView();
     private cHistoryTransaksiView componentHistoryTransaksiView = new cHistoryTransaksiView();
 
@@ -20,12 +17,21 @@ public class cPanelContentView extends cPanelContentApp {
     private cUpdateProductView componentUpdateProductView;
     private cDeleteProductView componentDeleteProductView;
 
+    private cInputSeatsView componentInputSeatsView;
+    private cUpdateSeatsView componentUpdateSeatsView;
+    private cDeleteSeatsView componentDeleteSeatsView;
+
     public cPanelContentView() {
         super();
         componentProductView = new cDataProductView(this);
         componentInputProductView = new cInputProductView(this);
         componentUpdateProductView = new cUpdateProductView(this);
         componentDeleteProductView = new cDeleteProductView(this);
+
+        componentSeatsView = new cDataSeatsView(this);
+        componentInputSeatsView = new cInputSeatsView(this);
+        componentUpdateSeatsView = new cUpdateSeatsView(this);
+        componentDeleteSeatsView = new cDeleteSeatsView(this);
     }
 
     private void refreshContent() {
@@ -105,6 +111,33 @@ public class cPanelContentView extends cPanelContentApp {
     public void showDeleteDataProductView() {
         refreshContent();
         bgPanel.add(componentDeleteProductView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showInputDataSeatsView() {
+        refreshContent();
+        bgPanel.add(componentInputSeatsView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showUpdateDataSeatsView() {
+        refreshContent();
+        bgPanel.add(componentUpdateSeatsView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showDeleteDataSeatsView() {
+        refreshContent();
+        bgPanel.add(componentDeleteSeatsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

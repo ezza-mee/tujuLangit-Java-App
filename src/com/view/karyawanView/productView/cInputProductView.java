@@ -11,7 +11,7 @@ public class cInputProductView extends cPanelContentApp {
     // add object cPanelContentView
     private cPanelContentView parentPanel;
 
-    // add label header
+    // add label header product
     private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
     private cBigFont labelInputDataProduct = new cBigFont("Input Data Product", 40, 20);
 
@@ -21,21 +21,21 @@ public class cInputProductView extends cPanelContentApp {
     // add panel Input
     private cPanelRounded panelInputDataProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
-    // add label input
+    // add label input product
     private cLabelInfo labelNameProduct = new cLabelInfo("Name Product", 180, 120, 300, 30);
     private cLabelInfo labelCountProduct = new cLabelInfo("Count Product", 180, 195, 300, 30);
     private cLabelInfo labelPriceProduct = new cLabelInfo("Price Product", 180, 270, 300, 30);
     private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi Product", 580, 120, 300, 30);
     private cLabelInfo labelStatusProduct = new cLabelInfo("Status Product", 180, 345, 300, 30);
 
-    // add textfield input
+    // add textfield input product
     private cTextField txtNameProduct = new cTextField(180, 145, 300);
     private cTextField txtCountProduct = new cTextField(180, 220, 300);
     private cTextField txtPriceProduct = new cTextField(180, 295, 300);
 
     private cTextArea txtDeskripsiProduct = new cTextArea(580, 145, 300, 200, true);
 
-    // add radion button input
+    // add radion button input product
     private cRadioButton statusReadyProduct = new cRadioButton("Ready", "Active", 180, 375, 100);
     private cRadioButton statusSoldProduct = new cRadioButton("Sold", "Inactive", 320, 375, 100);
 
