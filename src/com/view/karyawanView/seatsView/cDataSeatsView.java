@@ -4,11 +4,14 @@ import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
+import com.view.karyawanView.cPanelContentView;
 
 public class cDataSeatsView extends cPanelContentApp {
 
+    private cPanelContentView parentPanel;
+
     // component header data Seats
-    private cBigFont labelHeaderDataSeats = new cBigFont("Data Seats", 40, 5);
+    private cBigFont labelHeaderDataSeats = new cBigFont("Seats", 40, 5);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
@@ -26,13 +29,35 @@ public class cDataSeatsView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataSeats = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataSeats = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
-    public cDataSeatsView() {
+    public cDataSeatsView(cPanelContentView parentPanel) {
         super();
+        this.parentPanel = parentPanel;
         initsDataSeatsView();
     }
 
     public void initsDataSeatsView() {
         setVisible(true);
+
+        btnInputDataSeats.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showInputDataSeatsView();
+            }
+        });
+
+        btnUpdateDataSeats.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showUpdateDataSeatsView();
+            }
+        });
+
+        btnDeleteDataSeats.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showDeleteDataSeatsView();
+            }
+        });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
