@@ -142,7 +142,7 @@ public class cSidebarView extends cPanelSidebarApp {
                 menuTransaksi.setBackground(cColor.WHITE);
                 menuTransaksi.setSidebarAktif();
 
-                contentView.showTransaksiView();
+                contentView.showDataTransaksiView();
 
                 setVisible(true);
 

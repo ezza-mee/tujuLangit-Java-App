@@ -1,26 +1,27 @@
 package com.view.karyawanView.transaksiView;
 
+import javax.print.attribute.standard.OrientationRequested;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
 import com.view.karyawanView.cPanelContentView;
 
-public class cInputTransaksiView extends cPanelContentApp {
+public class cUpdateTransaksiView extends cPanelContentApp {
 
-    // add object cPanelContentView
+    // component panel content
     private cPanelContentView parentPanel;
 
-    // add label header Transaksi
+    // add label header update Transaksi
     private cBigFont labelHeaderTransaksi = new cBigFont("Transaksi", 40, 5);
-    private cBigFont labelInputTransaksi = new cBigFont("Input Data Transaksi", 40, 20);
+    private cBigFont labelUpdateTransaksi = new cBigFont("Update Data Transaksi", 40, 20);
     private cBigFont labelListOrderTransaksi = new cBigFont("List Order", 40, 20);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
-    // add panel Input
-    private cPanelRounded panelInputTransaksi = new cPanelRounded(40, 80, 600, 560, 10, 10);
+    // add panel Update
+    private cPanelRounded panelUpdateTransaksi = new cPanelRounded(40, 80, 600, 560, 10, 10);
     private cPanelRounded panelListOrderTransaksi = new cPanelRounded(660, 80, 430, 560, 10, 10);
 
     // component button transaksi
@@ -48,14 +49,14 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cTextField txtAmountTransaksi = new cTextField(40, 280, 520);
     private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 350, 520, 100, true);
 
-    public cInputTransaksiView(cPanelContentView parentPanel) {
+    public cUpdateTransaksiView(cPanelContentView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 
-        initsInputTransaksiView();
+        initsUpdateTransaksiView();
     }
 
-    private void initsInputTransaksiView() {
+    public void initsUpdateTransaksiView() {
         setVisible(true);
 
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
@@ -68,35 +69,30 @@ public class cInputTransaksiView extends cPanelContentApp {
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
 
-        btnAddTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnSaveTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnEditTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnBackToHome.setFont(cFonts.BUTTON_INPUT_FONT);
+        panelUpdateTransaksi.add(labelUpdateTransaksi);
+        panelUpdateTransaksi.add(btnSaveTransaksi);
+        panelUpdateTransaksi.add(btnDeleteTransaksi);
+        panelUpdateTransaksi.add(btnEditTransaksi);
+        panelUpdateTransaksi.add(btnBackToHome);
+        panelUpdateTransaksi.add(btnAddTransaksi);
 
-        panelInputTransaksi.add(labelInputTransaksi);
-        panelInputTransaksi.add(btnSaveTransaksi);
-        panelInputTransaksi.add(btnDeleteTransaksi);
-        panelInputTransaksi.add(btnEditTransaksi);
-        panelInputTransaksi.add(btnBackToHome);
-        panelInputTransaksi.add(btnAddTransaksi);
+        panelUpdateTransaksi.add(labelAddProduct);
+        panelUpdateTransaksi.add(labelAddSeats);
+        panelUpdateTransaksi.add(labelAmountProduct);
+        panelUpdateTransaksi.add(labelDeskripsiProduct);
 
-        panelInputTransaksi.add(labelAddProduct);
-        panelInputTransaksi.add(labelAddSeats);
-        panelInputTransaksi.add(labelAmountProduct);
-        panelInputTransaksi.add(labelDeskripsiProduct);
+        panelUpdateTransaksi.add(boxProdoctTransaksi);
+        panelUpdateTransaksi.add(boxSeatsTransaksi);
 
-        panelInputTransaksi.add(boxProdoctTransaksi);
-        panelInputTransaksi.add(boxSeatsTransaksi);
-
-        panelInputTransaksi.add(txtAmountTransaksi);
-        panelInputTransaksi.add(txtDeskripsiTransaksi);
+        panelUpdateTransaksi.add(txtAmountTransaksi);
+        panelUpdateTransaksi.add(txtDeskripsiTransaksi);
 
         panelListOrderTransaksi.add(labelListOrderTransaksi);
 
-        bgPanel.add(panelInputTransaksi);
+        bgPanel.add(panelUpdateTransaksi);
         bgPanel.add(panelListOrderTransaksi);
         bgPanel.add(labelHeaderTransaksi);
         bgPanel.add(labelCopyright);
     }
+
 }

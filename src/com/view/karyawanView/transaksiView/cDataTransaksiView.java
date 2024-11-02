@@ -47,6 +47,20 @@ public class cDataTransaksiView extends cPanelContentApp {
             }
         });
 
+        btnUpdateDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showUpdateTransaksiView();
+            }
+        });
+
+        btnDeleteDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showDeleteTransaksiView();
+            }
+        });
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
 
