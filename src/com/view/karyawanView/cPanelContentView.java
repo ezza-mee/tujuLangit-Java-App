@@ -10,7 +10,7 @@ public class cPanelContentView extends cPanelContentApp {
     private cHomeView componentHomeView = new cHomeView();
     private cDataProductView componentProductView;
     private cDataSeatsView componentSeatsView;
-    private cDataTransaksiView componentTransaksiView = new cDataTransaksiView();
+    private cDataTransaksiView componentTransaksiView;
     private cHistoryTransaksiView componentHistoryTransaksiView = new cHistoryTransaksiView();
 
     private cInputProductView componentInputProductView;
@@ -20,6 +20,8 @@ public class cPanelContentView extends cPanelContentApp {
     private cInputSeatsView componentInputSeatsView;
     private cUpdateSeatsView componentUpdateSeatsView;
     private cDeleteSeatsView componentDeleteSeatsView;
+
+    private cInputTransaksiView componentInputTransaksiView;
 
     public cPanelContentView() {
         super();
@@ -32,6 +34,9 @@ public class cPanelContentView extends cPanelContentApp {
         componentInputSeatsView = new cInputSeatsView(this);
         componentUpdateSeatsView = new cUpdateSeatsView(this);
         componentDeleteSeatsView = new cDeleteSeatsView(this);
+
+        componentTransaksiView = new cDataTransaksiView(this);
+        componentInputTransaksiView = new cInputTransaksiView(this);
     }
 
     private void refreshContent() {
@@ -138,6 +143,15 @@ public class cPanelContentView extends cPanelContentApp {
     public void showDeleteDataSeatsView() {
         refreshContent();
         bgPanel.add(componentDeleteSeatsView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showInputTransaksiView() {
+        refreshContent();
+        bgPanel.add(componentInputTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

@@ -4,8 +4,12 @@ import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
+import com.view.karyawanView.cPanelContentView;
 
 public class cDataTransaksiView extends cPanelContentApp {
+
+    // add object cPanelContentView
+    private cPanelContentView parentPanel;
 
     // ini adalah component data transaksi
     private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaksi", 40, 5);
@@ -26,13 +30,22 @@ public class cDataTransaksiView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataTransaksi = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataTransaksi = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
-    public cDataTransaksiView() {
+    public cDataTransaksiView(cPanelContentView parentPanel) {
         super();
+        this.parentPanel = parentPanel;
+
         initsDataTransaksiView();
     }
 
     public void initsDataTransaksiView() {
         setVisible(true);
+
+        btnInputDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showInputTransaksiView();
+            }
+        });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
