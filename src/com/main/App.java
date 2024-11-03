@@ -5,8 +5,8 @@ import com.main.controller.*;
 public class App {
     public static void main(String[] args) {
 
-        // Controller.showLoginAdmin();
-        Controller.showDashboardKaryawan();
+        Controller.showLoginAdmin();
+        // Controller.showDashboardKaryawan();
         // Controller.showDashboardAdmin();
     
 
