@@ -1,16 +1,15 @@
 package com.main.resources.templates;
 
-import javax.swing.*;
-
+import javax.swing.JPanel;
 import com.partials.*;
 
-public abstract class cPanelContentApp extends JPanel {
+public class cPanelCardLogin extends JPanel {
 
     public JPanel bgPanel = new JPanel();
 
-    public cPanelContentApp() {
+    public cPanelCardLogin() {
         super();
-        setSize(1126, 698);
+        setSize(1100, 700);
         setLayout(null);
 
         bgPanel.setBounds(0, 0, 1126, 698);
@@ -19,5 +18,6 @@ public abstract class cPanelContentApp extends JPanel {
 
         add(bgPanel);
     }
-
 }
+
+
