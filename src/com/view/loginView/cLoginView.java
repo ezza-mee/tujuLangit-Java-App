@@ -20,6 +20,8 @@ public class cLoginView extends cFrameLoginApp {
 
     public cLoginView() {
         super();
+
+        initsLoginAdmin();
     }
 
     public void initsLoginAdmin() {
