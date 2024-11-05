@@ -3,7 +3,7 @@ package com.partials;
 import java.awt.*;
 
 public class cFonts {
-    public static final Font TITLE_START_FONT = new Font("Poppins Semibold", Font.PLAIN, 30);
+    public static final Font TITLE_START_FONT = new Font("Poppins Bold", Font.PLAIN, 50);
     public static final Font LINK_EXIT_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
     public static final Font FROM_LABEL_FONT = new Font("Poppins Semibold", Font.PLAIN, 20);
     public static final Font TEXTFIELD_FONT = new Font("Poppins Semibold", Font.PLAIN, 16);

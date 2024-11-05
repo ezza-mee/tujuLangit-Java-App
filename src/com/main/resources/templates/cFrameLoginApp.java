@@ -11,15 +11,9 @@ public abstract class cFrameLoginApp extends JFrame {
     private int mouseX, mouseY;
 
     public JPanel bgFrame = new JPanel();
-    public JPanel cardLogin = new cPanelRounded(500, 0, 600, 700, 30, 0);
-    public JPanel lineTitle = new JPanel();
     public JLabel titleLogin = new JLabel("Title Login");
     public JLabel titleFrom = new JLabel("Title Login");
-    public JLabel titleLogout = new cLogout(990);
-    private cImage imageBijiCoffe = new cImage(
-            "src/com/main/resources/images/bg.jpg",
-            0, 0, 700, 700);
-
+    
     public cFrameLoginApp() {
         super();
         setSize(1100, 700);
@@ -40,19 +34,9 @@ public abstract class cFrameLoginApp extends JFrame {
 
         titleFrom.setFont(cFonts.TITLE_START_FONT);
         titleFrom.setForeground(cColor.WHITE);
-        titleFrom.setBounds(180, 250, 550, 40);
+        titleFrom.setBounds(80, 250, 550, 60);
 
-        lineTitle.setBackground(cColor.GREEN);
-        lineTitle.setLayout(null);
-        lineTitle.setBounds(250, 180, 120, 5);
-
-        bgFrame.add(titleLogout);
-
-        cardLogin.add(titleLogin);
-        cardLogin.add(lineTitle);
-        bgFrame.add(cardLogin);
         bgFrame.add(titleFrom);
-        bgFrame.add(imageBijiCoffe);
         add(bgFrame);
 
         // Menambang listener untuk menggeser frame
