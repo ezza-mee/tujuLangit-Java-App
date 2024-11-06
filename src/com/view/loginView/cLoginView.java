@@ -17,10 +17,10 @@ public class cLoginView extends cFrameLoginApp {
 
     public void initsLoginView() {
         setVisible(true);
-        titleFrom.setFont(cFonts.TITLE_START_FONT);
 
         this.setTitle("TujuLangit");
         titleLogin.setText("TujuLangit");
+        titleFrom.setText("Forestpark");
 
         bgFrame.add(bgPanelLoginView);
 

@@ -3,6 +3,7 @@ package com.main.controller;
 import com.view.adminView.cDashboardAdmin;
 import com.view.karyawanView.cDashboardKaryawan;
 import com.view.loginView.cLoginView;
+import com.view.loginView.cPanelLoginView;
 
 public class Controller {
 
