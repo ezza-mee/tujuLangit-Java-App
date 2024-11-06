@@ -8,6 +8,11 @@ public class cLoginAdminView extends cPanelCardLogin {
 
     private cPanelLoginView parentPanel;
 
+    private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 250);
+    private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 270, 320);
+
+    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIncon.png", 90, 340, 160, 160);
+
     // component panel login admin
     private cPanelRounded panelShapeLogin = new cPanelRounded(0, 0, 530, 700, 0, 340);
     private cPanelRounded panelCardLogin = new cPanelRounded(560, 90, 500, 580, 10, 10);
@@ -34,7 +39,7 @@ public class cLoginAdminView extends cPanelCardLogin {
         initsLoginAdminView();
     }
 
-    private void initsLoginAdminView() {
+    public void initsLoginAdminView() {
         setVisible(true);
 
         labelLoginStaff.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -50,8 +55,17 @@ public class cLoginAdminView extends cPanelCardLogin {
         labelHeaderLogin.setFont(cFonts.BIG_FONT);
         labelLoginStaff.setForeground(cColor.GREEN);
 
+        labelHeaderTujuLangit.setFont(cFonts.TITLE_START_FONT);
+        labelHeaderForestpark.setFont(cFonts.TITLE_FONT);
+        labelHeaderTujuLangit.setForeground(cColor.WHITE);
+        labelHeaderForestpark.setForeground(cColor.WHITE);
+
         panelShapeLogin.setBackground(cColor.GREEN);
         panelListLogin.setBackground(cColor.GREEN);
+
+        panelShapeLogin.add(labelHeaderTujuLangit);
+        panelShapeLogin.add(labelHeaderForestpark);
+        panelShapeLogin.add(imgBrand);
 
         panelCardLogin.add(labelHeaderLogin);
         panelCardLogin.add(panelListLogin);

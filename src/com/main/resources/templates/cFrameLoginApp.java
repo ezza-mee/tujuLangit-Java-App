@@ -11,8 +11,6 @@ public abstract class cFrameLoginApp extends JFrame {
     private int mouseX, mouseY;
 
     public JPanel bgFrame = new JPanel();
-    public JLabel titleLogin = new JLabel("Title Login");
-    public JLabel titleFrom = new JLabel("Title Login");
 
     public cFrameLoginApp() {
         super();
@@ -26,16 +24,6 @@ public abstract class cFrameLoginApp extends JFrame {
         bgFrame.setBounds(0, 0, 1100, 700);
         bgFrame.setLayout(null);
 
-        titleLogin.setFont(cFonts.TITLE_START_FONT);
-        titleLogin.setForeground(cColor.WHITE);
-        titleLogin.setBounds(80, 250, 550, 100);
-
-        titleFrom.setFont(cFonts.TITLE_FONT);
-        titleFrom.setForeground(cColor.WHITE);
-        titleFrom.setBounds(280, 340, 550, 60);
-
-        bgFrame.add(titleLogin);
-        bgFrame.add(titleFrom);
         add(bgFrame);
 
         // Menambang listener untuk menggeser frame
