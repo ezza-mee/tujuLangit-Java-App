@@ -8,6 +8,11 @@ public class cLoginKaryawanView extends cPanelCardLogin {
 
     private cPanelLoginView parentPanel;
 
+    private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 250);
+    private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 270, 320);
+
+    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIncon.png", 90, 340, 160, 160);
+
     // component panel login admin
     private cPanelRounded panelShapeLogin = new cPanelRounded(0, 0, 530, 700, 0, 340);
     private cPanelRounded panelCardLogin = new cPanelRounded(560, 90, 500, 580, 10, 10);
@@ -49,6 +54,15 @@ public class cLoginKaryawanView extends cPanelCardLogin {
 
         labelHeaderLogin.setFont(cFonts.BIG_FONT);
         labelLoginAdmin.setForeground(cColor.GREEN);
+
+        labelHeaderTujuLangit.setFont(cFonts.TITLE_START_FONT);
+        labelHeaderForestpark.setFont(cFonts.TITLE_FONT);
+        labelHeaderTujuLangit.setForeground(cColor.WHITE);
+        labelHeaderForestpark.setForeground(cColor.WHITE);
+
+        panelShapeLogin.add(labelHeaderTujuLangit);
+        panelShapeLogin.add(labelHeaderForestpark);
+        panelShapeLogin.add(imgBrand);
 
         panelShapeLogin.setBackground(cColor.GREEN);
         panelListLogin.setBackground(cColor.GREEN);
