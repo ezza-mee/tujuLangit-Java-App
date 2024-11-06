@@ -15,4 +15,10 @@ public class cIconImage {
 
     public cImage iconHistoryHover = new cImage("src/com/main/resources/images/history(green).png", 0, 0, 40, 40);
     public cImage iconHistoryDefault = new cImage("src/com/main/resources/images/history(white).png", 0, 0, 40, 40);
+
+    public cImage iconSupplierHover = new cImage("src/com/main/resources/images/datasupplier(green).png", 0, 0, 40, 40);
+    public cImage iconSupplierDefault = new cImage("src/com/main/resources/images/datasupplier(white).png", 0, 0, 40, 40);
+
+    public cImage iconStaffHover = new cImage("src/com/main/resources/images/datakaryawan(green).png", 0, 0, 40, 40);
+    public cImage iconStaffDefault = new cImage("src/com/main/resources/images/datakaryawan(white).png", 0, 0, 40, 40);
 }
