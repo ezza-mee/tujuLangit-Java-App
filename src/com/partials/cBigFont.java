@@ -6,7 +6,7 @@ public class cBigFont extends JLabel {
     public cBigFont(String text, int x, int y) {
         super();
         setText(text);
-        setBounds(x, y, 450, 70);
+        setBounds(x, y, 450, 80);
         setVerticalAlignment(JLabel.CENTER);
         setFont(cFonts.BIG_FONT);
         setForeground(cColor.GREEN);

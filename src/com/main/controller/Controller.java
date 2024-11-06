@@ -9,19 +9,18 @@ public class Controller {
 
     private static cLoginView frameLogin = new cLoginView();
 
-    // private static cDashboardKaryawan DashboardKaryawan = new
-    // cDashboardKaryawan();
+    // private static cDashboardKaryawan DashboardKaryawan = new cDashboardKaryawan();
 
     // private static cDashboardAdmin DashboardAdmin = new cDashboardAdmin();
 
     public static void showLoginAdmin() {
-        frameLogin.initsLoginView();
-        frameLogin.setVisible(true);
+    frameLogin.initsLoginView();
+    frameLogin.setVisible(true);
     }
 
     // public static void showDashboardKaryawan() {
-    // DashboardKaryawan.initsViewDashboardKaryawan();
-    // DashboardKaryawan.setVisible(true);
+    //     DashboardKaryawan.initsViewDashboardKaryawan();
+    //     DashboardKaryawan.setVisible(true);
     // }
 
     // public static void showDashboardAdmin() {
