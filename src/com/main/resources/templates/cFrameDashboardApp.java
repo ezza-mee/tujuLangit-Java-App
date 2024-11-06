@@ -16,6 +16,7 @@ public abstract class cFrameDashboardApp extends JFrame {
     public JPanel headerPanel = new JPanel();
     public JLabel logoutLabel = new cLogout(1000);
 
+    private cImage imageBrand = new cImage("src/com/main/resources/images/brandIcon.png", 35, 20, 45, 45);
     private JLabel brandText = new JLabel("TujuLangit");
     private JLabel logoBrandText = new JLabel("ForestPark");
     public JLabel menuTitle = new JLabel("Menu Title");
@@ -42,18 +43,17 @@ public abstract class cFrameDashboardApp extends JFrame {
         headerPanel.setLayout(null);
 
         brandText.setFont(cFonts.APP_FONT);
-        brandText.setBounds(0, 0, 240, 70);
-        brandText.setHorizontalAlignment(JLabel.CENTER);
+        brandText.setBounds(85, 0, 240, 70);
         brandText.setVerticalAlignment(JLabel.CENTER);
         brandText.setForeground(cColor.WHITE);
 
         logoBrandText.setFont(cFonts.APP_LOGO_FONT);
-        logoBrandText.setBounds(0, 20, 240, 70);
-        logoBrandText.setHorizontalAlignment(JLabel.CENTER);
+        logoBrandText.setBounds(88, 20, 240, 70);
         logoBrandText.setVerticalAlignment(JLabel.CENTER);
         logoBrandText.setForeground(cColor.WHITE);
 
         headerPanel.add(logoutLabel);
+        sidebarPanel.add(imageBrand);
         sidebarPanel.add(brandText);
         sidebarPanel.add(logoBrandText);
         bgFrame.add(headerPanel);

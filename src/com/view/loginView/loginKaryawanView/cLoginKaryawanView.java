@@ -11,7 +11,7 @@ public class cLoginKaryawanView extends cPanelCardLogin {
     private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 250);
     private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 270, 320);
 
-    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIncon.png", 90, 340, 160, 160);
+    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIcon.png", 90, 340, 160, 160);
 
     // component panel login admin
     private cPanelRounded panelShapeLogin = new cPanelRounded(0, 0, 530, 700, 0, 340);

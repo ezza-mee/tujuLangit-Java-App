@@ -3,7 +3,7 @@ package com.view.karyawanView;
 import com.main.resources.templates.cPanelSidebarApp;
 import com.partials.*;
 
-public class cSidebarView extends cPanelSidebarApp {
+public class cSidebarKaryawanView extends cPanelSidebarApp {
 
         public cPanelContentView contentView;
 
@@ -19,7 +19,7 @@ public class cSidebarView extends cPanelSidebarApp {
                         150 + 50 + 50);
         private cSidebarMenu menuTransaksi = new cSidebarMenu(iconImage.iconTransaksiDefault,
                         iconImage.iconTransaksiHover,
-                        "Transaksi", 150 + 50 + 50 + 50);
+                        "Transactions", 150 + 50 + 50 + 50);
         private cSidebarMenu menuHistory = new cSidebarMenu(iconImage.iconHistoryDefault, iconImage.iconHistoryHover,
                         "History",
                         150 + 50 + 50 + 50 + 50);
@@ -48,7 +48,7 @@ public class cSidebarView extends cPanelSidebarApp {
                 menuHistory.setSidebarInAktif();
         }
 
-        public cSidebarView(cPanelContentView contentView) {
+        public cSidebarKaryawanView(cPanelContentView contentView) {
                 super();
                 this.contentView = contentView;
 
@@ -97,7 +97,6 @@ public class cSidebarView extends cPanelSidebarApp {
         }
 
         private void initsHomeView() {
-
                 resetSidebar();
                 menuHome.setForeground(cColor.GREEN);
                 menuHome.setBackground(cColor.WHITE);

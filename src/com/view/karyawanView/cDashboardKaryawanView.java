@@ -2,12 +2,12 @@ package com.view.karyawanView;
 
 import com.main.resources.templates.cFrameDashboardApp;
 
-public class cDashboardKaryawan extends cFrameDashboardApp {
+public class cDashboardKaryawanView extends cFrameDashboardApp {
 
     private cPanelContentView componentContentView = new cPanelContentView();
-    private cSidebarView componentSidebar = new cSidebarView(componentContentView);
+    private cSidebarKaryawanView componentSidebarView = new cSidebarKaryawanView(componentContentView);
 
-    public cDashboardKaryawan() {
+    public cDashboardKaryawanView() {
         super();
         initsViewDashboardKaryawan();
     }
@@ -17,7 +17,7 @@ public class cDashboardKaryawan extends cFrameDashboardApp {
 
         componentContentView.setBounds(240, 70, 1126, 698);
 
-        sidebarPanel.add(componentSidebar);
+        sidebarPanel.add(componentSidebarView);
 
         bgFrame.add(componentContentView);
 
