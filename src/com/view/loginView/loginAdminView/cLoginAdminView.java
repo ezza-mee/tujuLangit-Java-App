@@ -10,16 +10,22 @@ public class cLoginAdminView extends cPanelCardLogin {
 
     // component panel login admin
     private cPanelRounded panelShapeLogin = new cPanelRounded(0, 0, 530, 700, 0, 340);
-    private cPanelRounded panelCardLogin = new cPanelRounded(560, 100, 500, 500, 10, 10);
+    private cPanelRounded panelCardLogin = new cPanelRounded(560, 90, 500, 580, 10, 10);
+    private cPanelRounded panelListLogin = new cPanelRounded(195, 70, 100, 7, 5, 5);
+
+    // component Label Header
+    private cLabelInfo labelHeaderLogin = new cLabelInfo("Sign In", 200, 20, 300, 60);
 
     // component of login admin
     private cFormLabel labelUsernameAdmin = new cFormLabel("Username", 100, 150, 200);
     private cTextField fieldUsernameAdmin = new cTextField(100, 180, 300);
-    private cFormLabel labelPasswordAdmin = new cFormLabel("Password", 100, 230, 300);
-    private cPasswordField fieldPasswordAdmin = new cPasswordField(100, 260, 300);
-    private cButtonRounded btnLoginAdmin = new cButtonRounded("Login", 100, 330, 300, 40, 10);
-    private cErrorLabel errorLabelAdmin = new cErrorLabel("Error", 155, 295, 300);
-    private cErrorLabel errorLabelPassAdmin = new cErrorLabel("Error", 155, 375, 300);
+    private cFormLabel labelPasswordAdmin = new cFormLabel("Password", 100, 240, 300);
+    private cPasswordField fieldPasswordAdmin = new cPasswordField(100, 270, 300);
+    private cButtonRounded btnLoginAdmin = new cButtonRounded("Login", 100, 350, 300, 40, 10);
+    private cErrorLabel errorLabelUsername = new cErrorLabel("Username is Incorret!", 100, 205, 300);
+    private cErrorLabel errorLabelPassword = new cErrorLabel("Password is Incorret!", 100, 295, 300);
+
+    private cLabelLink labelLoginStaff = new cLabelLink("Staff Login", 480);
 
     public cLoginAdminView(cPanelLoginView parentPanel) {
         super();
@@ -30,16 +36,33 @@ public class cLoginAdminView extends cPanelCardLogin {
 
     private void initsLoginAdminView() {
         setVisible(true);
+
+        labelLoginStaff.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent me) {
+                parentPanel.showLoginKaryawanView();
+            }
+        });
+
         titleLogout.setForeground(cColor.GREEN);
         bgPanel.setBackground(cColor.WHITE);
 
-        panelShapeLogin.setBackground(cColor.GREEN);
+        labelHeaderLogin.setFont(cFonts.BIG_FONT);
+        labelLoginStaff.setForeground(cColor.GREEN);
 
+        panelShapeLogin.setBackground(cColor.GREEN);
+        panelListLogin.setBackground(cColor.GREEN);
+
+        panelCardLogin.add(labelHeaderLogin);
+        panelCardLogin.add(panelListLogin);
         panelCardLogin.add(labelUsernameAdmin);
         panelCardLogin.add(fieldUsernameAdmin);
         panelCardLogin.add(labelPasswordAdmin);
         panelCardLogin.add(fieldPasswordAdmin);
+        panelCardLogin.add(errorLabelUsername);
+        panelCardLogin.add(errorLabelPassword);
         panelCardLogin.add(btnLoginAdmin);
+        panelCardLogin.add(labelLoginStaff);
 
         bgPanel.add(panelCardLogin);
         bgPanel.add(panelShapeLogin);
