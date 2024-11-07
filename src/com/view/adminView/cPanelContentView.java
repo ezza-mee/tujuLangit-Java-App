@@ -3,6 +3,7 @@ package com.view.adminView;
 import com.main.resources.templates.cPanelContentApp;
 import com.view.adminView.dataKaryawanView.*;
 import com.view.adminView.dataProductView.*;
+import com.view.adminView.dataSupplierView.*;
 
 public class cPanelContentView extends cPanelContentApp {
 
@@ -12,6 +13,11 @@ public class cPanelContentView extends cPanelContentApp {
     private cInputProductView componentInputProductView;
     private cUpdateProductView componentUpdateProductView;
     private cDeleteProductView componentDeleteProductView;
+
+    private cDataSupplierView componentDataSupplierView;
+    private cInputSupplierView componentInputSupplierView;
+    private cUpdateSupplierView componentUpdateSupplierView;
+    private cDeleteSupplierView componentDeleteSupplierView;
 
     private cDataKaryawanView componentDataKaryawanView;
     private cInputKaryawanView componentInputKaryawanView;
@@ -27,6 +33,12 @@ public class cPanelContentView extends cPanelContentApp {
         componentInputProductView = new cInputProductView(this);
         componentUpdateProductView = new cUpdateProductView(this);
         componentDeleteProductView = new cDeleteProductView(this);
+
+        
+        componentDataSupplierView = new cDataSupplierView(this);
+        componentInputSupplierView = new cInputSupplierView(this);
+        componentUpdateSupplierView = new cUpdateSupplierView(this);
+        componentDeleteSupplierView = new cDeleteSupplierView(this);
 
         componentDataKaryawanView = new cDataKaryawanView(this);
         componentInputKaryawanView = new cInputKaryawanView(this);
@@ -65,6 +77,7 @@ public class cPanelContentView extends cPanelContentApp {
     public void showDataSupplierView() {
         refreshContent();
 
+        bgPanel.add(componentDataSupplierView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
@@ -138,6 +151,33 @@ public class cPanelContentView extends cPanelContentApp {
     public void showDeleteDataKaryawanView() {
         refreshContent();
         bgPanel.add(componentDeleteKaryawanView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+    
+    public void showInputDataSupplierView() {
+        refreshContent();
+        bgPanel.add(componentInputSupplierView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showUpdateDataSupplierView() {
+        refreshContent();
+        bgPanel.add(componentUpdateSupplierView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showDeleteDataSupplierView() {
+        refreshContent();
+        bgPanel.add(componentDeleteSupplierView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

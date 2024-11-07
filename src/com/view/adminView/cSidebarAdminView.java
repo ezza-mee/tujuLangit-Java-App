@@ -128,6 +128,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuSupplier.setForeground(cColor.GREEN);
         menuSupplier.setBackground(cColor.WHITE);
         menuSupplier.setSidebarAktif();
+        contentView.showDataSupplierView();
 
         setVisible(true);
 
