@@ -8,7 +8,7 @@ public class cPanelCardLogin extends JPanel {
 
     public JPanel bgPanel = new JPanel();
 
-    public JLabel titleLogout = new cLogout(1000);
+    public JLabel titleLogout = new cExitLogin(1000);
 
     public cPanelCardLogin() {
         super();
