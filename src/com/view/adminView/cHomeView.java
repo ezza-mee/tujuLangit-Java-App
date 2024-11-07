@@ -8,8 +8,6 @@ import com.partials.*;
 
 public class cHomeView extends cPanelContentApp {
 
-    private cPanelContentView parentPanel;
-
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
@@ -43,9 +41,8 @@ public class cHomeView extends cPanelContentApp {
     // component button data beranda
     private cButtonRounded btnListTransaksi = new cButtonRounded("see all", 900, 20, 110, 40, 10);
 
-    public cHomeView(cPanelContentView parentPanel) {
+    public cHomeView() {
         super();
-        this.parentPanel = parentPanel;
         initsShowHomeView();
     }
 

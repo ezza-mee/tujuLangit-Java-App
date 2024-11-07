@@ -7,7 +7,7 @@ import com.view.adminView.dataSupplierView.*;
 
 public class cPanelContentView extends cPanelContentApp {
 
-    private cHomeView componentHomeView;
+    private cHomeView componentHomeView = new cHomeView();
 
     private cDataProductView componentDataProductView;
     private cInputProductView componentInputProductView;
@@ -24,10 +24,10 @@ public class cPanelContentView extends cPanelContentApp {
     private cUpdateKaryawanView componentUpdateKaryawanView;
     private cDeleteKaryawanView componentDeleteKaryawanView;
 
+    private cTransactionsView componentTransactionsView = new cTransactionsView();
+
     public cPanelContentView() {
         super();
-
-        componentHomeView = new cHomeView(this);
 
         componentDataProductView = new cDataProductView(this);
         componentInputProductView = new cInputProductView(this);
@@ -96,7 +96,7 @@ public class cPanelContentView extends cPanelContentApp {
 
     public void showTransactionsView() {
         refreshContent();
-
+        bgPanel.add(componentTransactionsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
