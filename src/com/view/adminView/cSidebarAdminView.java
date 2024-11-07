@@ -64,28 +64,28 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent me) {
-                initsProductView();
+                initsDataProductView();
             }
         });
 
         menuSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent me) {
-                initsSeatsView();
+                initsDataSupplierView();
             }
         });
 
         menuStaff.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent me) {
-                initsTransaksiView();
+                initsDataKaryawanView();
             }
         });
 
         menuHistorySupplier.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent me) {
-                initsHistoryView();
+                initsTransactionsView();
             }
         });
 
@@ -103,22 +103,26 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuHome.setBackground(cColor.WHITE);
         menuHome.setSidebarAktif();
 
+        contentView.showHomeView();
+
         setVisible(true);
 
     }
 
-    private void initsProductView() {
+    private void initsDataProductView() {
         resetSidebar();
 
         menuKaryawan.setForeground(cColor.GREEN);
         menuKaryawan.setBackground(cColor.WHITE);
         menuKaryawan.setSidebarAktif();
 
+        contentView.showDataProductView();
+
         setVisible(true);
 
     }
 
-    private void initsSeatsView() {
+    private void initsDataSupplierView() {
         resetSidebar();
 
         menuSupplier.setForeground(cColor.GREEN);
@@ -129,18 +133,20 @@ public class cSidebarAdminView extends cPanelSidebarApp {
 
     }
 
-    private void initsTransaksiView() {
+    private void initsDataKaryawanView() {
         resetSidebar();
 
         menuStaff.setForeground(cColor.GREEN);
         menuStaff.setBackground(cColor.WHITE);
         menuStaff.setSidebarAktif();
 
+        contentView.showDataKaryawanView();
+
         setVisible(true);
 
     }
 
-    private void initsHistoryView() {
+    private void initsTransactionsView() {
         resetSidebar();
 
         menuHistorySupplier.setForeground(cColor.GREEN);
