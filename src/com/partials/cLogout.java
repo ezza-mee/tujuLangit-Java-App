@@ -2,6 +2,8 @@ package com.partials;
 
 import javax.swing.*;
 
+import com.main.controller.Controller;
+
 public class cLogout extends JLabel {
     public cLogout(int x) {
         setBounds(x, 0, 82, 70);
@@ -24,7 +26,8 @@ public class cLogout extends JLabel {
                 int konfirmasi = JOptionPane.showOptionDialog(null, "Yakin ingin keluar aplikasi", "Konfirmasi Keluar",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if (konfirmasi == 0) {
-                    System.exit(0);
+                    Controller.hiddenDashboardAdmin();
+                    Controller.showLoginAdmin();
                 }
             }
         });
