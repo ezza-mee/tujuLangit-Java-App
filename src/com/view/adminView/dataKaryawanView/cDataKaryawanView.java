@@ -12,6 +12,7 @@ public class cDataKaryawanView extends cPanelContentApp {
 
     // component label header Data Karyawan
     private cBigFont labelHeaderDataKaryawan = new cBigFont("Staff", 40, 5);
+    
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);

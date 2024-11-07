@@ -12,7 +12,7 @@ public class Controller {
     // private static cDashboardKaryawanView DashboardKaryawan = new
     // cDashboardKaryawanView();
 
-    // private static cDashboardAdminView DashboardAdmin = new cDashboardAdminView();
+    private static cDashboardAdminView DashboardAdmin = new cDashboardAdminView();
 
     // public static void showLoginAdmin() {
     // frameLogin.initsLoginView();
@@ -24,9 +24,9 @@ public class Controller {
     // DashboardKaryawan.setVisible(true);
     // }
 
-    // public static void showDashboardAdmin() {
-    //     DashboardAdmin.initsViewDashboardAdmin();
-    //     DashboardAdmin.setVisible(true);
-    // }
+    public static void showDashboardAdmin() {
+        DashboardAdmin.initsViewDashboardAdmin();
+        DashboardAdmin.setVisible(true);
+    }
 
 }

@@ -6,7 +6,7 @@ import com.view.adminView.dataProductView.*;
 
 public class cPanelContentView extends cPanelContentApp {
 
-    private cHomeView componentHomeView;
+    private cHomeView componentHomeView = new cHomeView();
 
     private cDataProductView componentDataProductView;
     private cInputProductView componentInputProductView;
@@ -20,8 +20,6 @@ public class cPanelContentView extends cPanelContentApp {
 
     public cPanelContentView() {
         super();
-
-        componentHomeView = new cHomeView(this);
 
         componentDataProductView = new cDataProductView(this);
         componentInputProductView = new cInputProductView(this);
