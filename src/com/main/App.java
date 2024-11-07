@@ -4,11 +4,10 @@ import com.main.controller.*;
 
 public class App {
     public static void main(String[] args) {
-
-        // Controller.showLoginAdmin();
+        Controller.hiddenDashboardAdmin();
+        Controller.showLoginAdmin();
         // Controller.showDashboardKaryawan();
-        Controller.showDashboardAdmin();
-    
+        // Controller.showDashboardAdmin();
 
         // contoh sebelum menjadikan class abstrack, class tersebut masih bisa dipanggil
         // sebagai object
