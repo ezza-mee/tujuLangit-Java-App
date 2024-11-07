@@ -18,6 +18,8 @@ public class cPanelContentView extends cPanelContentApp {
     private cUpdateKaryawanView componentUpdateKaryawanView;
     private cDeleteKaryawanView componentDeleteKaryawanView;
 
+    private cTransactionsView componentTransactionsView = new cTransactionsView();
+
     public cPanelContentView() {
         super();
 
@@ -81,7 +83,7 @@ public class cPanelContentView extends cPanelContentApp {
 
     public void showTransactionsView() {
         refreshContent();
-
+        bgPanel.add(componentTransactionsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

@@ -153,6 +153,8 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuHistorySupplier.setBackground(cColor.WHITE);
         menuHistorySupplier.setSidebarAktif();
 
+        contentView.showTransactionsView();
+
         setVisible(true);
 
     }
