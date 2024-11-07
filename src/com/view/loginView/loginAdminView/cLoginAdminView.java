@@ -1,5 +1,8 @@
 package com.view.loginView.loginAdminView;
 
+import javax.swing.JOptionPane;
+
+import com.main.controller.Controller;
 import com.main.resources.templates.cPanelCardLogin;
 import com.partials.*;
 import com.view.loginView.cPanelLoginView;
@@ -20,16 +23,19 @@ public class cLoginAdminView extends cPanelCardLogin {
     private cPanelRounded panelCardLogin = new cPanelRounded(560, 70, 500, 600, 10, 10);
     private cPanelRounded panelListLogin = new cPanelRounded(195, 110, 100, 7, 5, 5);
 
-    
-
     // component of login admin
     private cFormLabel labelUsernameAdmin = new cFormLabel("Username", 100, 150, 200);
-    private cTextField fieldUsernameAdmin = new cTextField(100, 180, 300);
+    private cTextField txtUsernameAdmin = new cTextField(100, 180, 300);
     private cFormLabel labelPasswordAdmin = new cFormLabel("Password", 100, 240, 300);
-    private cPasswordField fieldPasswordAdmin = new cPasswordField(100, 270, 300);
+    private cPasswordField txtPasswordAdmin = new cPasswordField(100, 270, 300);
+
+    // component of button login admin
     private cButtonRounded btnLoginAdmin = new cButtonRounded("Login", 100, 350, 300, 40, 10);
-    private cErrorLabel errorLabelUsername = new cErrorLabel("Username is Incorret!", 100, 205, 300);
-    private cErrorLabel errorLabelPassword = new cErrorLabel("Password is Incorret!", 100, 295, 300);
+
+    // component of error label admin
+
+    private cErrorLabel incorrectLabelUsername = new cErrorLabel("Username is Incorrect and Empty!", 100, 205, 300);
+    private cErrorLabel incorrectLabelPassword = new cErrorLabel("Password is Incorrect and Empty!", 100, 295, 300);
 
     private cLabelLink labelLoginStaff = new cLabelLink("Staff Login", 480);
 
@@ -42,6 +48,39 @@ public class cLoginAdminView extends cPanelCardLogin {
 
     public void initsLoginAdminView() {
         setVisible(true);
+
+        panelCardLogin.remove(incorrectLabelUsername);
+        panelCardLogin.remove(incorrectLabelPassword);
+
+        btnLoginAdmin.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                String userName = txtUsernameAdmin.getText();
+                String password = String.valueOf(txtPasswordAdmin.getPassword());
+
+                if (txtUsernameAdmin.getText().equalsIgnoreCase("")
+                        || String.valueOf(txtPasswordAdmin.getPassword()).equalsIgnoreCase("")) {
+                    parentPanel.showLoginAdminView();
+                    if (txtUsernameAdmin.getText().equals("")) {
+                        panelCardLogin.add(incorrectLabelUsername);
+                    }
+                    if (String.valueOf(txtPasswordAdmin.getPassword()).equalsIgnoreCase("")) {
+                        panelCardLogin.add(incorrectLabelPassword);
+                    }
+                }
+                if (userName.equals("admin") && password.equals("admin")) {
+                    txtUsernameAdmin.setText(null);
+                    txtPasswordAdmin.setText(null);
+                    Controller.hiddenFrameLogin();
+                    Controller.showDashboardAdmin();
+                } else {
+                    panelCardLogin.add(incorrectLabelUsername);
+                    panelCardLogin.add(incorrectLabelPassword);
+                    panelCardLogin.revalidate();
+                    panelCardLogin.repaint();
+                }
+            }
+        });
 
         labelLoginStaff.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -71,11 +110,9 @@ public class cLoginAdminView extends cPanelCardLogin {
         panelCardLogin.add(labelHeaderLogin);
         panelCardLogin.add(panelListLogin);
         panelCardLogin.add(labelUsernameAdmin);
-        panelCardLogin.add(fieldUsernameAdmin);
+        panelCardLogin.add(txtUsernameAdmin);
         panelCardLogin.add(labelPasswordAdmin);
-        panelCardLogin.add(fieldPasswordAdmin);
-        panelCardLogin.add(errorLabelUsername);
-        panelCardLogin.add(errorLabelPassword);
+        panelCardLogin.add(txtPasswordAdmin);
         panelCardLogin.add(btnLoginAdmin);
         panelCardLogin.add(labelLoginStaff);
 

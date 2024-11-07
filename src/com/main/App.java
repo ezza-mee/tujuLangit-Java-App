@@ -6,6 +6,8 @@ public class App {
     public static void main(String[] args) {
 
         Controller.showLoginAdmin();
+        Controller.hiddenDashboardAdmin();
+        Controller.showLoginAdmin();
         // Controller.showDashboardKaryawan();
         // Controller.showDashboardAdmin();
     

@@ -12,11 +12,24 @@ public class Controller {
     // private static cDashboardKaryawanView DashboardKaryawan = new
     // cDashboardKaryawanView();
 
-    // private static cDashboardAdminView DashboardAdmin = new cDashboardAdminView();
+    private static cDashboardAdminView dashboardAdmin = new cDashboardAdminView();
 
     public static void showLoginAdmin() {
-    frameLogin.initsLoginView();
-    frameLogin.setVisible(true);
+        frameLogin.initsLoginView();
+        frameLogin.setVisible(true);
+    }
+
+    public static void hiddenFrameLogin(){
+        frameLogin.setVisible(false);
+    }
+
+    public static void showDashboardAdmin() {
+        dashboardAdmin.initsViewDashboardAdmin();
+        dashboardAdmin.setVisible(true);
+    }
+
+    public static void hiddenDashboardAdmin(){
+        dashboardAdmin.setVisible(false);
     }
 
     // public static void showDashboardKaryawan() {

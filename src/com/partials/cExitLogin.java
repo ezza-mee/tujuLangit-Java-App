@@ -1,13 +1,14 @@
 package com.partials;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.main.controller.Controller;
 
-public class cLogout extends JLabel {
-    public cLogout(int x) {
+public class cExitLogin extends JLabel{
+    public cExitLogin(int x) {
         setBounds(x, 0, 82, 70);
-        setText("Logout");
+        setText("Exit");
         setFont(cFonts.LINK_EXIT_FONT);
         setForeground(cColor.GREEN);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -26,10 +27,10 @@ public class cLogout extends JLabel {
                 int konfirmasi = JOptionPane.showOptionDialog(null, "Yakin ingin keluar aplikasi", "Konfirmasi Keluar",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if (konfirmasi == 0) {
-                    Controller.hiddenDashboardAdmin();
-                    Controller.showLoginAdmin();
+                    System.exit(0);
                 }
             }
         });
     }
+    
 }
