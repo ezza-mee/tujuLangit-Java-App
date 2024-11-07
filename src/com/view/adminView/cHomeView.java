@@ -6,8 +6,10 @@ import com.main.resources.templates.cPanelContentApp;
 
 import com.partials.*;
 
+public class cHomeView extends cPanelContentApp {
 
-public class cHomeView extends cPanelContentApp{
+    private cPanelContentView parentPanel;
+
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
@@ -35,16 +37,19 @@ public class cHomeView extends cPanelContentApp{
     private cImage imgDataMenu = new cImage("src/com/main/resources/images/datasupplier(green).png", 20, 50, 55, 50);
     private cImage imgDataSeats = new cImage("src/com/main/resources/images/datakaryawan(green).png", 20, 50, 55, 50);
     private cImage imgDataTransaksi = new cImage("src/com/main/resources/images/transaksi(green).png", 20, 50, 55, 50);
-    private cImage imgDataHistory = new cImage("src/com/main/resources/images/historysupplier(green).png", 20, 50, 55, 50);
+    private cImage imgDataHistory = new cImage("src/com/main/resources/images/historysupplier(green).png", 20, 50, 55,
+            50);
 
     // component button data beranda
     private cButtonRounded btnListTransaksi = new cButtonRounded("see all", 900, 20, 110, 40, 10);
 
-    public cHomeView(){
+    public cHomeView(cPanelContentView parentPanel) {
         super();
+        this.parentPanel = parentPanel;
         initsShowHomeView();
     }
-    public void initsShowHomeView(){
+
+    public void initsShowHomeView() {
         setVisible(true);
         setVisible(true);
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
