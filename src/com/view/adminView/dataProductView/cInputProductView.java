@@ -80,7 +80,6 @@ public class cInputProductView extends cPanelContentApp {
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                dataProductView.refreshContent();
                 parentPanel.showDataProductView();
             }
         });
