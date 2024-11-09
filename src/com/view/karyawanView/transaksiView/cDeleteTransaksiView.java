@@ -3,13 +3,13 @@ package com.view.karyawanView.transaksiView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
-import com.view.karyawanView.cPanelContentView;
 
 public class cDeleteTransaksiView extends cPanelContentApp {
 
     // add object cPanelContentView
-    private cPanelContentView parentPanel;
+    private cContentKaryawanView parentPanel;
 
     // add label header Transaksi
     private cBigFont labelHeaderTransaksi = new cBigFont("Transaksi", 40, 5);
@@ -25,7 +25,7 @@ public class cDeleteTransaksiView extends cPanelContentApp {
     private cButtonRounded btnDeleteTransaksi = new cButtonRounded("Delete", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
-    public cDeleteTransaksiView(cPanelContentView parentPanel) {
+    public cDeleteTransaksiView(cContentKaryawanView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

@@ -1,11 +1,13 @@
-package com.view.karyawanView;
+package com.model;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.view.karyawanView.cHistoryTransaksiView;
+import com.view.karyawanView.cHomeView;
 import com.view.karyawanView.productView.*;
 import com.view.karyawanView.seatsView.*;
 import com.view.karyawanView.transaksiView.*;
 
-public class cPanelContentView extends cPanelContentApp {
+public class cContentKaryawanView extends cPanelContentApp {
 
     private cHomeView componentHomeView = new cHomeView();
     private cDataProductView componentProductView;
@@ -25,7 +27,7 @@ public class cPanelContentView extends cPanelContentApp {
     private cUpdateTransaksiView componentUpdateTransaksiView;
     private cDeleteTransaksiView componentDeleteTransaksiView;
 
-    public cPanelContentView() {
+    public cContentKaryawanView() {
         super();
         componentProductView = new cDataProductView(this);
         componentInputProductView = new cInputProductView(this);

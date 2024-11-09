@@ -1,11 +1,12 @@
 package com.view.karyawanView;
 
 import com.main.resources.templates.cPanelSidebarApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
 
 public class cSidebarKaryawanView extends cPanelSidebarApp {
 
-        public cPanelContentView contentView;
+        public cContentKaryawanView contentView;
 
         private cIconImage iconImage = new cIconImage();
 
@@ -48,7 +49,7 @@ public class cSidebarKaryawanView extends cPanelSidebarApp {
                 menuHistory.setSidebarInAktif();
         }
 
-        public cSidebarKaryawanView(cPanelContentView contentView) {
+        public cSidebarKaryawanView(cContentKaryawanView contentView) {
                 super();
                 this.contentView = contentView;
 

@@ -27,7 +27,7 @@ public class cLogout extends JLabel {
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if (konfirmasi == 0) {
                     Controller.hiddenDashboardAdmin();
-                    Controller.showLoginAdmin();
+                    // Controller.showLoginAdmin();
                 }
             }
         });

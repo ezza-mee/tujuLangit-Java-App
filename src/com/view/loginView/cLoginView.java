@@ -1,10 +1,11 @@
 package com.view.loginView;
 
 import com.main.resources.templates.cFrameLoginApp;
+import com.model.cContentLoginView;
 
 public class cLoginView extends cFrameLoginApp {
 
-    private cPanelLoginView bgPanelLoginView = new cPanelLoginView();
+    private cContentLoginView bgPanelLoginView = new cContentLoginView();
 
     public cLoginView() {
         super();

@@ -1,12 +1,12 @@
 package com.view.loginView.loginKaryawanView;
 
 import com.main.resources.templates.cPanelCardLogin;
+import com.model.cContentLoginView;
 import com.partials.*;
-import com.view.loginView.cPanelLoginView;
 
 public class cLoginKaryawanView extends cPanelCardLogin {
 
-    private cPanelLoginView parentPanel;
+    private cContentLoginView parentPanel;
 
     private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 250);
     private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 270, 320);
@@ -32,7 +32,7 @@ public class cLoginKaryawanView extends cPanelCardLogin {
 
     private cLabelLink labelLoginAdmin = new cLabelLink("Admin Login", 480);
 
-    public cLoginKaryawanView(cPanelLoginView parentPanel) {
+    public cLoginKaryawanView(cContentLoginView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

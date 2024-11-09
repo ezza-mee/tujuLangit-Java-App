@@ -3,12 +3,12 @@ package com.view.adminView.dataSupplierView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentAdminView;
 import com.partials.*;
-import com.view.adminView.cPanelContentView;
 
 public class cUpdateSupplierView extends cPanelContentApp {
     
-    private cPanelContentView parentPanel;
+    private cContentAdminView parentPanel;
 
     // component label header Update Supplier
     private cBigFont labelHeaderUpdateSupplier = new cBigFont("Update Data", 40, 5);
@@ -38,7 +38,7 @@ public class cUpdateSupplierView extends cPanelContentApp {
     private cButtonRounded btnResetSupplier = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
-    public cUpdateSupplierView(cPanelContentView parentPanel) {
+    public cUpdateSupplierView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
         initsUpdateSupplierView();

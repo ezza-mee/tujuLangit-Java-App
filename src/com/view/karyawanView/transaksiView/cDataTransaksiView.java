@@ -3,13 +3,13 @@ package com.view.karyawanView.transaksiView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
-import com.view.karyawanView.cPanelContentView;
 
 public class cDataTransaksiView extends cPanelContentApp {
 
     // add object cPanelContentView
-    private cPanelContentView parentPanel;
+    private cContentKaryawanView parentPanel;
 
     // ini adalah component data transaksi
     private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaksi", 40, 5);
@@ -30,7 +30,7 @@ public class cDataTransaksiView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataTransaksi = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataTransaksi = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
-    public cDataTransaksiView(cPanelContentView parentPanel) {
+    public cDataTransaksiView(cContentKaryawanView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

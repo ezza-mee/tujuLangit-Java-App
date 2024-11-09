@@ -1,11 +1,12 @@
 package com.view.adminView;
 
 import com.main.resources.templates.cPanelSidebarApp;
+import com.model.cContentAdminView;
 import com.partials.*;
 
 public class cSidebarAdminView extends cPanelSidebarApp {
 
-    public cPanelContentView contentView;
+    public cContentAdminView contentView;
 
     private cIconImage iconImage = new cIconImage();
 
@@ -50,7 +51,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuHistorySupplier.setSidebarInAktif();
     }
 
-    public cSidebarAdminView(cPanelContentView contentView) {
+    public cSidebarAdminView(cContentAdminView contentView) {
         super();
         this.contentView = contentView;
 

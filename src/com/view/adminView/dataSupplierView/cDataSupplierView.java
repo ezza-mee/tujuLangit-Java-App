@@ -3,12 +3,12 @@ package com.view.adminView.dataSupplierView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
-import com.view.adminView.cPanelContentView;
+import com.model.cContentAdminView;
 import com.partials.*;
 
 public class cDataSupplierView extends cPanelContentApp{
 
-    private cPanelContentView parentPanel;
+    private cContentAdminView parentPanel;
 
     // component label header Data Supplier
     private cBigFont labelHeaderDataSupplier = new cBigFont("Supplier", 40, 5);
@@ -28,7 +28,7 @@ public class cDataSupplierView extends cPanelContentApp{
     private cButtonRounded btnDeleteDataSupplier = new cButtonRounded("Delete", 850, 25, 110, 40, 10);
 
 
-    public cDataSupplierView(cPanelContentView parentPanel){
+    public cDataSupplierView(cContentAdminView parentPanel){
         super();
         this.parentPanel = parentPanel;
         initsDataSupplierView();

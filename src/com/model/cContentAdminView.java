@@ -1,11 +1,13 @@
-package com.view.adminView;
+package com.model;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.view.adminView.cHomeView;
+import com.view.adminView.cTransactionsView;
 import com.view.adminView.dataKaryawanView.*;
 import com.view.adminView.dataProductView.*;
 import com.view.adminView.dataSupplierView.*;
 
-public class cPanelContentView extends cPanelContentApp {
+public class cContentAdminView extends cPanelContentApp {
 
     private cHomeView componentHomeView = new cHomeView();
 
@@ -26,7 +28,7 @@ public class cPanelContentView extends cPanelContentApp {
 
     private cTransactionsView componentTransactionsView = new cTransactionsView();
 
-    public cPanelContentView() {
+    public cContentAdminView() {
         super();
 
         componentDataProductView = new cDataProductView(this);
@@ -34,7 +36,6 @@ public class cPanelContentView extends cPanelContentApp {
         componentUpdateProductView = new cUpdateProductView(this);
         componentDeleteProductView = new cDeleteProductView(this);
 
-        
         componentDataSupplierView = new cDataSupplierView(this);
         componentInputSupplierView = new cInputSupplierView(this);
         componentUpdateSupplierView = new cUpdateSupplierView(this);
@@ -156,7 +157,7 @@ public class cPanelContentView extends cPanelContentApp {
 
         setVisible(true);
     }
-    
+
     public void showInputDataSupplierView() {
         refreshContent();
         bgPanel.add(componentInputSupplierView);

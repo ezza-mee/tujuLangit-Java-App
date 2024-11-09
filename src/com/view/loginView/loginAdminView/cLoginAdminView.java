@@ -4,12 +4,12 @@ import javax.swing.JOptionPane;
 
 import com.main.controller.Controller;
 import com.main.resources.templates.cPanelCardLogin;
+import com.model.cContentLoginView;
 import com.partials.*;
-import com.view.loginView.cPanelLoginView;
 
 public class cLoginAdminView extends cPanelCardLogin {
 
-    private cPanelLoginView parentPanel;
+    private cContentLoginView parentPanel;
 
     // component Label Header
     private cLabelInfo labelHeaderLogin = new cLabelInfo("Sign In", 200, 60, 300, 60);
@@ -39,7 +39,7 @@ public class cLoginAdminView extends cPanelCardLogin {
 
     private cLabelLink labelLoginStaff = new cLabelLink("Staff Login", 480);
 
-    public cLoginAdminView(cPanelLoginView parentPanel) {
+    public cLoginAdminView(cContentLoginView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 
@@ -71,7 +71,7 @@ public class cLoginAdminView extends cPanelCardLogin {
                 if (userName.equals("admin") && password.equals("admin")) {
                     txtUsernameAdmin.setText(null);
                     txtPasswordAdmin.setText(null);
-                    Controller.hiddenFrameLogin();
+                    // Controller.hiddenFrameLogin();
                     Controller.showDashboardAdmin();
                 } else {
                     panelCardLogin.add(incorrectLabelUsername);

@@ -3,12 +3,12 @@ package com.view.adminView.dataKaryawanView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentAdminView;
 import com.partials.*;
-import com.view.adminView.cPanelContentView;
 
 public class cDataKaryawanView extends cPanelContentApp {
 
-    private cPanelContentView parentPanel;
+    private cContentAdminView parentPanel;
 
     // component label header Data Karyawan
     private cBigFont labelHeaderDataKaryawan = new cBigFont("Staff", 40, 5);
@@ -27,7 +27,7 @@ public class cDataKaryawanView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataKaryawan = new cButtonRounded("Update", 730, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataKaryawan = new cButtonRounded("Delete", 850, 25, 110, 40, 10);
 
-    public cDataKaryawanView(cPanelContentView parentPanel) {
+    public cDataKaryawanView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
         initsDataKaryawanView();

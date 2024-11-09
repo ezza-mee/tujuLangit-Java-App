@@ -1,15 +1,15 @@
-package com.view.loginView;
+package com.model;
 
 import com.main.resources.templates.cPanelCardLogin;
 import com.view.loginView.loginAdminView.cLoginAdminView;
 import com.view.loginView.loginKaryawanView.cLoginKaryawanView;
 
-public class cPanelLoginView extends cPanelCardLogin {
+public class cContentLoginView extends cPanelCardLogin {
 
     private cLoginAdminView componentAdminView;
     private cLoginKaryawanView componentKaryawanView;
 
-    public cPanelLoginView() {
+    public cContentLoginView() {
         super();
         componentAdminView = new cLoginAdminView(this);
         componentKaryawanView = new cLoginKaryawanView(this);

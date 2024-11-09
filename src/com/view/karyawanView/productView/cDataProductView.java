@@ -3,12 +3,12 @@ package com.view.karyawanView.productView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
-import com.view.karyawanView.cPanelContentView;
 
 public class cDataProductView extends cPanelContentApp {
 
-    private cPanelContentView parentPanel;
+    private cContentKaryawanView parentPanel;
 
     // component label header Data menu
     private cBigFont labelHeaderDataMenu = new cBigFont("Product", 40, 5);
@@ -29,7 +29,7 @@ public class cDataProductView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataMenu = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataMenu = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
-    public cDataProductView(cPanelContentView parentPanel) {
+    public cDataProductView(cContentKaryawanView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

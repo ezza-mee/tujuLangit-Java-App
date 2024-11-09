@@ -3,12 +3,12 @@ package com.view.adminView.dataSupplierView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentAdminView;
 import com.partials.*;
-import com.view.adminView.cPanelContentView;
 
 public class cInputSupplierView extends cPanelContentApp {
 
-    private cPanelContentView parentPanel;
+    private cContentAdminView parentPanel;
 
     // component label header Input Supplier
     private cBigFont labelHeaderInputSupplier = new cBigFont("Input Data", 40, 5);
@@ -38,7 +38,7 @@ public class cInputSupplierView extends cPanelContentApp {
     private cButtonRounded btnResetSupplier = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
-    public cInputSupplierView(cPanelContentView parentPanel) {
+    public cInputSupplierView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
         initsInputSupplierView();
