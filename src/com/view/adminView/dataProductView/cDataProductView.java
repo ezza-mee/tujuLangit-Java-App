@@ -1,10 +1,8 @@
 package com.view.adminView.dataProductView;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.List;
@@ -43,16 +41,6 @@ public class cDataProductView extends cPanelContentApp {
     private cButtonRounded btnUpdateDataMenu = new cButtonRounded("Update", 730, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataMenu = new cButtonRounded("Delete", 850, 25, 110, 40, 10);
 
-    public void refreshContent() {
-        try {
-            bgPanel.remove(panelMenu);
-            bgPanel.revalidate();
-            bgPanel.repaint();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public cDataProductView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
@@ -61,8 +49,6 @@ public class cDataProductView extends cPanelContentApp {
     }
 
     public void initsDataMenuView() {
-        refreshContent();
-
         btnInputDataMenu.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
@@ -95,17 +81,24 @@ public class cDataProductView extends cPanelContentApp {
         panelListMenu.add(btnInputDataMenu);
         panelListMenu.add(btnUpdateDataMenu);
         panelListMenu.add(btnDeleteDataMenu);
-
-        panelMenu.setLayout(new BorderLayout());
-
         panelListMenu.add(panelMenu);
 
         bgPanel.add(labelHeaderDataMenu);
         bgPanel.add(panelListMenu);
         bgPanel.add(labelCopyright);
 
-        loadDataProducts();
+        loadDataProducts(); 
         setVisible(true);
+    }
+
+    public void refreshContent() {
+        try {
+            panelMenu.removeAll(); 
+            panelMenu.revalidate();
+            panelMenu.repaint();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private JPanel createProductCard(String name, byte[] imageBytes) {
@@ -134,10 +127,11 @@ public class cDataProductView extends cPanelContentApp {
     }
 
     public void loadDataProducts() {
+        refreshContent(); 
         cLoadDataProduct dataProductLoader = new cLoadDataProduct();
         List<cLoadDataProduct.Product> products = dataProductLoader.loadProducts();
 
-        JPanel cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 5 kartu per baris
+        JPanel cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 3 kartu per baris
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
         cardContainer.setBackground(cColor.WHITE);
 
@@ -155,5 +149,4 @@ public class cDataProductView extends cPanelContentApp {
         panelMenu.revalidate();
         panelMenu.repaint();
     }
-
 }

@@ -24,6 +24,7 @@ public class Controller {
     // }
 
     public static void showDashboardAdmin() {
+        dashboardAdmin.setVisible(false);
         dashboardAdmin.initsViewDashboardAdmin();
         dashboardAdmin.setVisible(true);
     }
