@@ -1,10 +1,11 @@
 package com.view.adminView;
 
 import com.main.resources.templates.cFrameDashboardApp;
+import com.model.cContentAdminView;
 
 public class cDashboardAdminView extends cFrameDashboardApp {
 
-    private cPanelContentView componentContentView = new cPanelContentView();
+    private cContentAdminView componentContentView = new cContentAdminView();
     private cSidebarAdminView componentSidebarView = new cSidebarAdminView(componentContentView);
 
     public cDashboardAdminView() {

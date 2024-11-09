@@ -4,12 +4,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentAdminView;
 import com.partials.*;
-import com.view.adminView.cPanelContentView;
 
 public class cInputKaryawanView extends cPanelContentApp {
 
-    private cPanelContentView parentPanel;
+    private cContentAdminView parentPanel;
 
     // component label header Data Karyawan
     private cBigFont labelHeaderDataKaryawan = new cBigFont("Staff", 40, 5);
@@ -52,7 +52,7 @@ public class cInputKaryawanView extends cPanelContentApp {
     private cButtonRounded btnResetKaryawan = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
-    public cInputKaryawanView(cPanelContentView parentPanel) {
+    public cInputKaryawanView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

@@ -4,13 +4,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentAdminView;
 import com.partials.*;
-import com.view.adminView.cPanelContentView;
 
 public class cUpdateProductView extends cPanelContentApp {
 
     // add object cPanelContentView
-    private cPanelContentView parentPanel;
+    private cContentAdminView parentPanel;
 
     // add label header
     private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
@@ -45,7 +45,7 @@ public class cUpdateProductView extends cPanelContentApp {
     private cButtonRounded btnResetProduct = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
-    public cUpdateProductView(cPanelContentView parentPanel) {
+    public cUpdateProductView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
         showUpdateProductView();

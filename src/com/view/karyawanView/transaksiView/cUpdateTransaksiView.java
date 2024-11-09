@@ -4,13 +4,13 @@ import javax.print.attribute.standard.OrientationRequested;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
-import com.view.karyawanView.cPanelContentView;
 
 public class cUpdateTransaksiView extends cPanelContentApp {
 
     // component panel content
-    private cPanelContentView parentPanel;
+    private cContentKaryawanView parentPanel;
 
     // add label header update Transaksi
     private cBigFont labelHeaderTransaksi = new cBigFont("Transaksi", 40, 5);
@@ -49,7 +49,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private cTextField txtAmountTransaksi = new cTextField(40, 280, 520);
     private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 350, 520, 100, true);
 
-    public cUpdateTransaksiView(cPanelContentView parentPanel) {
+    public cUpdateTransaksiView(cContentKaryawanView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

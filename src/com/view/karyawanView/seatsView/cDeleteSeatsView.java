@@ -3,12 +3,12 @@ package com.view.karyawanView.seatsView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
-import com.view.karyawanView.cPanelContentView;
 
 public class cDeleteSeatsView extends cPanelContentApp {
 
-    private cPanelContentView parentPanel;
+    private cContentKaryawanView parentPanel;
 
     // add label header
     private cBigFont labelHeaderDataSeats = new cBigFont("Seats", 40, 5);
@@ -23,7 +23,7 @@ public class cDeleteSeatsView extends cPanelContentApp {
     private cButtonRounded btnDeleteSeats = new cButtonRounded("Delete", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
-    public cDeleteSeatsView(cPanelContentView parentPanel) {
+    public cDeleteSeatsView(cContentKaryawanView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

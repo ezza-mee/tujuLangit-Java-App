@@ -3,13 +3,13 @@ package com.view.karyawanView.transaksiView;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
+import com.model.cContentKaryawanView;
 import com.partials.*;
-import com.view.karyawanView.cPanelContentView;
 
 public class cInputTransaksiView extends cPanelContentApp {
 
     // add object cPanelContentView
-    private cPanelContentView parentPanel;
+    private cContentKaryawanView parentPanel;
 
     // add label header Transaksi
     private cBigFont labelHeaderTransaksi = new cBigFont("Transaksi", 40, 5);
@@ -48,7 +48,7 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cTextField txtAmountTransaksi = new cTextField(40, 280, 520);
     private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 350, 520, 100, true);
 
-    public cInputTransaksiView(cPanelContentView parentPanel) {
+    public cInputTransaksiView(cContentKaryawanView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 

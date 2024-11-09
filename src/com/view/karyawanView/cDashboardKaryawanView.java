@@ -1,10 +1,11 @@
 package com.view.karyawanView;
 
 import com.main.resources.templates.cFrameDashboardApp;
+import com.model.cContentKaryawanView;
 
 public class cDashboardKaryawanView extends cFrameDashboardApp {
 
-    private cPanelContentView componentContentView = new cPanelContentView();
+    private cContentKaryawanView componentContentView = new cContentKaryawanView();
     private cSidebarKaryawanView componentSidebarView = new cSidebarKaryawanView(componentContentView);
 
     public cDashboardKaryawanView() {
