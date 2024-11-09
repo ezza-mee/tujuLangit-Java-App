@@ -37,4 +37,9 @@ public class Controller {
     // DashboardKaryawan.setVisible(true);
     // }
 
+    // public static void showDashboardAdmin() {
+    //     DashboardAdmin.initsViewDashboardAdmin();
+    //     DashboardAdmin.setVisible(true);
+    // }
+
 }
