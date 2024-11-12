@@ -87,13 +87,13 @@ public class cDataProductView extends cPanelContentApp {
         bgPanel.add(panelListMenu);
         bgPanel.add(labelCopyright);
 
-        loadDataProducts(); 
+        loadDataProducts();
         setVisible(true);
     }
 
     public void refreshContent() {
         try {
-            panelMenu.removeAll(); 
+            panelMenu.removeAll();
             panelMenu.revalidate();
             panelMenu.repaint();
         } catch (Exception e) {
@@ -101,7 +101,7 @@ public class cDataProductView extends cPanelContentApp {
         }
     }
 
-    private JPanel createProductCard(String name, byte[] imageBytes) {
+    private JPanel createProductCard(String nameProduct, byte[] imageBytes, String countProduct, String PriceProduct, String statusProduct) {
         cPanelRounded cardPanel = new cPanelRounded();
         cardPanel.setLayout(new BoxLayout(cardPanel, BoxLayout.Y_AXIS));
         cardPanel.setPreferredSize(new Dimension(220, 300));
@@ -109,8 +109,10 @@ public class cDataProductView extends cPanelContentApp {
 
         cPanelRounded panelLabel = new cPanelRounded();
         panelLabel.setLayout(null);
-        cLabelInfo nameLabel = new cLabelInfo(name, 0, 0, 200, 40);
-        panelLabel.add(nameLabel);
+        cLabelInfo productName = new cLabelInfo(nameProduct, 0, 0, 200, 40);
+        cLabelInfo productCount = new cLabelInfo(countProduct, 0, 40, 200, 30);
+        panelLabel.add(productCount);
+        panelLabel.add(productName);
 
         cPanelRounded panelImage = new cPanelRounded();
         panelImage.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -127,7 +129,7 @@ public class cDataProductView extends cPanelContentApp {
     }
 
     public void loadDataProducts() {
-        refreshContent(); 
+        refreshContent();
         cLoadDataProduct dataProductLoader = new cLoadDataProduct();
         List<cLoadDataProduct.Product> products = dataProductLoader.loadProducts();
 
@@ -136,7 +138,12 @@ public class cDataProductView extends cPanelContentApp {
         cardContainer.setBackground(cColor.WHITE);
 
         for (cLoadDataProduct.Product product : products) {
-            JPanel productCard = createProductCard(product.getName(), product.getImageBytes());
+            JPanel productCard = createProductCard(
+                    product.getName(),
+                    product.getImageBytes(),
+                    String.valueOf(product.getCount()),
+                    String.valueOf(product.getPrice()),
+                    product.getStatus());
             cardContainer.add(productCard);
         }
 
@@ -149,4 +156,4 @@ public class cDataProductView extends cPanelContentApp {
         panelMenu.revalidate();
         panelMenu.repaint();
     }
-}
+};
