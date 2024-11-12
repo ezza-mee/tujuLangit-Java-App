@@ -11,14 +11,18 @@ public class cLoadDataProduct {
 
         try (Connection conn = cKoneksiDatabase.getConnection()) {
             if (conn != null) {
-                String query = "SELECT nameProduct, imageProduct FROM tbl_product"; // Query untuk ambil data produk
+                String query = "SELECT nameProduct, imageProduct, countProduct, priceProduct, statusProduct FROM tbl_product";
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
 
                 while (rs.next()) {
                     String productName = rs.getString("nameProduct");
-                    byte[] imageBytes = rs.getBytes("imageProduct"); // Mengambil gambar sebagai byte array
-                    products.add(new Product(productName, imageBytes)); // Menambahkan produk ke list
+                    byte[] imageBytes = rs.getBytes("imageProduct");
+                    int productCount = rs.getInt("countProduct");
+                    int productPrice = rs.getInt("priceProduct");
+                    String productStatus = rs.getString("statusProduct");
+
+                    products.add(new Product(productName, imageBytes, productCount, productPrice, productStatus));
                 }
 
             } else {
@@ -33,11 +37,17 @@ public class cLoadDataProduct {
 
     public class Product {
         private String name;
-        private byte[] imageBytes; 
+        private int count;
+        private int price;
+        private String status;
+        private byte[] imageBytes;
 
-        public Product(String name, byte[] imageBytes) {
+        public Product(String name, byte[] imageBytes, int count, int price, String status) {
             this.name = name;
             this.imageBytes = imageBytes;
+            this.count = count;
+            this.price = price;
+            this.status = status;
         }
 
         public String getName() {
@@ -47,6 +57,17 @@ public class cLoadDataProduct {
         public byte[] getImageBytes() {
             return imageBytes;
         }
-    }
 
+        public int getCount() {
+            return count;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+    }
 }
