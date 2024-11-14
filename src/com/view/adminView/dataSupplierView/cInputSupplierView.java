@@ -1,10 +1,12 @@
 package com.view.adminView.dataSupplierView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
+import com.database.supplier.*;
 
 public class cInputSupplierView extends cPanelContentApp {
 
@@ -34,9 +36,9 @@ public class cInputSupplierView extends cPanelContentApp {
     private cTextArea txtDescriptionProduct = new cTextArea(580, 220, 300, 100, true);
 
     // component button Input Product
-    private cButtonRounded btnSaveSupplier = new cButtonRounded("Save", 540, 460, 110, 40, 10);
-    private cButtonRounded btnResetSupplier = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
-    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
+    private cButtonRounded btnSaveSupplier = new cButtonRounded("Save", 780, 480, 110, 40, 10);
+    private cButtonRounded btnResetSupplier = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
+    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
     public cInputSupplierView(cContentAdminView parentPanel) {
         super();
@@ -46,6 +48,32 @@ public class cInputSupplierView extends cPanelContentApp {
 
     private void initsInputSupplierView() {
         setVisible(true);
+
+        
+        btnSaveSupplier.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                handleInsertSupplier();
+            }
+        });
+
+        btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showDataSupplierView();
+            }
+        });
+
+        btnResetSupplier.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                txtNameCompany.setText(null);
+                txtTypeSupplier.setText(null);
+                txtSupplierAmount.setText(null);
+                txtPriceTotal.setText(null);
+                txtDescriptionProduct.setText(null);
+            }
+        });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
@@ -71,6 +99,28 @@ public class cInputSupplierView extends cPanelContentApp {
         bgPanel.add(panelInputSupplier);
         bgPanel.add(labelHeaderInputSupplier);
         bgPanel.add(labelCopyright);
+    }
+    
+    private void handleInsertSupplier(){
+        String nameCompany = txtNameCompany.getText();
+        String typeSupplier = txtTypeSupplier.getText();
+        int supplierAmount = Integer.valueOf(txtSupplierAmount.getText());
+        int priceTotal = Integer.valueOf(txtPriceTotal.getText());
+        String descriptionProduct = txtDescriptionProduct.getText();
+
+        boolean saveData = cInsertDataSupplier.dataSupplier(nameCompany, typeSupplier, supplierAmount, priceTotal,
+                    descriptionProduct);
+            if (saveData) {
+                txtNameCompany.setText(null);
+                txtTypeSupplier.setText(null);
+                txtSupplierAmount.setText(null);
+                txtPriceTotal.setText(null);
+                txtDescriptionProduct.setText(null);
+                JOptionPane.showMessageDialog(this, "Product saved successfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to save product.");
+            }
+
     }
 
 }

@@ -1,8 +1,10 @@
-package com.database;
+package com.database.product;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.database.cKoneksiDatabase;
 
 public class cLoadDataProduct {
 
