@@ -13,7 +13,7 @@ public class cLoadDataProduct {
 
         try (Connection conn = cKoneksiDatabase.getConnection()) {
             if (conn != null) {
-                String query = "SELECT nameProduct, imageProduct, countProduct, priceProduct, statusProduct FROM tbl_product";
+                String query = "SELECT nameProduct, imageProduct, countProduct, priceProduct, deskripsiProduct FROM tbl_product";
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
 
@@ -22,9 +22,9 @@ public class cLoadDataProduct {
                     byte[] imageBytes = rs.getBytes("imageProduct");
                     int productCount = rs.getInt("countProduct");
                     int productPrice = rs.getInt("priceProduct");
-                    String productStatus = rs.getString("statusProduct");
+                    String productDescription = rs.getString("deskripsiProduct");
 
-                    products.add(new Product(productName, imageBytes, productCount, productPrice, productStatus));
+                    products.add(new Product(productName, imageBytes, productCount, productPrice, productDescription));
                 }
 
             } else {
@@ -41,15 +41,15 @@ public class cLoadDataProduct {
         private String name;
         private int count;
         private int price;
-        private String status;
+        private String description;
         private byte[] imageBytes;
 
-        public Product(String name, byte[] imageBytes, int count, int price, String status) {
+        public Product(String name, byte[] imageBytes, int count, int price, String description) {
             this.name = name;
             this.imageBytes = imageBytes;
             this.count = count;
             this.price = price;
-            this.status = status;
+            this.description = description;
         }
 
         public String getName() {
@@ -68,8 +68,8 @@ public class cLoadDataProduct {
             return price;
         }
 
-        public String getStatus() {
-            return status;
+        public String getDescription() {
+            return description;
         }
     }
 }

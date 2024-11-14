@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.database.product.cProductDatabase;
+import com.database.product.cInsertDataProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -143,7 +143,7 @@ public class cUpdateProductView extends cPanelContentApp {
                 statusProduct = "Sold";
             }
 
-            boolean saveData = cProductDatabase.dataProduct(namaProduct, imageProduct, countProduct, priceProduct,
+            boolean saveData = cInsertDataProduct.dataProduct(namaProduct, imageProduct, countProduct, priceProduct,
                     deskripsiProduct, typeProduct, statusProduct);
             if (saveData) {
                 JOptionPane.showMessageDialog(this, "Product saved successfully!");

@@ -15,24 +15,24 @@ public class cScrollPane extends JScrollPane {
 
         getViewport().setBackground(cColor.GREEN);
 
-        setBorder(new EmptyBorder(0,0,0,0));
+        setBorder(new EmptyBorder(0, 0, 0, 0));
 
-        setViewportBorder(BorderFactory.createLineBorder(cColor.GREEN, 0, true));
+        setViewportBorder(BorderFactory.createLineBorder(cColor.GREY, 0, true));
 
         JScrollBar vertical = getVerticalScrollBar();
         JScrollBar horizontal = getHorizontalScrollBar();
 
         vertical.setPreferredSize(new Dimension(20, 0));
-        horizontal.setPreferredSize(new Dimension(0, 10));
+        horizontal.setPreferredSize(new Dimension(0, 0));
 
-        vertical.setBackground(cColor.WHITE);
-        horizontal.setBackground(cColor.WHITE);
+        vertical.setBackground(cColor.GREY);
+        horizontal.setBackground(cColor.GREY);
 
         vertical.setUI(new javax.swing.plaf.basic.BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {
                 this.thumbColor = cColor.GREEN;
-                this.trackColor = cColor.WHITE;
+                this.trackColor = cColor.GREY;
             }
         });
 
@@ -40,7 +40,7 @@ public class cScrollPane extends JScrollPane {
             @Override
             protected void configureScrollBarColors() {
                 this.thumbColor = cColor.GREEN;
-                this.trackColor = cColor.WHITE;
+                this.trackColor = cColor.GREY;
             }
         });
     }
