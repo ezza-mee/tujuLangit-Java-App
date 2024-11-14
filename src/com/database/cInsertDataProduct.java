@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class cProductDatabase {
+public class cInsertDataProduct {
 
     public static boolean dataProduct(String nameProduct, String imageProduct, int countProduct, int priceProduct, String deskripsiProduct, String typeProduct, String statusProduct) {
         boolean data = false;

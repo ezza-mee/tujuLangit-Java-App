@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
 public class cButtonRounded extends cButton {
@@ -11,6 +13,7 @@ public class cButtonRounded extends cButton {
     private Color originalBackground;
     private Color hoverBackground;
     private Color pressedBackground;
+    private cImage icon;
 
     public cButtonRounded(String text, int x, int y, int width, int height, int radius) {
         super(text, x, y, width, height);
@@ -53,12 +56,24 @@ public class cButtonRounded extends cButton {
         });
     }
 
+    public void setIcon(cImage icon) {
+        this.icon = icon;
+        repaint();
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(getBackground());
         g2.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), radius, radius));
+
+        if (icon != null) {
+            int iconX = (getWidth() - icon.getWidth()) / 2;
+            int iconY = (getHeight() - icon.getHeight()) / 2;
+            g2.drawImage(((ImageIcon) icon.getIcon()).getImage(), iconX, iconY, this);
+        }
+
         super.paintComponent(g);
         g2.dispose();
     }
