@@ -62,11 +62,11 @@ public class cDataTransaksiView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnUpdateDataTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteDataTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnInputDataTransaksi.setFont(cFonts.FONT_SIZE_13);
+        btnUpdateDataTransaksi.setFont(cFonts.FONT_SIZE_13);
+        btnDeleteDataTransaksi.setFont(cFonts.FONT_SIZE_13);
 
         panelListTransaksi.add(labelDataTransaksi);
         panelListTransaksi.add(btnInputDataTransaksi);

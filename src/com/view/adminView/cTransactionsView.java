@@ -28,7 +28,7 @@ public class cTransactionsView extends cPanelContentApp {
         setVisible(true);
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelDataTransactions.add(labelDataTransactions);
 

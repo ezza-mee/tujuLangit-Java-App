@@ -52,7 +52,7 @@ public class cSidebarMenu extends JPanel {
         iconLabel.setBounds(50, 5, 40, 40);
 
         label = new JLabel(text);
-        label.setFont(cFonts.SIDEBAR_FONT);
+        label.setFont(cFonts.FONT_SIZE_14);
         label.setForeground(cColor.WHITE);
         label.setVerticalAlignment(JLabel.CENTER);
         label.setBounds(110, 0, 240, 50);

@@ -42,11 +42,11 @@ public class cDeleteTransaksiView extends cPanelContentApp {
             }
         });
 
-        btnDeleteTransaksi.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnBackToHome.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnDeleteTransaksi.setFont(cFonts.FONT_SIZE_13);
+        btnBackToHome.setFont(cFonts.FONT_SIZE_13);
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelDataTransaksi.add(labelDeleteTransaksi);
 

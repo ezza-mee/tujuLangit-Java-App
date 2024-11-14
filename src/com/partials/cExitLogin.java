@@ -3,13 +3,11 @@ package com.partials;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import com.main.controller.Controller;
-
-public class cExitLogin extends JLabel{
+public class cExitLogin extends JLabel {
     public cExitLogin(int x) {
         setBounds(x, 0, 82, 70);
         setText("Exit");
-        setFont(cFonts.LINK_EXIT_FONT);
+        setFont(cFonts.FONT_SIZE_17);
         setForeground(cColor.GREEN);
         addMouseListener(new java.awt.event.MouseAdapter() {
 
@@ -32,5 +30,5 @@ public class cExitLogin extends JLabel{
             }
         });
     }
-    
+
 }

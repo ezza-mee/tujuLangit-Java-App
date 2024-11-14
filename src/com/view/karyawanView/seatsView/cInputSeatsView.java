@@ -61,7 +61,7 @@ public class cInputSeatsView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelInputSeats.add(labelInputDataSeats);
         panelInputSeats.add(labelKodeSeats);

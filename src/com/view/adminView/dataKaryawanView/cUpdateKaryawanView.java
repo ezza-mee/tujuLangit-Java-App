@@ -69,7 +69,7 @@ public class cUpdateKaryawanView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelInputKaryawan.add(labelInputDataKaryawan);
         panelInputKaryawan.add(labelNameKaryawan);

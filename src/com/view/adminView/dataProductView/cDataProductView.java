@@ -69,11 +69,11 @@ public class cDataProductView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataMenu.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnUpdateDataMenu.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteDataMenu.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnInputDataMenu.setFont(cFonts.FONT_SIZE_14);
+        btnUpdateDataMenu.setFont(cFonts.FONT_SIZE_14);
+        btnDeleteDataMenu.setFont(cFonts.FONT_SIZE_14);
 
         panelListMenu.add(labelListDataMenu);
         panelListMenu.add(btnInputDataMenu);
@@ -129,7 +129,7 @@ public class cDataProductView extends cPanelContentApp {
         cTextArea productDescription = new cTextArea(12, 40, 240, 40, false);
         productDescription.setText(descriptionProduct);
         productDescription.setBorder(new javax.swing.border.LineBorder(cColor.GREEN, 0));
-        productDescription.setFont(cFonts.ERROR_LABEL_FONT);
+        productDescription.setFont(cFonts.FONT_SIZE_8);
 
         panelLabel.add(productName);
         panelLabel.add(productCount);

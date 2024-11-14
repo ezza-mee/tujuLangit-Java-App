@@ -58,11 +58,11 @@ public class cDataKaryawanView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataKaryawan.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnUpdateDataKaryawan.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteDataKaryawan.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnInputDataKaryawan.setFont(cFonts.FONT_SIZE_13);
+        btnUpdateDataKaryawan.setFont(cFonts.FONT_SIZE_13);
+        btnDeleteDataKaryawan.setFont(cFonts.FONT_SIZE_13);
 
         panelDataKaryawan.add(labelDataKaryawan);
 

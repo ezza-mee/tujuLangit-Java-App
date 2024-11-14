@@ -7,7 +7,7 @@ public class cButton extends JButton {
         super();
         setText(text);
         setBounds(x, y, width, height);
-        setFont(cFonts.BUTTON_FONT);
+        setFont(cFonts.FONT_SIZE_15);
         setBackground(cColor.GREEN);
         setForeground(cColor.WHITE);
         setBorder(null);

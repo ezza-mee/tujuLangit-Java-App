@@ -9,7 +9,7 @@ public class cLabelInfo extends JLabel {
         setText(text);
         setBounds(x, y, width, height);
         setVerticalAlignment(JLabel.CENTER);
-        setFont(cFonts.FROM_LABEL_FONT);
+        setFont(cFonts.FONT_SIZE_15);
         setForeground(cColor.GREEN);
     }
 }
