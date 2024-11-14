@@ -59,11 +59,11 @@ public class cDataSupplierView extends cPanelContentApp{
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataSupplier.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnUpdateDataSupplier.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteDataSupplier.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnInputDataSupplier.setFont(cFonts.FONT_SIZE_13);
+        btnUpdateDataSupplier.setFont(cFonts.FONT_SIZE_13);
+        btnDeleteDataSupplier.setFont(cFonts.FONT_SIZE_13);
 
         panelDataSupplier.add(labelDataSupplier);
 

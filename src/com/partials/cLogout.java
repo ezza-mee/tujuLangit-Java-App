@@ -8,7 +8,7 @@ public class cLogout extends JLabel {
     public cLogout(int x) {
         setBounds(x, 0, 82, 70);
         setText("Logout");
-        setFont(cFonts.LINK_EXIT_FONT);
+        setFont(cFonts.FONT_SIZE_16);
         setForeground(cColor.GREEN);
         addMouseListener(new java.awt.event.MouseAdapter() {
 

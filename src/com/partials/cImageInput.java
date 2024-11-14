@@ -17,14 +17,14 @@ public class cImageInput extends cButton {
     private Color pressedBackground;
     private ImageIcon buttonImage;
 
-    private JTextField inputImageProduct; 
+    private JTextField inputImageProduct;
 
     public cImageInput(String text, int x, int y, int width, int height, int radius, JTextField inputImageProduct) {
         super(text, x, y, width, height);
         this.radius = radius;
-        this.inputImageProduct = inputImageProduct; 
+        this.inputImageProduct = inputImageProduct;
 
-        setFont(cFonts.BUTTON_FONT);
+        setFont(cFonts.FONT_SIZE_15);
         setBackground(cColor.GREEN);
         setForeground(cColor.WHITE);
         setBorder(new EmptyBorder(10, 20, 10, 20));
@@ -72,7 +72,7 @@ public class cImageInput extends cButton {
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            inputImageProduct.setText(selectedFile.getAbsolutePath()); 
+            inputImageProduct.setText(selectedFile.getAbsolutePath());
 
             setBackground(cColor.GREY);
         }

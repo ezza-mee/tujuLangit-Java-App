@@ -67,7 +67,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelUpdateTransaksi.add(labelUpdateTransaksi);
         panelUpdateTransaksi.add(btnSaveTransaksi);

@@ -60,11 +60,11 @@ public class cDataSeatsView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataSeats.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnUpdateDataSeats.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteDataSeats.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnInputDataSeats.setFont(cFonts.FONT_SIZE_13);
+        btnUpdateDataSeats.setFont(cFonts.FONT_SIZE_13);
+        btnDeleteDataSeats.setFont(cFonts.FONT_SIZE_13);
 
         panelListSeats.add(labelListDataSeats);
         panelListSeats.add(btnInputDataSeats);

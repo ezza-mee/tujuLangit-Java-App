@@ -9,7 +9,7 @@ public class cTextArea extends JTextArea {
         setBounds(x, y, witdh, height);
         setLineWrap(true);
         setWrapStyleWord(true);
-        setFont(cFonts.TEXTFIELD_FONT);
+        setFont(cFonts.FONT_SIZE_14);
         setForeground(cColor.BLACK);
         setBorder(new javax.swing.border.LineBorder(cColor.GREEN, 1));
     }

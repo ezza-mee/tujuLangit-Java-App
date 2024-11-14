@@ -28,7 +28,7 @@ public class cHistoryTransaksiView extends cPanelContentApp {
         setVisible(true);
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelDataHistory.add(labelListHistory);
 

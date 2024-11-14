@@ -61,11 +61,11 @@ public class cDataProductView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataMenu.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnUpdateDataMenu.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnDeleteDataMenu.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnInputDataMenu.setFont(cFonts.FONT_SIZE_13);
+        btnUpdateDataMenu.setFont(cFonts.FONT_SIZE_13);
+        btnDeleteDataMenu.setFont(cFonts.FONT_SIZE_13);
 
         panelListMenu.add(labelListDataMenu);
         panelListMenu.add(btnInputDataMenu);

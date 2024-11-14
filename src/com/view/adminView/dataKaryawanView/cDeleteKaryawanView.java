@@ -40,11 +40,11 @@ public class cDeleteKaryawanView extends cPanelContentApp {
             }
         });
 
-        btnDeleteKaryawan.setFont(cFonts.BUTTON_INPUT_FONT);
-        btnBackToHome.setFont(cFonts.BUTTON_INPUT_FONT);
+        btnDeleteKaryawan.setFont(cFonts.FONT_SIZE_13);
+        btnBackToHome.setFont(cFonts.FONT_SIZE_13);
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelDataKaryawan.add(labelDeleteKaryawan);
 

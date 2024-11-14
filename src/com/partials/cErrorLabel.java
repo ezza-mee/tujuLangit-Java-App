@@ -8,7 +8,7 @@ public class cErrorLabel extends JLabel {
         setText(text);
         setBounds(x, y, width, 30);
         setVerticalAlignment(JLabel.CENTER);
-        setFont(cFonts.ERROR_LABEL_FONT);
+        setFont(cFonts.FONT_SIZE_10);
         setForeground(cColor.RED);
     }
 }

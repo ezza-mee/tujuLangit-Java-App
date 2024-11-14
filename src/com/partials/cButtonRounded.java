@@ -18,7 +18,7 @@ public class cButtonRounded extends cButton {
     public cButtonRounded(String text, int x, int y, int width, int height, int radius) {
         super(text, x, y, width, height);
         this.radius = radius;
-        setFont(cFonts.BUTTON_FONT);
+        setFont(cFonts.FONT_SIZE_16);
         setBackground(cColor.GREEN);
         setForeground(cColor.WHITE);
         setBorder(new EmptyBorder(10, 20, 10, 20));

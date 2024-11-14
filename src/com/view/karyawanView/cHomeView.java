@@ -48,7 +48,7 @@ public class cHomeView extends cPanelContentApp {
     public void initsShowHomeView() {
         setVisible(true);
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         labelDataMenu.setHorizontalAlignment(JLabel.CENTER);
         labelDataSeats.setHorizontalAlignment(JLabel.CENTER);

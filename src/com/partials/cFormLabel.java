@@ -8,7 +8,7 @@ public class cFormLabel extends JLabel {
         setText(text);
         setBounds(x, y, width, 30);
         setVerticalAlignment(JLabel.CENTER);
-        setFont(cFonts.FROM_LABEL_FONT);
+        setFont(cFonts.FONT_SIZE_16);
         setForeground(cColor.BLACK);
     }
 }

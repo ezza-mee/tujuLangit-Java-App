@@ -42,12 +42,12 @@ public abstract class cFrameDashboardApp extends JFrame {
         headerPanel.setBackground(cColor.WHITE);
         headerPanel.setLayout(null);
 
-        brandText.setFont(cFonts.APP_FONT);
+        brandText.setFont(cFonts.FONT_SIZE_20);
         brandText.setBounds(85, 0, 240, 70);
         brandText.setVerticalAlignment(JLabel.CENTER);
         brandText.setForeground(cColor.WHITE);
 
-        logoBrandText.setFont(cFonts.APP_LOGO_FONT);
+        logoBrandText.setFont(cFonts.FONT_SIZE_14);
         logoBrandText.setBounds(88, 20, 240, 70);
         logoBrandText.setVerticalAlignment(JLabel.CENTER);
         logoBrandText.setForeground(cColor.WHITE);

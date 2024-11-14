@@ -9,7 +9,7 @@ public class cLabelLink extends JLabel {
         setBounds(0, y, 500, 30);
         setHorizontalAlignment(JLabel.CENTER);
         setVerticalAlignment(JLabel.CENTER);
-        setFont(cFonts.DAFTAR_LOGIN_FONT);
+        setFont(cFonts.FONT_SIZE_14);
         setForeground(cColor.BLACK);
 
         addMouseListener(new java.awt.event.MouseAdapter() {

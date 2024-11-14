@@ -92,11 +92,11 @@ public class cLoginAdminView extends cPanelCardLogin {
         titleLogout.setForeground(cColor.GREEN);
         bgPanel.setBackground(cColor.WHITE);
 
-        labelHeaderLogin.setFont(cFonts.BIG_FONT);
+        labelHeaderLogin.setFont(cFonts.FONT_SIZE_18);
         labelLoginStaff.setForeground(cColor.GREEN);
 
-        labelHeaderTujuLangit.setFont(cFonts.TITLE_START_FONT);
-        labelHeaderForestpark.setFont(cFonts.TITLE_FONT);
+        labelHeaderTujuLangit.setFont(cFonts.FONT_SIZE_40);
+        labelHeaderForestpark.setFont(cFonts.FONT_SIZE_20);
         labelHeaderTujuLangit.setForeground(cColor.WHITE);
         labelHeaderForestpark.setForeground(cColor.WHITE);
 

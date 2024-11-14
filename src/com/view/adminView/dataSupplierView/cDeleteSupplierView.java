@@ -41,7 +41,7 @@ public class cDeleteSupplierView extends cPanelContentApp {
         });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.COPYRIGHT_FONT);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelDataSupplier.add(labelDeleteDataSupplier);
 
