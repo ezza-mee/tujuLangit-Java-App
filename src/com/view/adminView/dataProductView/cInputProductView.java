@@ -1,13 +1,11 @@
 package com.view.adminView.dataProductView;
 
-import java.awt.Container;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.database.product.cInsertDataProduct;
+import com.main.database.product.cInsertDataProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -33,7 +31,7 @@ public class cInputProductView extends cPanelContentApp {
     private cLabelInfo labelPriceProduct = new cLabelInfo("Price Product", 180, 290, 300, 30);
     private cLabelInfo labelStatusProduct = new cLabelInfo("Status Product", 180, 375, 300, 30);
     private cLabelInfo labelImageProduct = new cLabelInfo("Image Product", 580, 120, 300, 30);
-    private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi Product", 580, 205, 300, 30);
+    private cLabelInfo labelDescriptionProduct = new cLabelInfo("Description Product", 580, 205, 300, 30);
     private cLabelInfo labelTypeProduct = new cLabelInfo("Type Product", 580, 375, 300, 30);
 
     // add textfield input product
@@ -41,7 +39,7 @@ public class cInputProductView extends cPanelContentApp {
     private cTextField txtCountProduct = new cTextField(180, 235, 300);
     private cTextField txtPriceProduct = new cTextField(180, 320, 300);
 
-    private cTextArea txtDeskripsiProduct = new cTextArea(580, 235, 300, 105, true);
+    private cTextArea txtDescriptionProduct = new cTextArea(580, 235, 300, 115, true);
 
     // add radion button input product
     private cRadioButton statusReadyProduct = new cRadioButton("Ready", "Active", 180, 405, 100);
@@ -50,14 +48,25 @@ public class cInputProductView extends cPanelContentApp {
     private cRadioButton typeFoodProduct = new cRadioButton("Drink", "Inactive", 700, 405, 100);
     private cRadioButton typeDrinkProduct = new cRadioButton("Food", "Inactive", 820, 405, 100);
 
-    // add input image product
-    JTextField inputImageProduct = new JTextField(20);
-    private cImageInput imageButton = new cImageInput("Select", 580, 150, 300, 30, 10, inputImageProduct);
-
     // component button Input Product
     private cButtonRounded btnSaveProduct = new cButtonRounded("Save", 780, 480, 110, 40, 10);
     private cButtonRounded btnResetProduct = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
+
+    // component error label input product
+    private cErrorLabel errorNameProduct = new cErrorLabel("Name Product is Empty", 180, 175, 300);
+    private cErrorLabel errorCountProduct = new cErrorLabel("Count Product is Empty", 180, 260, 300);
+    private cErrorLabel errorPriceProduct = new cErrorLabel("Price Product is Empty", 180, 345, 300);
+    private cErrorLabel errorStatusProduct = new cErrorLabel("Status Product is Empty", 180, 430, 300);
+    private cErrorLabel errorImageProduct = new cErrorLabel("Image Product is Empty", 580, 175, 300);
+    private cErrorLabel errorDescriptionProduct = new cErrorLabel("Description Product is Empty", 580, 345, 300);
+    private cErrorLabel errorTypeProduct = new cErrorLabel("Type Product is Empty", 580, 430, 300);
+
+    // add input image product
+    private JTextField imageInputField = new JTextField(20);
+    private cErrorLabel pathImageProduct = new cErrorLabel("", 580, 175, 300);
+    private cImageInput imageButton = new cImageInput("Select", 580, 150, 300, 30, 10, imageInputField,
+            pathImageProduct);
 
     cDataProductView dataProductView = new cDataProductView(parentPanel);
 
@@ -94,14 +103,14 @@ public class cInputProductView extends cPanelContentApp {
         panelInputDataProduct.add(labelPriceProduct);
         panelInputDataProduct.add(labelStatusProduct);
         panelInputDataProduct.add(labelImageProduct);
-        panelInputDataProduct.add(labelDeskripsiProduct);
+        panelInputDataProduct.add(labelDescriptionProduct);
         panelInputDataProduct.add(labelTypeProduct);
 
         panelInputDataProduct.add(txtNameProduct);
         panelInputDataProduct.add(txtCountProduct);
         panelInputDataProduct.add(txtPriceProduct);
 
-        panelInputDataProduct.add(txtDeskripsiProduct);
+        panelInputDataProduct.add(txtDescriptionProduct);
 
         panelInputDataProduct.add(imageButton);
 
@@ -119,6 +128,7 @@ public class cInputProductView extends cPanelContentApp {
         panelInputDataProduct.add(typeCoffeProduct);
         panelInputDataProduct.add(typeDrinkProduct);
         panelInputDataProduct.add(typeFoodProduct);
+        panelInputDataProduct.add(pathImageProduct);
 
         panelInputDataProduct.add(btnSaveProduct);
         panelInputDataProduct.add(btnResetProduct);
@@ -132,13 +142,71 @@ public class cInputProductView extends cPanelContentApp {
 
     private void inputDataProduct() {
         try {
-            String namaProduct = txtNameProduct.getText();
-            String imageProduct = inputImageProduct.getText();
-            int countProduct = Integer.valueOf(txtCountProduct.getText());
-            int priceProduct = Integer.valueOf(txtPriceProduct.getText());
-            String deskripsiProduct = txtDeskripsiProduct.getText();
+            String nameProduct = txtNameProduct.getText().trim();
+            String imageProduct = imageInputField.getText().trim();
+            String countProductText = txtCountProduct.getText().trim();
+            String priceProductText = txtPriceProduct.getText().trim();
+            String DescriptionProduct = txtDescriptionProduct.getText().trim();
             String typeProduct = null;
             String statusProduct = null;
+
+            if (nameProduct.isEmpty() || countProductText.isEmpty() || priceProductText.isEmpty() ||
+                    DescriptionProduct.isEmpty() || imageProduct.isEmpty() ||
+                    (!typeCoffeProduct.isSelected() && !typeDrinkProduct.isSelected() && !typeFoodProduct.isSelected())
+                    ||
+                    (!statusReadyProduct.isSelected() && !statusSoldProduct.isSelected())) {
+                if (nameProduct.isEmpty()) {
+                    panelInputDataProduct.add(errorNameProduct);
+                } else {
+                    panelInputDataProduct.remove(errorNameProduct);
+                }
+                if (countProductText.isEmpty()) {
+                    panelInputDataProduct.add(errorCountProduct);
+                } else {
+                    panelInputDataProduct.remove(errorCountProduct);
+                }
+
+                if (priceProductText.isEmpty()) {
+                    panelInputDataProduct.add(errorPriceProduct);
+                } else {
+                    panelInputDataProduct.remove(errorPriceProduct);
+                }
+
+                if (DescriptionProduct.isEmpty()) {
+                    panelInputDataProduct.add(errorDescriptionProduct);
+                } else {
+                    panelInputDataProduct.remove(errorDescriptionProduct);
+                }
+
+                if (imageProduct.isEmpty()) {
+                    panelInputDataProduct.add(errorImageProduct);
+                } else {
+                    panelInputDataProduct.remove(errorImageProduct);
+                }
+
+                if (!typeCoffeProduct.isSelected() && !typeDrinkProduct.isSelected() && !typeFoodProduct.isSelected()) {
+                    panelInputDataProduct.add(errorTypeProduct);
+                } else {
+                    panelInputDataProduct.remove(errorTypeProduct);
+                }
+
+                if (!statusReadyProduct.isSelected() && !statusSoldProduct.isSelected()) {
+                    panelInputDataProduct.add(errorStatusProduct);
+                } else {
+                    panelInputDataProduct.remove(errorStatusProduct);
+                }
+
+                panelInputDataProduct.revalidate();
+                panelInputDataProduct.repaint();
+
+                return;
+            }
+
+            int countProduct = 0;
+            int priceProduct = 0;
+
+            countProduct = Integer.parseInt(countProductText);
+            priceProduct = Integer.parseInt(priceProductText);
 
             if (typeCoffeProduct.isSelected()) {
                 typeProduct = "Coffe";
@@ -154,8 +222,8 @@ public class cInputProductView extends cPanelContentApp {
                 statusProduct = "Sold";
             }
 
-            boolean saveData = cInsertDataProduct.dataProduct(namaProduct, imageProduct, countProduct, priceProduct,
-                    deskripsiProduct, typeProduct, statusProduct);
+            boolean saveData = cInsertDataProduct.dataProduct(nameProduct, imageProduct, countProduct, priceProduct,
+                    DescriptionProduct, typeProduct, statusProduct);
             if (saveData) {
                 JOptionPane.showMessageDialog(this, "Product saved successfully!");
             } else {

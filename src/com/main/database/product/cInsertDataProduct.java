@@ -1,4 +1,4 @@
-package com.database.product;
+package com.main.database.product;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.database.cKoneksiDatabase;
+import com.main.database.cKoneksiDatabase;
 
 public class cInsertDataProduct {
 

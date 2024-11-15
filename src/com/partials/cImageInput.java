@@ -15,14 +15,16 @@ public class cImageInput extends cButton {
     private Color originalBackground;
     private Color hoverBackground;
     private Color pressedBackground;
-    private ImageIcon buttonImage;
+    private cErrorLabel pathImageProduct;
 
     private JTextField inputImageProduct;
 
-    public cImageInput(String text, int x, int y, int width, int height, int radius, JTextField inputImageProduct) {
+    public cImageInput(String text, int x, int y, int width, int height, int radius, JTextField inputImageProduct,
+            cErrorLabel pathImageProduct) {
         super(text, x, y, width, height);
         this.radius = radius;
         this.inputImageProduct = inputImageProduct;
+        this.pathImageProduct = pathImageProduct;
 
         setFont(cFonts.FONT_SIZE_15);
         setBackground(cColor.GREEN);
@@ -73,13 +75,16 @@ public class cImageInput extends cButton {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             inputImageProduct.setText(selectedFile.getAbsolutePath());
+            String filePath = selectedFile.getAbsolutePath();
 
+            inputImageProduct.setText(filePath);
+            pathImageProduct.setText("Selected Path :" + filePath);
+
+            setText("Image Selected");
             setBackground(cColor.GREY);
+            inputImageProduct.setBackground(cColor.GREY);
+            repaint();
         }
-    }
-
-    public void setButtonImage(ImageIcon image) {
-        this.buttonImage = image;
     }
 
     @Override

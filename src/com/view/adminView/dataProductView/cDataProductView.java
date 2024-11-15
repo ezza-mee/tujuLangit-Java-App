@@ -9,10 +9,12 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.database.product.cLoadDataProduct;
+import com.main.database.product.cDeleteDataProduct;
+import com.main.database.product.cLoadDataProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -20,69 +22,50 @@ import com.partials.*;
 public class cDataProductView extends cPanelContentApp {
 
     private cContentAdminView parentPanel;
+    private JPanel cardContainer;
 
-    // component label header Data menu
-    private cBigFont labelHeaderDataMenu = new cBigFont("Product", 40, 5);
+    // component label header Data Product
+    private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
-    // component Data Menu
-    private cPanelRounded panelListMenu = new cPanelRounded(40, 80, 1050, 560, 10, 10);
-    private cPanelRounded panelMenu = new cPanelRounded(0, 130, 1050, 430, 0, 0);
+    // component Data Product
+    private cPanelRounded panelListProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
+    private cPanelRounded panelProduct = new cPanelRounded(0, 130, 1050, 430, 0, 0);
 
-    // component label data Menu
-    private cLabelInfo labelListDataMenu = new cLabelInfo("List Data Menu", 30, 30, 580, 30);
+    // component label data Product
+    private cLabelInfo labelListDataProduct = new cLabelInfo("List Data Product", 30, 30, 580, 30);
 
-    // component button data Menu
-    private cButtonRounded btnInputDataMenu = new cButtonRounded("input", 610, 25, 110, 40, 10);
-    private cButtonRounded btnUpdateDataMenu = new cButtonRounded("Update", 730, 25, 110, 40, 10);
-    private cButtonRounded btnDeleteDataMenu = new cButtonRounded("Delete", 850, 25, 110, 40, 10);
+    // component button data Product
+    private cButtonRounded btnAddDataProduct = new cButtonRounded("Add", 900, 25, 110, 40, 10);
 
     public cDataProductView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 
-        initsDataMenuView();
+        initsDataProductView();
     }
 
-    public void initsDataMenuView() {
-        btnInputDataMenu.addActionListener(new java.awt.event.ActionListener() {
+    public void initsDataProductView() {
+        btnAddDataProduct.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 parentPanel.showInputDataProductView();
             }
         });
 
-        btnUpdateDataMenu.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showUpdateDataProductView();
-            }
-        });
-
-        btnDeleteDataMenu.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDeleteDataProductView();
-            }
-        });
-
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
-        btnInputDataMenu.setFont(cFonts.FONT_SIZE_14);
-        btnUpdateDataMenu.setFont(cFonts.FONT_SIZE_14);
-        btnDeleteDataMenu.setFont(cFonts.FONT_SIZE_14);
+        btnAddDataProduct.setFont(cFonts.FONT_SIZE_14);
 
-        panelListMenu.add(labelListDataMenu);
-        panelListMenu.add(btnInputDataMenu);
-        panelListMenu.add(btnUpdateDataMenu);
-        panelListMenu.add(btnDeleteDataMenu);
-        panelListMenu.add(panelMenu);
+        panelListProduct.add(labelListDataProduct);
+        panelListProduct.add(btnAddDataProduct);
+        panelListProduct.add(panelProduct);
 
-        bgPanel.add(labelHeaderDataMenu);
-        bgPanel.add(panelListMenu);
+        bgPanel.add(labelHeaderDataProduct);
+        bgPanel.add(panelListProduct);
         bgPanel.add(labelCopyright);
 
         loadDataProducts();
@@ -91,15 +74,16 @@ public class cDataProductView extends cPanelContentApp {
 
     public void refreshContent() {
         try {
-            panelMenu.removeAll();
-            panelMenu.revalidate();
-            panelMenu.repaint();
+            panelProduct.removeAll();
+            panelProduct.revalidate();
+            panelProduct.repaint();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private JPanel createProductCard(String nameProduct, byte[] imageBytes, String countProduct, String priceProduct,
+    private JPanel createProductCard(int idProduct, String nameProduct, byte[] imageBytes, String countProduct,
+            String priceProduct,
             String descriptionProduct) {
         cPanelRounded cardPanel = new cPanelRounded(0, 0, 220, 350, 10, 10);
         cardPanel.setLayout(null);
@@ -119,6 +103,21 @@ public class cDataProductView extends cPanelContentApp {
 
         panelLabel.add(btnUpdate);
         panelLabel.add(btnDelete);
+
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                boolean deleted = cDeleteDataProduct.handleDeleteDataProduct(idProduct);
+
+                if (deleted) {
+                    cardContainer.remove(cardPanel);
+                    cardContainer.revalidate();
+                    cardContainer.repaint();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal menghapus produk.");
+                }
+            }
+        });
 
         cLabelInfo productName = new cLabelInfo(nameProduct, 12, 5, 200, 30);
         cLabelInfo productCount = new cLabelInfo(countProduct, 12, 90, 200, 30);
@@ -161,12 +160,13 @@ public class cDataProductView extends cPanelContentApp {
         cLoadDataProduct dataProductLoader = new cLoadDataProduct();
         List<cLoadDataProduct.Product> products = dataProductLoader.loadProducts();
 
-        JPanel cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 3 kartu per baris
+        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 3 kartu per baris
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
         cardContainer.setBackground(cColor.GREEN);
 
         for (cLoadDataProduct.Product product : products) {
             JPanel productCard = createProductCard(
+                    product.getId(),
                     product.getName(),
                     product.getImageBytes(),
                     String.valueOf(product.getCount()),
@@ -180,9 +180,9 @@ public class cDataProductView extends cPanelContentApp {
         scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        panelMenu.setLayout(new BorderLayout());
-        panelMenu.add(scrollPanel, BorderLayout.CENTER);
-        panelMenu.revalidate();
-        panelMenu.repaint();
+        panelProduct.setLayout(new BorderLayout());
+        panelProduct.add(scrollPanel, BorderLayout.CENTER);
+        panelProduct.revalidate();
+        panelProduct.repaint();
     }
-};
+}

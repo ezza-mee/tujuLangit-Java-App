@@ -3,10 +3,10 @@ package com.view.adminView.dataSupplierView;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import com.main.database.supplier.*;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
-import com.database.supplier.*;
 
 public class cInputSupplierView extends cPanelContentApp {
 

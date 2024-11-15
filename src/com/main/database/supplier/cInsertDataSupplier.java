@@ -1,10 +1,10 @@
-package com.database.supplier;
+package com.main.database.supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.database.cKoneksiDatabase;
+import com.main.database.cKoneksiDatabase;
 
 public class cInsertDataSupplier {
     public static boolean dataSupplier(String nameCompany, String typeSupplier, int supplierAmount, int priceTotal, String descriptionProduct) {
