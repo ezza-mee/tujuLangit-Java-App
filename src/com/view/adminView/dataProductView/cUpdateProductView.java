@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.database.product.cInsertDataProduct;
+import com.main.database.product.cInsertDataProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -49,14 +49,14 @@ public class cUpdateProductView extends cPanelContentApp {
     private cRadioButton typeDrinkProduct = new cRadioButton("Food", "Inactive", 820, 405, 100);
 
     // add input image product
-    JTextField inputImageProduct = new JTextField(20);
-    private cImageInput imageButton = new cImageInput("Select", 580, 150, 300, 30, 10, inputImageProduct);
+    // JTextField inputImageProduct = new JTextField(20);
+    // private cImageInput imageButton = new cImageInput("Select", 580, 150, 300,
+    // 30, 10, inputImageProduct);
 
     // component button Input Product
     private cButtonRounded btnSaveProduct = new cButtonRounded("Save", 780, 480, 110, 40, 10);
     private cButtonRounded btnResetProduct = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
-
 
     public cUpdateProductView(cContentAdminView parentPanel) {
         super();
@@ -93,7 +93,7 @@ public class cUpdateProductView extends cPanelContentApp {
 
         panelInputDataProduct.add(txtDeskripsiProduct);
 
-        panelInputDataProduct.add(imageButton);
+        // panelInputDataProduct.add(imageButton);
 
         ButtonGroup groupStatus = new ButtonGroup();
         groupStatus.add(statusReadyProduct);
@@ -122,7 +122,7 @@ public class cUpdateProductView extends cPanelContentApp {
     private void inputDataProduct() {
         try {
             String namaProduct = txtNameProduct.getText();
-            String imageProduct = inputImageProduct.getText();
+            // String imageProduct = inputImageProduct.getText();
             int countProduct = Integer.valueOf(txtCountProduct.getText());
             int priceProduct = Integer.valueOf(txtPriceProduct.getText());
             String deskripsiProduct = txtDeskripsiProduct.getText();
@@ -143,13 +143,14 @@ public class cUpdateProductView extends cPanelContentApp {
                 statusProduct = "Sold";
             }
 
-            boolean saveData = cInsertDataProduct.dataProduct(namaProduct, imageProduct, countProduct, priceProduct,
-                    deskripsiProduct, typeProduct, statusProduct);
-            if (saveData) {
-                JOptionPane.showMessageDialog(this, "Product saved successfully!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Failed to save product.");
-            }
+            // boolean saveData = cInsertDataProduct.dataProduct(namaProduct, imageProduct,
+            // countProduct, priceProduct,
+            // deskripsiProduct, typeProduct, statusProduct);
+            // if (saveData) {
+            // JOptionPane.showMessageDialog(this, "Product saved successfully!");
+            // } else {
+            // JOptionPane.showMessageDialog(this, "Failed to save product.");
+            // }
 
         } catch (Exception e) {
             e.printStackTrace();

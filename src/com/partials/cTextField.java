@@ -10,4 +10,9 @@ public class cTextField extends JTextField {
         setForeground(cColor.BLACK);
         setBorder(new javax.swing.border.LineBorder(cColor.GREEN, 1));
     }
+
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    }
 }
