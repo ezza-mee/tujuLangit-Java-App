@@ -2,6 +2,7 @@ package com.view.adminView.dataSupplierView;
 
 import javax.swing.JLabel;
 
+import com.main.database.supplier.cDataSupplier;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -16,8 +17,9 @@ public class cDataSupplierView extends cPanelContentApp{
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
-    // componet panel data Supplier
+    // component panel data Supplier
     private cPanelRounded panelDataSupplier = new cPanelRounded(40, 80, 1050, 560, 10, 10);
+    private cPanelRounded panelTableSupplier = new cPanelRounded(0, 80, 1050, 560, 10, 10);
 
     // component label data Supplier
     private cLabelInfo labelDataSupplier = new cLabelInfo("Data Supplier", 40, 30, 300, 30);
@@ -27,6 +29,10 @@ public class cDataSupplierView extends cPanelContentApp{
     private cButtonRounded btnUpdateDataSupplier = new cButtonRounded("Update", 730, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataSupplier = new cButtonRounded("Delete", 850, 25, 110, 40, 10);
 
+    // component tabel data supplier
+    private cTable tblDataSupplier;
+    private cScrollTable spDataSupplier;
+
 
     public cDataSupplierView(cContentAdminView parentPanel){
         super();
@@ -34,8 +40,20 @@ public class cDataSupplierView extends cPanelContentApp{
         initsDataSupplierView();
     }
 
+    public void refreshContent(){
+        try {
+            panelTableSupplier.removeAll();
+            panelTableSupplier.revalidate();
+            panelTableSupplier.repaint();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initsDataSupplierView(){
-        setVisible(true);
+        refreshContent();
+        
 
         btnInputDataSupplier.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -58,6 +76,9 @@ public class cDataSupplierView extends cPanelContentApp{
             }
         });
 
+        tblDataSupplier = new cTable(cDataSupplier.getAllSupplier());
+        spDataSupplier = new cScrollTable(tblDataSupplier, 0, 10, 1050, 400);
+        
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
@@ -71,9 +92,14 @@ public class cDataSupplierView extends cPanelContentApp{
         panelDataSupplier.add(btnUpdateDataSupplier);
         panelDataSupplier.add(btnDeleteDataSupplier);
 
+        panelTableSupplier.add(spDataSupplier);
+        panelDataSupplier.add(panelTableSupplier);
+
         bgPanel.add(panelDataSupplier);
         bgPanel.add(labelHeaderDataSupplier);
         bgPanel.add(labelCopyright);
+
+        setVisible(true);
     }
     
 }

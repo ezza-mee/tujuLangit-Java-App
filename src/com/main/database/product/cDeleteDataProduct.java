@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.main.database.cKoneksiDatabase;
+import com.main.database.cConnectionDatabase;
 
 public class cDeleteDataProduct {
 
@@ -13,7 +13,7 @@ public class cDeleteDataProduct {
 
         String query = "DELETE FROM tbl_product WHERE idProduct = " + idProduct;
 
-        try (Connection conn = cKoneksiDatabase.getConnection();
+        try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
 
             int rowsAffected = state.executeUpdate();

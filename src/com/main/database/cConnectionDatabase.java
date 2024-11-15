@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class cKoneksiDatabase {
+public class cConnectionDatabase {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/db_tujulangit";
     private static final String USERNAME = "root";
