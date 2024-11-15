@@ -4,14 +4,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.main.database.cKoneksiDatabase;
+import com.main.database.cConnectionDatabase;
 
 public class cLoadDataProduct {
 
     public List<Product> loadProducts() {
         List<Product> products = new ArrayList<>();
 
-        try (Connection conn = cKoneksiDatabase.getConnection()) {
+        try (Connection conn = cConnectionDatabase.getConnection()) {
             if (conn != null) {
                 String query = "SELECT idProduct, nameProduct, imageProduct, countProduct, priceProduct, deskripsiProduct FROM tbl_product";
                 Statement stmt = conn.createStatement();

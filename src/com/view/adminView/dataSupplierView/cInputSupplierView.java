@@ -7,6 +7,7 @@ import com.main.database.supplier.*;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
+import com.view.adminView.dataProductView.cDataProductView;
 
 public class cInputSupplierView extends cPanelContentApp {
 

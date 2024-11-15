@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.main.database.cKoneksiDatabase;
+import com.main.database.cConnectionDatabase;
 
 public class cInsertDataSupplier {
     public static boolean dataSupplier(String nameCompany, String typeSupplier, int supplierAmount, int priceTotal, String descriptionProduct) {
@@ -12,7 +12,7 @@ public class cInsertDataSupplier {
 
         String query = "INSERT INTO tbl_supplier (nameCompany, typeSupplier, supplierAmount, priceTotal, descriptionProduct) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection conn = cKoneksiDatabase.getConnection();
+        try (Connection conn = cConnectionDatabase.getConnection();
                     PreparedStatement state = conn.prepareStatement(query);) { 
 
                 state.setString(1, nameCompany);  
