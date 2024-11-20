@@ -11,7 +11,7 @@ public class App {
         // Controller.hiddenDashboardAdmin();
         // Controller.showLoginAdmin();
         // Controller.showDashboardKaryawan();gi
-        // Controller.showDashboardAdmin();
+        Controller.showDashboardAdmin();
 
         // contoh sebelum menjadikan class abstrack, class tersebut masih bisa dipanggil
         // sebagai object

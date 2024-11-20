@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.main.database.cKoneksiDatabase;
+import com.main.database.cConnectionDatabase;
 
 public class cInsertDataProduct {
 
@@ -23,7 +23,7 @@ public class cInsertDataProduct {
             return false;
         }
 
-        try (Connection conn = cKoneksiDatabase.getConnection();
+        try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query);
                 FileInputStream fis = new FileInputStream(imageFile)) {
 
