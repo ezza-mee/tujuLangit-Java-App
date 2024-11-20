@@ -1,12 +1,17 @@
 package com.view.adminView.dataProductView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.main.database.product.cInsertDataProduct;
 import com.main.database.product.cUpdateDataProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
@@ -156,26 +161,29 @@ public class cUpdateProductView extends cPanelContentApp {
         bgPanel.add(labelCopyright);
     }
 
-    public void setDataProduct(int idProduct, String nameProduct, String imageProduct, int countProduct,
-            int priceProduct, String descriptionProduct, String typeProduct, String statusProduct) {
-        txtNameProduct.setText(nameProduct);
-        imageInputField.setText(imageProduct);
-        txtCountProduct.setText(String.valueOf(countProduct));
-        txtPriceProduct.setText(String.valueOf(priceProduct));
-        txtDescriptionProduct.setText(descriptionProduct);
+    public void setDataProduct(int id, String name, byte[] imageBytes, int count, int price, String description,
+            String type, String status) {
 
-        if ("Active".equals(statusProduct)) {
-            statusReadyProduct.setSelected(true);
-        } else {
-            statusSoldProduct.setSelected(true);
-        }
+        txtNameProduct.setText(name);
+        txtCountProduct.setText(String.valueOf(count));
+        txtPriceProduct.setText(String.valueOf(price));
+        txtDescriptionProduct.setText(description);
 
-        if ("Coffe".equals(typeProduct)) {
+        ImageIcon productImageIcon = new ImageIcon(imageBytes);
+        pathImageProduct.setIcon(productImageIcon);
+
+        if (type.equals("Coffe")) {
             typeCoffeProduct.setSelected(true);
-        } else if ("Drink".equals(typeProduct)) {
+        } else if (type.equals("Drink")) {
             typeDrinkProduct.setSelected(true);
         } else {
             typeFoodProduct.setSelected(true);
+        }
+
+        if (status.equals("Ready")) {
+            statusReadyProduct.setSelected(true);
+        } else {
+            statusSoldProduct.setSelected(true);
         }
     }
 
@@ -188,12 +196,12 @@ public class cUpdateProductView extends cPanelContentApp {
             String imageProduct = imageInputField.getText().trim();
             String countProductText = txtCountProduct.getText().trim();
             String priceProductText = txtPriceProduct.getText().trim();
-            String DescriptionProduct = txtDescriptionProduct.getText().trim();
+            String descriptionProduct = txtDescriptionProduct.getText().trim();
             String typeProduct = null;
             String statusProduct = null;
 
             if (nameProduct.isEmpty() || countProductText.isEmpty() || priceProductText.isEmpty() ||
-                    DescriptionProduct.isEmpty() || imageProduct.isEmpty() ||
+                    descriptionProduct.isEmpty() || imageProduct.isEmpty() ||
                     (!typeCoffeProduct.isSelected() && !typeDrinkProduct.isSelected() && !typeFoodProduct.isSelected())
                     ||
                     (!statusReadyProduct.isSelected() && !statusSoldProduct.isSelected())) {
@@ -214,7 +222,7 @@ public class cUpdateProductView extends cPanelContentApp {
                     panelInputDataProduct.remove(errorPriceProduct);
                 }
 
-                if (DescriptionProduct.isEmpty()) {
+                if (descriptionProduct.isEmpty()) {
                     panelInputDataProduct.add(errorDescriptionProduct);
                 } else {
                     panelInputDataProduct.remove(errorDescriptionProduct);
@@ -264,18 +272,77 @@ public class cUpdateProductView extends cPanelContentApp {
                 statusProduct = "Sold";
             }
 
-            boolean saveData = cUpdateDataProduct.handleUpdete(idProduct, nameProduct, imageProduct, countProduct,
-                    priceProduct,
-                    DescriptionProduct, typeProduct, statusProduct);
+            // Konversi gambar menjadi byte array
+            byte[] imageByteArray = convertImageToByteArray(imageProduct);
+
+            // Panggil metode untuk update data produk
+            boolean saveData = cUpdateDataProduct.handleUpdete(idProduct, nameProduct, imageByteArray, countProduct,
+                    priceProduct, descriptionProduct, typeProduct, statusProduct);
             if (saveData) {
-                JOptionPane.showMessageDialog(this, "Product saved successfully!");
+                JOptionPane.showMessageDialog(this, "Product updated successfully!");
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to save product.");
+                JOptionPane.showMessageDialog(this, "Failed to update product.");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private byte[] convertImageToByteArray(String imagePath) {
+        File imageFile = new File(imagePath);
+        try (FileInputStream fis = new FileInputStream(imageFile)) {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = fis.read(buffer)) != -1) {
+                bos.write(buffer, 0, length);
+            }
+            return bos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void setImageInputField(String imagePath) {
+        this.imageInputField.setText(imagePath);
+    }
+
+    public void setNameProduct(String name) {
+        this.txtNameProduct.setText(name);
+    }
+
+    public void setCountProduct(String count) {
+        this.txtCountProduct.setText(count);
+    }
+
+    public void setPriceProduct(String price) {
+        this.txtPriceProduct.setText(price);
+    }
+
+    public void setDescriptionProduct(String description) {
+        this.txtDescriptionProduct.setText(description);
+    }
+
+    public void setStatusReadyProduct(boolean isReady) {
+        this.statusReadyProduct.setSelected(isReady);
+    }
+
+    public void setStatusSoldProduct(boolean isSold) {
+        this.statusSoldProduct.setSelected(isSold);
+    }
+
+    public void setTypeCoffeProduct(boolean isCoffe) {
+        this.typeCoffeProduct.setSelected(isCoffe);
+    }
+
+    public void setTypeDrinkProduct(boolean isDrink) {
+        this.typeDrinkProduct.setSelected(isDrink);
+    }
+
+    public void setTypeFoodProduct(boolean isFood) {
+        this.typeFoodProduct.setSelected(isFood);
     }
 
 }

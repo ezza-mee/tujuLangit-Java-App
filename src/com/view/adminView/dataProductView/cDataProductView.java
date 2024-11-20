@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -109,7 +108,36 @@ public class cDataProductView extends cPanelContentApp {
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showUpdateDataProductView();
+                try {
+                    int selectedProductId = idProduct;
+
+                    if (selectedProductId > 0) {
+                        cLoadDataProduct dataProductLoader = new cLoadDataProduct();
+                        Product selectedProduct = dataProductLoader.loadProductById(selectedProductId);
+
+                        if (selectedProduct != null) {
+
+                            cUpdateProductView updateView = new cUpdateProductView(parentPanel);
+                            updateView.setDataProduct(
+                                    selectedProduct.getId(),
+                                    selectedProduct.getName(),
+                                    selectedProduct.getImageBytes(),
+                                    selectedProduct.getCount(),
+                                    selectedProduct.getPrice(),
+                                    selectedProduct.getDescription(),
+                                    selectedProduct.getType(),
+                                    selectedProduct.getStatus());
+                            parentPanel.showUpdateDataProductView();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Produk tidak ditemukan untuk diupdate!");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No product selected for update!");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Failed to load product details for update.");
+                }
             }
         });
 

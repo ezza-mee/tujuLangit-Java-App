@@ -8,7 +8,7 @@ import com.main.database.cConnectionDatabase;
 
 public class cUpdateDataProduct {
 
-    public static boolean handleUpdete(int idProduct, String nameProduct, String imageProduct, int countProduct,
+    public static boolean handleUpdete(int idProduct, String nameProduct, byte[] imageByteArray, int countProduct,
             int priceProduct,
             String descriptionProduct, String typeProduct, String statusProduct) {
         boolean data = false;
@@ -18,7 +18,7 @@ public class cUpdateDataProduct {
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
             state.setString(1, nameProduct);
-            state.setString(2, imageProduct);
+            state.setBytes(2, imageByteArray);
             state.setInt(3, countProduct);
             state.setInt(4, priceProduct);
             state.setString(5, descriptionProduct);
