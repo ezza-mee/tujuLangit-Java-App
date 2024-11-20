@@ -41,6 +41,35 @@ public class cLoadDataProduct {
         return products;
     }
 
+    public Product loadProductById(int productId) {
+        Product product = null;
+        try (Connection conn = cConnectionDatabase.getConnection()) {
+            if (conn != null) {
+                String query = "SELECT idProduct, nameProduct, imageProduct, countProduct, priceProduct, descriptionProduct, typeProduct, statusProduct FROM tbl_product WHERE idProduct = ?";
+                PreparedStatement stmt = conn.prepareStatement(query);
+                stmt.setInt(1, productId);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    product = new Product(
+                            rs.getInt("idProduct"),
+                            rs.getString("nameProduct"),
+                            rs.getBytes("imageProduct"),
+                            rs.getInt("countProduct"),
+                            rs.getInt("priceProduct"),
+                            rs.getString("descriptionProduct"),
+                            rs.getString("typeProduct"),
+                            rs.getString("statusProduct"));
+                }
+            } else {
+                System.out.println("Koneksi gagal");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
+    }
+
     public class Product {
         private int id;
         private String name;
@@ -59,6 +88,8 @@ public class cLoadDataProduct {
             this.count = count;
             this.price = price;
             this.description = description;
+            this.type = type;
+            this.status = status;
         }
 
         public int getId() {

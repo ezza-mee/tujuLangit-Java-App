@@ -9,9 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import com.main.database.cConnectionDatabase;
 
 public class cDataSupplier {
-    // get data supplier
     public static DefaultTableModel getAllSupplier() {
-
 
         String[] dataHeader = { "Id", "Company", "Type", "Amount", "Price", "Description"};
 
