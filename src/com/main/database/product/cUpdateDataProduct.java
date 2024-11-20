@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.main.database.cKoneksiDatabase;
+import com.main.database.cConnectionDatabase;
 
 public class cUpdateDataProduct {
 
@@ -15,7 +15,7 @@ public class cUpdateDataProduct {
 
         String query = "UPDATE tbl_product SET nameProduct = ?, imageProduct = ?, countProduct = ?, priceProduct = ?, descriptionProduct = ?, typeProduct = ?, statusProduct = ? WHERE idProduct = ?";
 
-        try (Connection conn = cKoneksiDatabase.getConnection();
+        try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
             state.setString(1, nameProduct);
             state.setString(2, imageProduct);
