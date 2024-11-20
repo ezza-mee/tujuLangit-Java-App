@@ -142,7 +142,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuStaff.setBackground(cColor.WHITE);
         menuStaff.setSidebarAktif();
 
-        contentView.showDataKaryawanView();
+        contentView.showDataStaffView();
 
         setVisible(true);
 

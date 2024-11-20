@@ -1,50 +1,48 @@
 package com.model;
 
 import com.main.resources.templates.cPanelContentApp;
-import com.view.adminView.cHomeView;
-import com.view.adminView.cTransactionsView;
-import com.view.adminView.dataProductView.*;
-import com.view.adminView.dataStaffView.*;
-import com.view.adminView.dataSupplierView.*;
+import com.view.StaffView.cHistoryTransaksiView;
+import com.view.StaffView.cHomeView;
+import com.view.StaffView.productView.*;
+import com.view.StaffView.seatsView.*;
+import com.view.StaffView.transaksiView.*;
 
-public class cContentAdminView extends cPanelContentApp {
+public class cContentStaffView extends cPanelContentApp {
 
     private cHomeView componentHomeView = new cHomeView();
+    private cDataProductView componentProductView;
+    private cDataSeatsView componentSeatsView;
+    private cDataTransaksiView componentTransaksiView;
+    private cHistoryTransaksiView componentHistoryTransaksiView = new cHistoryTransaksiView();
 
-    private cDataProductView componentDataProductView;
     private cInputProductView componentInputProductView;
     private cUpdateProductView componentUpdateProductView;
     private cDeleteProductView componentDeleteProductView;
 
-    private cDataSupplierView componentDataSupplierView;
-    private cInputSupplierView componentInputSupplierView;
-    private cUpdateSupplierView componentUpdateSupplierView;
-    private cDeleteSupplierView componentDeleteSupplierView;
+    private cInputSeatsView componentInputSeatsView;
+    private cUpdateSeatsView componentUpdateSeatsView;
+    private cDeleteSeatsView componentDeleteSeatsView;
 
-    private cDataStaffView componentDataStaffView;
-    private cInputStaffView componentInputStaffView;
-    private cUpdateStaffView componentUpdateStaffView;
-    private cDeleteStaffView componentDeleteStaffView;
+    private cInputTransaksiView componentInputTransaksiView;
+    private cUpdateTransaksiView componentUpdateTransaksiView;
+    private cDeleteTransaksiView componentDeleteTransaksiView;
 
-    private cTransactionsView componentTransactionsView = new cTransactionsView();
-
-    public cContentAdminView() {
+    public cContentStaffView() {
         super();
-
-        componentDataProductView = new cDataProductView(this);
+        componentProductView = new cDataProductView(this);
         componentInputProductView = new cInputProductView(this);
         componentUpdateProductView = new cUpdateProductView(this);
         componentDeleteProductView = new cDeleteProductView(this);
 
-        componentDataSupplierView = new cDataSupplierView(this);
-        componentInputSupplierView = new cInputSupplierView(this);
-        componentUpdateSupplierView = new cUpdateSupplierView(this);
-        componentDeleteSupplierView = new cDeleteSupplierView(this);
+        componentSeatsView = new cDataSeatsView(this);
+        componentInputSeatsView = new cInputSeatsView(this);
+        componentUpdateSeatsView = new cUpdateSeatsView(this);
+        componentDeleteSeatsView = new cDeleteSeatsView(this);
 
-        componentDataStaffView = new cDataStaffView(this);
-        componentInputStaffView = new cInputStaffView(this);
-        componentUpdateStaffView = new cUpdateStaffView(this);
-        componentDeleteStaffView = new cDeleteStaffView(this);
+        componentTransaksiView = new cDataTransaksiView(this);
+        componentInputTransaksiView = new cInputTransaksiView(this);
+        componentUpdateTransaksiView = new cUpdateTransaksiView(this);
+        componentDeleteTransaksiView = new cDeleteTransaksiView(this);
     }
 
     private void refreshContent() {
@@ -66,39 +64,36 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showDataProductView() {
+    public void showProductView() {
         refreshContent();
-        bgPanel.add(componentDataProductView);
-        componentDataProductView.loadDataProducts();
+        bgPanel.add(componentProductView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showDataSupplierView() {
+    public void showSeatsView() {
         refreshContent();
-
-        bgPanel.add(componentDataSupplierView);
+        bgPanel.add(componentSeatsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showDataStaffView() {
+    public void showDataTransaksiView() {
         refreshContent();
-
-        bgPanel.add(componentDataStaffView);
+        bgPanel.add(componentTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showTransactionsView() {
+    public void showHistoryTransaksiView() {
         refreshContent();
-        bgPanel.add(componentTransactionsView);
+        bgPanel.add(componentHistoryTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
@@ -112,6 +107,7 @@ public class cContentAdminView extends cPanelContentApp {
         bgPanel.repaint();
 
         setVisible(true);
+
     }
 
     public void showUpdateDataProductView() {
@@ -132,58 +128,57 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showInputDataStaffView() {
+    public void showInputDataSeatsView() {
         refreshContent();
-        bgPanel.add(componentInputStaffView);
+        bgPanel.add(componentInputSeatsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showUpdateDataStaffView() {
+    public void showUpdateDataSeatsView() {
         refreshContent();
-        bgPanel.add(componentUpdateStaffView);
+        bgPanel.add(componentUpdateSeatsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showDeleteDataStaffView() {
+    public void showDeleteDataSeatsView() {
         refreshContent();
-        bgPanel.add(componentDeleteStaffView);
+        bgPanel.add(componentDeleteSeatsView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showInputDataSupplierView() {
+    public void showInputTransaksiView() {
         refreshContent();
-        bgPanel.add(componentInputSupplierView);
+        bgPanel.add(componentInputTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showUpdateDataSupplierView() {
+    public void showUpdateTransaksiView() {
         refreshContent();
-        bgPanel.add(componentUpdateSupplierView);
+        bgPanel.add(componentUpdateTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
 
-    public void showDeleteDataSupplierView() {
+    public void showDeleteTransaksiView() {
         refreshContent();
-        bgPanel.add(componentDeleteSupplierView);
+        bgPanel.add(componentDeleteTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
         setVisible(true);
     }
-
 }
