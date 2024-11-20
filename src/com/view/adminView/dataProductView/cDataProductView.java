@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -15,6 +16,7 @@ import javax.swing.JScrollPane;
 
 import com.main.database.product.cDeleteDataProduct;
 import com.main.database.product.cLoadDataProduct;
+import com.main.database.product.cLoadDataProduct.Product;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -103,6 +105,13 @@ public class cDataProductView extends cPanelContentApp {
 
         panelLabel.add(btnUpdate);
         panelLabel.add(btnDelete);
+
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showUpdateDataProductView();
+            }
+        });
 
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             @Override

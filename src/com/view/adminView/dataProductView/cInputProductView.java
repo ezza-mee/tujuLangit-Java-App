@@ -82,7 +82,7 @@ public class cInputProductView extends cPanelContentApp {
         btnSaveProduct.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                inputDataProduct();
+                handleInsertDataProduct();
             }
         });
 
@@ -140,7 +140,7 @@ public class cInputProductView extends cPanelContentApp {
 
     }
 
-    private void inputDataProduct() {
+    private void handleInsertDataProduct() {
         try {
             String nameProduct = txtNameProduct.getText().trim();
             String imageProduct = imageInputField.getText().trim();

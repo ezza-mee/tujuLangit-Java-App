@@ -13,7 +13,7 @@ public class cLoadDataProduct {
 
         try (Connection conn = cConnectionDatabase.getConnection()) {
             if (conn != null) {
-                String query = "SELECT idProduct, nameProduct, imageProduct, countProduct, priceProduct, deskripsiProduct FROM tbl_product";
+                String query = "SELECT idProduct, nameProduct, imageProduct, countProduct, priceProduct, descriptionProduct, typeProduct, statusProduct FROM tbl_product";
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
 
@@ -23,10 +23,12 @@ public class cLoadDataProduct {
                     byte[] imageBytes = rs.getBytes("imageProduct");
                     int productCount = rs.getInt("countProduct");
                     int productPrice = rs.getInt("priceProduct");
-                    String productDescription = rs.getString("deskripsiProduct");
+                    String productDescription = rs.getString("descriptionProduct");
+                    String productType = rs.getString("typeProduct");
+                    String productStatus = rs.getString("statusProduct");
 
                     products.add(new Product(idProduct, productName, imageBytes, productCount, productPrice,
-                            productDescription));
+                            productDescription, productType, productStatus));
                 }
 
             } else {
@@ -42,12 +44,15 @@ public class cLoadDataProduct {
     public class Product {
         private int id;
         private String name;
+        private byte[] imageBytes;
         private int count;
         private int price;
         private String description;
-        private byte[] imageBytes;
+        private String type;
+        private String status;
 
-        public Product(int id, String name, byte[] imageBytes, int count, int price, String description) {
+        public Product(int id, String name, byte[] imageBytes, int count, int price, String description, String type,
+                String status) {
             this.id = id;
             this.name = name;
             this.imageBytes = imageBytes;
@@ -78,6 +83,14 @@ public class cLoadDataProduct {
 
         public String getDescription() {
             return description;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public String getStatus() {
+            return status;
         }
     }
 }
