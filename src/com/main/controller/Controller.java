@@ -1,8 +1,8 @@
 package com.main.controller;
 
 import com.model.cContentLoginView;
+import com.view.StaffView.cDashboardStaffView;
 import com.view.adminView.cDashboardAdminView;
-import com.view.karyawanView.cDashboardKaryawanView;
 import com.view.loginView.cLoginView;
 
 public class Controller {
