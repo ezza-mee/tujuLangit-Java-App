@@ -11,10 +11,11 @@ import com.main.database.cKoneksiDatabase;
 
 public class cInsertDataProduct {
 
-    public static boolean dataProduct(String nameProduct, String imageProduct, int countProduct, int priceProduct, String deskripsiProduct, String typeProduct, String statusProduct) {
+    public static boolean dataProduct(String nameProduct, String imageProduct, int countProduct, int priceProduct,
+            String descriptionProduct, String typeProduct, String statusProduct) {
         boolean data = false;
 
-        String query = "INSERT INTO tbl_product (nameProduct, imageProduct, countProduct, priceProduct, deskripsiProduct, typeProduct, statusProduct) VALUES (?, ?, ?, ?, ?, ?, ?)"; 
+        String query = "INSERT INTO tbl_product (nameProduct, imageProduct, countProduct, priceProduct, descriptionProduct, typeProduct, statusProduct) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         File imageFile = new File(imageProduct);
         if (!imageFile.exists()) {
@@ -24,13 +25,13 @@ public class cInsertDataProduct {
 
         try (Connection conn = cKoneksiDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query);
-                FileInputStream fis = new FileInputStream(imageFile)) { 
+                FileInputStream fis = new FileInputStream(imageFile)) {
 
-            state.setString(1, nameProduct);  
-            state.setBinaryStream(2, fis, (int) imageFile.length()); 
+            state.setString(1, nameProduct);
+            state.setBinaryStream(2, fis, (int) imageFile.length());
             state.setInt(3, countProduct);
             state.setInt(4, priceProduct);
-            state.setString(5, deskripsiProduct);
+            state.setString(5, descriptionProduct);
             state.setString(6, typeProduct);
             state.setString(7, statusProduct);
 
