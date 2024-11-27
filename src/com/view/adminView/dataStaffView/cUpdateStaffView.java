@@ -23,18 +23,16 @@ public class cUpdateStaffView extends cPanelContentApp {
 
     // component label Data Staff
     private cLabelInfo labelNameStaff = new cLabelInfo("Name", 180, 120, 300, 30);
-    private cLabelInfo labelAgeStaff = new cLabelInfo("Age", 180, 195, 300, 30);
-    private cLabelInfo labelEmailStaff = new cLabelInfo("Email", 180, 270, 300, 30);
-    private cLabelInfo labelNomorHpStaff = new cLabelInfo("Nomor Hp", 180, 345, 300, 30);
+    private cLabelInfo labelEmailStaff = new cLabelInfo("Email", 180, 195, 300, 30);
+    private cLabelInfo labelNomorHpStaff = new cLabelInfo("Nomor Hp", 180, 270, 300, 30);
     private cLabelInfo labelJobdeskStaff = new cLabelInfo("Jobdesk", 580, 120, 300, 30);
-    private cLabelInfo labelLocationStaff = new cLabelInfo("Location", 580, 195, 300, 30);
-    private cLabelInfo labelStatusKaryaawn = new cLabelInfo("Status", 580, 345, 300, 30);
+    private cLabelInfo labelLocationStaff = new cLabelInfo("Address", 580, 195, 300, 30);
+    private cLabelInfo labelStatusStaff = new cLabelInfo("Status", 580, 345, 300, 30);
 
     // add textfield update Staff
     private cTextField txtNameStaff = new cTextField(180, 145, 300);
-    private cTextField txtAgeStaff = new cTextField(180, 220, 300);
-    private cTextField txtEmailStaff = new cTextField(180, 295, 300);
-    private cTextField txtNomorHpStaff = new cTextField(180, 370, 300);
+    private cTextField txtEmailStaff = new cTextField(180, 220, 300);
+    private cTextField txtNomorHpStaff = new cTextField(180, 295, 300);
 
     private cTextArea txtLocationStaff = new cTextArea(580, 220, 300, 100, true);
 
@@ -44,13 +42,13 @@ public class cUpdateStaffView extends cPanelContentApp {
             300, 30);
 
     // add radion button status Staff
-    private cRadioButton statusAktif = new cRadioButton("Aktif", "Active", 580, 375, 100);
-    private cRadioButton statusInAktif = new cRadioButton("Inaktif", "Inactive", 700, 375, 100);
+    private cRadioButton statusAktif = new cRadioButton("Active", "Active", 580, 375, 100);
+    private cRadioButton statusInAktif = new cRadioButton("Inactive", "Inactive", 700, 375, 100);
 
     // component button Update Staff
-    private cButtonRounded btnSaveStaff = new cButtonRounded("Save", 540, 460, 110, 40, 10);
-    private cButtonRounded btnResetStaff = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
-    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
+    private cButtonRounded btnSaveStaff = new cButtonRounded("Save", 780, 480, 110, 40, 10);
+    private cButtonRounded btnResetStaff = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
+    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
     public cUpdateStaffView(cContentAdminView parentPanel) {
         super();
@@ -73,15 +71,13 @@ public class cUpdateStaffView extends cPanelContentApp {
 
         panelInputStaff.add(labelInputDataStaff);
         panelInputStaff.add(labelNameStaff);
-        panelInputStaff.add(labelAgeStaff);
         panelInputStaff.add(labelEmailStaff);
         panelInputStaff.add(labelNomorHpStaff);
         panelInputStaff.add(labelJobdeskStaff);
         panelInputStaff.add(labelLocationStaff);
-        panelInputStaff.add(labelStatusKaryaawn);
+        panelInputStaff.add(labelStatusStaff);
 
         panelInputStaff.add(txtNameStaff);
-        panelInputStaff.add(txtAgeStaff);
         panelInputStaff.add(txtEmailStaff);
         panelInputStaff.add(txtNomorHpStaff);
         panelInputStaff.add(txtLocationStaff);
