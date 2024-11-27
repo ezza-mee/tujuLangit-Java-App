@@ -1,5 +1,8 @@
 package com.model;
 
+import javax.swing.JPanel;
+
+import com.main.database.product.cLoadDataProduct.Product;
 import com.main.resources.templates.cPanelContentApp;
 import com.view.adminView.cHomeView;
 import com.view.adminView.cTransactionsView;
@@ -55,6 +58,13 @@ public class cContentAdminView extends cPanelContentApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected void switchPanel(JPanel panel) {
+        bgPanel.removeAll();
+        bgPanel.add(panel);
+        bgPanel.revalidate();
+        bgPanel.repaint();
     }
 
     public void showHomeView() {
@@ -114,9 +124,12 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateDataProductView() {
+    public void showUpdateDataProductView(Product product) {
         refreshContent();
         bgPanel.add(componentUpdateProductView);
+        cUpdateProductView updateProductView = new cUpdateProductView(this);
+        updateProductView.setProductData(product);
+        switchPanel(updateProductView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

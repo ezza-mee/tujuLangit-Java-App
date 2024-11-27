@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import com.main.database.product.cDeleteDataProduct;
 import com.main.database.product.cLoadDataProduct;
@@ -85,7 +86,7 @@ public class cDataProductView extends cPanelContentApp {
 
     private JPanel createProductCard(int idProduct, String nameProduct, byte[] imageBytes, String countProduct,
             String priceProduct,
-            String descriptionProduct) {
+            String descriptionProduct, String status, String type) {
         cPanelRounded cardPanel = new cPanelRounded(0, 0, 220, 350, 10, 10);
         cardPanel.setLayout(null);
         cardPanel.setPreferredSize(new Dimension(220, 350));
@@ -109,34 +110,20 @@ public class cDataProductView extends cPanelContentApp {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 try {
-                    int selectedProductId = idProduct;
+                    Product selectedProduct = new Product(
+                            idProduct,
+                            nameProduct,
+                            imageBytes,
+                            Integer.parseInt(countProduct),
+                            Integer.parseInt(priceProduct),
+                            descriptionProduct,
+                            status,
+                            type);
 
-                    if (selectedProductId > 0) {
-                        cLoadDataProduct dataProductLoader = new cLoadDataProduct();
-                        Product selectedProduct = dataProductLoader.loadProductById(selectedProductId);
+                    parentPanel.showUpdateDataProductView(selectedProduct);
 
-                        if (selectedProduct != null) {
-
-                            cUpdateProductView updateView = new cUpdateProductView(parentPanel);
-                            updateView.setDataProduct(
-                                    selectedProduct.getId(),
-                                    selectedProduct.getName(),
-                                    selectedProduct.getImageBytes(),
-                                    selectedProduct.getCount(),
-                                    selectedProduct.getPrice(),
-                                    selectedProduct.getDescription(),
-                                    selectedProduct.getType(),
-                                    selectedProduct.getStatus());
-                            parentPanel.showUpdateDataProductView();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Produk tidak ditemukan untuk diupdate!");
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No product selected for update!");
-                    }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Failed to load product details for update.");
                 }
             }
         });
@@ -178,6 +165,7 @@ public class cDataProductView extends cPanelContentApp {
         panelImage.setLayout(null);
         panelImage.setBounds(12, 12, 267, 170);
         panelImage.setBackground(cColor.GREY);
+
         ImageIcon productImage = new ImageIcon(imageBytes);
         Image scaledImage = productImage.getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH);
         JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
@@ -208,7 +196,9 @@ public class cDataProductView extends cPanelContentApp {
                     product.getImageBytes(),
                     String.valueOf(product.getCount()),
                     String.valueOf(product.getPrice()),
-                    product.getDescription());
+                    product.getDescription(),
+                    product.getType(),
+                    product.getStatus());
             cardContainer.add(productCard);
         }
 

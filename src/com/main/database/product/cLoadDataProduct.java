@@ -70,7 +70,7 @@ public class cLoadDataProduct {
         return product;
     }
 
-    public class Product {
+    public static class Product {
         private int id;
         private String name;
         private byte[] imageBytes;

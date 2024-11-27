@@ -2,7 +2,7 @@ package com.partials;
 
 import javax.swing.JRadioButton;
 
-public class cRadioButton extends JRadioButton{
+public class cRadioButton extends JRadioButton {
     public cRadioButton(String text, String value, int x, int y, int width) {
         super();
         setBounds(x, y, width, 30);
