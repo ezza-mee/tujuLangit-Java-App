@@ -34,9 +34,9 @@ public class cUpdateSupplierView extends cPanelContentApp {
     private cTextArea txtDescriptionProduct = new cTextArea(580, 220, 300, 100, true);
 
     // component button Update Product
-    private cButtonRounded btnSaveSupplier = new cButtonRounded("Save", 540, 460, 110, 40, 10);
-    private cButtonRounded btnResetSupplier = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
-    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
+    private cButtonRounded btnSaveSupplier = new cButtonRounded("Save", 780, 480, 110, 40, 10);
+    private cButtonRounded btnResetSupplier = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
+    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
     public cUpdateSupplierView(cContentAdminView parentPanel) {
         super();
@@ -46,6 +46,13 @@ public class cUpdateSupplierView extends cPanelContentApp {
 
     private void initsUpdateSupplierView() {
         setVisible(true);
+
+        btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showDataStaffView();
+            }
+        });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
