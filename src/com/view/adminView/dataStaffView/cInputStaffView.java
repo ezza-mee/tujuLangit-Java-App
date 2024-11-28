@@ -28,16 +28,16 @@ public class cInputStaffView extends cPanelContentApp {
 
     // component label Data Staff
     private cLabelInfo labelNameStaff = new cLabelInfo("Name", 180, 120, 300, 30);
+    private cLabelInfo labelNomorHpStaff = new cLabelInfo("Nomor Hp", 180, 195, 300, 30);
     private cLabelInfo labelEmailStaff = new cLabelInfo("Email", 180, 270, 300, 30);
-    private cLabelInfo labelNomorHpStaff = new cLabelInfo("Nomor Hp", 180, 345, 300, 30);
     private cLabelInfo labelJobdeskStaff = new cLabelInfo("Jobdesk", 580, 120, 300, 30);
     private cLabelInfo labelAddressStaff = new cLabelInfo("Address", 580, 195, 300, 30);
     private cLabelInfo labelStatusStaff = new cLabelInfo("Status", 580, 345, 300, 30);
 
     // add textfield input Staff
     private cTextField txtNameStaff = new cTextField(180, 145, 300);
-    private cTextField txtPhoneNumberStaff = new cTextField(180, 295, 300);
-    private cTextField txtEmailStaff = new cTextField(180, 370, 300);
+    private cTextField txtPhoneNumberStaff = new cTextField(180, 220, 300);
+    private cTextField txtEmailStaff = new cTextField(180, 295, 300);
 
     private cTextArea txtAddressStaff = new cTextArea(580, 220, 300, 100, true);
 
@@ -51,9 +51,9 @@ public class cInputStaffView extends cPanelContentApp {
     private cRadioButton statusInAktif = new cRadioButton("Inactive", "Inactive", 700, 375, 100);
 
     // component button Input Staff
-    private cButtonRounded btnSaveStaff = new cButtonRounded("Save", 540, 460, 110, 40, 10);
-    private cButtonRounded btnResetStaff = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
-    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
+    private cButtonRounded btnSaveStaff = new cButtonRounded("Save", 780, 480, 110, 40, 10);
+    private cButtonRounded btnResetStaff = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
+    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
     // component error label input product
     private cErrorLabel errorNameStaff = new cErrorLabel("Name is Empty", 180, 175, 300);

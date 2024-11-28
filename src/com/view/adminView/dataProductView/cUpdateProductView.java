@@ -141,6 +141,8 @@ public class cUpdateProductView extends cPanelContentApp {
             statusSoldProduct.setSelected(true);
         }
 
+        System.out.println("aKu sayang Aco");
+
         String type = product.getType();
         if (type.equalsIgnoreCase("Coffe")) {
             typeDrinkProduct.setSelected(false);
