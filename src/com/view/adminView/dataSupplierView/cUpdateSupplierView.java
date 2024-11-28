@@ -50,7 +50,7 @@ public class cUpdateSupplierView extends cPanelContentApp {
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDataStaffView();
+                parentPanel.showDataSupplierView();
             }
         });
 
