@@ -248,17 +248,17 @@ public class cUpdateProductView extends cPanelContentApp {
             int countProduct = Integer.parseInt(countProductText);
             int priceProduct = Integer.parseInt(priceProductText);
 
-            if (typeCoffeProduct.getValue().equals("Active")) {
+            if (typeCoffeProduct.isSelected()) {
                 typeProduct = "Coffe";
-            } else if (typeDrinkProduct.getValue().equals("Active")) {
+            } else if (typeDrinkProduct.isSelected()) {
                 typeProduct = "Drink";
-            } else if (typeFoodProduct.getValue().equals("Active")) {
+            } else if (typeFoodProduct.isSelected()) {
                 typeProduct = "Food";
             }
 
-            if (statusReadyProduct.getValue().equals("Active")) {
+            if (statusReadyProduct.isSelected()) {
                 statusProduct = "Ready";
-            } else if (statusSoldProduct.getValue().equals("Active")) {
+            } else if (statusSoldProduct.isSelected()) {
                 statusProduct = "Sold";
             }
 
