@@ -117,7 +117,7 @@ public class cInputSupplierView extends cPanelContentApp {
                 txtSupplierAmount.setText(null);
                 txtPriceTotal.setText(null);
                 txtDescriptionProduct.setText(null);
-                JOptionPane.showMessageDialog(this, "Product saved successfully!");
+                JOptionPane.showMessageDialog(this, "SavedProduct successfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to save product.");
             }
