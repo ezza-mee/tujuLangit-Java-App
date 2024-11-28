@@ -122,7 +122,7 @@ public class cInputStaffView extends cPanelContentApp {
     }
 
     private void handleInsertStaff() {
-        
+
         try {
             String nameStaff = txtNameStaff.getText().trim();
             String phoneNumber = txtPhoneNumberStaff.getText().trim();
@@ -143,10 +143,10 @@ public class cInputStaffView extends cPanelContentApp {
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to Input Data.");
             }
-                
-            } catch (Exception e) {
-                e.printStackTrace();
-            }    
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
