@@ -61,8 +61,6 @@ public class cUpdateProductView extends cPanelContentApp {
     private cImageInput imageButton = new cImageInput("Select", 580, 150, 300, 30, 10, imageUpdateField,
             pathImageProduct);
 
-    private int idProduct;
-
     public cUpdateProductView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
@@ -128,7 +126,7 @@ public class cUpdateProductView extends cPanelContentApp {
     }
 
     public void setProductData(Product product) {
-
+        this.idProduct = product.getId();
         txtNameProduct.setText(product.getName());
         txtCountProduct.setText(String.valueOf(product.getCount()));
         txtPriceProduct.setText(String.valueOf(product.getPrice()));
@@ -185,6 +183,8 @@ public class cUpdateProductView extends cPanelContentApp {
 
     }
 
+    private int idProduct;
+
     private void handleUpdateDataProduct(int idProduct) {
         try {
             String nameProduct = txtNameProduct.getText().trim();
@@ -195,13 +195,12 @@ public class cUpdateProductView extends cPanelContentApp {
             String typeProduct = null;
             String statusProduct = null;
 
-            
             if (nameProduct.isEmpty() || countProductText.isEmpty() || priceProductText.isEmpty() ||
                     descriptionProduct.isEmpty() || imageProduct.isEmpty() ||
                     (!typeCoffeProduct.isSelected() && !typeDrinkProduct.isSelected() && !typeFoodProduct.isSelected())
                     ||
                     (!statusReadyProduct.isSelected() && !statusSoldProduct.isSelected())) {
-                
+
                 if (nameProduct.isEmpty())
                     panelUpdateDataProduct.add(errorNameProduct);
                 else
@@ -247,17 +246,17 @@ public class cUpdateProductView extends cPanelContentApp {
             int countProduct = Integer.parseInt(countProductText);
             int priceProduct = Integer.parseInt(priceProductText);
 
-            if (typeCoffeProduct.isSelected()) {
+            if (typeCoffeProduct.getValue().equals("Active")) {
                 typeProduct = "Coffe";
-            } else if (typeDrinkProduct.isSelected()) {
+            } else if (typeDrinkProduct.getValue().equals("Active")) {
                 typeProduct = "Drink";
-            } else if (typeFoodProduct.isSelected()) {
+            } else if (typeFoodProduct.getValue().equals("Active")) {
                 typeProduct = "Food";
             }
 
-            if (statusReadyProduct.isSelected()) {
+            if (statusReadyProduct.getValue().equals("Active")) {
                 statusProduct = "Ready";
-            } else if (statusSoldProduct.isSelected()) {
+            } else if (statusSoldProduct.getValue().equals("Active")) {
                 statusProduct = "Sold";
             }
 

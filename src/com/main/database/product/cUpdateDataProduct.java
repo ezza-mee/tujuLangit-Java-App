@@ -27,14 +27,24 @@ public class cUpdateDataProduct {
                 PreparedStatement state = conn.prepareStatement(query);
                 FileInputStream fis = new FileInputStream(imageFile)) {
 
-            state.setInt(1, idProduct);
-            state.setString(2, nameProduct);
-            state.setBinaryStream(3, fis, (int) imageFile.length());
-            state.setInt(4, countProduct);
-            state.setInt(5, priceProduct);
-            state.setString(6, descriptionProduct);
-            state.setString(7, typeProduct);
-            state.setString(8, statusProduct);
+            state.setString(1, nameProduct);
+            state.setBinaryStream(2, fis, (int) imageFile.length());
+            state.setInt(3, countProduct);
+            state.setInt(4, priceProduct);
+            state.setString(5, descriptionProduct);
+            state.setString(6, typeProduct);
+            state.setString(7, statusProduct);
+            state.setInt(8, idProduct);
+
+            System.out.println("Executing query with parameters:");
+            System.out.println("Name: " + nameProduct);
+            System.out.println("Image Path: " + imageProduct);
+            System.out.println("Count: " + countProduct);
+            System.out.println("Price: " + priceProduct);
+            System.out.println("Description: " + descriptionProduct);
+            System.out.println("Type: " + typeProduct);
+            System.out.println("Status: " + statusProduct);
+            System.out.println("ID: " + idProduct);
 
             int rowsAffected = state.executeUpdate();
 
@@ -47,4 +57,5 @@ public class cUpdateDataProduct {
         }
         return data;
     }
+
 }
