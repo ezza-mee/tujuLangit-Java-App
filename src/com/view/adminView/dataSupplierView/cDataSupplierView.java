@@ -7,7 +7,7 @@ import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
 
-public class cDataSupplierView extends cPanelContentApp{
+public class cDataSupplierView extends cPanelContentApp {
 
     private cContentAdminView parentPanel;
 
@@ -33,27 +33,25 @@ public class cDataSupplierView extends cPanelContentApp{
     private cTable tblDataSupplier;
     private cScrollTable spDataSupplier;
 
-
-    public cDataSupplierView(cContentAdminView parentPanel){
+    public cDataSupplierView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
         initsDataSupplierView();
     }
 
-    public void refreshContent(){
+    public void refreshContent() {
         try {
             panelTableSupplier.removeAll();
             panelTableSupplier.revalidate();
             panelTableSupplier.repaint();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void initsDataSupplierView(){
+    private void initsDataSupplierView() {
         refreshContent();
-        
 
         btnInputDataSupplier.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -78,7 +76,23 @@ public class cDataSupplierView extends cPanelContentApp{
 
         tblDataSupplier = new cTable(cDataSupplier.getAllSupplier());
         spDataSupplier = new cScrollTable(tblDataSupplier, 0, 10, 1050, 400);
-        
+
+        tblDataSupplier.getColumnModel().getColumn(0).setMinWidth(80);
+        tblDataSupplier.getColumnModel().getColumn(0).setMaxWidth(80);
+        tblDataSupplier.getColumnModel().getColumn(0).setWidth(80);
+
+        tblDataSupplier.getColumnModel().getColumn(1).setMinWidth(220);
+        tblDataSupplier.getColumnModel().getColumn(1).setMaxWidth(220);
+        tblDataSupplier.getColumnModel().getColumn(1).setWidth(220);
+
+        tblDataSupplier.getColumnModel().getColumn(2).setMinWidth(120);
+        tblDataSupplier.getColumnModel().getColumn(2).setMaxWidth(120);
+        tblDataSupplier.getColumnModel().getColumn(2).setWidth(120);
+
+        tblDataSupplier.getColumnModel().getColumn(3).setMinWidth(180);
+        tblDataSupplier.getColumnModel().getColumn(3).setMaxWidth(180);
+        tblDataSupplier.getColumnModel().getColumn(3).setWidth(180);
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
@@ -101,5 +115,5 @@ public class cDataSupplierView extends cPanelContentApp{
 
         setVisible(true);
     }
-    
+
 }

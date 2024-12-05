@@ -42,6 +42,8 @@ public class cInputProductView extends cPanelContentApp {
     private cTextArea txtDescriptionProduct = new cTextArea(580, 235, 300, 115, true);
 
     // add radion button input product
+    private ButtonGroup groupTypeProduct = new ButtonGroup();
+    private ButtonGroup groupStatus = new ButtonGroup();
     private cRadioButton statusReadyProduct = new cRadioButton("Ready", "Active", 180, 405, 100);
     private cRadioButton statusSoldProduct = new cRadioButton("Sold", "Inactive", 320, 405, 100);
     private cRadioButton typeCoffeProduct = new cRadioButton("Coffe", "Active", 580, 405, 100);
@@ -93,6 +95,26 @@ public class cInputProductView extends cPanelContentApp {
             }
         });
 
+        groupStatus.add(statusReadyProduct);
+        groupStatus.add(statusSoldProduct);
+
+        groupTypeProduct.add(typeCoffeProduct);
+        groupTypeProduct.add(typeDrinkProduct);
+        groupTypeProduct.add(typeFoodProduct);
+
+        btnResetProduct.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                txtNameProduct.setText(null);
+                txtCountProduct.setText(null);
+                txtDescriptionProduct.setText(null);
+                txtPriceProduct.setText(null);
+                groupStatus.clearSelection();
+                groupTypeProduct.clearSelection();
+                imageButton.setFocusable(false);
+            }
+        });
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
@@ -113,15 +135,6 @@ public class cInputProductView extends cPanelContentApp {
         panelInputDataProduct.add(txtDescriptionProduct);
 
         panelInputDataProduct.add(imageButton);
-
-        ButtonGroup groupStatus = new ButtonGroup();
-        groupStatus.add(statusReadyProduct);
-        groupStatus.add(statusSoldProduct);
-
-        ButtonGroup groupTypeProduct = new ButtonGroup();
-        groupTypeProduct.add(typeCoffeProduct);
-        groupTypeProduct.add(typeDrinkProduct);
-        groupTypeProduct.add(typeFoodProduct);
 
         panelInputDataProduct.add(statusReadyProduct);
         panelInputDataProduct.add(statusSoldProduct);
@@ -225,6 +238,13 @@ public class cInputProductView extends cPanelContentApp {
             boolean saveData = cInsertDataProduct.dataProduct(nameProduct, imageProduct, countProduct, priceProduct,
                     DescriptionProduct, typeProduct, statusProduct);
             if (saveData) {
+                txtNameProduct.setText(null);
+                txtCountProduct.setText(null);
+                txtDescriptionProduct.setText(null);
+                txtPriceProduct.setText(null);
+                groupStatus.clearSelection();
+                groupTypeProduct.clearSelection();
+                imageButton.setFocusable(false);
                 JOptionPane.showMessageDialog(this, "Product saved successfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to save product.");

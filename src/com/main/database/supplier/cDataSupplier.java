@@ -11,23 +11,21 @@ import com.main.database.cConnectionDatabase;
 public class cDataSupplier {
     public static DefaultTableModel getAllSupplier() {
 
-        String[] dataHeader = { "Id", "Company", "Type", "Amount", "Price", "Description"};
+        String[] dataHeader = { "ID", "Stock", "Amount", "Price", "Description" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM tbl_supplier";
-        try(Connection conn = cConnectionDatabase.getConnection();
-        PreparedStatement state = conn.prepareStatement(query)) {
-            
+        try (Connection conn = cConnectionDatabase.getConnection();
+                PreparedStatement state = conn.prepareStatement(query)) {
 
             ResultSet resultData = state.executeQuery(query);
 
             while (resultData.next()) {
-                Object[] rowData = { "SD" + resultData.getInt("idSupplier"),
-                        resultData.getString("nameCompany"),
+                Object[] rowData = { "S00" + resultData.getInt("idSupplier"),
                         resultData.getString("typeSupplier"),
                         resultData.getInt("supplierAmount"),
                         resultData.getInt("priceTotal"),
-                        resultData.getString("descriptionProduct")};
+                        resultData.getString("descriptionProduct") };
                 tm.addRow(rowData);
             }
         } catch (Exception e) {
