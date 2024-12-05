@@ -23,16 +23,14 @@ public class cInputSupplierView extends cPanelContentApp {
     private cPanelRounded panelInputSupplier = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
     // component Input Supplier
-    private cLabelInfo labelNameCompany = new cLabelInfo("Name Company", 180, 120, 300, 30);
-    private cLabelInfo labelTypeSupplier = new cLabelInfo("Type Supplier", 180, 195, 300, 30);
-    private cLabelInfo labelSupplierAmount = new cLabelInfo("Supplier Amount", 180, 270, 300, 30);
+    private cLabelInfo labelTypeSupplier = new cLabelInfo("Type Supplier", 180, 120, 300, 30);
+    private cLabelInfo labelSupplierAmount = new cLabelInfo("Supplier Amount", 180, 195, 300, 30);
     private cLabelInfo labelPriceTotal = new cLabelInfo("Price Total", 580, 120, 300, 30);
     private cLabelInfo labelDescriptionProduct = new cLabelInfo("Description Product", 580, 195, 300, 30);
 
     // add textfield input product
-    private cTextField txtNameCompany = new cTextField(180, 145, 300);
-    private cTextField txtTypeSupplier = new cTextField(180, 220, 300);
-    private cTextField txtSupplierAmount = new cTextField(180, 295, 300);
+    private cTextField txtTypeSupplier = new cTextField(180, 145, 300);
+    private cTextField txtSupplierAmount = new cTextField(180, 220, 300);
     private cTextField txtPriceTotal = new cTextField(580, 145, 300);
     private cTextArea txtDescriptionProduct = new cTextArea(580, 220, 300, 100, true);
 
@@ -68,7 +66,6 @@ public class cInputSupplierView extends cPanelContentApp {
         btnResetSupplier.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                txtNameCompany.setText(null);
                 txtTypeSupplier.setText(null);
                 txtSupplierAmount.setText(null);
                 txtPriceTotal.setText(null);
@@ -81,13 +78,11 @@ public class cInputSupplierView extends cPanelContentApp {
 
         panelInputSupplier.add(labelInputSupplier);
 
-        panelInputSupplier.add(labelNameCompany);
         panelInputSupplier.add(labelTypeSupplier);
         panelInputSupplier.add(labelSupplierAmount);
         panelInputSupplier.add(labelPriceTotal);
         panelInputSupplier.add(labelDescriptionProduct);
 
-        panelInputSupplier.add(txtNameCompany);
         panelInputSupplier.add(txtTypeSupplier);
         panelInputSupplier.add(txtSupplierAmount);
         panelInputSupplier.add(txtPriceTotal);
@@ -103,16 +98,14 @@ public class cInputSupplierView extends cPanelContentApp {
     }
     
     private void handleInsertSupplier(){
-        String nameCompany = txtNameCompany.getText();
         String typeSupplier = txtTypeSupplier.getText();
         int supplierAmount = Integer.valueOf(txtSupplierAmount.getText());
         int priceTotal = Integer.valueOf(txtPriceTotal.getText());
         String descriptionProduct = txtDescriptionProduct.getText();
 
-        boolean saveData = cInsertDataSupplier.dataSupplier(nameCompany, typeSupplier, supplierAmount, priceTotal,
+        boolean saveData = cInsertDataSupplier.dataSupplier(typeSupplier, supplierAmount, priceTotal,
                     descriptionProduct);
             if (saveData) {
-                txtNameCompany.setText(null);
                 txtTypeSupplier.setText(null);
                 txtSupplierAmount.setText(null);
                 txtPriceTotal.setText(null);
