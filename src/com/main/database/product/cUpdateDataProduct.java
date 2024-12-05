@@ -36,16 +36,6 @@ public class cUpdateDataProduct {
             state.setString(7, statusProduct);
             state.setInt(8, idProduct);
 
-            System.out.println("Executing query with parameters:");
-            System.out.println("Name: " + nameProduct);
-            System.out.println("Image Path: " + imageProduct);
-            System.out.println("Count: " + countProduct);
-            System.out.println("Price: " + priceProduct);
-            System.out.println("Description: " + descriptionProduct);
-            System.out.println("Type: " + typeProduct);
-            System.out.println("Status: " + statusProduct);
-            System.out.println("ID: " + idProduct);
-
             int rowsAffected = state.executeUpdate();
 
             if (rowsAffected > 0) {

@@ -1,9 +1,12 @@
 package com.view.adminView.dataSupplierView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.supplier.cDataSupplier;
+import com.main.database.supplier.cDeleteDataSupplier;
+import com.main.database.supplier.cLoadDataSupplier;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -64,14 +67,47 @@ public class cDataSupplierView extends cPanelContentApp {
         btnUpdateDataSupplier.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showUpdateDataSupplierView();
+                int selectedIndex = tblDataSupplier.getSelectedRow();
+
+                if (selectedIndex != -1) {
+                    String idString = tblDataSupplier.getValueAt(selectedIndex, 0).toString();
+                    int idSupplier = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
+
+                    String typeSupplier = tblDataSupplier.getValueAt(selectedIndex, 1).toString();
+                    int supplierAmount = Integer.parseInt(tblDataSupplier.getValueAt(selectedIndex, 2).toString());
+                    String priceTotalString = tblDataSupplier.getValueAt(selectedIndex, 3).toString();
+                    priceTotalString = priceTotalString.replaceAll("[^0-9]", "");
+                    int priceTotal = Integer.parseInt(priceTotalString);
+                    String descriptionProduct = tblDataSupplier.getValueAt(selectedIndex, 4).toString();
+
+                    parentPanel.showUpdateDataSupplierView(idSupplier, typeSupplier, supplierAmount, priceTotal,
+                            descriptionProduct);
+                } else {
+                    System.out.println("Pilih supplier untuk diperbarui.");
+                }
             }
         });
 
         btnDeleteDataSupplier.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDeleteDataSupplierView();
+                int selectedRow = tblDataSupplier.getSelectedRow();
+                if (selectedRow != -1) {
+                    String idSupplierString = tblDataSupplier.getValueAt(selectedRow, 0).toString();
+                    int idSupplier = Integer.parseInt(idSupplierString.replaceAll("[^0-9]", ""));
+
+                    boolean deleted = cDeleteDataSupplier.handleDeleteDataSupplier(idSupplier);
+
+                    if (deleted) {
+                        DefaultTableModel model = (DefaultTableModel) tblDataSupplier.getModel();
+                        model.removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(null, "Supplier berhasil dihapus!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal menghapus supplier.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pilih supplier yang akan dihapus.");
+                }
             }
         });
 
@@ -127,7 +163,6 @@ public class cDataSupplierView extends cPanelContentApp {
         panelDataSupplier.revalidate();
         panelDataSupplier.repaint();
 
-        
         tblDataSupplier.getColumnModel().getColumn(0).setMinWidth(80);
         tblDataSupplier.getColumnModel().getColumn(0).setMaxWidth(80);
         tblDataSupplier.getColumnModel().getColumn(0).setWidth(80);

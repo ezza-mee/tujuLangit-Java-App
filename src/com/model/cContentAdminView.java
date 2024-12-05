@@ -182,9 +182,12 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateDataSupplierView() {
+    public void showUpdateDataSupplierView(int idSupplier, String typeSupplier, int supplierAmount, int priceTotal,
+            String descriptionProduct) {
         refreshContent();
         bgPanel.add(componentUpdateSupplierView);
+        componentUpdateSupplierView.setDataSupplier(idSupplier, typeSupplier, supplierAmount, priceTotal,
+                descriptionProduct);
         bgPanel.revalidate();
         bgPanel.repaint();
 
