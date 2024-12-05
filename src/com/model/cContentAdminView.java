@@ -90,6 +90,7 @@ public class cContentAdminView extends cPanelContentApp {
         refreshContent();
 
         bgPanel.add(componentDataSupplierView);
+        componentDataSupplierView.loadDataSuppliers();
         bgPanel.revalidate();
         bgPanel.repaint();
 
