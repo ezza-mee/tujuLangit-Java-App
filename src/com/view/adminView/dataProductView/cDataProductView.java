@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 
 import com.main.database.product.cDeleteDataProduct;
 import com.main.database.product.cLoadDataProduct;

@@ -7,7 +7,6 @@ import com.main.database.supplier.*;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
-import com.view.adminView.dataProductView.cDataProductView;
 
 public class cInputSupplierView extends cPanelContentApp {
 
@@ -48,7 +47,6 @@ public class cInputSupplierView extends cPanelContentApp {
     private void initsInputSupplierView() {
         setVisible(true);
 
-        
         btnSaveSupplier.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {

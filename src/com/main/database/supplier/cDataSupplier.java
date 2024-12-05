@@ -15,9 +15,8 @@ public class cDataSupplier {
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM tbl_supplier";
-        try(Connection conn = cConnectionDatabase.getConnection();
-        PreparedStatement state = conn.prepareStatement(query)) {
-            
+        try (Connection conn = cConnectionDatabase.getConnection();
+                PreparedStatement state = conn.prepareStatement(query)) {
 
             ResultSet resultData = state.executeQuery(query);
 
@@ -26,7 +25,7 @@ public class cDataSupplier {
                         resultData.getString("typeSupplier"),
                         resultData.getInt("supplierAmount"),
                         resultData.getInt("priceTotal"),
-                        resultData.getString("descriptionProduct")};
+                        resultData.getString("descriptionProduct") };
                 tm.addRow(rowData);
             }
         } catch (Exception e) {

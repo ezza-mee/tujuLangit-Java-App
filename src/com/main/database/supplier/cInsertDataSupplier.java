@@ -20,17 +20,15 @@ public class cInsertDataSupplier {
                 state.setInt(3, priceTotal);
                 state.setString(4, descriptionProduct);
 
-                if (state.executeUpdate() > 0) {
-                    data = true;
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if (state.executeUpdate() > 0) {
+                data = true;
             }
 
-            return data;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-}
+        return data;
+    }
 
-    
+}
