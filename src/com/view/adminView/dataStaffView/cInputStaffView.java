@@ -43,10 +43,11 @@ public class cInputStaffView extends cPanelContentApp {
 
     // add combobox jobdesk Staff
     private cComboBox boxJobdeskStaff = new cComboBox(
-            new String[] { "Jodesk", "Cashier", "Barista", "Manajer", "Waiter", "Cleaning staff", "Owner" }, 580, 145,
+            new String[] { "Jodesk", "Cashier", "Barista", "Manager", "Waiter", "Cleaning staff", "Owner" }, 580, 145,
             300, 30);
 
     // add radion button status Staff
+    private ButtonGroup groupStatusStaff = new ButtonGroup();
     private cRadioButton statusAktif = new cRadioButton("Active", "Active", 580, 375, 100);
     private cRadioButton statusInAktif = new cRadioButton("Inactive", "Inactive", 700, 375, 100);
 
@@ -87,6 +88,20 @@ public class cInputStaffView extends cPanelContentApp {
             }
         });
 
+        groupStatusStaff.add(statusAktif);
+        groupStatusStaff.add(statusInAktif);
+
+        btnResetStaff.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                txtNameStaff.setText(null);
+                txtPhoneNumberStaff.setText(null);
+                txtEmailStaff.setText(null);
+                txtAddressStaff.setText(null);
+                groupStatusStaff.clearSelection();
+            }
+        });
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
@@ -105,9 +120,8 @@ public class cInputStaffView extends cPanelContentApp {
 
         panelInputStaff.add(boxJobdeskStaff);
 
-        ButtonGroup groupButton = new ButtonGroup();
-        groupButton.add(statusAktif);
-        groupButton.add(statusInAktif);
+        groupStatusStaff.add(statusAktif);
+        groupStatusStaff.add(statusInAktif);
 
         panelInputStaff.add(statusAktif);
         panelInputStaff.add(statusInAktif);
@@ -139,6 +153,12 @@ public class cInputStaffView extends cPanelContentApp {
 
             boolean saveData = cInsertDataStaff.dataStaff(nameStaff, phoneNumber, email, jobdesk, address, status);
             if (saveData) {
+                txtNameStaff.setText(null);
+                txtPhoneNumberStaff.setText(null);
+                txtEmailStaff.setText(null);
+                txtAddressStaff.setText(null);
+                groupStatusStaff.clearSelection();
+
                 JOptionPane.showMessageDialog(this, "Input Data successfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to Input Data.");
