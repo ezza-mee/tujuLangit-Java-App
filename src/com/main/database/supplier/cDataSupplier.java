@@ -11,7 +11,7 @@ import com.main.database.cConnectionDatabase;
 public class cDataSupplier {
     public static DefaultTableModel getAllSupplier() {
 
-        String[] dataHeader = { "Id", "Type", "Amount", "Price", "Description" };
+        String[] dataHeader = { "ID", "Stock", "Amount", "Price", "Description" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM tbl_supplier";
