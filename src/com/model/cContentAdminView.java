@@ -155,9 +155,10 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateDataStaffView() {
+    public void showUpdateDataStaffView(int idStaff, String nameStaff, String phoneNumber, String email, String address) {
         refreshContent();
         bgPanel.add(componentUpdateStaffView);
+        componentUpdateStaffView.setDataStaff(idStaff, nameStaff, phoneNumber, email, address);
         bgPanel.revalidate();
         bgPanel.repaint();
 
