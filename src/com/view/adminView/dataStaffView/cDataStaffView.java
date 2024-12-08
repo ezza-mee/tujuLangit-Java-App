@@ -1,9 +1,11 @@
 package com.view.adminView.dataStaffView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.staff.cDataStaff;
+import com.main.database.staff.cDeleteDataStaff;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -64,14 +66,46 @@ public class cDataStaffView extends cPanelContentApp {
         btnUpdateDataStaff.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showUpdateDataStaffView();
+                int selectedIndex = tblDataStaff.getSelectedRow();
+
+                if (selectedIndex != -1) {
+                    String idString = tblDataStaff.getValueAt(selectedIndex, 0).toString();
+                    int idStaff = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
+
+                    String nameStaff = tblDataStaff.getValueAt(selectedIndex, 1).toString();
+                    String phoneNumber = tblDataStaff.getValueAt(selectedIndex, 2).toString();
+                    String email = tblDataStaff.getValueAt(selectedIndex, 3).toString();
+                    // String jobdesk = tblDataStaff.getValueAt(selectedIndex, 4).toString();
+                    String address = tblDataStaff.getValueAt(selectedIndex, 5).toString();
+                    // String status = tblDataStaff.getValueAt(selectedIndex, 6).toString();
+
+                    parentPanel.showUpdateDataStaffView(idStaff, nameStaff, phoneNumber, email, address);
+                } else {
+                    System.out.println("Pilih Staff untuk diperbarui.");
+                }
             }
         });
 
         btnDeleteDataStaff.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDeleteDataStaffView();
+                int selectedRow = tblDataStaff.getSelectedRow();
+                if (selectedRow != -1) {
+                    String idStaffString = tblDataStaff.getValueAt(selectedRow, 0).toString();
+                    int idStaff = Integer.parseInt(idStaffString.replaceAll("[^0-9]", ""));
+
+                    boolean deleted = cDeleteDataStaff.handleDeleteDataStaff(idStaff);
+
+                    if (deleted) {
+                        DefaultTableModel model = (DefaultTableModel) tblDataStaff.getModel();
+                        model.removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal menghapus Staff.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pilih Staff yang akan dihapus.");
+                }
             }
         });
 

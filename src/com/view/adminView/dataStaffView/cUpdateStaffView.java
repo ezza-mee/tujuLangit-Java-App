@@ -2,7 +2,9 @@ package com.view.adminView.dataStaffView;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
+import com.main.database.staff.cUpdateDataStaff;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;
@@ -50,10 +52,27 @@ public class cUpdateStaffView extends cPanelContentApp {
     private cButtonRounded btnResetStaff = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
+    // component label error Staff
+    private cErrorLabel errornameStaff = new cErrorLabel("Name Staff is Empty", 180, 170, 300);
+    private cErrorLabel errorphonenumber = new cErrorLabel("Phone Number is Empty", 180, 245, 300);
+    private cErrorLabel erroremail = new cErrorLabel("Email is Empty", 580, 170, 300);
+    private cErrorLabel erroraddress = new cErrorLabel("Address Supplier is Empty", 580, 315, 300);
+
+    private int idStaff;
+
     public cUpdateStaffView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
         initsUpdateStaffView();
+    }
+    
+    public void setDataStaff(int idStaff, String nameStaff, String phoneNumber, String email, String address) {
+        this.idStaff = idStaff;
+
+        txtNameStaff.setText(nameStaff);
+        txtNomorHpStaff.setText(phoneNumber);
+        txtEmailStaff.setText(email);
+        txtLocationStaff.setText(address);
     }
 
     private void initsUpdateStaffView() {
@@ -63,6 +82,13 @@ public class cUpdateStaffView extends cPanelContentApp {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 parentPanel.showDataStaffView();
+            }
+        });
+
+        btnSaveStaff.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                handleUpdateStaff(idStaff);
             }
         });
 
@@ -99,5 +125,55 @@ public class cUpdateStaffView extends cPanelContentApp {
         bgPanel.add(labelHeaderDataStaff);
         bgPanel.add(labelCopyright);
     }
+    private void handleUpdateStaff(int idStaff) {
+        String nameStaff = txtNameStaff.getText();
+        String phonenumber = txtNomorHpStaff.getText();
+        String email = txtEmailStaff.getText();
+        String address = txtLocationStaff.getText();
 
+        if (nameStaff.isEmpty() || phonenumber.isEmpty() || email.isEmpty() ||
+                address.isEmpty()) {
+
+            if (nameStaff.isEmpty()) {
+                panelInputStaff.add(errornameStaff);
+            } else {
+                panelInputStaff.remove(errornameStaff);
+            }
+
+            if (phonenumber.isEmpty()) {
+                panelInputStaff.add(errorphonenumber);
+            } else {
+                panelInputStaff.remove(errorphonenumber);
+            }
+
+            if (email.isEmpty()) {
+                panelInputStaff.add(erroremail);
+            } else {
+                panelInputStaff.remove(erroremail);
+            }
+
+            if (address.isEmpty()) {
+                panelInputStaff.add(erroraddress);
+            } else {
+                panelInputStaff.remove(erroraddress);
+            }
+
+            panelInputStaff.revalidate();
+            panelInputStaff.repaint();
+
+            return;
+        }
+
+        boolean saveData = cUpdateDataStaff.handleUpdateStaff(idStaff, nameStaff, phonenumber,
+        email, address);
+        if (saveData) {
+            txtNameStaff.setText(null);
+            txtNomorHpStaff.setText(null);
+            txtEmailStaff.setText(null);
+            txtLocationStaff.setText(null);
+            JOptionPane.showMessageDialog(this, "Saved Staff successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to save Staff.");
+        }
+    }
 }
