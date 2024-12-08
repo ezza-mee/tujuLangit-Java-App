@@ -114,22 +114,6 @@ public class cDataSupplierView extends cPanelContentApp {
         tblDataSupplier = new cTable(cDataSupplier.getAllSupplier());
         spDataSupplier = new cScrollTable(tblDataSupplier, 0, 10, 1050, 400);
 
-        tblDataSupplier.getColumnModel().getColumn(0).setMinWidth(80);
-        tblDataSupplier.getColumnModel().getColumn(0).setMaxWidth(80);
-        tblDataSupplier.getColumnModel().getColumn(0).setWidth(80);
-
-        tblDataSupplier.getColumnModel().getColumn(1).setMinWidth(220);
-        tblDataSupplier.getColumnModel().getColumn(1).setMaxWidth(220);
-        tblDataSupplier.getColumnModel().getColumn(1).setWidth(220);
-
-        tblDataSupplier.getColumnModel().getColumn(2).setMinWidth(120);
-        tblDataSupplier.getColumnModel().getColumn(2).setMaxWidth(120);
-        tblDataSupplier.getColumnModel().getColumn(2).setWidth(120);
-
-        tblDataSupplier.getColumnModel().getColumn(3).setMinWidth(180);
-        tblDataSupplier.getColumnModel().getColumn(3).setMaxWidth(180);
-        tblDataSupplier.getColumnModel().getColumn(3).setWidth(180);
-
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 

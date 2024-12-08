@@ -11,7 +11,7 @@ import com.main.database.cConnectionDatabase;
 public class cDataStaff {
     public static DefaultTableModel getAllStaff() {
 
-        String[] dataHeader = { "Id", "name", "phonenumber", "email", "jobdesk", "address", "status" };
+        String[] dataHeader = { "ID", "Name", "Phone number", "Email", "Jobdesk", "Address", "Status" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM tbl_staff";
@@ -21,7 +21,7 @@ public class cDataStaff {
             ResultSet resultData = state.executeQuery(query);
 
             while (resultData.next()) {
-                Object[] rowData = { "S00" + resultData.getInt("idStaff"),
+                Object[] rowData = { "SF00" + resultData.getInt("idStaff"),
                         resultData.getString("nameStaff"),
                         resultData.getString("phoneNumber"),
                         resultData.getString("email"),
