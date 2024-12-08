@@ -54,7 +54,7 @@ public class cDataStaffView extends cPanelContentApp {
     }
 
     private void initsDataStaffView() {
-        setVisible(true);
+        refreshContent();
 
         btnInputDataStaff.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -112,22 +112,6 @@ public class cDataStaffView extends cPanelContentApp {
         tblDataStaff = new cTable(cDataStaff.getAllStaff());
         spDataStaff = new cScrollTable(tblDataStaff, 0, 80, 1050, 400);
 
-        tblDataStaff.getColumnModel().getColumn(0).setMinWidth(80);
-        tblDataStaff.getColumnModel().getColumn(0).setMaxWidth(80);
-        tblDataStaff.getColumnModel().getColumn(0).setWidth(80);
-
-        tblDataStaff.getColumnModel().getColumn(1).setMinWidth(220);
-        tblDataStaff.getColumnModel().getColumn(1).setMaxWidth(220);
-        tblDataStaff.getColumnModel().getColumn(1).setWidth(220);
-
-        tblDataStaff.getColumnModel().getColumn(2).setMinWidth(120);
-        tblDataStaff.getColumnModel().getColumn(2).setMaxWidth(120);
-        tblDataStaff.getColumnModel().getColumn(2).setWidth(120);
-
-        tblDataStaff.getColumnModel().getColumn(3).setMinWidth(180);
-        tblDataStaff.getColumnModel().getColumn(3).setMaxWidth(180);
-        tblDataStaff.getColumnModel().getColumn(3).setWidth(180);
-
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
@@ -146,8 +130,13 @@ public class cDataStaffView extends cPanelContentApp {
         bgPanel.add(labelHeaderDataStaff);
         bgPanel.add(labelCopyright);
 
+        loadDataStaff();
+
+        setVisible(true);
+
     }
-    public void loadDataSuppliers() {
+
+    public void loadDataStaff() {
         DefaultTableModel modelTable = cDataStaff.getAllStaff();
 
         tblDataStaff.setModel(modelTable);
@@ -155,7 +144,6 @@ public class cDataStaffView extends cPanelContentApp {
         panelDataStaff.revalidate();
         panelDataStaff.repaint();
 
-        
         tblDataStaff.getColumnModel().getColumn(0).setMinWidth(80);
         tblDataStaff.getColumnModel().getColumn(0).setMaxWidth(80);
         tblDataStaff.getColumnModel().getColumn(0).setWidth(80);
@@ -164,13 +152,25 @@ public class cDataStaffView extends cPanelContentApp {
         tblDataStaff.getColumnModel().getColumn(1).setMaxWidth(220);
         tblDataStaff.getColumnModel().getColumn(1).setWidth(220);
 
-        tblDataStaff.getColumnModel().getColumn(2).setMinWidth(120);
-        tblDataStaff.getColumnModel().getColumn(2).setMaxWidth(120);
-        tblDataStaff.getColumnModel().getColumn(2).setWidth(120);
+        tblDataStaff.getColumnModel().getColumn(2).setMinWidth(150);
+        tblDataStaff.getColumnModel().getColumn(2).setMaxWidth(150);
+        tblDataStaff.getColumnModel().getColumn(2).setWidth(150);
 
-        tblDataStaff.getColumnModel().getColumn(3).setMinWidth(180);
-        tblDataStaff.getColumnModel().getColumn(3).setMaxWidth(180);
-        tblDataStaff.getColumnModel().getColumn(3).setWidth(180);
+        tblDataStaff.getColumnModel().getColumn(3).setMinWidth(200);
+        tblDataStaff.getColumnModel().getColumn(3).setMaxWidth(200);
+        tblDataStaff.getColumnModel().getColumn(3).setWidth(200);
+
+        tblDataStaff.getColumnModel().getColumn(4).setMinWidth(160);
+        tblDataStaff.getColumnModel().getColumn(4).setMaxWidth(160);
+        tblDataStaff.getColumnModel().getColumn(4).setWidth(160);
+
+        tblDataStaff.getColumnModel().getColumn(5).setMinWidth(170);
+        tblDataStaff.getColumnModel().getColumn(5).setMaxWidth(170);
+        tblDataStaff.getColumnModel().getColumn(5).setWidth(170);
+
+        tblDataStaff.getColumnModel().getColumn(6).setMinWidth(70);
+        tblDataStaff.getColumnModel().getColumn(6).setMaxWidth(70);
+        tblDataStaff.getColumnModel().getColumn(6).setWidth(70);
 
     }
 }
