@@ -15,12 +15,12 @@ public class Controller {
     // private static cDashboardAdminView dashboardAdmin = new cDashboardAdminView();
 
     // public static void showLoginAdmin() {
-    //     frameLogin.initsLoginView();
-    //     frameLogin.setVisible(true);
+    // frameLogin.initsLoginView();
+    // frameLogin.setVisible(true);
     // }
 
     // public static void hiddenFrameLogin(){
-    //     frameLogin.setVisible(false);
+    // frameLogin.setVisible(false);
     // }
 
     // public static void showDashboardAdmin() {
@@ -39,8 +39,8 @@ public class Controller {
     }
 
     // public static void showDashboardAdmin() {
-    //     DashboardAdmin.initsViewDashboardAdmin();
-    //     DashboardAdmin.setVisible(true);
+    // DashboardAdmin.initsViewDashboardAdmin();
+    // DashboardAdmin.setVisible(true);
     // }
 
 }

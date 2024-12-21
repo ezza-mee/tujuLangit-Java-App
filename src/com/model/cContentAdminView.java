@@ -157,10 +157,10 @@ public class cContentAdminView extends cPanelContentApp {
     }
 
     public void showUpdateDataStaffView(int idStaff, String nameStaff, String phoneNumber, String email,
-            String address) {
+            String address, String jobdesk, String status) {
         refreshContent();
         bgPanel.add(componentUpdateStaffView);
-        componentUpdateStaffView.setDataStaff(idStaff, nameStaff, phoneNumber, email, address);
+        componentUpdateStaffView.setDataStaff(idStaff, nameStaff, phoneNumber, email, address, jobdesk, status);
         bgPanel.revalidate();
         bgPanel.repaint();
 
