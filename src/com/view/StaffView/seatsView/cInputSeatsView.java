@@ -105,6 +105,7 @@ public class cInputSeatsView extends cPanelContentApp {
             String amountSeats = txtAmountSeats.getText().trim();
             String deskripsiSeats = txtDeskripsiSeats.getText().trim();
             String statusSeats = null;
+            System.out.println("hahshaufhrihgfoiuarhg;oigre");
 
             boolean saveData = cInsertDataSeats.dataSeats(kodeSeats, typeSeats, amountSeats, deskripsiSeats);
             if (saveData) {
