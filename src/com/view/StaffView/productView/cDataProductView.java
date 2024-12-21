@@ -21,7 +21,6 @@ public class cDataProductView extends cPanelContentApp {
 
     // component label data Menu
     private cLabelInfo labelListDataMenu = new cLabelInfo("List Data Menu", 30, 30, 580, 30);
-    private cLabelInfo labelListUsed = new cLabelInfo("Menu Sold", 30, 30, 400, 30);
 
     // component button data Menu
 

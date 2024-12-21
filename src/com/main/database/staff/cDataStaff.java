@@ -21,7 +21,7 @@ public class cDataStaff {
             ResultSet resultData = state.executeQuery(query);
 
             while (resultData.next()) {
-                Object[] rowData = { "SF00" + resultData.getInt("idStaff"),
+                Object[] rowData = { "NS00" + resultData.getInt("idStaff"),
                         resultData.getString("nameStaff"),
                         resultData.getString("phoneNumber"),
                         resultData.getString("email"),
