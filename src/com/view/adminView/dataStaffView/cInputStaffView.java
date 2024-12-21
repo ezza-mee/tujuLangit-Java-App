@@ -59,7 +59,7 @@ public class cInputStaffView extends cPanelContentApp {
     // component error label input product
     private cErrorLabel errorNameStaff = new cErrorLabel("Name is Empty", 180, 175, 300);
     private cErrorLabel errorEmailStaff = new cErrorLabel("Email is Empty", 180, 260, 300);
-    private cErrorLabel errorNomorHpStaff = new cErrorLabel("Phone number is Empty", 180, 345, 300);
+    private cErrorLabel errorPhoneNumberStaff = new cErrorLabel("Phone number is Empty", 180, 345, 300);
     private cErrorLabel errorJobdeskStaff = new cErrorLabel("Jobdesk is Empty", 180, 430, 300);
     private cErrorLabel errorAddressStaff = new cErrorLabel("address is Empty", 580, 175, 300);
     private cErrorLabel errorlabelStatusStaff = new cErrorLabel("Status is Empty", 580, 345, 300);
@@ -141,9 +141,41 @@ public class cInputStaffView extends cPanelContentApp {
             String nameStaff = txtNameStaff.getText().trim();
             String phoneNumber = txtPhoneNumberStaff.getText().trim();
             String email = txtEmailStaff.getText().trim();
-            String jobdesk = null;
+            String jobdesk = (String) boxJobdeskStaff.getSelectedItem();
             String address = txtAddressStaff.getText().trim();
             String status = null;
+
+            if (nameStaff.isEmpty() || phoneNumber.isEmpty() || email.isEmpty() ||
+                    jobdesk.isEmpty() || address.isEmpty() ||
+                    (!statusAktif.isSelected() && !statusInAktif.isSelected())) {
+                if (nameStaff.isEmpty()) {
+                    panelInputStaff.add(errorNameStaff);
+                } else {
+                    panelInputStaff.remove(errorNameStaff);
+                }
+                if (phoneNumber.isEmpty()) {
+                    panelInputStaff.add(errorPhoneNumberStaff);
+                } else {
+                    panelInputStaff.remove(errorPhoneNumberStaff);
+                }
+
+                if (email.isEmpty()) {
+                    panelInputStaff.add(errorEmailStaff);
+                } else {
+                    panelInputStaff.remove(errorEmailStaff);
+                }
+
+                if (jobdesk.isEmpty()) {
+                    panelInputStaff.add(errorJobdeskStaff);
+                } else {
+                    panelInputStaff.remove(errorJobdeskStaff);
+                }
+
+                panelInputStaff.revalidate();
+                panelInputStaff.repaint();
+
+                return;
+            }
 
             if (statusAktif.isSelected()) {
                 status = "Active";
