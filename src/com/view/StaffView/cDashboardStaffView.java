@@ -10,10 +10,10 @@ public class cDashboardStaffView extends cFrameDashboardApp {
 
     public cDashboardStaffView() {
         super();
-        initsViewDashboardKaryawan();
+        initsViewDashboardStaff();
     }
 
-    public void initsViewDashboardKaryawan() {
+    public void initsViewDashboardStaff() {
         setVisible(true);
 
         componentContentView.setBounds(240, 70, 1126, 698);
