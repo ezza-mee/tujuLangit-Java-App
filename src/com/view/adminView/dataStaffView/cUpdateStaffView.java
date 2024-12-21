@@ -25,38 +25,41 @@ public class cUpdateStaffView extends cPanelContentApp {
 
     // component label Data Staff
     private cLabelInfo labelNameStaff = new cLabelInfo("Name", 180, 120, 300, 30);
-    private cLabelInfo labelEmailStaff = new cLabelInfo("Email", 180, 195, 300, 30);
-    private cLabelInfo labelNomorHpStaff = new cLabelInfo("Nomor Hp", 180, 270, 300, 30);
+    private cLabelInfo labelNomorHpStaff = new cLabelInfo("Nomor Hp", 180, 195, 300, 30);
+    private cLabelInfo labelEmailStaff = new cLabelInfo("Email", 180, 270, 300, 30);
     private cLabelInfo labelJobdeskStaff = new cLabelInfo("Jobdesk", 580, 120, 300, 30);
-    private cLabelInfo labelLocationStaff = new cLabelInfo("Address", 580, 195, 300, 30);
+    private cLabelInfo labelAddressStaff = new cLabelInfo("Address", 580, 195, 300, 30);
     private cLabelInfo labelStatusStaff = new cLabelInfo("Status", 580, 345, 300, 30);
 
-    // add textfield update Staff
+    // add textfield input Staff
     private cTextField txtNameStaff = new cTextField(180, 145, 300);
-    private cTextField txtEmailStaff = new cTextField(180, 220, 300);
-    private cTextField txtNomorHpStaff = new cTextField(180, 295, 300);
+    private cTextField txtPhoneNumberStaff = new cTextField(180, 220, 300);
+    private cTextField txtEmailStaff = new cTextField(180, 295, 300);
 
-    private cTextArea txtLocationStaff = new cTextArea(580, 220, 300, 100, true);
+    private cTextArea txtAddressStaff = new cTextArea(580, 220, 300, 100, true);
 
     // add combobox jobdesk Staff
     private cComboBox boxJobdeskStaff = new cComboBox(
-            new String[] { "Jodesk", "Cashier", "Barista", "Manajer", "Waiter", "Cleaning staff", "Owner" }, 580, 145,
+            new String[] { "Jobdesk", "Cashier", "Barista", "Manager", "Waiter", "Cleaning staff", "Owner" }, 580, 145,
             300, 30);
 
     // add radion button status Staff
+    private ButtonGroup groupStatusStaff = new ButtonGroup();
     private cRadioButton statusAktif = new cRadioButton("Active", "Active", 580, 375, 100);
     private cRadioButton statusInAktif = new cRadioButton("Inactive", "Inactive", 700, 375, 100);
 
-    // component button Update Staff
+    // component button Input Staff
     private cButtonRounded btnSaveStaff = new cButtonRounded("Save", 780, 480, 110, 40, 10);
     private cButtonRounded btnResetStaff = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
-    // component label error Staff
-    private cErrorLabel errornameStaff = new cErrorLabel("Name Staff is Empty", 180, 170, 300);
-    private cErrorLabel errorphonenumber = new cErrorLabel("Phone Number is Empty", 180, 245, 300);
-    private cErrorLabel erroremail = new cErrorLabel("Email is Empty", 580, 170, 300);
-    private cErrorLabel erroraddress = new cErrorLabel("Address Supplier is Empty", 580, 315, 300);
+    // component error label input product
+    private cErrorLabel errorNameStaff = new cErrorLabel("Name is Empty", 180, 170, 300);
+    private cErrorLabel errorPhoneNumberStaff = new cErrorLabel("Phone number is Empty", 180, 245, 300);
+    private cErrorLabel errorEmailStaff = new cErrorLabel("Email is Empty", 180, 320, 300);
+    private cErrorLabel errorJobdeskStaff = new cErrorLabel("Jobdesk is Empty", 580, 170, 300);
+    private cErrorLabel errorAddressStaff = new cErrorLabel("address is Empty", 580, 320, 300);
+    private cErrorLabel errorStatusStaff = new cErrorLabel("Status is Empty", 580, 400, 300);
 
     private int idStaff;
 
@@ -65,14 +68,24 @@ public class cUpdateStaffView extends cPanelContentApp {
         this.parentPanel = parentPanel;
         initsUpdateStaffView();
     }
-    
-    public void setDataStaff(int idStaff, String nameStaff, String phoneNumber, String email, String address) {
+
+    public void setDataStaff(int idStaff, String nameStaff, String phoneNumber, String email, String address,
+            String jobdesk, String status) {
         this.idStaff = idStaff;
 
         txtNameStaff.setText(nameStaff);
-        txtNomorHpStaff.setText(phoneNumber);
+        txtPhoneNumberStaff.setText(phoneNumber);
         txtEmailStaff.setText(email);
-        txtLocationStaff.setText(address);
+        txtAddressStaff.setText(address);
+        boxJobdeskStaff.setSelectedItem(jobdesk);
+
+        if (status.equalsIgnoreCase("Ready")) {
+            statusAktif.setSelected(true);
+            statusInAktif.setSelected(false);
+        } else {
+            statusAktif.setSelected(false);
+            statusInAktif.setSelected(true);
+        }
     }
 
     private void initsUpdateStaffView() {
@@ -82,6 +95,18 @@ public class cUpdateStaffView extends cPanelContentApp {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 parentPanel.showDataStaffView();
+            }
+        });
+
+        btnResetStaff.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                txtNameStaff.setText(null);
+                txtPhoneNumberStaff.setText(null);
+                txtEmailStaff.setText(null);
+                txtAddressStaff.setText(null);
+                groupStatusStaff.clearSelection();
+                boxJobdeskStaff.setSelectedItem("Jobdesk");
             }
         });
 
@@ -100,13 +125,13 @@ public class cUpdateStaffView extends cPanelContentApp {
         panelInputStaff.add(labelEmailStaff);
         panelInputStaff.add(labelNomorHpStaff);
         panelInputStaff.add(labelJobdeskStaff);
-        panelInputStaff.add(labelLocationStaff);
+        panelInputStaff.add(labelAddressStaff);
         panelInputStaff.add(labelStatusStaff);
 
         panelInputStaff.add(txtNameStaff);
         panelInputStaff.add(txtEmailStaff);
-        panelInputStaff.add(txtNomorHpStaff);
-        panelInputStaff.add(txtLocationStaff);
+        panelInputStaff.add(txtPhoneNumberStaff);
+        panelInputStaff.add(txtAddressStaff);
 
         panelInputStaff.add(boxJobdeskStaff);
 
@@ -125,55 +150,80 @@ public class cUpdateStaffView extends cPanelContentApp {
         bgPanel.add(labelHeaderDataStaff);
         bgPanel.add(labelCopyright);
     }
+
     private void handleUpdateStaff(int idStaff) {
-        String nameStaff = txtNameStaff.getText();
-        String phonenumber = txtNomorHpStaff.getText();
-        String email = txtEmailStaff.getText();
-        String address = txtLocationStaff.getText();
+        try {
+            String nameStaff = txtNameStaff.getText().trim();
+            String phoneNumber = txtPhoneNumberStaff.getText().trim();
+            String email = txtEmailStaff.getText().trim();
+            String jobdesk = (String) boxJobdeskStaff.getSelectedItem();
+            String address = txtAddressStaff.getText().trim();
+            String status = null;
 
-        if (nameStaff.isEmpty() || phonenumber.isEmpty() || email.isEmpty() ||
-                address.isEmpty()) {
+            if (nameStaff.isEmpty() || phoneNumber.isEmpty() || email.isEmpty() ||
+                    jobdesk.isEmpty() || address.isEmpty() ||
+                    (!statusAktif.isSelected() && !statusInAktif.isSelected())) {
+                if (nameStaff.isEmpty()) {
+                    panelInputStaff.add(errorNameStaff);
+                } else {
+                    panelInputStaff.remove(errorNameStaff);
+                }
+                if (phoneNumber.isEmpty()) {
+                    panelInputStaff.add(errorPhoneNumberStaff);
+                } else {
+                    panelInputStaff.remove(errorPhoneNumberStaff);
+                }
+                if (boxJobdeskStaff.getSelectedItem() == null
+                        || boxJobdeskStaff.getSelectedItem().toString().trim().equals("Jobdesk")) {
+                    panelInputStaff.add(errorJobdeskStaff);
+                } else {
+                    panelInputStaff.remove(errorJobdeskStaff);
+                }
+                if (email.isEmpty()) {
+                    panelInputStaff.add(errorEmailStaff);
+                } else {
+                    panelInputStaff.remove(errorEmailStaff);
+                }
+                if (address.isEmpty()) {
+                    panelInputStaff.add(errorAddressStaff);
+                } else {
+                    panelInputStaff.remove(errorAddressStaff);
+                }
+                if (!statusAktif.isSelected() && !statusInAktif.isSelected()) {
+                    panelInputStaff.add(errorStatusStaff);
+                } else {
+                    panelInputStaff.remove(errorStatusStaff);
+                }
 
-            if (nameStaff.isEmpty()) {
-                panelInputStaff.add(errornameStaff);
-            } else {
-                panelInputStaff.remove(errornameStaff);
+                panelInputStaff.revalidate();
+                panelInputStaff.repaint();
+
+                return;
             }
 
-            if (phonenumber.isEmpty()) {
-                panelInputStaff.add(errorphonenumber);
-            } else {
-                panelInputStaff.remove(errorphonenumber);
+            if (statusAktif.isSelected()) {
+                status = "Active";
+            } else if (statusInAktif.isSelected()) {
+                status = "Inactive";
             }
 
-            if (email.isEmpty()) {
-                panelInputStaff.add(erroremail);
+            boolean saveData = cUpdateDataStaff.handleUpdateStaff(idStaff, nameStaff, phoneNumber, email, jobdesk,
+                    address, status);
+            if (saveData) {
+                txtNameStaff.setText(null);
+                txtPhoneNumberStaff.setText(null);
+                txtEmailStaff.setText(null);
+                txtAddressStaff.setText(null);
+                groupStatusStaff.clearSelection();
+                boxJobdeskStaff.setSelectedItem("Jobdesk");
+
+                JOptionPane.showMessageDialog(this, "Input Data successfully!");
             } else {
-                panelInputStaff.remove(erroremail);
+                JOptionPane.showMessageDialog(this, "Failed to Input Data.");
             }
 
-            if (address.isEmpty()) {
-                panelInputStaff.add(erroraddress);
-            } else {
-                panelInputStaff.remove(erroraddress);
-            }
-
-            panelInputStaff.revalidate();
-            panelInputStaff.repaint();
-
-            return;
-        }
-
-        boolean saveData = cUpdateDataStaff.handleUpdateStaff(idStaff, nameStaff, phonenumber,
-        email, address);
-        if (saveData) {
-            txtNameStaff.setText(null);
-            txtNomorHpStaff.setText(null);
-            txtEmailStaff.setText(null);
-            txtLocationStaff.setText(null);
-            JOptionPane.showMessageDialog(this, "Saved Staff successfully!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to save Staff.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
