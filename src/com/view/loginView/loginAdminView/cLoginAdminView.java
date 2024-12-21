@@ -72,7 +72,7 @@ public class cLoginAdminView extends cPanelCardLogin {
                     txtUsernameAdmin.setText(null);
                     txtPasswordAdmin.setText(null);
                     // Controller.hiddenFrameLogin();
-                    Controller.showDashboardAdmin();
+                    // Controller.showDashboardAdmin();
                 } else {
                     panelCardLogin.add(incorrectLabelUsername);
                     panelCardLogin.add(incorrectLabelPassword);

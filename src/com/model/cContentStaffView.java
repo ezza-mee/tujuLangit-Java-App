@@ -15,10 +15,6 @@ public class cContentStaffView extends cPanelContentApp {
     private cDataTransaksiView componentTransaksiView;
     private cHistoryTransaksiView componentHistoryTransaksiView = new cHistoryTransaksiView();
 
-    private cInputProductView componentInputProductView;
-    private cUpdateProductView componentUpdateProductView;
-    private cDeleteProductView componentDeleteProductView;
-
     private cInputSeatsView componentInputSeatsView;
     private cUpdateSeatsView componentUpdateSeatsView;
     private cDeleteSeatsView componentDeleteSeatsView;
@@ -30,9 +26,6 @@ public class cContentStaffView extends cPanelContentApp {
     public cContentStaffView() {
         super();
         componentProductView = new cDataProductView(this);
-        componentInputProductView = new cInputProductView(this);
-        componentUpdateProductView = new cUpdateProductView(this);
-        componentDeleteProductView = new cDeleteProductView(this);
 
         componentSeatsView = new cDataSeatsView(this);
         componentInputSeatsView = new cInputSeatsView(this);
@@ -94,34 +87,6 @@ public class cContentStaffView extends cPanelContentApp {
     public void showHistoryTransaksiView() {
         refreshContent();
         bgPanel.add(componentHistoryTransaksiView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    public void showInputDataProductView() {
-        refreshContent();
-        bgPanel.add(componentInputProductView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-
-    }
-
-    public void showUpdateDataProductView() {
-        refreshContent();
-        bgPanel.add(componentUpdateProductView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    public void showDeleteDataProductView() {
-        refreshContent();
-        bgPanel.add(componentDeleteProductView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

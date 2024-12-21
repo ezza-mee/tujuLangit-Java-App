@@ -2,6 +2,7 @@ package com.view.StaffView.seatsView;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
@@ -53,6 +54,12 @@ public class cInputSeatsView extends cPanelContentApp {
     public void showInputSeatsView() {
         setVisible(true);
 
+        btnSaveSeats.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+            }
+        });
+
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
@@ -89,5 +96,31 @@ public class cInputSeatsView extends cPanelContentApp {
         bgPanel.add(panelInputSeats);
         bgPanel.add(labelHeaderDataSeats);
         bgPanel.add(labelCopyright);
+    }
+
+    private void handleInsertSeats() {
+        try {
+            String kodeSeats = txtKodeSeats.getText().trim();
+            String typeSeats = txtTypeSeats.getText().trim();
+            String amountSeats = txtAmountSeats.getText().trim();
+            String deskripsiSeats = txtDeskripsiSeats.getText().trim();
+            String statusSeats = null;
+            System.out.println("hahshaufhrihgfoiuarhg;oigre");
+
+            boolean saveData = cInsertDataSeats.dataSeats(kodeSeats, typeSeats, amountSeats, deskripsiSeats);
+            if (saveData) {
+                txtKodeSeats.setText(null);
+                txtTypeSeats.setText(null);
+                txtAmountSeats.setText(null);
+                txtDeskripsiSeats.setText(null);
+                
+                JOptionPane.showMessageDialog(this, "Seats successfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to save seats.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
