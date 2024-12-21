@@ -9,18 +9,17 @@ public class Controller {
 
     // private static cLoginView frameLogin = new cLoginView();
 
-    // private static cDashboardKaryawanView DashboardKaryawan = new
-    // cDashboardKaryawanView();
+    // private static cDashboardStaffView DashboardStaff = new cDashboardStaffView();
 
     private static cDashboardAdminView dashboardAdmin = new cDashboardAdminView();
 
     // public static void showLoginAdmin() {
-    //     frameLogin.initsLoginView();
-    //     frameLogin.setVisible(true);
+    // frameLogin.initsLoginView();
+    // frameLogin.setVisible(true);
     // }
 
     // public static void hiddenFrameLogin(){
-    //     frameLogin.setVisible(false);
+    // frameLogin.setVisible(false);
     // }
 
     public static void showDashboardAdmin() {
@@ -29,18 +28,18 @@ public class Controller {
         dashboardAdmin.setVisible(true);
     }
 
-    public static void hiddenDashboardAdmin(){
+    public static void hiddenDashboardAdmin() {
         dashboardAdmin.setVisible(false);
     }
 
-    // public static void showDashboardKaryawan() {
-    // DashboardKaryawan.initsViewDashboardKaryawan();
-    // DashboardKaryawan.setVisible(true);
+    // public static void showDashboardStaff() {
+    // DashboardStaff.initsViewDashboardStaff();
+    // DashboardStaff.setVisible(true);
     // }
 
     // public static void showDashboardAdmin() {
-    //     DashboardAdmin.initsViewDashboardAdmin();
-    //     DashboardAdmin.setVisible(true);
+    // DashboardAdmin.initsViewDashboardAdmin();
+    // DashboardAdmin.setVisible(true);
     // }
 
 }

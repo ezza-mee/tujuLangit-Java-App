@@ -1,11 +1,8 @@
 package com.view.adminView.dataStaffView;
 
-import java.sql.SQLException;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import com.main.database.staff.cInsertDataStaff;
 import com.main.resources.templates.cPanelContentApp;
@@ -43,7 +40,7 @@ public class cInputStaffView extends cPanelContentApp {
 
     // add combobox jobdesk Staff
     private cComboBox boxJobdeskStaff = new cComboBox(
-            new String[] { "Jodesk", "Cashier", "Barista", "Manager", "Waiter", "Cleaning staff", "Owner" }, 580, 145,
+            new String[] { "Jobdesk", "Cashier", "Barista", "Manager", "Waiter", "Cleaning staff", "Owner" }, 580, 145,
             300, 30);
 
     // add radion button status Staff
@@ -57,12 +54,12 @@ public class cInputStaffView extends cPanelContentApp {
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
     // component error label input product
-    private cErrorLabel errorNameStaff = new cErrorLabel("Name is Empty", 180, 175, 300);
-    private cErrorLabel errorEmailStaff = new cErrorLabel("Email is Empty", 180, 260, 300);
-    private cErrorLabel errorPhoneNumberStaff = new cErrorLabel("Phone number is Empty", 180, 345, 300);
-    private cErrorLabel errorJobdeskStaff = new cErrorLabel("Jobdesk is Empty", 180, 430, 300);
-    private cErrorLabel errorAddressStaff = new cErrorLabel("address is Empty", 580, 175, 300);
-    private cErrorLabel errorlabelStatusStaff = new cErrorLabel("Status is Empty", 580, 345, 300);
+    private cErrorLabel errorNameStaff = new cErrorLabel("Name is Empty", 180, 170, 300);
+    private cErrorLabel errorPhoneNumberStaff = new cErrorLabel("Phone number is Empty", 180, 245, 300);
+    private cErrorLabel errorEmailStaff = new cErrorLabel("Email is Empty", 180, 320, 300);
+    private cErrorLabel errorJobdeskStaff = new cErrorLabel("Jobdesk is Empty", 580, 170, 300);
+    private cErrorLabel errorAddressStaff = new cErrorLabel("address is Empty", 580, 320, 300);
+    private cErrorLabel errorStatusStaff = new cErrorLabel("Status is Empty", 580, 400, 300);
 
     public cInputStaffView(cContentAdminView parentPanel) {
         super();
@@ -78,6 +75,24 @@ public class cInputStaffView extends cPanelContentApp {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 handleInsertStaff();
+                txtNameStaff.setText(null);
+                txtPhoneNumberStaff.setText(null);
+                txtEmailStaff.setText(null);
+                txtAddressStaff.setText(null);
+                groupStatusStaff.clearSelection();
+                boxJobdeskStaff.setSelectedItem("Jobdesk");
+            }
+        });
+
+        btnResetStaff.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                txtNameStaff.setText(null);
+                txtPhoneNumberStaff.setText(null);
+                txtEmailStaff.setText(null);
+                txtAddressStaff.setText(null);
+                groupStatusStaff.clearSelection();
+                boxJobdeskStaff.setSelectedItem("Jobdesk");
             }
         });
 
@@ -136,7 +151,6 @@ public class cInputStaffView extends cPanelContentApp {
     }
 
     private void handleInsertStaff() {
-
         try {
             String nameStaff = txtNameStaff.getText().trim();
             String phoneNumber = txtPhoneNumberStaff.getText().trim();
@@ -158,17 +172,26 @@ public class cInputStaffView extends cPanelContentApp {
                 } else {
                     panelInputStaff.remove(errorPhoneNumberStaff);
                 }
-
+                if (boxJobdeskStaff.getSelectedItem() == null
+                        || boxJobdeskStaff.getSelectedItem().toString().trim().equals("Jobdesk")) {
+                    panelInputStaff.add(errorJobdeskStaff);
+                } else {
+                    panelInputStaff.remove(errorJobdeskStaff);
+                }
                 if (email.isEmpty()) {
                     panelInputStaff.add(errorEmailStaff);
                 } else {
                     panelInputStaff.remove(errorEmailStaff);
                 }
-
-                if (jobdesk.isEmpty()) {
-                    panelInputStaff.add(errorJobdeskStaff);
+                if (address.isEmpty()) {
+                    panelInputStaff.add(errorAddressStaff);
                 } else {
-                    panelInputStaff.remove(errorJobdeskStaff);
+                    panelInputStaff.remove(errorAddressStaff);
+                }
+                if (!statusAktif.isSelected() && !statusInAktif.isSelected()) {
+                    panelInputStaff.add(errorStatusStaff);
+                } else {
+                    panelInputStaff.remove(errorStatusStaff);
                 }
 
                 panelInputStaff.revalidate();
@@ -190,6 +213,7 @@ public class cInputStaffView extends cPanelContentApp {
                 txtEmailStaff.setText(null);
                 txtAddressStaff.setText(null);
                 groupStatusStaff.clearSelection();
+                boxJobdeskStaff.setSelectedItem("Jobdesk");
 
                 JOptionPane.showMessageDialog(this, "Input Data successfully!");
             } else {
