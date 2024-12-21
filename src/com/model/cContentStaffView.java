@@ -102,9 +102,11 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateDataSeatsView() {
+    public void showUpdateDataSeatsView(int idSeats, String typeSeats, int amountSeats, String descriptionSeats,
+            String statusSeats) {
         refreshContent();
-        bgPanel.add(componentUpdateSeatsView);
+        bgPanel.add(componentSeatsView);
+        componentUpdateSeatsView.setDataSeats(idSeats, typeSeats, amountSeats, descriptionSeats, statusSeats);
         bgPanel.revalidate();
         bgPanel.repaint();
 
