@@ -50,7 +50,7 @@ public class cUpdateSeatsView extends cPanelContentApp {
 
     public void setDataSeats(int idSeats, String typeSeats, int amountSeats, String descriptionSeats,
             String statusSeats) {
-
+        
     }
 
     private void initsUpdateSeatsView() {
