@@ -1,9 +1,11 @@
 package com.view.StaffView.seatsView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.seats.cDataSeats;
+import com.main.database.seats.cDeleteDataSeats;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -27,7 +29,7 @@ public class cDataSeatsView extends cPanelContentApp {
     private cLabelInfo labelListUsed = new cLabelInfo("Seats Used", 30, 30, 400, 30);
 
     // component button data Seats
-    private cButtonRounded btnInputDataSeats = new cButtonRounded("input", 210, 25, 110, 40, 10);
+    private cButtonRounded btnInputDataSeats = new cButtonRounded("Input", 210, 25, 110, 40, 10);
     private cButtonRounded btnUpdateDataSeats = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataSeats = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
@@ -60,13 +62,13 @@ public class cDataSeatsView extends cPanelContentApp {
 
                     String typeSeats = tblDataSeats.getValueAt(selectedIndex, 1).toString();
                     int amountSeats = Integer.parseInt(tblDataSeats.getValueAt(selectedIndex, 2).toString());
-                    String descriptionSeats = tblDataSeats.getValueAt(selectedIndex, 4).toString();
+                    String descriptionSeats = tblDataSeats.getValueAt(selectedIndex, 3).toString();
                     String statusSeats = tblDataSeats.getValueAt(selectedIndex, 4).toString();
 
                     parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
                             descriptionSeats, statusSeats);
                 } else {
-                    System.out.println("Pilih supplier untuk diperbarui.");
+                    System.out.println("Pilih Seats untuk diperbarui.");
                 }
             }
         });
@@ -74,7 +76,23 @@ public class cDataSeatsView extends cPanelContentApp {
         btnDeleteDataSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDeleteDataSeatsView();
+                int selectedRow = tblDataSeats.getSelectedRow();
+                if (selectedRow != -1) {
+                    String idStaffString = tblDataSeats.getValueAt(selectedRow, 0).toString();
+                    int idStaff = Integer.parseInt(idStaffString.replaceAll("[^0-9]", ""));
+
+                    boolean deleted = cDeleteDataSeats.handleDeleteDataSeats(idStaff);
+
+                    if (deleted) {
+                        DefaultTableModel model = (DefaultTableModel) tblDataSeats.getModel();
+                        model.removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal menghapus Staff.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pilih Staff yang akan dihapus.");
+                }
             }
         });
 
