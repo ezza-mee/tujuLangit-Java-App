@@ -57,9 +57,10 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showProductView() {
+    public void showDataProductView() {
         refreshContent();
         bgPanel.add(componentProductView);
+        componentProductView.loadDataProducts();
         bgPanel.revalidate();
         bgPanel.repaint();
 

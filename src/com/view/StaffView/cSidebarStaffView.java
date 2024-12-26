@@ -116,7 +116,7 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                 menuProduct.setBackground(cColor.WHITE);
                 menuProduct.setSidebarAktif();
 
-                contentView.showProductView();
+                contentView.showDataProductView();
 
                 setVisible(true);
 

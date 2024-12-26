@@ -37,7 +37,7 @@ public class cDeleteSeatsView extends cPanelContentApp {
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showProductView();
+                parentPanel.showDataProductView();
             }
         });
 
