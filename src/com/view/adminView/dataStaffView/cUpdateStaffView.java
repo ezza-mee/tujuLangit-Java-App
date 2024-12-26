@@ -135,9 +135,8 @@ public class cUpdateStaffView extends cPanelContentApp {
 
         panelInputStaff.add(boxJobdeskStaff);
 
-        ButtonGroup groupButton = new ButtonGroup();
-        groupButton.add(statusAktif);
-        groupButton.add(statusInAktif);
+        groupStatusStaff.add(statusAktif);
+        groupStatusStaff.add(statusInAktif);
 
         panelInputStaff.add(statusAktif);
         panelInputStaff.add(statusInAktif);

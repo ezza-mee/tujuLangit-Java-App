@@ -22,26 +22,33 @@ public class cInputSeatsView extends cPanelContentApp {
 
     private cPanelRounded panelInputSeats = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
-    // add label input Seats
+    // add label Input Seats
     private cLabelInfo labelTypeSeats = new cLabelInfo("Type Seats", 180, 195, 300, 30);
     private cLabelInfo labelAmountSeats = new cLabelInfo("Amount Seats", 180, 270, 300, 30);
-    private cLabelInfo labelDeskripsiSeats = new cLabelInfo("Deskripsi Seats", 580, 120, 300, 30);
+    private cLabelInfo labelDescriptionSeats = new cLabelInfo("Description Seats", 580, 120, 300, 30);
     private cLabelInfo labelStatusSeats = new cLabelInfo("Status Seats", 180, 345, 300, 30);
 
-    // add textfield input Seats
+    // add textfield Input Seats
     private cTextField txtTypeSeats = new cTextField(180, 220, 300);
     private cTextField txtAmountSeats = new cTextField(180, 295, 300);
 
-    private cTextArea txtDeskripsiSeats = new cTextArea(580, 145, 300, 200, true);
+    private cTextArea txtDescriptionSeats = new cTextArea(580, 145, 300, 200, true);
 
-    // add radion button input Seats
+    // add radion button Input Seats
+    private ButtonGroup groupStatusSeats = new ButtonGroup();
     private cRadioButton statusReadySeats = new cRadioButton("Ready", "Active", 180, 375, 100);
-    private cRadioButton statusSoldSeats = new cRadioButton("Used", "Inactive", 320, 375, 100);
+    private cRadioButton statusUsedSeats = new cRadioButton("Used", "Inactive", 320, 375, 100);
 
     // component button Input Seats
     private cButtonRounded btnSaveSeats = new cButtonRounded("Save", 540, 460, 110, 40, 10);
     private cButtonRounded btnResetSeats = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
+
+    // component error label Input Seats
+    private cErrorLabel errorTypeSeats = new cErrorLabel("Name is Empty", 180, 170, 300);
+    private cErrorLabel errorAmountSeats = new cErrorLabel("Phone number is Empty", 180, 245, 300);
+    private cErrorLabel errorDescriptionSeats = new cErrorLabel("Email is Empty", 180, 320, 300);
+    private cErrorLabel errorStatusSeats = new cErrorLabel("Jobdesk is Empty", 580, 170, 300);
 
     public cInputSeatsView(cContentStaffView parentPanel) {
         super();
@@ -60,6 +67,16 @@ public class cInputSeatsView extends cPanelContentApp {
             }
         });
 
+        btnResetSeats.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                txtTypeSeats.setText(null);
+                txtAmountSeats.setText(null);
+                txtDescriptionSeats.setText(null);
+                groupStatusSeats.clearSelection();
+            }
+        });
+
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
@@ -73,19 +90,18 @@ public class cInputSeatsView extends cPanelContentApp {
         panelInputSeats.add(labelInputDataSeats);
         panelInputSeats.add(labelTypeSeats);
         panelInputSeats.add(labelAmountSeats);
-        panelInputSeats.add(labelDeskripsiSeats);
+        panelInputSeats.add(labelDescriptionSeats);
         panelInputSeats.add(labelStatusSeats);
 
         panelInputSeats.add(txtTypeSeats);
         panelInputSeats.add(txtAmountSeats);
-        panelInputSeats.add(txtDeskripsiSeats);
+        panelInputSeats.add(txtDescriptionSeats);
 
-        ButtonGroup groupButton = new ButtonGroup();
-        groupButton.add(statusReadySeats);
-        groupButton.add(statusSoldSeats);
+        groupStatusSeats.add(statusReadySeats);
+        groupStatusSeats.add(statusUsedSeats);
 
         panelInputSeats.add(statusReadySeats);
-        panelInputSeats.add(statusSoldSeats);
+        panelInputSeats.add(statusUsedSeats);
 
         panelInputSeats.add(btnSaveSeats);
         panelInputSeats.add(btnResetSeats);
@@ -100,24 +116,54 @@ public class cInputSeatsView extends cPanelContentApp {
         try {
             String typeSeats = txtTypeSeats.getText().trim();
             String amountSeatsText = txtAmountSeats.getText().trim();
-            String deskripsiSeats = txtDeskripsiSeats.getText().trim();
+            String descriptionSeats = txtDescriptionSeats.getText().trim();
             String statusSeats = null;
+
+            if (typeSeats.isEmpty() || amountSeatsText.isEmpty() || descriptionSeats.isEmpty() ||
+                    (!statusReadySeats.isSelected() && !statusUsedSeats.isSelected())) {
+                if (typeSeats.isEmpty()) {
+                    panelInputSeats.add(errorTypeSeats);
+                } else {
+                    panelInputSeats.remove(errorTypeSeats);
+                }
+                if (amountSeatsText.isEmpty()) {
+                    panelInputSeats.add(errorAmountSeats);
+                } else {
+                    panelInputSeats.remove(errorAmountSeats);
+                }
+                if (descriptionSeats.isEmpty()) {
+                    panelInputSeats.add(errorDescriptionSeats);
+                } else {
+                    panelInputSeats.remove(errorDescriptionSeats);
+                }
+                if (!statusReadySeats.isSelected() && !statusUsedSeats.isSelected()) {
+                    panelInputSeats.add(errorStatusSeats);
+                } else {
+                    panelInputSeats.remove(errorStatusSeats);
+                }
+
+                panelInputSeats.revalidate();
+                panelInputSeats.repaint();
+
+                return;
+            }
 
             int amountSeats = 0;
             amountSeats = Integer.parseInt(amountSeatsText);
 
             if (statusReadySeats.isSelected()) {
                 statusSeats = "Ready";
-            } else if (statusSoldSeats.isSelected()) {
+            } else if (statusUsedSeats.isSelected()) {
                 statusSeats = "Used";
             }
 
-            boolean saveData = cInsertDataSeats.dataSeats(typeSeats, amountSeats, deskripsiSeats, statusSeats);
+            boolean saveData = cInsertDataSeats.dataSeats(typeSeats, amountSeats, descriptionSeats, statusSeats);
             if (saveData) {
                 txtTypeSeats.setText(null);
                 txtAmountSeats.setText(null);
-                txtDeskripsiSeats.setText(null);
-                
+                txtDescriptionSeats.setText(null);
+                groupStatusSeats.clearSelection();
+
                 JOptionPane.showMessageDialog(this, "Seats successfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to save seats.");

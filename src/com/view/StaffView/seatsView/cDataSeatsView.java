@@ -41,7 +41,6 @@ public class cDataSeatsView extends cPanelContentApp {
     }
 
     public void initsDataSeatsView() {
-        setVisible(true);
 
         btnInputDataSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -87,7 +86,7 @@ public class cDataSeatsView extends cPanelContentApp {
         btnDeleteDataSeats.setFont(cFonts.FONT_SIZE_13);
 
         tblDataSeats = new cTable(cDataSeats.getAllSeats());
-        spDataSeats = new cScrollTable(tblDataSeats, 0, 10, 1050, 400);
+        spDataSeats = new cScrollTable(tblDataSeats, 0, 80, 600, 400);
 
         panelListSeats.add(spDataSeats);
 
@@ -102,6 +101,10 @@ public class cDataSeatsView extends cPanelContentApp {
         bgPanel.add(panelListSeats);
         bgPanel.add(panelListUsed);
         bgPanel.add(labelCopyright);
+
+        loadDataSeats();
+
+        setVisible(true);
     }
 
     public void loadDataSeats() {
@@ -111,6 +114,26 @@ public class cDataSeatsView extends cPanelContentApp {
 
         panelListSeats.revalidate();
         panelListSeats.repaint();
+
+        tblDataSeats.getColumnModel().getColumn(0).setMinWidth(80);
+        tblDataSeats.getColumnModel().getColumn(0).setMaxWidth(80);
+        tblDataSeats.getColumnModel().getColumn(0).setWidth(80);
+
+        tblDataSeats.getColumnModel().getColumn(1).setMinWidth(65);
+        tblDataSeats.getColumnModel().getColumn(1).setMaxWidth(65);
+        tblDataSeats.getColumnModel().getColumn(1).setWidth(65);
+
+        tblDataSeats.getColumnModel().getColumn(2).setMinWidth(80);
+        tblDataSeats.getColumnModel().getColumn(2).setMaxWidth(80);
+        tblDataSeats.getColumnModel().getColumn(2).setWidth(80);
+
+        tblDataSeats.getColumnModel().getColumn(3).setMinWidth(290);
+        tblDataSeats.getColumnModel().getColumn(3).setMaxWidth(290);
+        tblDataSeats.getColumnModel().getColumn(3).setWidth(290);
+
+        tblDataSeats.getColumnModel().getColumn(4).setMinWidth(85);
+        tblDataSeats.getColumnModel().getColumn(4).setMaxWidth(85);
+        tblDataSeats.getColumnModel().getColumn(4).setWidth(85);
 
     }
 
