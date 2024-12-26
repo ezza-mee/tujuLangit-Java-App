@@ -1,9 +1,11 @@
 package com.view.StaffView.seatsView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.seats.cDataSeats;
+import com.main.database.seats.cDeleteDataSeats;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -79,7 +81,7 @@ public class cDataSeatsView extends cPanelContentApp {
                     parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
                             descriptionSeats, statusSeats);
                 } else {
-                    System.out.println("Pilih supplier untuk diperbarui.");
+                    System.out.println("Pilih Seats untuk diperbarui.");
                 }
             }
         });
@@ -87,7 +89,23 @@ public class cDataSeatsView extends cPanelContentApp {
         btnDeleteDataSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDeleteDataSeatsView();
+                int selectedRow = tblDataSeats.getSelectedRow();
+                if (selectedRow != -1) {
+                    String idStaffString = tblDataSeats.getValueAt(selectedRow, 0).toString();
+                    int idStaff = Integer.parseInt(idStaffString.replaceAll("[^0-9]", ""));
+
+                    boolean deleted = cDeleteDataSeats.handleDeleteDataSeats(idStaff);
+
+                    if (deleted) {
+                        DefaultTableModel model = (DefaultTableModel) tblDataSeats.getModel();
+                        model.removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal menghapus Staff.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pilih Staff yang akan dihapus.");
+                }
             }
         });
 

@@ -173,9 +173,9 @@ public class cUpdateSeatsView extends cPanelContentApp {
             int amountSeats = Integer.parseInt(amountSeatsText);
 
             if (statusReadySeats.isSelected()) {
-                statusSeats = "Aktif";
+                statusSeats = "Ready";
             } else if (statusUsedSeats.isSelected()) {
-                statusSeats = "Sold";
+                statusSeats = "Used";
             }
 
             boolean saveData = cUpdateDataSeats.handleUpdateSeats(idSeats, typeSeats, amountSeats, descriptionSeats,
