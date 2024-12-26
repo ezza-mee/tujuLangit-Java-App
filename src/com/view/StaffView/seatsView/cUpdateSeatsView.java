@@ -78,7 +78,6 @@ public class cUpdateSeatsView extends cPanelContentApp {
     }
 
     private void initsUpdateSeatsView() {
-        setVisible(true);
 
         btnSaveSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -131,6 +130,8 @@ public class cUpdateSeatsView extends cPanelContentApp {
         bgPanel.add(labelHeaderDataSeats);
         bgPanel.add(labelCopyright);
 
+        setVisible(true);
+
     }
 
     private void handleUpdateSeats(int idSeats) {
@@ -172,9 +173,9 @@ public class cUpdateSeatsView extends cPanelContentApp {
             int amountSeats = Integer.parseInt(amountSeatsText);
 
             if (statusReadySeats.isSelected()) {
-                statusSeats = "Aktif";
+                statusSeats = "Ready";
             } else if (statusUsedSeats.isSelected()) {
-                statusSeats = "Sold";
+                statusSeats = "Used";
             }
 
             boolean saveData = cUpdateDataSeats.handleUpdateSeats(idSeats, typeSeats, amountSeats, descriptionSeats,

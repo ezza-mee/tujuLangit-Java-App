@@ -6,7 +6,6 @@ import javax.swing.table.DefaultTableModel;
 
 import com.main.database.supplier.cDataSupplier;
 import com.main.database.supplier.cDeleteDataSupplier;
-import com.main.database.supplier.cLoadDataSupplier;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
 import com.partials.*;

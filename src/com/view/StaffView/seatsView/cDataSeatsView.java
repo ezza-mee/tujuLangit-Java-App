@@ -23,6 +23,7 @@ public class cDataSeatsView extends cPanelContentApp {
     // component Data Seats
     private cPanelRounded panelListSeats = new cPanelRounded(40, 80, 600, 560, 10, 10);
     private cPanelRounded panelListUsed = new cPanelRounded(660, 80, 430, 560, 10, 10);
+    private cPanelRounded panelTableSeats = new cPanelRounded(0, 80, 600, 400, 0, 0);
 
     // component label data Seats
     private cLabelInfo labelListDataSeats = new cLabelInfo("List Data Seats", 30, 30, 580, 30);
@@ -42,7 +43,19 @@ public class cDataSeatsView extends cPanelContentApp {
         initsDataSeatsView();
     }
 
+    public void refreshContent() {
+        try {
+            panelTableSeats.removeAll();
+            panelTableSeats.revalidate();
+            panelTableSeats.repaint();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void initsDataSeatsView() {
+        refreshContent();
 
         btnInputDataSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -104,9 +117,10 @@ public class cDataSeatsView extends cPanelContentApp {
         btnDeleteDataSeats.setFont(cFonts.FONT_SIZE_13);
 
         tblDataSeats = new cTable(cDataSeats.getAllSeats());
-        spDataSeats = new cScrollTable(tblDataSeats, 0, 80, 600, 400);
+        spDataSeats = new cScrollTable(tblDataSeats, 0, 0, 600, 400);
 
-        panelListSeats.add(spDataSeats);
+        panelTableSeats.add(spDataSeats);
+        panelListSeats.add(panelTableSeats);
 
         panelListSeats.add(labelListDataSeats);
         panelListSeats.add(btnInputDataSeats);
