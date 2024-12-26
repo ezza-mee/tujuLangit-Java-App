@@ -21,13 +21,14 @@ public class cDataSeatsView extends cPanelContentApp {
     // component Data Seats
     private cPanelRounded panelListSeats = new cPanelRounded(40, 80, 600, 560, 10, 10);
     private cPanelRounded panelListUsed = new cPanelRounded(660, 80, 430, 560, 10, 10);
+    private cPanelRounded panelTableSeats = new cPanelRounded(0, 80, 600, 400, 0, 0);
 
     // component label data Seats
     private cLabelInfo labelListDataSeats = new cLabelInfo("List Data Seats", 30, 30, 580, 30);
     private cLabelInfo labelListUsed = new cLabelInfo("Seats Used", 30, 30, 400, 30);
 
     // component button data Seats
-    private cButtonRounded btnInputDataSeats = new cButtonRounded("input", 210, 25, 110, 40, 10);
+    private cButtonRounded btnInputDataSeats = new cButtonRounded("Input", 210, 25, 110, 40, 10);
     private cButtonRounded btnUpdateDataSeats = new cButtonRounded("Update", 330, 25, 110, 40, 10);
     private cButtonRounded btnDeleteDataSeats = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
 
@@ -40,7 +41,19 @@ public class cDataSeatsView extends cPanelContentApp {
         initsDataSeatsView();
     }
 
+    public void refreshContent() {
+        try {
+            panelTableSeats.removeAll();
+            panelTableSeats.revalidate();
+            panelTableSeats.repaint();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void initsDataSeatsView() {
+        refreshContent();
 
         btnInputDataSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -60,7 +73,7 @@ public class cDataSeatsView extends cPanelContentApp {
 
                     String typeSeats = tblDataSeats.getValueAt(selectedIndex, 1).toString();
                     int amountSeats = Integer.parseInt(tblDataSeats.getValueAt(selectedIndex, 2).toString());
-                    String descriptionSeats = tblDataSeats.getValueAt(selectedIndex, 4).toString();
+                    String descriptionSeats = tblDataSeats.getValueAt(selectedIndex, 3).toString();
                     String statusSeats = tblDataSeats.getValueAt(selectedIndex, 4).toString();
 
                     parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
@@ -86,9 +99,10 @@ public class cDataSeatsView extends cPanelContentApp {
         btnDeleteDataSeats.setFont(cFonts.FONT_SIZE_13);
 
         tblDataSeats = new cTable(cDataSeats.getAllSeats());
-        spDataSeats = new cScrollTable(tblDataSeats, 0, 80, 600, 400);
+        spDataSeats = new cScrollTable(tblDataSeats, 0, 0, 600, 400);
 
-        panelListSeats.add(spDataSeats);
+        panelTableSeats.add(spDataSeats);
+        panelListSeats.add(panelTableSeats);
 
         panelListSeats.add(labelListDataSeats);
         panelListSeats.add(btnInputDataSeats);

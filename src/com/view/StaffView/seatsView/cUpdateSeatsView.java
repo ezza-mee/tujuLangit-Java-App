@@ -78,7 +78,6 @@ public class cUpdateSeatsView extends cPanelContentApp {
     }
 
     private void initsUpdateSeatsView() {
-        setVisible(true);
 
         btnSaveSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -130,6 +129,8 @@ public class cUpdateSeatsView extends cPanelContentApp {
         bgPanel.add(panelUpdateSeats);
         bgPanel.add(labelHeaderDataSeats);
         bgPanel.add(labelCopyright);
+
+        setVisible(true);
 
     }
 

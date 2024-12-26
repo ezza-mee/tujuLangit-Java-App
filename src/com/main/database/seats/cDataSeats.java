@@ -24,7 +24,7 @@ public class cDataSeats {
                 Object[] rowData = { "SF00" + resultData.getInt("idSeats"),
                         resultData.getString("typeSeats"),
                         resultData.getString("amountSeats"),
-                        resultData.getString("DescriptionSeats"),
+                        resultData.getString("descriptionSeats"),
                         resultData.getString("statusSeats") };
                 tm.addRow(rowData);
             }

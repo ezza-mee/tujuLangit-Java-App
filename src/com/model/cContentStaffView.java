@@ -69,6 +69,7 @@ public class cContentStaffView extends cPanelContentApp {
     public void showSeatsView() {
         refreshContent();
         bgPanel.add(componentSeatsView);
+        componentSeatsView.loadDataSeats();
         bgPanel.revalidate();
         bgPanel.repaint();
 
@@ -105,7 +106,7 @@ public class cContentStaffView extends cPanelContentApp {
     public void showUpdateDataSeatsView(int idSeats, String typeSeats, int amountSeats, String descriptionSeats,
             String statusSeats) {
         refreshContent();
-        bgPanel.add(componentSeatsView);
+        bgPanel.add(componentUpdateSeatsView);
         componentUpdateSeatsView.setDataSeats(idSeats, typeSeats, amountSeats, descriptionSeats, statusSeats);
         bgPanel.revalidate();
         bgPanel.repaint();
