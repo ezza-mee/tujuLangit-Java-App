@@ -69,6 +69,8 @@ public class cInputTransaksiView extends cPanelContentApp {
             }
         });
 
+        System.out.println("sayang acoo");
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
