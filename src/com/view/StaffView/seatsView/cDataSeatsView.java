@@ -155,7 +155,7 @@ public class cDataSeatsView extends cPanelContentApp {
 
     public void loadDataSeats() {
         DefaultTableModel modelTableReadySeats = cDataSeats.getAllSeats();
-        DefaultTableModel modelTableUsedSeats = cDataSeats.getAllSeats();
+        DefaultTableModel modelTableUsedSeats = cDataUsedSeats.getAllUsedSeats();
 
         tblDataSeats.setModel(modelTableReadySeats);
         tblDataUsedSeats.setModel(modelTableUsedSeats);

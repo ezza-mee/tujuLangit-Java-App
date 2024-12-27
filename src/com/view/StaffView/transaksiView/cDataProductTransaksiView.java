@@ -35,11 +35,14 @@ public class cDataProductTransaksiView extends cPanelContentApp {
     // component label data Product
     private cLabelInfo labelListDataProduct = new cLabelInfo("List Data Product", 30, 30, 580, 30);
 
+    // component button data product transaksi
+    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 900, 20, 110, 40, 10);
+
     public cDataProductTransaksiView(cContentStaffView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 
-        initsDataMenuView();
+        initsDataTransaksiProductView();
     }
 
     public void refreshContent() {
@@ -52,8 +55,15 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         }
     }
 
-    public void initsDataMenuView() {
+    public void initsDataTransaksiProductView() {
         setVisible(true);
+
+        btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showInputTransaksiView();
+            }
+        });
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
@@ -63,6 +73,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
 
         panelListProduct.add(labelListDataProduct);
         panelListProduct.add(panelProduct);
+        panelListProduct.add(btnBackToHome);
 
         bgPanel.add(labelHeaderDataProduct);
         bgPanel.add(panelListProduct);
@@ -84,15 +95,17 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         panelLabel.setLayout(null);
 
         cLabelInfo productName = new cLabelInfo(nameProduct, 12, 5, 200, 30);
-        cLabelInfo productCount = new cLabelInfo(countProduct, 12, 90, 200, 30);
-        cLabelInfo lineProduct = new cLabelInfo("Pcs", 80, 90, 40, 30);
-        cLabelInfo labelCurrency = new cLabelInfo("Rp.", 12, 120, 40, 30);
-        cLabelInfo productPrice = new cLabelInfo(priceProduct, 50, 120, 200, 30);
+        cLabelInfo productCount = new cLabelInfo(countProduct, 180, 85, 200, 30);
+        cLabelInfo lineProduct = new cLabelInfo("Pcs", 220, 85, 40, 30);
+        cLabelInfo labelCurrency = new cLabelInfo("Rp.", 12, 85, 40, 30);
+        cLabelInfo productPrice = new cLabelInfo(priceProduct, 50, 85, 200, 30);
 
-        cTextArea productDescription = new cTextArea(12, 40, 240, 40, false);
+        cTextArea productDescription = new cTextArea(12, 40, 260, 40, false);
         productDescription.setText(descriptionProduct);
-        productDescription.setBorder(new javax.swing.border.LineBorder(cColor.GREEN, 0));
+        productDescription.setBorder(new javax.swing.border.LineBorder(cColor.GREEN, 1));
         productDescription.setFont(cFonts.FONT_SIZE_8);
+
+        cButtonRounded btnAddTransaction = new cButtonRounded("Add to cart", 12, 120, 260, 30, 10);
 
         panelLabel.add(productName);
         panelLabel.add(productCount);
@@ -100,6 +113,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         panelLabel.add(labelCurrency);
         panelLabel.add(productPrice);
         panelLabel.add(productDescription);
+        panelLabel.add(btnAddTransaction);
 
         cPanelRounded panelImage = new cPanelRounded();
         panelImage.setLayout(null);
@@ -127,7 +141,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
 
         cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 3 kartu per baris
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
-        cardContainer.setBackground(cColor.GREEN);
+        cardContainer.setBackground(cColor.WHITE);
 
         for (cLoadDataProduct.Product product : products) {
             JPanel productCard = createProductCard(
