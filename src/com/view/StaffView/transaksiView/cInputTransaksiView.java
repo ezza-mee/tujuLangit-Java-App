@@ -24,7 +24,7 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cPanelRounded panelListOrderTransaksi = new cPanelRounded(660, 80, 430, 560, 10, 10);
 
     // component button transaksi
-    private cButtonRounded btnAddTransaksi = new cButtonRounded("Add", 450, 30, 110, 40, 10);
+    private cButtonRounded btnAddTransaksi = new cButtonRounded("Add Product", 40, 140, 220, 40, 10);
     private cButtonRounded btnSaveTransaksi = new cButtonRounded("Save", 210, 490, 110, 40, 10);
     private cButtonRounded btnDeleteTransaksi = new cButtonRounded("Delete", 330, 490, 110, 40, 10);
     private cButtonRounded btnEditTransaksi = new cButtonRounded("Edit", 450, 490, 110, 40, 10);
@@ -32,17 +32,14 @@ public class cInputTransaksiView extends cPanelContentApp {
 
     // component label transaksi
     private cLabelInfo labelAddProduct = new cLabelInfo("Prodoct", 40, 110, 300, 30);
-    private cLabelInfo labelAddSeats = new cLabelInfo("Seats", 40, 180, 300, 30);
+    private cLabelInfo labelAddSeats = new cLabelInfo("Seats", 330, 110, 300, 30);
     private cLabelInfo labelAmountProduct = new cLabelInfo("Amount", 40, 250, 300, 30);
     private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi", 40, 320, 300, 30);
 
     // compoenent combobox transaksi
-    private cComboBox boxProdoctTransaksi = new cComboBox(new String[] {
-            "Add Product"
-    }, 40, 140, 520, 30);
     private cComboBox boxSeatsTransaksi = new cComboBox(new String[] {
             "Add Seats"
-    }, 40, 210, 520, 30);
+    }, 330, 140, 220, 40);
 
     // component textfield transaksi
     private cTextField txtAmountTransaksi = new cTextField(40, 280, 520);
@@ -58,6 +55,13 @@ public class cInputTransaksiView extends cPanelContentApp {
     private void initsInputTransaksiView() {
         setVisible(true);
 
+        btnAddTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                parentPanel.showDataProductTransaksiView();
+            }
+        });
+
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
@@ -67,6 +71,8 @@ public class cInputTransaksiView extends cPanelContentApp {
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
+
+        labelInputTransaksi.setFont(cFonts.FONT_SIZE_20);
 
         btnAddTransaksi.setFont(cFonts.FONT_SIZE_13);
         btnDeleteTransaksi.setFont(cFonts.FONT_SIZE_13);
@@ -86,7 +92,6 @@ public class cInputTransaksiView extends cPanelContentApp {
         panelInputTransaksi.add(labelAmountProduct);
         panelInputTransaksi.add(labelDeskripsiProduct);
 
-        panelInputTransaksi.add(boxProdoctTransaksi);
         panelInputTransaksi.add(boxSeatsTransaksi);
 
         panelInputTransaksi.add(txtAmountTransaksi);
