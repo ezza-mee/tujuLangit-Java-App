@@ -31,7 +31,7 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 40, 490, 110, 40, 10);
 
     // component label transaksi
-    private cLabelInfo labelAddProduct = new cLabelInfo("Prodoct", 40, 110, 300, 30);
+    private cLabelInfo labelAddProduct = new cLabelInfo("Product", 40, 110, 300, 30);
     private cLabelInfo labelAddSeats = new cLabelInfo("Seats", 330, 110, 300, 30);
     private cLabelInfo labelAmountProduct = new cLabelInfo("Amount", 40, 250, 300, 30);
     private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi", 40, 320, 300, 30);
@@ -68,8 +68,6 @@ public class cInputTransaksiView extends cPanelContentApp {
                 parentPanel.showDataTransaksiView();
             }
         });
-
-        System.out.println("sayang acoo");
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
