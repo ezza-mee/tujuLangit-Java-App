@@ -37,7 +37,7 @@ public class cContentStaffView extends cPanelContentApp {
         componentInputTransaksiView = new cInputTransaksiView(this);
         componentUpdateTransaksiView = new cUpdateTransaksiView(this);
         componentDeleteTransaksiView = new cDeleteTransaksiView(this);
-        componentDataProductTransaksiView = new cDataProductTransaksiView(this);
+        componentDataProductTransaksiView = new cDataProductTransaksiView(this, componentInputTransaksiView);
 
     }
 
