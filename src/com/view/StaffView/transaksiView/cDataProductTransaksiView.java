@@ -38,9 +38,12 @@ public class cDataProductTransaksiView extends cPanelContentApp {
     // component button data product transaksi
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 900, 20, 110, 40, 10);
 
-    public cDataProductTransaksiView(cContentStaffView parentPanel) {
+    private cInputTransaksiView inputTransaksiView;
+
+    public cDataProductTransaksiView(cContentStaffView parentPanel, cInputTransaksiView inputTransaksiView) {
         super();
         this.parentPanel = parentPanel;
+        this.inputTransaksiView = inputTransaksiView;
 
         initsDataTransaksiProductView();
     }
@@ -130,6 +133,14 @@ public class cDataProductTransaksiView extends cPanelContentApp {
 
         cardPanel.add(panelImage);
         cardPanel.add(panelLabel);
+
+        btnAddTransaction.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                inputTransaksiView.addProductToCart(idProduct, nameProduct,
+                        Integer.parseInt(priceProduct));
+            }
+        });
 
         return cardPanel;
     }
