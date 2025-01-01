@@ -1,5 +1,8 @@
 package com.view.StaffView.transaksiView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
@@ -45,11 +48,29 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cTextField txtAmountTransaksi = new cTextField(40, 280, 520);
     private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 350, 520, 100, true);
 
+    private List<String> cartItems = new ArrayList<>();
+
+    private cLabelInfo labelCart = new cLabelInfo("", 40, 200, 300, 300);
+
     public cInputTransaksiView(cContentStaffView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 
         initsInputTransaksiView();
+    }
+
+    public void addProductToCart(int idProduct, String nameProduct, int count, int price, String description) {
+        // Tambahkan item ke daftar
+        cartItems.add(nameProduct);
+
+        // Perbarui label keranjang
+        updateCartDisplay();
+    }
+
+    private void updateCartDisplay() {
+        StringBuilder sb = new StringBuilder();
+        cartItems.forEach(e -> sb.append(e));
+        labelCart.setText("Keranjag");
     }
 
     private void initsInputTransaksiView() {

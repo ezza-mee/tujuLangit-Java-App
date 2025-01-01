@@ -14,7 +14,7 @@ public class cDataUsedSeats {
         String[] dataHeader = { "ID", "Type", "Amount", "Description", "Status" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
-        String query = "SELECT * FROM tbl_seats WHERE statusSeats = 'used'";
+        String query = "SELECT * FROM vwalldatausedseats WHERE statusSeats = 'used'";
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
 
