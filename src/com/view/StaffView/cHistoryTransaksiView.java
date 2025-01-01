@@ -17,7 +17,7 @@ public class cHistoryTransaksiView extends cPanelContentApp {
     private cPanelRounded panelDataHistory = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
     // component label history transaksi
-    private cLabelInfo labelListHistory = new cLabelInfo("List Hitory Pesanan", 30, 20, 300, 30);
+    private cLabelInfo labelListHistory = new cLabelInfo("List History Pesanan", 30, 20, 300, 30);
 
     public cHistoryTransaksiView() {
         super();
