@@ -8,7 +8,7 @@ import com.partials.*;
 public class cTransactionsView extends cPanelContentApp {
 
     // component label header Data Transactions
-    private cBigFont labelHeaderDataTransactions = new cBigFont("Transactions", 40, 5);
+    private cBigFont labelHeaderDataTransactions = new cBigFont("History Transactions", 40, 5);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
