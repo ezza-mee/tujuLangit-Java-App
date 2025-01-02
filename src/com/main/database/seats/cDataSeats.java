@@ -11,7 +11,7 @@ import com.main.database.cConnectionDatabase;
 public class cDataSeats {
     public static DefaultTableModel getAllSeats() {
 
-        String[] dataHeader = { "ID", "Type", "Amount", "Description", "Status" };
+        String[] dataHeader = { "ID", "Number", "Amount", "Description", "Status" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM tbl_seats";
@@ -22,8 +22,8 @@ public class cDataSeats {
 
             while (resultData.next()) {
                 Object[] rowData = { "SF00" + resultData.getInt("idSeats"),
-                        resultData.getString("typeSeats"),
-                        resultData.getString("amountSeats"),
+                        resultData.getInt("numberSeats"),
+                        resultData.getInt("amountSeats"),
                         resultData.getString("descriptionSeats"),
                         resultData.getString("statusSeats") };
                 tm.addRow(rowData);

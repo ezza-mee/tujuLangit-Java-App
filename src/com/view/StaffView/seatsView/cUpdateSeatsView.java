@@ -23,13 +23,13 @@ public class cUpdateSeatsView extends cPanelContentApp {
     private cPanelRounded panelUpdateSeats = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
     // add label Update Seats
-    private cLabelInfo labelTypeSeats = new cLabelInfo("Type Seats", 180, 195, 300, 30);
+    private cLabelInfo labelNumberSeats = new cLabelInfo("Number Seats", 180, 195, 300, 30);
     private cLabelInfo labelAmountSeats = new cLabelInfo("Amount Seats", 180, 270, 300, 30);
     private cLabelInfo labelDescriptionSeats = new cLabelInfo("Description Seats", 580, 120, 300, 30);
     private cLabelInfo labelStatusSeats = new cLabelInfo("Status Seats", 180, 345, 300, 30);
 
     // add textfield Update Seats
-    private cTextField txtTypeSeats = new cTextField(180, 220, 300);
+    private cTextField txtNumberSeats = new cTextField(180, 220, 300);
     private cTextField txtAmountSeats = new cTextField(180, 295, 300);
 
     private cTextArea txtDescriptionSeats = new cTextArea(580, 145, 300, 200, true);
@@ -45,7 +45,7 @@ public class cUpdateSeatsView extends cPanelContentApp {
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
 
     // component error label Update Seats
-    private cErrorLabel errorTypeSeats = new cErrorLabel("Name is Empty", 180, 170, 300);
+    private cErrorLabel errorNumberSeats = new cErrorLabel("Name is Empty", 180, 170, 300);
     private cErrorLabel errorAmountSeats = new cErrorLabel("Phone number is Empty", 180, 245, 300);
     private cErrorLabel errorDescriptionSeats = new cErrorLabel("Email is Empty", 180, 320, 300);
     private cErrorLabel errorStatusSeats = new cErrorLabel("Jobdesk is Empty", 580, 170, 300);
@@ -59,11 +59,11 @@ public class cUpdateSeatsView extends cPanelContentApp {
         initsUpdateSeatsView();
     }
 
-    public void setDataSeats(int idSeats, String typeSeats, int amountSeats, String descriptionSeats,
+    public void setDataSeats(int idSeats, String NumberSeats, int amountSeats, String descriptionSeats,
             String statusSeats) {
         this.idSeats = idSeats;
 
-        txtTypeSeats.setText(typeSeats);
+        txtNumberSeats.setText(NumberSeats);
         txtAmountSeats.setText(String.valueOf(amountSeats));
         txtDescriptionSeats.setText(descriptionSeats);
 
@@ -89,7 +89,7 @@ public class cUpdateSeatsView extends cPanelContentApp {
         btnResetSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                txtTypeSeats.setText(null);
+                txtNumberSeats.setText(null);
                 txtAmountSeats.setText(null);
                 txtDescriptionSeats.setText(null);
                 groupStatusSeats.clearSelection();
@@ -107,12 +107,12 @@ public class cUpdateSeatsView extends cPanelContentApp {
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelUpdateSeats.add(labelUpdateDataSeats);
-        panelUpdateSeats.add(labelTypeSeats);
+        panelUpdateSeats.add(labelNumberSeats);
         panelUpdateSeats.add(labelAmountSeats);
         panelUpdateSeats.add(labelDescriptionSeats);
         panelUpdateSeats.add(labelStatusSeats);
 
-        panelUpdateSeats.add(txtTypeSeats);
+        panelUpdateSeats.add(txtNumberSeats);
         panelUpdateSeats.add(txtAmountSeats);
         panelUpdateSeats.add(txtDescriptionSeats);
 
@@ -136,17 +136,17 @@ public class cUpdateSeatsView extends cPanelContentApp {
 
     private void handleUpdateSeats(int idSeats) {
         try {
-            String typeSeats = txtTypeSeats.getText().trim();
+            String numberSeatsText = txtNumberSeats.getText().trim();
             String amountSeatsText = txtAmountSeats.getText().trim();
             String descriptionSeats = txtDescriptionSeats.getText().trim();
             String statusSeats = null;
 
-            if (typeSeats.isEmpty() || amountSeatsText.isEmpty() || descriptionSeats.isEmpty() ||
+            if (numberSeatsText.isEmpty() || amountSeatsText.isEmpty() || descriptionSeats.isEmpty() ||
                     (!statusReadySeats.isSelected() && !statusUsedSeats.isSelected())) {
-                if (typeSeats.isEmpty()) {
-                    panelUpdateSeats.add(errorTypeSeats);
+                if (numberSeatsText.isEmpty()) {
+                    panelUpdateSeats.add(errorNumberSeats);
                 } else {
-                    panelUpdateSeats.remove(errorTypeSeats);
+                    panelUpdateSeats.remove(errorNumberSeats);
                 }
                 if (amountSeatsText.isEmpty()) {
                     panelUpdateSeats.add(errorAmountSeats);
@@ -170,6 +170,7 @@ public class cUpdateSeatsView extends cPanelContentApp {
                 return;
             }
 
+            int numberSeats = Integer.parseInt(numberSeatsText);
             int amountSeats = Integer.parseInt(amountSeatsText);
 
             if (statusReadySeats.isSelected()) {
@@ -178,10 +179,10 @@ public class cUpdateSeatsView extends cPanelContentApp {
                 statusSeats = "Used";
             }
 
-            boolean saveData = cUpdateDataSeats.handleUpdateSeats(idSeats, typeSeats, amountSeats, descriptionSeats,
+            boolean saveData = cUpdateDataSeats.handleUpdateSeats(idSeats, numberSeats, amountSeats, descriptionSeats,
                     statusSeats);
             if (saveData) {
-                txtTypeSeats.setText(null);
+                txtNumberSeats.setText(null);
                 txtAmountSeats.setText(null);
                 txtDescriptionSeats.setText(null);
                 groupStatusSeats.clearSelection();

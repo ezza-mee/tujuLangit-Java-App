@@ -22,8 +22,8 @@ public class cDataUsedSeats {
 
             while (resultData.next()) {
                 Object[] rowData = { "SF00" + resultData.getInt("idSeats"),
-                        resultData.getString("typeSeats"),
-                        resultData.getString("amountSeats"),
+                        resultData.getInt("typeSeats"),
+                        resultData.getInt("amountSeats"),
                         resultData.getString("descriptionSeats"),
                         resultData.getString("statusSeats") };
                 tm.addRow(rowData);

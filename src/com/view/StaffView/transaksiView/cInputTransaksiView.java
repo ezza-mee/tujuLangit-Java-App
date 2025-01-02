@@ -1,9 +1,14 @@
 package com.view.StaffView.transaksiView;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.util.ArrayList;
 import com.main.resources.templates.cPanelContentApp;
@@ -55,30 +60,35 @@ public class cInputTransaksiView extends cPanelContentApp {
     }
 
     private void updateCartDisplay() {
-
-        System.out.println("aku sayang arko");
-
         panelListCardOrder.removeAll();
-        int yPosition = 20;
+
+        JPanel cardContainer = new JPanel();
+        cardContainer.setLayout(new BoxLayout(cardContainer, BoxLayout.Y_AXIS));
+        cardContainer.setBackground(cColor.WHITE);
 
         for (CartItem item : cartItems) {
-            JLabel productLabel = new JLabel(item.getNameProduct() + " - $" + item.getPrice());
-            productLabel.setBounds(10, yPosition, 200, 30);
+            JPanel cardPanel = new JPanel();
+            cardPanel.setLayout(null);
+            cardPanel.setPreferredSize(new Dimension(400, 100));
+            cardPanel.setBorder(BorderFactory.createLineBorder(cColor.GREY, 1));
+            cardPanel.setBackground(cColor.WHITE);
+
+            JLabel productLabel = new JLabel(item.getNameProduct());
+            productLabel.setFont(cFonts.FONT_SIZE_15);
+            productLabel.setBounds(20, 10, 200, 30);
+
+            JLabel priceLabel = new JLabel("Rp. " + item.getPrice());
+            priceLabel.setFont(cFonts.FONT_SIZE_15);
+            priceLabel.setBounds(240, 10, 100, 30);
 
             JLabel countLabel = new JLabel(String.valueOf(item.getCount()));
-            countLabel.setBounds(160, yPosition, 50, 30);
+            countLabel.setFont(cFonts.FONT_SIZE_20);
+            countLabel.setBounds(190, 50, 40, 30);
             countLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-            JButton addButton = new JButton("+");
-            addButton.setBounds(220, yPosition, 50, 30);
-            addButton.addActionListener(e -> {
-                item.setCount(item.getCount() + 1);
-                item.setPrice(item.getCount() * item.getUnitPrice());
-                updateCartDisplay();
-            });
-
-            JButton minusButton = new JButton("-");
-            minusButton.setBounds(280, yPosition, 50, 30);
+            cImage iconMinus = new cImage("src/com/main/resources/images/minus.png", 0, 0, 20, 20);
+            cButtonRounded minusButton = new cButtonRounded("", 140, 50, 40, 30, 10);
+            minusButton.setIcon(iconMinus);
             minusButton.addActionListener(e -> {
                 if (item.getCount() > 1) {
                     item.setCount(item.getCount() - 1);
@@ -87,21 +97,39 @@ public class cInputTransaksiView extends cPanelContentApp {
                 }
             });
 
-            JButton deleteButton = new JButton("Delete");
-            deleteButton.setBounds(340, yPosition, 80, 30);
+            cImage iconTambah = new cImage("src/com/main/resources/images/tambah.png", 0, 0, 20, 20);
+            cButtonRounded addButton = new cButtonRounded("", 240, 50, 40, 30, 10);
+            addButton.setIcon(iconTambah);
+            addButton.addActionListener(e -> {
+                item.setCount(item.getCount() + 1);
+                item.setPrice(item.getCount() * item.getUnitPrice());
+                updateCartDisplay();
+            });
+
+            cImage iconDelete = new cImage("src/com/main/resources/images/delete.png", 0, 0, 20, 20);
+            cButtonRounded deleteButton = new cButtonRounded("", 300, 50, 60, 30, 10);
+            deleteButton.setIcon(iconDelete);
             deleteButton.addActionListener(e -> {
                 cartItems.remove(item);
                 updateCartDisplay();
             });
 
-            panelListCardOrder.add(productLabel);
-            panelListCardOrder.add(countLabel);
-            panelListCardOrder.add(addButton);
-            panelListCardOrder.add(minusButton);
-            panelListCardOrder.add(deleteButton);
+            cardPanel.add(productLabel);
+            cardPanel.add(priceLabel);
+            cardPanel.add(countLabel);
+            cardPanel.add(minusButton);
+            cardPanel.add(addButton);
+            cardPanel.add(deleteButton);
 
-            yPosition += 40;
+            cardContainer.add(cardPanel);
+            cardContainer.add(Box.createRigidArea(new Dimension(0, 10))); // Spasi antar kartu
         }
+
+        cScrollPane scrollPane = new cScrollPane(cardContainer, 0, 0, 430, 400);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(10);
+        scrollPane.setBorder(null);
+
+        panelListCardOrder.add(scrollPane);
 
         panelListCardOrder.revalidate();
         panelListCardOrder.repaint();
