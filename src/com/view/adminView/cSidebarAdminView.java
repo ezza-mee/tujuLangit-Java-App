@@ -24,7 +24,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
             "Staff", 150 + 50 + 50 + 50);
     private cSidebarMenu menuHistorySupplier = new cSidebarMenu(iconImage.iconHistoryDefault,
             iconImage.iconHistoryHover,
-            "Transactions",
+            "History",
             150 + 50 + 50 + 50 + 50);
 
     private void resetSidebar() {
