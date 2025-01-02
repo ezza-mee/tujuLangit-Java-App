@@ -30,13 +30,13 @@ public class cInputTransaksiView extends cPanelContentApp {
 
     private cLabelInfo labelAddProduct = new cLabelInfo("Product", 40, 110, 300, 30);
     private cLabelInfo labelAddSeats = new cLabelInfo("Seats", 330, 110, 300, 30);
-    private cLabelInfo labelAmountProduct = new cLabelInfo("Amount", 40, 250, 300, 30);
-    private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi", 40, 320, 300, 30);
+    private cLabelInfo labelAmountProduct = new cLabelInfo("Nama Pembeli", 40, 210, 300, 30);
+    private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi", 40, 290, 300, 30);
 
     private cComboBox boxSeatsTransaksi = new cComboBox(new String[] { "Add Seats" }, 330, 140, 220, 40);
 
-    private cTextField txtAmountTransaksi = new cTextField(40, 280, 520);
-    private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 350, 520, 100, true);
+    private cTextField txtAmountTransaksi = new cTextField(40, 240, 520);
+    private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 320, 520, 100, true);
 
     private ArrayList<CartItem> cartItems;
 
@@ -64,11 +64,11 @@ public class cInputTransaksiView extends cPanelContentApp {
             productLabel.setBounds(10, yPosition, 200, 30);
 
             JLabel countLabel = new JLabel(String.valueOf(item.getCount()));
-            countLabel.setBounds(220, yPosition, 50, 30);
+            countLabel.setBounds(160, yPosition, 50, 30);
             countLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
             JButton addButton = new JButton("+");
-            addButton.setBounds(280, yPosition, 50, 30);
+            addButton.setBounds(220, yPosition, 50, 30);
             addButton.addActionListener(e -> {
                 item.setCount(item.getCount() + 1);
                 item.setPrice(item.getCount() * item.getUnitPrice());
@@ -76,7 +76,7 @@ public class cInputTransaksiView extends cPanelContentApp {
             });
 
             JButton minusButton = new JButton("-");
-            minusButton.setBounds(340, yPosition, 50, 30);
+            minusButton.setBounds(280, yPosition, 50, 30);
             minusButton.addActionListener(e -> {
                 if (item.getCount() > 1) {
                     item.setCount(item.getCount() - 1);
@@ -86,7 +86,7 @@ public class cInputTransaksiView extends cPanelContentApp {
             });
 
             JButton deleteButton = new JButton("Delete");
-            deleteButton.setBounds(400, yPosition, 80, 30);
+            deleteButton.setBounds(340, yPosition, 80, 30);
             deleteButton.addActionListener(e -> {
                 cartItems.remove(item);
                 updateCartDisplay();

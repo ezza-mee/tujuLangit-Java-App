@@ -38,9 +38,4 @@ public class Controller {
         cDashboardStaffView.setVisible(true);
     }
 
-    // public static void showDashboardAdmin() {
-    // DashboardAdmin.initsViewDashboardAdmin();
-    // DashboardAdmin.setVisible(true);
-    // }
-
 }
