@@ -44,7 +44,6 @@ public class cInputTransaksiView extends cPanelContentApp {
         super();
         this.parentPanel = parentPanel;
 
-        // Inisialisasi cartItems di sini
         cartItems = new ArrayList<CartItem>();
 
         initsInputTransaksiView();
@@ -56,6 +55,9 @@ public class cInputTransaksiView extends cPanelContentApp {
     }
 
     private void updateCartDisplay() {
+
+        System.out.println("aku sayang arko");
+
         panelListCardOrder.removeAll();
         int yPosition = 20;
 

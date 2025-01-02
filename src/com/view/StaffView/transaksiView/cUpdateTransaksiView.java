@@ -1,6 +1,5 @@
 package com.view.StaffView.transaksiView;
 
-import javax.print.attribute.standard.OrientationRequested;
 import javax.swing.JLabel;
 
 import com.main.resources.templates.cPanelContentApp;
