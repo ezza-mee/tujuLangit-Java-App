@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import com.main.database.cConnectionDatabase;
 
 public class cUpdateDataSeats {
-    public static boolean handleUpdateSeats(int idSeats, String typeSeats, int amountSeats, String descriptionSeats,
+    public static boolean handleUpdateSeats(int idSeats, int numberSeats, int amountSeats, String descriptionSeats,
             String statusSeats) {
         boolean result = false;
 
-        String query = "UPDATE tbl_seats SET typeSeats = ?, amountSeats = ?, descriptionSeats = ?, statusSeats = ? WHERE idSeats = ?";
+        String query = "UPDATE tbl_seats SET numberSeats = ?, amountSeats = ?, descriptionSeats = ?, statusSeats = ? WHERE idSeats = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
 
-            state.setString(1, typeSeats);
+            state.setInt(1, numberSeats);
             state.setInt(2, amountSeats);
             state.setString(3, descriptionSeats);
             state.setString(4, statusSeats);

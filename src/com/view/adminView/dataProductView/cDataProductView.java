@@ -202,6 +202,7 @@ public class cDataProductView extends cPanelContentApp {
         }
 
         cScrollPane scrollPanel = new cScrollPane(cardContainer, 0, 0, 1050, 430);
+        scrollPanel.getVerticalScrollBar().setUnitIncrement(10);
         scrollPanel.setBackground(cColor.GREEN);
         scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
