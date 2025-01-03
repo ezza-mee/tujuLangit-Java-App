@@ -36,4 +36,9 @@ public class cComboBox extends JComboBox<String> {
             return this;
         }
     }
+
+    public void setModel(Object aModel) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setModel'");
+    }
 }
