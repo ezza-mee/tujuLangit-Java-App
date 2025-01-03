@@ -11,7 +11,7 @@ import com.main.database.cConnectionDatabase;
 public class cDataUsedSeats {
     public static DefaultTableModel getAllUsedSeats() {
 
-        String[] dataHeader = { "ID", "Type", "Amount", "Description", "Status" };
+        String[] dataHeader = { "ID", "Numbers", "Amount", "Description", "Status" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM vwalldatausedseats WHERE statusSeats = 'used'";
@@ -22,7 +22,7 @@ public class cDataUsedSeats {
 
             while (resultData.next()) {
                 Object[] rowData = { "SF00" + resultData.getInt("idSeats"),
-                        resultData.getInt("typeSeats"),
+                        resultData.getInt("numberSeats"),
                         resultData.getInt("amountSeats"),
                         resultData.getString("descriptionSeats"),
                         resultData.getString("statusSeats") };

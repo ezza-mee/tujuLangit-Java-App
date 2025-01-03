@@ -15,6 +15,8 @@ import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
 
+import com.main.database.transaction.cDataSeatsTransaction;
+
 public class cInputTransaksiView extends cPanelContentApp {
 
     private cContentStaffView parentPanel;
@@ -38,12 +40,18 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cLabelInfo labelAmountProduct = new cLabelInfo("Nama Pembeli", 40, 210, 300, 30);
     private cLabelInfo labelDeskripsiProduct = new cLabelInfo("Deskripsi", 40, 290, 300, 30);
 
-    private cComboBox boxSeatsTransaksi = new cComboBox(new String[] { "Add Seats" }, 330, 140, 220, 40);
+    private cComboBox boxSeatsTransaksi;
 
     private cTextField txtAmountTransaksi = new cTextField(40, 240, 520);
     private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 320, 520, 100, true);
 
     private ArrayList<CartItem> cartItems;
+
+    private cLabelInfo labelNumberSeats = new cLabelInfo("Number Seats : ", 230, 45, 300, 30);
+    private cLabelInfo valueNumberSeats = new cLabelInfo("", 370, 45, 300, 30);
+
+    private cLabelInfo labelTotalTransaction = new cLabelInfo("Total Transaction : ", 40, 510, 300, 30);
+    private cLabelInfo valueTotalTransaction = new cLabelInfo("", 280, 510, 300, 30);
 
     public cInputTransaksiView(cContentStaffView parentPanel) {
         super();
@@ -55,7 +63,20 @@ public class cInputTransaksiView extends cPanelContentApp {
     }
 
     public void addProductToCart(int idProduct, String nameProduct, int price) {
-        cartItems.add(new CartItem(nameProduct, 1, price));
+        boolean productExists = false;
+        for (CartItem item : cartItems) {
+            if (item.getIdProduct() == idProduct) {
+                item.setCount(item.getCount() + 1);
+                item.setPrice(item.getCount() * item.getUnitPrice());
+                productExists = true;
+                break;
+            }
+        }
+
+        if (!productExists) {
+            cartItems.add(new CartItem(idProduct, nameProduct, 1, price));
+        }
+
         updateCartDisplay();
     }
 
@@ -65,6 +86,8 @@ public class cInputTransaksiView extends cPanelContentApp {
         JPanel cardContainer = new JPanel();
         cardContainer.setLayout(new BoxLayout(cardContainer, BoxLayout.Y_AXIS));
         cardContainer.setBackground(cColor.WHITE);
+
+        int totalTransaction = 0; // Variabel untuk menghitung total transaksi
 
         for (CartItem item : cartItems) {
             JPanel cardPanel = new JPanel();
@@ -122,8 +145,14 @@ public class cInputTransaksiView extends cPanelContentApp {
             cardPanel.add(deleteButton);
 
             cardContainer.add(cardPanel);
-            cardContainer.add(Box.createRigidArea(new Dimension(0, 10))); // Spasi antar kartu
+            cardContainer.add(Box.createRigidArea(new Dimension(0, 10)));
+
+            // Tambahkan harga item ke total transaksi
+            totalTransaction += item.getPrice();
         }
+
+        // Perbarui valueTotalTransaction dengan total transaksi yang dihitung
+        valueTotalTransaction.setText("Rp. " + totalTransaction);
 
         cScrollPane scrollPane = new cScrollPane(cardContainer, 0, 0, 430, 400);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
@@ -136,16 +165,22 @@ public class cInputTransaksiView extends cPanelContentApp {
     }
 
     class CartItem {
+        private int idProduct;
         private String nameProduct;
         private int count;
         private int price;
         private int unitPrice;
 
-        public CartItem(String nameProduct, int count, int unitPrice) {
+        public CartItem(int idProduct, String nameProduct, int count, int unitPrice) {
+            this.idProduct = idProduct;
             this.nameProduct = nameProduct;
             this.count = count;
             this.unitPrice = unitPrice;
             this.price = count * unitPrice;
+        }
+
+        public int getIdProduct() {
+            return idProduct;
         }
 
         public String getNameProduct() {
@@ -173,8 +208,27 @@ public class cInputTransaksiView extends cPanelContentApp {
         }
     }
 
+    private void initializeTransaction() {
+        ArrayList<String> numberSeats = cDataSeatsTransaction.getNumberSeats();
+        numberSeats.add(0, "add Seats");
+        boxSeatsTransaksi = new cComboBox(numberSeats.toArray(new String[0]), 330, 140, 220, 40);
+    }
+
     private void initsInputTransaksiView() {
         setVisible(true);
+
+        initializeTransaction();
+
+        boxSeatsTransaksi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String selectedSeat = (String) boxSeatsTransaksi.getSelectedItem();
+
+                if (selectedSeat != null) {
+                    valueNumberSeats.setText(selectedSeat);
+                }
+            }
+        });
 
         btnAddTransaksi.addActionListener(new ActionListener() {
             @Override
@@ -221,6 +275,10 @@ public class cInputTransaksiView extends cPanelContentApp {
 
         panelListOrderTransaksi.add(labelListOrderTransaksi);
         panelListOrderTransaksi.add(panelListCardOrder);
+        panelListOrderTransaksi.add(labelNumberSeats);
+        panelListOrderTransaksi.add(valueNumberSeats);
+        panelListOrderTransaksi.add(labelTotalTransaction);
+        panelListOrderTransaksi.add(valueTotalTransaction);
 
         bgPanel.add(panelInputTransaksi);
         bgPanel.add(panelListOrderTransaksi);
