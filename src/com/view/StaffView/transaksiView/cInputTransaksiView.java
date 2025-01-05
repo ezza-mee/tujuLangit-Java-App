@@ -8,14 +8,18 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.util.ArrayList;
+
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
 
 import com.main.database.transaction.cDataSeatsTransaction;
+import com.main.database.transaction.cInsertProductTransaction;
+import com.main.database.transaction.cInsertTransaction;
 
 public class cInputTransaksiView extends cPanelContentApp {
 
@@ -30,9 +34,7 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cPanelRounded panelListCardOrder = new cPanelRounded(0, 80, 430, 400, 0, 0);
 
     private cButtonRounded btnAddTransaksi = new cButtonRounded("Add Product", 40, 140, 220, 40, 10);
-    private cButtonRounded btnSaveTransaksi = new cButtonRounded("Save", 210, 490, 110, 40, 10);
-    private cButtonRounded btnDeleteTransaksi = new cButtonRounded("Delete", 330, 490, 110, 40, 10);
-    private cButtonRounded btnEditTransaksi = new cButtonRounded("Edit", 450, 490, 110, 40, 10);
+    private cButtonRounded btnCheckout = new cButtonRounded("Checkout", 450, 490, 110, 40, 10);
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 40, 490, 110, 40, 10);
 
     private cLabelInfo labelAddProduct = new cLabelInfo("Product", 40, 110, 300, 30);
@@ -42,7 +44,7 @@ public class cInputTransaksiView extends cPanelContentApp {
 
     private cComboBox boxSeatsTransaksi;
 
-    private cTextField txtAmountTransaksi = new cTextField(40, 240, 520);
+    private cTextField txtNameTransaksi = new cTextField(40, 240, 520);
     private cTextArea txtDeskripsiTransaksi = new cTextArea(40, 320, 520, 100, true);
 
     private ArrayList<CartItem> cartItems;
@@ -87,7 +89,7 @@ public class cInputTransaksiView extends cPanelContentApp {
         cardContainer.setLayout(new BoxLayout(cardContainer, BoxLayout.Y_AXIS));
         cardContainer.setBackground(cColor.WHITE);
 
-        int totalTransaction = 0; // Variabel untuk menghitung total transaksi
+        int totalTransaction = 0;
 
         for (CartItem item : cartItems) {
             JPanel cardPanel = new JPanel();
@@ -147,11 +149,9 @@ public class cInputTransaksiView extends cPanelContentApp {
             cardContainer.add(cardPanel);
             cardContainer.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            // Tambahkan harga item ke total transaksi
             totalTransaction += item.getPrice();
         }
 
-        // Perbarui valueTotalTransaction dengan total transaksi yang dihitung
         valueTotalTransaction.setText("Rp. " + totalTransaction);
 
         cScrollPane scrollPane = new cScrollPane(cardContainer, 0, 0, 430, 400);
@@ -244,6 +244,13 @@ public class cInputTransaksiView extends cPanelContentApp {
             }
         });
 
+        btnCheckout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                handleInsertTransaction();
+            }
+        });
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
@@ -251,15 +258,11 @@ public class cInputTransaksiView extends cPanelContentApp {
         labelListOrderTransaksi.setFont(cFonts.FONT_SIZE_20);
 
         btnAddTransaksi.setFont(cFonts.FONT_SIZE_13);
-        btnDeleteTransaksi.setFont(cFonts.FONT_SIZE_13);
-        btnSaveTransaksi.setFont(cFonts.FONT_SIZE_13);
-        btnEditTransaksi.setFont(cFonts.FONT_SIZE_13);
+        btnCheckout.setFont(cFonts.FONT_SIZE_13);
         btnBackToHome.setFont(cFonts.FONT_SIZE_13);
 
         panelInputTransaksi.add(labelInputTransaksi);
-        panelInputTransaksi.add(btnSaveTransaksi);
-        panelInputTransaksi.add(btnDeleteTransaksi);
-        panelInputTransaksi.add(btnEditTransaksi);
+        panelInputTransaksi.add(btnCheckout);
         panelInputTransaksi.add(btnBackToHome);
         panelInputTransaksi.add(btnAddTransaksi);
 
@@ -270,7 +273,7 @@ public class cInputTransaksiView extends cPanelContentApp {
 
         panelInputTransaksi.add(boxSeatsTransaksi);
 
-        panelInputTransaksi.add(txtAmountTransaksi);
+        panelInputTransaksi.add(txtNameTransaksi);
         panelInputTransaksi.add(txtDeskripsiTransaksi);
 
         panelListOrderTransaksi.add(labelListOrderTransaksi);
@@ -285,4 +288,88 @@ public class cInputTransaksiView extends cPanelContentApp {
         bgPanel.add(labelHeaderTransaksi);
         bgPanel.add(labelCopyright);
     }
+
+    private void handleInsertTransaction() {
+        try {
+            // Ambil nilai dari komponen teks
+            String nameCustomer = txtNameTransaksi.getText().trim();
+            String description = txtDeskripsiTransaksi.getText().trim();
+            String selectedSeat = boxSeatsTransaksi.getSelectedItem().toString();
+            String statusTransaction = "Prosess";
+
+            // Validasi input
+            if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("add Seats")) {
+                JOptionPane.showMessageDialog(null,
+                        "Semua field harus diisi dengan benar!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            int idTransaction = cInsertTransaction.handleTransaction(
+                    Integer.parseInt(selectedSeat),
+                    nameCustomer,
+                    cartItems.size(),
+                    calculateTotalPrice(),
+                    description);
+
+            if (idTransaction == -1) {
+                JOptionPane.showMessageDialog(null,
+                        "Gagal menyimpan transaksi utama!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Menyisipkan setiap produk terkait ke tbl_transaction_product
+            for (CartItem item : cartItems) {
+                boolean isProductInserted = cInsertProductTransaction.insertProductTransaction(
+                        idTransaction,
+                        item.getNameProduct());
+
+                if (!isProductInserted) {
+                    JOptionPane.showMessageDialog(null,
+                            "Gagal menyimpan produk: " + item.getNameProduct(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            // Jika semua transaksi berhasil disimpan
+            JOptionPane.showMessageDialog(null,
+                    "Transaksi berhasil disimpan!",
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            // Bersihkan input dan keranjang
+            txtNameTransaksi.setText("");
+            txtDeskripsiTransaksi.setText("");
+            boxSeatsTransaksi.setSelectedIndex(0);
+            cartItems.clear();
+            updateCartDisplay();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Format data tidak valid, periksa kembali input Anda!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Terjadi kesalahan: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Method tambahan untuk menghitung total harga
+    private int calculateTotalPrice() {
+        int total = 0;
+        for (CartItem item : cartItems) {
+            total += item.getPrice() * item.getCount();
+        }
+        return total;
+    }
+
 }
