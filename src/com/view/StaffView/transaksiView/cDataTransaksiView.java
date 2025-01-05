@@ -1,7 +1,9 @@
 package com.view.StaffView.transaksiView;
 
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
+import com.main.database.transaction.cDataTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -18,17 +20,20 @@ public class cDataTransaksiView extends cPanelContentApp {
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // ini adalah component data transaksi
-    private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 600, 560, 10, 10);
-    private cPanelRounded panelDoneTransaksi = new cPanelRounded(660, 80, 430, 560, 10, 10);
+    private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 1050, 560, 10, 10);
+    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 80, 1050, 400, 0, 0);
 
     // ini adalah component label data transaksi
     private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
-    private cLabelInfo labelStatusTransaksi = new cLabelInfo("Status", 30, 30, 430, 30);
 
     // ini adalah component button data transaksi
-    private cButtonRounded btnInputDataTransaksi = new cButtonRounded("Input", 210, 25, 110, 40, 10);
-    private cButtonRounded btnUpdateDataTransaksi = new cButtonRounded("Update", 330, 25, 110, 40, 10);
-    private cButtonRounded btnDeleteDataTransaksi = new cButtonRounded("Delete", 450, 25, 110, 40, 10);
+    private cButtonRounded btnInputDataTransaksi = new cButtonRounded("Input", 860, 25, 110, 40, 10);
+    private cButtonRounded btnUpdateDataTransaksi = new cButtonRounded("Update", 580, 25, 110, 40, 10);
+    private cButtonRounded btnDeleteDataTransaksi = new cButtonRounded("Delete", 720, 25, 110, 40, 10);
+
+    // component table transaction
+    private cTable tblTransaction;
+    private cScrollTable spTransaction;
 
     public cDataTransaksiView(cContentStaffView parentPanel) {
         super();
@@ -37,8 +42,20 @@ public class cDataTransaksiView extends cPanelContentApp {
         initsDataTransaksiView();
     }
 
+    public void refreshContent() {
+        try {
+            panelTableTransaksi.removeAll();
+            panelTableTransaksi.revalidate();
+            panelTableTransaksi.repaint();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void initsDataTransaksiView() {
-        setVisible(true);
+
+        refreshContent();
 
         btnInputDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -72,12 +89,27 @@ public class cDataTransaksiView extends cPanelContentApp {
         panelListTransaksi.add(btnInputDataTransaksi);
         panelListTransaksi.add(btnUpdateDataTransaksi);
         panelListTransaksi.add(btnDeleteDataTransaksi);
+        panelListTransaksi.add(panelTableTransaksi);
 
-        panelDoneTransaksi.add(labelStatusTransaksi);
+        tblTransaction = new cTable(cDataTransaction.getAllTransaction());
+        spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 400);
+
+        panelTableTransaksi.add(spTransaction);
 
         bgPanel.add(panelListTransaksi);
-        bgPanel.add(panelDoneTransaksi);
         bgPanel.add(labelHeaderDataTransaksi);
         bgPanel.add(labelCopyright);
+
+        setVisible(true);
+    }
+
+    public void loadDataSeats() {
+        DefaultTableModel modelTableTransaction = cDataTransaction.getAllTransaction();
+
+        tblTransaction.setModel(modelTableTransaction);
+
+        panelTableTransaksi.revalidate();
+        panelTableTransaksi.repaint();
+
     }
 }
