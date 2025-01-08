@@ -150,7 +150,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         cLoadDataProduct dataProductLoader = new cLoadDataProduct();
         List<cLoadDataProduct.Product> products = dataProductLoader.loadProducts();
 
-        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 3 kartu per baris
+        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); 
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
         cardContainer.setBackground(cColor.WHITE);
 

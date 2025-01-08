@@ -21,7 +21,6 @@ public class cContentStaffView extends cPanelContentApp {
 
     private cInputTransaksiView componentInputTransaksiView;
     private cUpdateTransaksiView componentUpdateTransaksiView;
-    private cDeleteTransaksiView componentDeleteTransaksiView;
     private cDataProductTransaksiView componentDataProductTransaksiView;
 
     public cContentStaffView() {
@@ -36,7 +35,6 @@ public class cContentStaffView extends cPanelContentApp {
         componentTransaksiView = new cDataTransaksiView(this);
         componentInputTransaksiView = new cInputTransaksiView(this);
         componentUpdateTransaksiView = new cUpdateTransaksiView(this);
-        componentDeleteTransaksiView = new cDeleteTransaksiView(this);
         componentDataProductTransaksiView = new cDataProductTransaksiView(this, componentInputTransaksiView);
 
     }
@@ -83,6 +81,7 @@ public class cContentStaffView extends cPanelContentApp {
     public void showDataTransaksiView() {
         refreshContent();
         bgPanel.add(componentTransaksiView);
+        componentTransaksiView.loadDataTransaction();
         bgPanel.revalidate();
         bgPanel.repaint();
 
@@ -139,15 +138,6 @@ public class cContentStaffView extends cPanelContentApp {
     public void showUpdateTransaksiView() {
         refreshContent();
         bgPanel.add(componentUpdateTransaksiView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    public void showDeleteTransaksiView() {
-        refreshContent();
-        bgPanel.add(componentDeleteTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

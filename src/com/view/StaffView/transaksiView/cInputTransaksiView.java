@@ -193,6 +193,7 @@ public class cInputTransaksiView extends cPanelContentApp {
 
         public void setCount(int count) {
             this.count = count;
+            this.price = this.unitPrice * count;
         }
 
         public int getPrice() {
@@ -291,12 +292,10 @@ public class cInputTransaksiView extends cPanelContentApp {
 
     private void handleInsertTransaction() {
         try {
-            // Ambil nilai dari komponen teks
             String nameCustomer = txtNameTransaksi.getText().trim();
             String description = txtDeskripsiTransaksi.getText().trim();
             String selectedSeat = boxSeatsTransaksi.getSelectedItem().toString();
 
-            // Validasi input
             if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("add Seats")) {
                 JOptionPane.showMessageDialog(null,
                         "Semua field harus diisi dengan benar!",
@@ -320,11 +319,12 @@ public class cInputTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            // Menyisipkan setiap produk terkait ke tbl_transaction_product
             for (CartItem item : cartItems) {
                 boolean isProductInserted = cInsertProductTransaction.insertProductTransaction(
                         idTransaction,
-                        item.getNameProduct());
+                        item.getNameProduct(),
+                        item.getCount(),
+                        item.getUnitPrice()); // Menyisipkan harga unit
 
                 if (!isProductInserted) {
                     JOptionPane.showMessageDialog(null,
@@ -335,13 +335,11 @@ public class cInputTransaksiView extends cPanelContentApp {
                 }
             }
 
-            // Jika semua transaksi berhasil disimpan
             JOptionPane.showMessageDialog(null,
                     "Transaksi berhasil disimpan!",
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE);
 
-            // Bersihkan input dan keranjang
             txtNameTransaksi.setText("");
             txtDeskripsiTransaksi.setText("");
             boxSeatsTransaksi.setSelectedIndex(0);
@@ -366,7 +364,7 @@ public class cInputTransaksiView extends cPanelContentApp {
     private int calculateTotalPrice() {
         int total = 0;
         for (CartItem item : cartItems) {
-            total += item.getPrice() * item.getCount();
+            total += item.getPrice(); // Harga total setiap item
         }
         return total;
     }
