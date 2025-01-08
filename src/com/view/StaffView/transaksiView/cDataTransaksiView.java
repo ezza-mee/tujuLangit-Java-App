@@ -100,16 +100,38 @@ public class cDataTransaksiView extends cPanelContentApp {
         bgPanel.add(labelHeaderDataTransaksi);
         bgPanel.add(labelCopyright);
 
+        loadDataTransaction();
+
         setVisible(true);
     }
 
-    public void loadDataSeats() {
+    public void loadDataTransaction() {
         DefaultTableModel modelTableTransaction = cDataTransaction.getAllTransaction();
 
         tblTransaction.setModel(modelTableTransaction);
 
         panelTableTransaksi.revalidate();
         panelTableTransaksi.repaint();
+
+        tblTransaction.getColumnModel().getColumn(0).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(0).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(0).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(1).setMinWidth(80);
+        tblTransaction.getColumnModel().getColumn(1).setMaxWidth(80);
+        tblTransaction.getColumnModel().getColumn(1).setWidth(80);
+
+        tblTransaction.getColumnModel().getColumn(2).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(2).setWidth(150);
+
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(90);
+
+        tblTransaction.getColumnModel().getColumn(7).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(7).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(7).setWidth(90);
 
     }
 }
