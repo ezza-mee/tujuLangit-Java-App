@@ -87,6 +87,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                                                                                                         // produk baru
         }
 
+        System.out.println("sayang arko");
+
         updateCartDisplay();
     }
 
