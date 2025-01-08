@@ -24,7 +24,7 @@ public class cSidebarStaffView extends cPanelSidebarApp {
         private cSidebarMenu menuHistory = new cSidebarMenu(iconImage.iconHistoryDefault, iconImage.iconHistoryHover,
                         "History",
                         150 + 50 + 50 + 50 + 50);
-        private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconHistoryDefault, iconImage.iconHistoryHover,
+        private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconReportDefault, iconImage.iconReportHover,
                         "Report", 150 + 50 + 50 + 50 + 50 + 50);
 
         private void resetSidebar() {
