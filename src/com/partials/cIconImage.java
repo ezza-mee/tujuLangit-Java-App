@@ -17,8 +17,12 @@ public class cIconImage {
     public cImage iconHistoryDefault = new cImage("src/com/main/resources/images/history(white).png", 0, 0, 40, 40);
 
     public cImage iconSupplierHover = new cImage("src/com/main/resources/images/datasupplier(green).png", 0, 0, 40, 40);
-    public cImage iconSupplierDefault = new cImage("src/com/main/resources/images/datasupplier(white).png", 0, 0, 40, 40);
+    public cImage iconSupplierDefault = new cImage("src/com/main/resources/images/datasupplier(white).png", 0, 0, 40,
+            40);
 
     public cImage iconStaffHover = new cImage("src/com/main/resources/images/datakaryawan(green).png", 0, 0, 40, 40);
     public cImage iconStaffDefault = new cImage("src/com/main/resources/images/datakaryawan(white).png", 0, 0, 40, 40);
+
+    public cImage iconReportHover = new cImage("src/com/main/resources/images/report(green).png", 0, 0, 40, 40);
+    public cImage iconReportDefault = new cImage("src/com/main/resources/images/report(white).png", 0, 0, 40, 40);
 }

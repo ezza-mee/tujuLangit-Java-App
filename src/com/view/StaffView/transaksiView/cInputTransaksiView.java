@@ -211,8 +211,8 @@ public class cInputTransaksiView extends cPanelContentApp {
 
     private void initializeTransaction() {
         ArrayList<String> numberSeats = cDataSeatsTransaction.getNumberSeats();
-        numberSeats.add(0, "add Seats");
-        boxSeatsTransaksi = new cComboBox(numberSeats.toArray(new String[0]), 300, 140, 220, 40);
+        numberSeats.add(0, "-");
+        boxSeatsTransaksi = new cComboBox(numberSeats.toArray(new String[0]), 330, 140, 220, 40);
     }
 
     private void initsInputTransaksiView() {

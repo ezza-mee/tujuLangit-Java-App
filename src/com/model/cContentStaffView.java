@@ -17,7 +17,6 @@ public class cContentStaffView extends cPanelContentApp {
 
     private cInputSeatsView componentInputSeatsView;
     private cUpdateSeatsView componentUpdateSeatsView;
-    private cDeleteSeatsView componentDeleteSeatsView;
 
     private cInputTransaksiView componentInputTransaksiView;
     private cUpdateTransaksiView componentUpdateTransaksiView;
@@ -30,7 +29,6 @@ public class cContentStaffView extends cPanelContentApp {
         componentSeatsView = new cDataSeatsView(this);
         componentInputSeatsView = new cInputSeatsView(this);
         componentUpdateSeatsView = new cUpdateSeatsView(this);
-        componentDeleteSeatsView = new cDeleteSeatsView(this);
 
         componentTransaksiView = new cDataTransaksiView(this);
         componentInputTransaksiView = new cInputTransaksiView(this);
@@ -117,15 +115,6 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showDeleteDataSeatsView() {
-        refreshContent();
-        bgPanel.add(componentDeleteSeatsView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
     public void showInputTransaksiView() {
         refreshContent();
         bgPanel.add(componentInputTransaksiView);
@@ -135,9 +124,14 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateTransaksiView() {
+    public void showUpdateTransaksiView(int idTransaction, String numberSeats, String nameCustomer,
+            int amountTransaction, int priceTransaction, String description,
+            String nameProduct, int amountProduct, int priceProduct) {
         refreshContent();
         bgPanel.add(componentUpdateTransaksiView);
+        componentUpdateTransaksiView.setDataTransaction(idTransaction, numberSeats,
+                nameCustomer, amountTransaction, priceTransaction, description,
+                nameProduct, amountProduct, priceProduct);
         bgPanel.revalidate();
         bgPanel.repaint();
 
