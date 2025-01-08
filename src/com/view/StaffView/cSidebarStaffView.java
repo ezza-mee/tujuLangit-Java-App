@@ -24,6 +24,8 @@ public class cSidebarStaffView extends cPanelSidebarApp {
         private cSidebarMenu menuHistory = new cSidebarMenu(iconImage.iconHistoryDefault, iconImage.iconHistoryHover,
                         "History",
                         150 + 50 + 50 + 50 + 50);
+        private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconHistoryDefault, iconImage.iconHistoryHover,
+                        "Report", 150 + 50 + 50 + 50 + 50 + 50);
 
         private void resetSidebar() {
                 setVisible(false);
@@ -47,6 +49,10 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                 menuHistory.setForeground(cColor.WHITE);
                 menuHistory.setBackground(cColor.GREEN);
                 menuHistory.setSidebarInAktif();
+
+                menuReport.setForeground(cColor.WHITE);
+                menuReport.setBackground(cColor.GREEN);
+                menuReport.setSidebarInAktif();
         }
 
         public cSidebarStaffView(cContentStaffView contentView) {
@@ -89,11 +95,19 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                         }
                 });
 
+                menuReport.addMouseListener(new java.awt.event.MouseAdapter(){
+                        @Override
+                        public void mouseClicked(java.awt.event.MouseEvent me){
+                                initsReportView();
+                        }
+                });
+
                 bgPanel.add(menuHome);
                 bgPanel.add(menuProduct);
                 bgPanel.add(menuSeats);
                 bgPanel.add(menuTransaksi);
                 bgPanel.add(menuHistory);
+                bgPanel.add(menuReport);
                 initsHomeView();
         }
 
@@ -159,6 +173,16 @@ public class cSidebarStaffView extends cPanelSidebarApp {
 
                 setVisible(true);
 
+        }
+
+        private void initsReportView(){
+                resetSidebar();
+
+                menuReport.setForeground(cColor.GREEN);
+                menuReport.setBackground(cColor.WHITE);
+                menuReport.setSidebarAktif();
+
+                setVisible(true);
         }
 
 }
