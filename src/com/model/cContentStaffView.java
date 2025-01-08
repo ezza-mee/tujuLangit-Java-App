@@ -83,6 +83,7 @@ public class cContentStaffView extends cPanelContentApp {
     public void showDataTransaksiView() {
         refreshContent();
         bgPanel.add(componentTransaksiView);
+        componentTransaksiView.loadDataTransaction();
         bgPanel.revalidate();
         bgPanel.repaint();
 
