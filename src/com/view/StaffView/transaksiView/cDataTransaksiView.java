@@ -1,9 +1,11 @@
 package com.view.StaffView.transaksiView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.transaction.cDataTransaction;
+import com.main.database.transaction.cDeleteTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -74,7 +76,23 @@ public class cDataTransaksiView extends cPanelContentApp {
         btnDeleteDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showDeleteTransaksiView();
+                int selectedRow = tblTransaction.getSelectedRow();
+                if (selectedRow != -1) {
+                    String idTransactionString = tblTransaction.getValueAt(selectedRow, 0).toString();
+                    int idTransaction = Integer.parseInt(idTransactionString.replaceAll("[^0-9]", ""));
+
+                    boolean deleted = cDeleteTransaction.handleDeleteDataTransaction(idTransaction);
+
+                    if (deleted) {
+                        DefaultTableModel model = (DefaultTableModel) tblTransaction.getModel();
+                        model.removeRow(selectedRow);
+                        JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal menghapus Staff.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pilih Staff yang akan dihapus.");
+                }
             }
         });
 
