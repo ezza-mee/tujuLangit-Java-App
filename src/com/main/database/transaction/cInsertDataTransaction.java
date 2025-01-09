@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import com.main.database.cConnectionDatabase;
 
-public class cInsertTransaction {
+public class cInsertDataTransaction {
     public static int handleTransaction(int numberSeats, String nameCustomer, int amountTransaction,
             int priceTransaction, String description) {
         int idTransaction = -1;

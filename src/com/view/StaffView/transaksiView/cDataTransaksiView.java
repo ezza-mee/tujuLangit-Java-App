@@ -84,7 +84,7 @@ public class cDataTransaksiView extends cPanelContentApp {
                     String description = tblTransaction.getValueAt(selectedIndex, 5).toString();
                     String nameProduct = tblTransaction.getValueAt(selectedIndex, 6).toString();
                     int amountProduct = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 7).toString());
-                    String priceProductString = tblTransaction.getValueAt(selectedIndex, 4).toString();
+                    String priceProductString = tblTransaction.getValueAt(selectedIndex, 8).toString();
                     priceProductString = priceProductString.replaceAll("[^0-9]", "");
                     int priceProduct = Integer.parseInt(priceProductString);
 
@@ -108,6 +108,7 @@ public class cDataTransaksiView extends cPanelContentApp {
                     boolean deleted = cDeleteTransaction.handleDeleteDataTransaction(idTransaction);
 
                     if (deleted) {
+                        loadDataTransaction();
                         DefaultTableModel model = (DefaultTableModel) tblTransaction.getModel();
                         model.removeRow(selectedRow);
                         JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");

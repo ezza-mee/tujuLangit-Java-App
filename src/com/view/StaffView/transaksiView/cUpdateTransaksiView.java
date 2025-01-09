@@ -7,10 +7,12 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.util.ArrayList;
 import com.main.database.transaction.cDataSeatsTransaction;
+import com.main.database.transaction.cUpdateDataTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -49,6 +51,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private cLabelInfo labelTotalTransaction = new cLabelInfo("Total Transaction : ", 40, 510, 300, 30);
     private cLabelInfo valueTotalTransaction = new cLabelInfo("", 280, 510, 300, 30);
 
+    private int idTransaction;
+
     public cUpdateTransaksiView(cContentStaffView parentPanel) {
         super();
         this.parentPanel = parentPanel;
@@ -65,17 +69,15 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         valueNumberSeats.setText(numberSeats);
         valueTotalTransaction.setText("Rp. " + priceTransaction);
 
-        // Add product to the cart
-
         // Add or update product in the cart
         addOrUpdateProductToCart(idTransaction, nameProduct, priceProduct, amountProduct);
     }
 
-    public void addProductToCart(int idProductTransaction, int idProduct, String nameProduct, int price, int quantity) {
+    public void addProductToCart(int idProduct, String nameProduct, int price) {
         boolean productExists = false;
         for (CartItem item : cartItems) {
-            if (item.getIdProductTransaction() == idProductTransaction && item.getIdProduct() == idProduct) {
-                item.setCount(item.getCount() + quantity);
+            if (item.getIdProduct() == idProduct) {
+                item.setCount(item.getCount() + 1);
                 item.setPrice(item.getCount() * item.getUnitPrice());
                 productExists = true;
                 break;
@@ -83,11 +85,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         }
 
         if (!productExists) {
-            cartItems.add(new CartItem(idProduct, idProductTransaction, nameProduct, quantity, price)); // Menambahkan
-                                                                                                        // produk baru
+            cartItems.add(new CartItem(idProduct, price, nameProduct, 1, price));
         }
-
-        System.out.println("sayang arko");
 
         updateCartDisplay();
     }
@@ -99,8 +98,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         for (CartItem item : cartItems) {
             if (item.getIdProductTransaction() == idProductTransaction && item.getNameProduct().equals(nameProduct)) {
                 // If the product exists, update the quantity and price
-                item.setCount(item.getCount());
-                item.setPrice(item.getPrice());
+                item.setCount(item.getCount() + quantity);
+                item.setPrice(item.getCount() * item.getUnitPrice());
                 productExists = true;
                 break;
             }
@@ -272,7 +271,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         btnAddTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                parentPanel.showDataProductTransaksiView();
+                parentPanel.showUpdateProductTransaksiView();
             }
         });
 
@@ -286,7 +285,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         btnCheckout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-
+                handleInsertTransaction(idTransaction);
             }
         });
 
@@ -327,4 +326,85 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         bgPanel.add(labelHeaderTransaksi);
         bgPanel.add(labelCopyright);
     }
+
+    private void handleInsertTransaction(int idTransaction) {
+        try {
+            String nameCustomer = txtNameTransaksi.getText().trim();
+            String description = txtDeskripsiTransaksi.getText().trim();
+            String selectedSeat = boxSeatsTransaksi.getSelectedItem().toString();
+
+            if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("add Seats")) {
+                JOptionPane.showMessageDialog(null,
+                        "Semua field harus diisi dengan benar!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            boolean idTransactionResult = cUpdateDataTransaction.handleUpdateTransaction(
+                    idTransaction,
+                    Integer.parseInt(selectedSeat),
+                    nameCustomer,
+                    cartItems.size(),
+                    calculateTotalPrice(),
+                    description);
+
+            if (idTransactionResult) {
+                JOptionPane.showMessageDialog(null,
+                        "Gagal menyimpan transaksi utama!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            for (CartItem item : cartItems) {
+                boolean isProductInserted = cUpdateDataTransaction.handleUpdateTransactionProduct(
+                        idTransaction,
+                        item.getNameProduct(),
+                        item.getCount(),
+                        item.getUnitPrice()); // Menyisipkan harga unit
+
+                if (!isProductInserted) {
+                    JOptionPane.showMessageDialog(null,
+                            "Gagal menyimpan produk: " + item.getNameProduct(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            JOptionPane.showMessageDialog(null,
+                    "Transaksi berhasil disimpan!",
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            txtNameTransaksi.setText("");
+            txtDeskripsiTransaksi.setText("");
+            boxSeatsTransaksi.setSelectedIndex(0);
+            cartItems.clear();
+            updateCartDisplay();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Format data tidak valid, periksa kembali input Anda!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Terjadi kesalahan: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Method tambahan untuk menghitung total harga
+    private int calculateTotalPrice() {
+        int total = 0;
+        for (CartItem item : cartItems) {
+            total += item.getPrice(); // Harga total setiap item
+        }
+        return total;
+    }
+
 }
