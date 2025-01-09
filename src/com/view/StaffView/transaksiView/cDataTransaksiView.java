@@ -113,13 +113,16 @@ public class cDataTransaksiView extends cPanelContentApp {
                         model.removeRow(selectedRow);
                         JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Gagal menghapus Staff.");
+                        JOptionPane.showMessageDialog(null, "Gagal Menghapus Transaksi.");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Pilih Staff yang akan dihapus.");
+                    JOptionPane.showMessageDialog(null, "Pilih Transaksi yang akan dihapus.");
                 }
             }
         });
+
+        System.out.println("Archo sayang reza selalu sampai kapanpun.");
+        System.out.println("Archo sayang reza selalu sampai kapanpun.");
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
