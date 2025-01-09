@@ -20,7 +20,8 @@ public class cContentStaffView extends cPanelContentApp {
 
     private cInputTransaksiView componentInputTransaksiView;
     private cUpdateTransaksiView componentUpdateTransaksiView;
-    private cDataProductTransaksiView componentDataProductTransaksiView;
+    private cInsertProductTransaksiView componentInsertProductTransaksiView;
+    private cUpdateProductTransaksiView componentUpdateProductTransaksiView;
 
     public cContentStaffView() {
         super();
@@ -33,7 +34,8 @@ public class cContentStaffView extends cPanelContentApp {
         componentTransaksiView = new cDataTransaksiView(this);
         componentInputTransaksiView = new cInputTransaksiView(this);
         componentUpdateTransaksiView = new cUpdateTransaksiView(this);
-        componentDataProductTransaksiView = new cDataProductTransaksiView(this, componentInputTransaksiView);
+        componentInsertProductTransaksiView = new cInsertProductTransaksiView(this, componentInputTransaksiView);
+        componentUpdateProductTransaksiView = new cUpdateProductTransaksiView(this, componentUpdateTransaksiView);
 
     }
 
@@ -138,9 +140,26 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showDataProductTransaksiView() {
+    public void showTransaksiUpdateView() {
         refreshContent();
-        bgPanel.add(componentDataProductTransaksiView);
+        bgPanel.add(componentUpdateTransaksiView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+        setVisible(true);
+    }
+
+    public void showInsertProductTransaksiView() {
+        refreshContent();
+        bgPanel.add(componentInsertProductTransaksiView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showUpdateProductTransaksiView() {
+        refreshContent();
+        bgPanel.add(componentUpdateProductTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

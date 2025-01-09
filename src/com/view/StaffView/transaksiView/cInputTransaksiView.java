@@ -19,7 +19,7 @@ import com.partials.*;
 
 import com.main.database.transaction.cDataSeatsTransaction;
 import com.main.database.transaction.cInsertProductTransaction;
-import com.main.database.transaction.cInsertTransaction;
+import com.main.database.transaction.cInsertDataTransaction;
 
 public class cInputTransaksiView extends cPanelContentApp {
 
@@ -234,7 +234,7 @@ public class cInputTransaksiView extends cPanelContentApp {
         btnAddTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                parentPanel.showDataProductTransaksiView();
+                parentPanel.showInsertProductTransaksiView();
             }
         });
 
@@ -304,7 +304,7 @@ public class cInputTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            int idTransaction = cInsertTransaction.handleTransaction(
+            int idTransaction = cInsertDataTransaction.handleTransaction(
                     Integer.parseInt(selectedSeat),
                     nameCustomer,
                     cartItems.size(),

@@ -17,7 +17,7 @@ import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
 
-public class cDataProductTransaksiView extends cPanelContentApp {
+public class cUpdateProductTransaksiView extends cPanelContentApp {
 
     private cContentStaffView parentPanel;
     private JPanel cardContainer;
@@ -38,12 +38,12 @@ public class cDataProductTransaksiView extends cPanelContentApp {
     // component button data product transaksi
     private cButtonRounded btnBackToHome = new cButtonRounded("Back", 900, 20, 110, 40, 10);
 
-    private cInputTransaksiView inputTransaksiView;
+    private cUpdateTransaksiView updateTransaksiView;
 
-    public cDataProductTransaksiView(cContentStaffView parentPanel, cInputTransaksiView inputTransaksiView) {
+    public cUpdateProductTransaksiView(cContentStaffView parentPanel, cUpdateTransaksiView updateTransaksiView) {
         super();
         this.parentPanel = parentPanel;
-        this.inputTransaksiView = inputTransaksiView;
+        this.updateTransaksiView = updateTransaksiView;
 
         initsDataTransaksiProductView();
     }
@@ -64,7 +64,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                parentPanel.showInputTransaksiView();
+                parentPanel.showTransaksiUpdateView();
             }
         });
 
@@ -137,7 +137,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         btnAddTransaction.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                inputTransaksiView.addProductToCart(idProduct, nameProduct,
+                updateTransaksiView.addProductToCart(idProduct, nameProduct,
                         Integer.parseInt(priceProduct));
             }
         });
@@ -150,7 +150,7 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         cLoadDataProduct dataProductLoader = new cLoadDataProduct();
         List<cLoadDataProduct.Product> products = dataProductLoader.loadProducts();
 
-        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); 
+        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40));
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
         cardContainer.setBackground(cColor.WHITE);
 
@@ -176,5 +176,17 @@ public class cDataProductTransaksiView extends cPanelContentApp {
         panelProduct.add(scrollPanel, BorderLayout.CENTER);
         panelProduct.revalidate();
         panelProduct.repaint();
+    }
+
+    public static boolean handleUpdateTransactionProduct(int idTransaction, String nameProduct, int count,
+            int unitPrice) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handleUpdateTransactionProduct'");
+    }
+
+    public static int handleUpdateTransaction(int idTransaction, int int1, String nameCustomer, int size,
+            int calculateTotalPrice, String description) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handleUpdateTransaction'");
     }
 }
