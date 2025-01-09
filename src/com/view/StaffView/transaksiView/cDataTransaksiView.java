@@ -112,10 +112,10 @@ public class cDataTransaksiView extends cPanelContentApp {
                         model.removeRow(selectedRow);
                         JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Gagal Menghapus Staff.");
+                        JOptionPane.showMessageDialog(null, "Gagal Menghapus Transaksi.");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Pilih Staff yang akan dihapus.");
+                    JOptionPane.showMessageDialog(null, "Pilih Transaksi yang akan dihapus.");
                 }
             }
         });
