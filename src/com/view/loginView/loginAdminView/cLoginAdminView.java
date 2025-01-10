@@ -1,7 +1,5 @@
 package com.view.loginView.loginAdminView;
 
-import javax.swing.JOptionPane;
-
 import com.main.controller.Controller;
 import com.main.resources.templates.cPanelCardLogin;
 import com.model.cContentLoginView;
@@ -71,8 +69,8 @@ public class cLoginAdminView extends cPanelCardLogin {
                 if (userName.equals("admin") && password.equals("admin")) {
                     txtUsernameAdmin.setText(null);
                     txtPasswordAdmin.setText(null);
-                    // Controller.hiddenFrameLogin();
-                    // Controller.showDashboardAdmin();
+                    Controller.hiddenFrameLogin();
+                    Controller.showDashboardAdmin();
                 } else {
                     panelCardLogin.add(incorrectLabelUsername);
                     panelCardLogin.add(incorrectLabelPassword);
@@ -85,7 +83,7 @@ public class cLoginAdminView extends cPanelCardLogin {
         labelLoginStaff.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent me) {
-                parentPanel.showLoginKaryawanView();
+                parentPanel.showLoginStaffView();
             }
         });
 

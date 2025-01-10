@@ -30,11 +30,13 @@ public class cInputStaffView extends cPanelContentApp {
     private cLabelInfo labelJobdeskStaff = new cLabelInfo("Jobdesk", 580, 120, 300, 30);
     private cLabelInfo labelAddressStaff = new cLabelInfo("Address", 580, 195, 300, 30);
     private cLabelInfo labelStatusStaff = new cLabelInfo("Status", 580, 345, 300, 30);
+    private cLabelInfo labelPasswordStaff = new cLabelInfo("Password", 180, 345, 300, 30);
 
     // add textfield input Staff
     private cTextField txtNameStaff = new cTextField(180, 145, 300);
     private cTextField txtPhoneNumberStaff = new cTextField(180, 220, 300);
     private cTextField txtEmailStaff = new cTextField(180, 295, 300);
+    private cTextField txtPasswordStaff = new cTextField(180, 375, 300);
 
     private cTextArea txtAddressStaff = new cTextArea(580, 220, 300, 100, true);
 
@@ -60,6 +62,7 @@ public class cInputStaffView extends cPanelContentApp {
     private cErrorLabel errorJobdeskStaff = new cErrorLabel("Jobdesk is Empty", 580, 170, 300);
     private cErrorLabel errorAddressStaff = new cErrorLabel("address is Empty", 580, 320, 300);
     private cErrorLabel errorStatusStaff = new cErrorLabel("Status is Empty", 580, 400, 300);
+    private cErrorLabel errorPasswordStaff = new cErrorLabel("Password is Empty", 580, 400, 300);
 
     public cInputStaffView(cContentAdminView parentPanel) {
         super();
@@ -127,11 +130,13 @@ public class cInputStaffView extends cPanelContentApp {
         panelInputStaff.add(labelJobdeskStaff);
         panelInputStaff.add(labelAddressStaff);
         panelInputStaff.add(labelStatusStaff);
+        panelInputStaff.add(labelPasswordStaff);
 
         panelInputStaff.add(txtNameStaff);
         panelInputStaff.add(txtEmailStaff);
         panelInputStaff.add(txtPhoneNumberStaff);
         panelInputStaff.add(txtAddressStaff);
+        panelInputStaff.add(txtPasswordStaff);
 
         panelInputStaff.add(boxJobdeskStaff);
 
@@ -157,6 +162,7 @@ public class cInputStaffView extends cPanelContentApp {
             String email = txtEmailStaff.getText().trim();
             String jobdesk = (String) boxJobdeskStaff.getSelectedItem();
             String address = txtAddressStaff.getText().trim();
+            String password = txtPasswordStaff.getText().trim();
             String status = null;
 
             if (nameStaff.isEmpty() || phoneNumber.isEmpty() || email.isEmpty() ||
@@ -188,6 +194,11 @@ public class cInputStaffView extends cPanelContentApp {
                 } else {
                     panelInputStaff.remove(errorAddressStaff);
                 }
+                if (password.isEmpty()) {
+                    panelInputStaff.add(errorPasswordStaff);
+                } else {
+                    panelInputStaff.remove(errorPasswordStaff);
+                }
                 if (!statusAktif.isSelected() && !statusInAktif.isSelected()) {
                     panelInputStaff.add(errorStatusStaff);
                 } else {
@@ -206,12 +217,13 @@ public class cInputStaffView extends cPanelContentApp {
                 status = "Inactive";
             }
 
-            boolean saveData = cInsertDataStaff.dataStaff(nameStaff, phoneNumber, email, jobdesk, address, status);
+            boolean saveData = cInsertDataStaff.dataStaff(nameStaff, phoneNumber, email, password, jobdesk, address, status);
             if (saveData) {
                 txtNameStaff.setText(null);
                 txtPhoneNumberStaff.setText(null);
                 txtEmailStaff.setText(null);
                 txtAddressStaff.setText(null);
+                txtPasswordStaff.setText(null);
                 groupStatusStaff.clearSelection();
                 boxJobdeskStaff.setSelectedItem("Jobdesk");
 
