@@ -8,10 +8,9 @@ import com.main.database.cConnectionDatabase;
 public class cUpdateDataTransaction {
     public static boolean handleUpdateTransaction(int idTransaction, int numberSeats, String nameCustomer,
             int amountTransaction, int priceTransaction, String description) {
-        boolean isUpdated = false;
+        boolean data = false;
 
-        String query = "UPDATE tbl_transaction SET numberSeats = ?, nameCustomer = ?, amountTransaction = ?, "
-                + "priceTransaction = ?, description = ? WHERE idTransaction = ?";
+        String query = "UPDATE tbl_transaction SET numberSeats = ?, nameCustomer = ?, amountTransaction = ?,  priceTransaction = ?, description = ? WHERE idTransaction = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
@@ -23,22 +22,14 @@ public class cUpdateDataTransaction {
             state.setString(5, description);
             state.setInt(6, idTransaction);
 
-            int affectedRows = state.executeUpdate();
-
-            if (affectedRows > 0) {
-                isUpdated = true;
+            if (state.executeUpdate() > 0) {
+                data = true;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return isUpdated;
-    }
-
-    public static boolean handleUpdateTransactionProduct(int idTransaction, String nameProduct, int count,
-            int unitPrice) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handleUpdateTransactionProduct'");
+        return data;
     }
 }

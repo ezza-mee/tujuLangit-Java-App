@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import java.util.ArrayList;
 import com.main.database.transaction.cDataSeatsTransaction;
 import com.main.database.transaction.cUpdateDataTransaction;
+import com.main.database.transaction.cUpdateProductTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -63,13 +64,12 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     public void setDataTransaction(int idTransaction, String numberSeats, String nameCustomer,
             int amountTransaction, int priceTransaction, String description,
             String nameProduct, int amountProduct, int priceProduct) {
-        // Set the text fields
+        this.idTransaction = idTransaction;
         txtNameTransaksi.setText(nameCustomer);
         txtDeskripsiTransaksi.setText(description);
         valueNumberSeats.setText(numberSeats);
         valueTotalTransaction.setText("Rp. " + priceTransaction);
 
-        // Add or update product in the cart
         addOrUpdateProductToCart(idTransaction, nameProduct, priceProduct, amountProduct);
     }
 
@@ -94,10 +94,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     public void addOrUpdateProductToCart(int idProductTransaction, String nameProduct, int price, int quantity) {
         boolean productExists = false;
 
-        // Check if the product already exists in the cart
         for (CartItem item : cartItems) {
             if (item.getIdProductTransaction() == idProductTransaction && item.getNameProduct().equals(nameProduct)) {
-                // If the product exists, update the quantity and price
                 item.setCount(item.getCount() + quantity);
                 item.setPrice(item.getCount() * item.getUnitPrice());
                 productExists = true;
@@ -105,12 +103,10 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             }
         }
 
-        // If the product does not exist, add it to the cart
         if (!productExists) {
             cartItems.add(new CartItem(idProductTransaction, quantity, nameProduct, quantity, price));
         }
 
-        // Update the cart display after adding/updating the product
         updateCartDisplay();
     }
 
@@ -196,7 +192,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
     class CartItem {
         private int idProduct;
-        private int idProductTransaction; // ID untuk menghubungkan produk dengan transaksi
+        private int idProductTransaction;
         private String nameProduct;
         private int count;
         private int price;
@@ -285,7 +281,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         btnCheckout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                handleInsertTransaction(idTransaction);
+                handleUpdateTransaction(idTransaction);
             }
         });
 
@@ -327,13 +323,13 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         bgPanel.add(labelCopyright);
     }
 
-    private void handleInsertTransaction(int idTransaction) {
+    private void handleUpdateTransaction(int idTransaction) {
         try {
             String nameCustomer = txtNameTransaksi.getText().trim();
             String description = txtDeskripsiTransaksi.getText().trim();
             String selectedSeat = boxSeatsTransaksi.getSelectedItem().toString();
 
-            if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("add Seats")) {
+            if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("-")) {
                 JOptionPane.showMessageDialog(null,
                         "Semua field harus diisi dengan benar!",
                         "Error",
@@ -341,7 +337,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            boolean idTransactionResult = cUpdateDataTransaction.handleUpdateTransaction(
+            // Update transaction data
+            boolean isTransactionUpdated = cUpdateDataTransaction.handleUpdateTransaction(
                     idTransaction,
                     Integer.parseInt(selectedSeat),
                     nameCustomer,
@@ -349,7 +346,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                     calculateTotalPrice(),
                     description);
 
-            if (idTransactionResult) {
+            if (!isTransactionUpdated) {
                 JOptionPane.showMessageDialog(null,
                         "Gagal menyimpan transaksi utama!",
                         "Error",
@@ -357,14 +354,15 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 return;
             }
 
+            // Update or insert products for the transaction
             for (CartItem item : cartItems) {
-                boolean isProductInserted = cUpdateDataTransaction.handleUpdateTransactionProduct(
+                boolean isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
                         idTransaction,
                         item.getNameProduct(),
                         item.getCount(),
-                        item.getUnitPrice()); // Menyisipkan harga unit
+                        item.getUnitPrice());
 
-                if (!isProductInserted) {
+                if (!isProductUpdated) {
                     JOptionPane.showMessageDialog(null,
                             "Gagal menyimpan produk: " + item.getNameProduct(),
                             "Error",
@@ -378,6 +376,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE);
 
+            // Reset form and cart
             txtNameTransaksi.setText("");
             txtDeskripsiTransaksi.setText("");
             boxSeatsTransaksi.setSelectedIndex(0);
@@ -398,11 +397,10 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         }
     }
 
-    // Method tambahan untuk menghitung total harga
     private int calculateTotalPrice() {
         int total = 0;
         for (CartItem item : cartItems) {
-            total += item.getPrice(); // Harga total setiap item
+            total += item.getPrice();
         }
         return total;
     }
