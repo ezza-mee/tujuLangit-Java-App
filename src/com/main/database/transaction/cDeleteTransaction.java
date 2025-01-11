@@ -10,15 +10,31 @@ public class cDeleteTransaction {
     public static boolean handleDeleteDataTransaction(int idTransaction) {
         boolean data = false;
 
-        String query = "DELETE FROM tbl_transaction WHERE idTransaction = " + idTransaction;
+        String deleteChildQuery = "DELETE FROM tbl_transaction_product WHERE idTransaction = ?";
+        String deleteParentQuery = "DELETE FROM tbl_transaction WHERE idTransaction = ?";
 
-        try (Connection conn = cConnectionDatabase.getConnection();
-                PreparedStatement state = conn.prepareStatement(query)) {
+        try (Connection conn = cConnectionDatabase.getConnection()) {
+            conn.setAutoCommit(false); // Memulai transaksi
 
-            int rowsAffected = state.executeUpdate();
+            try (PreparedStatement deleteChildStmt = conn.prepareStatement(deleteChildQuery);
+                    PreparedStatement deleteParentStmt = conn.prepareStatement(deleteParentQuery)) {
 
-            if (rowsAffected > 0) {
-                data = true;
+                // Hapus data dari tabel anak
+                deleteChildStmt.setInt(1, idTransaction);
+                deleteChildStmt.executeUpdate();
+
+                // Hapus data dari tabel induk
+                deleteParentStmt.setInt(1, idTransaction);
+                int rowsAffected = deleteParentStmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    data = true;
+                }
+
+                conn.commit(); // Commit transaksi jika berhasil
+            } catch (SQLException e) {
+                conn.rollback(); // Rollback jika terjadi kesalahan
+                e.printStackTrace();
             }
 
         } catch (SQLException e) {
@@ -27,4 +43,5 @@ public class cDeleteTransaction {
 
         return data;
     }
+
 }
