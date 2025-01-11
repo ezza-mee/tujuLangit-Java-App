@@ -2,17 +2,17 @@ package com.model;
 
 import com.main.resources.templates.cPanelCardLogin;
 import com.view.loginView.loginAdminView.cLoginAdminView;
-import com.view.loginView.loginKaryawanView.cLoginKaryawanView;
+import com.view.loginView.loginStaffView.cLoginStaffView;
 
 public class cContentLoginView extends cPanelCardLogin {
 
     private cLoginAdminView componentAdminView;
-    private cLoginKaryawanView componentKaryawanView;
+    private cLoginStaffView componentStaffView;
 
     public cContentLoginView() {
         super();
         componentAdminView = new cLoginAdminView(this);
-        componentKaryawanView = new cLoginKaryawanView(this);
+        componentStaffView = new cLoginStaffView(this);
 
         showLoginAdminView();
     }
@@ -37,10 +37,10 @@ public class cContentLoginView extends cPanelCardLogin {
         setVisible(true);
     }
 
-    public void showLoginKaryawanView() {
+    public void showLoginStaffView() {
         refreshContent();
 
-        bgPanel.add(componentKaryawanView);
+        bgPanel.add(componentStaffView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
