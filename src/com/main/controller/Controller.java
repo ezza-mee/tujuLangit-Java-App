@@ -7,35 +7,53 @@ import com.view.loginView.cLoginView;
 
 public class Controller {
 
-    // private static cLoginView frameLogin = new cLoginView();
+    // Inisialisasi frame login saja
+    private static cLoginView frameLogin = new cLoginView();
 
-    private static cDashboardStaffView cDashboardStaffView = new cDashboardStaffView();
+    // Tunda inisialisasi frame dashboard hingga diperlukan
+    private static cDashboardStaffView cDashboardStaffView;
+    private static cDashboardAdminView dashboardAdmin;
 
-    // private static cDashboardAdminView dashboardAdmin = new
-    // cDashboardAdminView();
+    // Menampilkan login
+    public static void showLoginAdmin() {
+        frameLogin.initsLoginView();
+        frameLogin.setVisible(true);
+    }
 
-    // public static void showLoginAdmin() {
-    // frameLogin.initsLoginView();
-    // frameLogin.setVisible(true);
-    // }
+    // Menyembunyikan login
+    public static void hiddenFrameLogin() {
+        frameLogin.setVisible(false);
+    }
 
-    // public static void hiddenFrameLogin() {
-    // frameLogin.setVisible(false);
-    // }
+    // Menampilkan dashboard admin
+    public static void showDashboardAdmin() {
+        if (dashboardAdmin == null) {
+            dashboardAdmin = new cDashboardAdminView();
+            dashboardAdmin.initsViewDashboardAdmin();
+        }
+        hiddenFrameLogin();
+        dashboardAdmin.setVisible(true);
+    }
 
-    // public static void showDashboardAdmin() {
-    // dashboardAdmin.setVisible(false);
-    // dashboardAdmin.initsViewDashboardAdmin();
-    // dashboardAdmin.setVisible(true);
-    // }
+    // Menyembunyikan dashboard admin
+    public static void hiddenDashboardAdmin() {
+        if (dashboardAdmin != null) {
+            dashboardAdmin.setVisible(false);
+        }
+    }
 
-    // public static void hiddenDashboardAdmin() {
-    // dashboardAdmin.setVisible(false);
-    // }
-
+    // Menampilkan dashboard staff
     public static void showcDashboardStaffView() {
-        cDashboardStaffView.initsViewDashboardStaff();
+        if (cDashboardStaffView == null) {
+            cDashboardStaffView = new cDashboardStaffView();
+            cDashboardStaffView.initsViewDashboardStaff();
+        }
+        hiddenFrameLogin();
         cDashboardStaffView.setVisible(true);
     }
 
+    // Metode main untuk memulai aplikasi
+    public static void main(String[] args) {
+        showLoginAdmin();
+    }
 }

@@ -111,7 +111,7 @@ public class cDataTransaksiView extends cPanelContentApp {
                         loadDataTransaction();
                         DefaultTableModel model = (DefaultTableModel) tblTransaction.getModel();
                         model.removeRow(selectedRow);
-                        JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
+                        JOptionPane.showMessageDialog(null, "Transaksi berhasil dihapus!");
                     } else {
                         JOptionPane.showMessageDialog(null, "Gagal Menghapus Transaksi.");
                     }
@@ -120,9 +120,6 @@ public class cDataTransaksiView extends cPanelContentApp {
                 }
             }
         });
-
-        System.out.println("Archo sayang reza selalu sampai kapanpun.");
-        System.out.println("Archo sayang reza selalu sampai kapanpun.");
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
