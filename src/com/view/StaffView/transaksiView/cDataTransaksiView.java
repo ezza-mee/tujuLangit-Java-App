@@ -88,7 +88,6 @@ public class cDataTransaksiView extends cPanelContentApp {
                     priceProductString = priceProductString.replaceAll("[^0-9]", "");
                     int priceProduct = Integer.parseInt(priceProductString);
 
-                    // Navigasi ke halaman Update
                     parentPanel.showUpdateTransaksiView(idTransaction, numberSeats, nameCustomer,
                             amountTransaction, priceTransaction, description, nameProduct, amountProduct, priceProduct);
                 } else {
@@ -108,9 +107,9 @@ public class cDataTransaksiView extends cPanelContentApp {
                     boolean deleted = cDeleteTransaction.handleDeleteDataTransaction(idTransaction);
 
                     if (deleted) {
-                        loadDataTransaction();
                         DefaultTableModel model = (DefaultTableModel) tblTransaction.getModel();
                         model.removeRow(selectedRow);
+                        loadDataTransaction();
                         JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
                     } else {
                         JOptionPane.showMessageDialog(null, "Gagal Menghapus Transaksi.");
