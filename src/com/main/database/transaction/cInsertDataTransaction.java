@@ -10,11 +10,11 @@ import com.main.database.cConnectionDatabase;
 
 public class cInsertDataTransaction {
     public static int handleTransaction(int idStaff, String nameStaff, int numberSeats, String nameCustomer,
-            int amountTransaction,
-            int priceTransaction, String description) {
+            int amountTransaction, int priceTransaction, String description) {
         int idTransaction = -1;
 
-        String query = "INSERT INTO tbl_transaction (idStaff, nameStaff, numberSeats, nameCustomer, amountTransaction, priceTransaction, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO tbl_transaction (idStaff, nameStaff, numberSeats, nameCustomer, amountTransaction, priceTransaction, description, status) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, 'Process')";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -43,4 +43,5 @@ public class cInsertDataTransaction {
 
         return idTransaction;
     }
+
 }

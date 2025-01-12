@@ -23,32 +23,32 @@ public class cUpdateSeatsView extends cPanelContentApp {
     private cPanelRounded panelUpdateSeats = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
     // add label Update Seats
-    private cLabelInfo labelNumberSeats = new cLabelInfo("Number Seats", 180, 195, 300, 30);
-    private cLabelInfo labelAmountSeats = new cLabelInfo("Amount Seats", 180, 270, 300, 30);
+    private cLabelInfo labelNumberSeats = new cLabelInfo("Number Seats", 180, 120, 300, 30);
+    private cLabelInfo labelAmountSeats = new cLabelInfo("Amount Seats", 180, 195, 300, 30);
     private cLabelInfo labelDescriptionSeats = new cLabelInfo("Description Seats", 580, 120, 300, 30);
-    private cLabelInfo labelStatusSeats = new cLabelInfo("Status Seats", 180, 345, 300, 30);
+    private cLabelInfo labelStatusSeats = new cLabelInfo("Status Seats", 180, 270, 300, 30);
 
     // add textfield Update Seats
-    private cTextField txtNumberSeats = new cTextField(180, 220, 300);
-    private cTextField txtAmountSeats = new cTextField(180, 295, 300);
+    private cTextField txtNumberSeats = new cTextField(180, 145, 300);
+    private cTextField txtAmountSeats = new cTextField(180, 220, 300);
 
     private cTextArea txtDescriptionSeats = new cTextArea(580, 145, 300, 200, true);
 
     // add radion button Update Seats
     private ButtonGroup groupStatusSeats = new ButtonGroup();
-    private cRadioButton statusReadySeats = new cRadioButton("Ready", "Active", 180, 375, 100);
-    private cRadioButton statusUsedSeats = new cRadioButton("Used", "Inactive", 320, 375, 100);
+    private cRadioButton statusReadySeats = new cRadioButton("Ready", "Active", 180, 305, 100);
+    private cRadioButton statusUsedSeats = new cRadioButton("Used", "Inactive", 320, 305, 100);
 
     // component button Update Seats
-    private cButtonRounded btnSaveSeats = new cButtonRounded("Save", 540, 460, 110, 40, 10);
-    private cButtonRounded btnResetSeats = new cButtonRounded("Reset", 660, 460, 110, 40, 10);
-    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 780, 460, 110, 40, 10);
+    private cButtonRounded btnSaveSeats = new cButtonRounded("Save", 780, 480, 110, 40, 10);
+    private cButtonRounded btnResetSeats = new cButtonRounded("Reset", 660, 480, 110, 40, 10);
+    private cButtonRounded btnBackToHome = new cButtonRounded("Back", 180, 480, 110, 40, 10);
 
     // component error label Update Seats
-    private cErrorLabel errorNumberSeats = new cErrorLabel("Name is Empty", 180, 170, 300);
-    private cErrorLabel errorAmountSeats = new cErrorLabel("Phone number is Empty", 180, 245, 300);
-    private cErrorLabel errorDescriptionSeats = new cErrorLabel("Email is Empty", 180, 320, 300);
-    private cErrorLabel errorStatusSeats = new cErrorLabel("Jobdesk is Empty", 580, 170, 300);
+    private cErrorLabel errorNumberSeats = new cErrorLabel("Number is Empty", 180, 170, 300);
+    private cErrorLabel errorAmountSeats = new cErrorLabel("Amount is Empty", 180, 245, 300);
+    private cErrorLabel errorDescriptionSeats = new cErrorLabel("Description is Empty", 580, 340, 300);
+    private cErrorLabel errorStatusSeats = new cErrorLabel("Status is Empty", 180, 330, 300);
 
     private int idSeats;
 
@@ -187,9 +187,9 @@ public class cUpdateSeatsView extends cPanelContentApp {
                 txtDescriptionSeats.setText(null);
                 groupStatusSeats.clearSelection();
 
-                JOptionPane.showMessageDialog(this, "Input Data successfully!");
+                JOptionPane.showMessageDialog(this, "Update Data successfully!");
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to Input Data.");
+                JOptionPane.showMessageDialog(this, "Failed to Update Data.");
             }
 
         } catch (Exception e) {
