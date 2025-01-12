@@ -29,7 +29,6 @@ public class cLogout extends JLabel {
                     Controller.hiddenDashboardAdmin();
                     Controller.hiddenDashboardStaffView();
                     Controller.showLoginAdmin();
-                    System.exit(0);
                 }
             }
         });
