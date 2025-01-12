@@ -75,19 +75,33 @@ public class cDataSeatsView extends cPanelContentApp {
         btnUpdateDataSeats.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                int selectedIndex = tblDataSeats.getSelectedRow();
+                int selectAllDataSeat = tblDataSeats.getSelectedRow();
+                int selectAllDataSeatsUsed = tblDataUsedSeats.getSelectedRow();
 
-                if (selectedIndex != -1) {
-                    String idString = tblDataSeats.getValueAt(selectedIndex, 0).toString();
+                if (selectAllDataSeat != -1) {
+                    String idString = tblDataSeats.getValueAt(selectAllDataSeat, 0).toString();
                     int idSeats = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
 
-                    String typeSeats = tblDataSeats.getValueAt(selectedIndex, 1).toString();
-                    int amountSeats = Integer.parseInt(tblDataSeats.getValueAt(selectedIndex, 2).toString());
-                    String descriptionSeats = tblDataSeats.getValueAt(selectedIndex, 3).toString();
-                    String statusSeats = tblDataSeats.getValueAt(selectedIndex, 4).toString();
+                    String typeSeats = tblDataSeats.getValueAt(selectAllDataSeat, 1).toString();
+                    int amountSeats = Integer.parseInt(tblDataSeats.getValueAt(selectAllDataSeat, 2).toString());
+                    String descriptionSeats = tblDataSeats.getValueAt(selectAllDataSeat, 3).toString();
+                    String statusSeats = tblDataSeats.getValueAt(selectAllDataSeat, 4).toString();
 
                     parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
                             descriptionSeats, statusSeats);
+
+                } else if (selectAllDataSeatsUsed != -1) {
+                    String idString = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 0).toString();
+                    int idSeats = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
+
+                    String typeSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 1).toString();
+                    int amountSeats = Integer.parseInt(tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 2).toString());
+                    String descriptionSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 3).toString();
+                    String statusSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 4).toString();
+
+                    parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
+                            descriptionSeats, statusSeats);
+
                 } else {
                     System.out.println("Pilih Seats untuk diperbarui.");
                 }
