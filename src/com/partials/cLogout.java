@@ -28,7 +28,7 @@ public class cLogout extends JLabel {
                 if (konfirmasi == 0) {
                     Controller.hiddenDashboardAdmin();
                     Controller.hiddenDashboardStaffView();
-                    Controller.showLoginAdmin();
+                    Controller.showLogin();
                 }
             }
         });

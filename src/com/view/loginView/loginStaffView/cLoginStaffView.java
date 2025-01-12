@@ -54,25 +54,32 @@ public class cLoginStaffView extends cPanelCardLogin {
         btnLoginStaff.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                String userName = txtEmailStaff.getText();
+                String email = txtEmailStaff.getText();
                 String password = String.valueOf(txtPasswordStaff.getPassword());
 
-                if (userName.equals("") || password.equals("")) {
+                if (email.equals("") || password.equals("")) {
                     parentPanel.showLoginStaffView();
-                    if (userName.equals("")) {
+                    if (email.equals("")) {
                         panelCardLogin.add(errorLabelEmail);
                     }
                     if (password.equals("")) {
                         panelCardLogin.add(errorLabelPassword);
                     }
                 } else {
-                    boolean isValidLogin = cVerifyAkunStaff.verifyAkunStaff(userName, password);
+                    // Verifikasi login
+                    boolean isValidLogin = cVerifyAkunStaff.verifyAkunStaff(email, password);
 
                     if (isValidLogin) {
+                        // Dapatkan ID staff yang login
+                        int staffId = cVerifyAkunStaff.getStaffId(email, password);
+
+                        // Reset field input login
                         txtEmailStaff.setText(null);
                         txtPasswordStaff.setText(null);
+
+                        // Sembunyikan frame login dan tampilkan dashboard
                         Controller.hiddenFrameLogin();
-                        Controller.showcDashboardStaffView();
+                        Controller.showDashboardStaffView(staffId);
                     } else {
                         panelCardLogin.add(errorLabelEmail);
                         panelCardLogin.add(errorLabelPassword);

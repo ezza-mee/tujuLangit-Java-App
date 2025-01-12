@@ -1,20 +1,44 @@
 package com.view.StaffView;
 
+import com.main.controller.Controller;
+import com.main.database.staff.cDetailAkunStaff;
 import com.main.resources.templates.cFrameDashboardApp;
 import com.model.cContentStaffView;
+import com.partials.cFonts;
+import com.partials.cLabelInfo;
 
 public class cDashboardStaffView extends cFrameDashboardApp {
+
+    private Integer idStaff = null; // Inisialisasi sebagai null
+    private Object[] staffDetails = null; // Data detail staff
 
     private cContentStaffView componentContentView = new cContentStaffView();
     private cSidebarStaffView componentSidebarView = new cSidebarStaffView(componentContentView);
 
+    private cLabelInfo labelRoleStaff = new cLabelInfo("", 40, 20, 500, 30); // Label untuk nama staff
+
     public cDashboardStaffView() {
         super();
+        this.idStaff = Controller.getCurrentStaffId();
+        staffDetails = cDetailAkunStaff.getDetailAkunStaff(idStaff);
+
+        if (staffDetails != null && staffDetails[1] != null) {
+            System.out.println("Staff Name: " + staffDetails[1]);
+        } else {
+            System.out.println("Staff name is null");
+        }
+
         initsViewDashboardStaff();
     }
 
     public void initsViewDashboardStaff() {
-        setVisible(true);
+        if (staffDetails != null && staffDetails[1] != null) {
+            labelRoleStaff.setText("Welcome, " + staffDetails[1]);
+        }
+
+        labelRoleStaff.setFont(cFonts.FONT_SIZE_18);
+
+        headerPanel.add(labelRoleStaff);
 
         componentContentView.setBounds(240, 70, 1126, 698);
 
@@ -22,6 +46,6 @@ public class cDashboardStaffView extends cFrameDashboardApp {
 
         bgFrame.add(componentContentView);
 
+        setVisible(true);
     }
-
 }
