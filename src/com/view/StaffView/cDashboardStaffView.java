@@ -22,12 +22,6 @@ public class cDashboardStaffView extends cFrameDashboardApp {
         this.idStaff = Controller.getCurrentStaffId();
         staffDetails = cDetailAkunStaff.getDetailAkunStaff(idStaff);
 
-        if (staffDetails != null && staffDetails[1] != null) {
-            System.out.println("Staff Name: " + staffDetails[1]);
-        } else {
-            System.out.println("Staff name is null");
-        }
-
         initsViewDashboardStaff();
     }
 
@@ -47,5 +41,13 @@ public class cDashboardStaffView extends cFrameDashboardApp {
         bgFrame.add(componentContentView);
 
         setVisible(true);
+    }
+
+    public String getStaffName() {
+        return staffDetails != null && staffDetails[1] != null ? staffDetails[1].toString() : "Unknown";
+    }
+    
+    public Integer getIdStaff() {
+        return idStaff;
     }
 }

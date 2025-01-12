@@ -75,20 +75,21 @@ public class cDataTransaksiView extends cPanelContentApp {
                     String idString = tblTransaction.getValueAt(selectedIndex, 0).toString();
                     int idTransaction = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
 
-                    String numberSeats = tblTransaction.getValueAt(selectedIndex, 1).toString();
-                    String nameCustomer = tblTransaction.getValueAt(selectedIndex, 2).toString();
-                    int amountTransaction = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 3).toString());
-                    String priceTotalString = tblTransaction.getValueAt(selectedIndex, 4).toString();
+                    int idProductTransaction = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 1).toString());
+                    String numberSeats = tblTransaction.getValueAt(selectedIndex, 2).toString();
+                    String nameCustomer = tblTransaction.getValueAt(selectedIndex, 3).toString();
+                    int amountTransaction = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 4).toString());
+                    String priceTotalString = tblTransaction.getValueAt(selectedIndex, 5).toString();
                     priceTotalString = priceTotalString.replaceAll("[^0-9]", "");
                     int priceTransaction = Integer.parseInt(priceTotalString);
-                    String description = tblTransaction.getValueAt(selectedIndex, 5).toString();
-                    String nameProduct = tblTransaction.getValueAt(selectedIndex, 6).toString();
-                    int amountProduct = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 7).toString());
-                    String priceProductString = tblTransaction.getValueAt(selectedIndex, 8).toString();
+                    String description = tblTransaction.getValueAt(selectedIndex, 6).toString();
+                    String nameProduct = tblTransaction.getValueAt(selectedIndex, 7).toString();
+                    int amountProduct = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 8).toString());
+                    String priceProductString = tblTransaction.getValueAt(selectedIndex, 9).toString();
                     priceProductString = priceProductString.replaceAll("[^0-9]", "");
                     int priceProduct = Integer.parseInt(priceProductString);
 
-                    parentPanel.showUpdateTransaksiView(idTransaction, numberSeats, nameCustomer,
+                    parentPanel.showUpdateTransaksiView(idTransaction, idProductTransaction, numberSeats, nameCustomer,
                             amountTransaction, priceTransaction, description, nameProduct, amountProduct, priceProduct);
                 } else {
                     JOptionPane.showMessageDialog(null, "Pilih transaksi yang akan diperbarui.");
@@ -161,21 +162,25 @@ public class cDataTransaksiView extends cPanelContentApp {
         tblTransaction.getColumnModel().getColumn(0).setMaxWidth(65);
         tblTransaction.getColumnModel().getColumn(0).setWidth(65);
 
-        tblTransaction.getColumnModel().getColumn(1).setMinWidth(80);
-        tblTransaction.getColumnModel().getColumn(1).setMaxWidth(80);
-        tblTransaction.getColumnModel().getColumn(1).setWidth(80);
+        tblTransaction.getColumnModel().getColumn(1).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(1).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(2).setMinWidth(150);
-        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(150);
-        tblTransaction.getColumnModel().getColumn(2).setWidth(150);
+        tblTransaction.getColumnModel().getColumn(2).setMinWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setWidth(80);
 
-        tblTransaction.getColumnModel().getColumn(3).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(3).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(150);
 
-        tblTransaction.getColumnModel().getColumn(7).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(7).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(7).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setWidth(90);
+
+        tblTransaction.getColumnModel().getColumn(8).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(8).setWidth(90);
 
     }
 }
