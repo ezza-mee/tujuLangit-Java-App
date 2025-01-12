@@ -11,12 +11,12 @@ public class cDetailAkunStaff {
     public static Object[] getDetailAkunStaff(int idStaff) {
         Object[] rowData = new Object[8];
 
-        String query = "SELECT * FROM tbl_staff WHERE idStaff = ?";
+        String query = "SELECT * FROM vwalldatastaff WHERE idStaff = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement statement = conn.prepareStatement(query)) {
 
-            statement.setInt(1, idStaff); 
+            statement.setInt(1, idStaff);
             ResultSet resultData = statement.executeQuery();
 
             if (resultData.next()) {
@@ -28,7 +28,7 @@ public class cDetailAkunStaff {
                 rowData[5] = resultData.getString("jobdesk");
                 rowData[6] = resultData.getString("address");
                 rowData[7] = resultData.getString("status");
-            } 
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
