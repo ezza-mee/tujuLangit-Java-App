@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import com.main.database.cConnectionDatabase;
 
 public class cUpdateProductTransaction {
-    public static boolean handleUpdateProductTransaction(int idTransaction, String nameProduct, int amountProduct,
+    public static boolean handleUpdateProductTransaction(int idProductTransaction, int idTransaction, String nameProduct, int amountProduct,
             int priceProduct) {
         boolean data = false;
 
         String query = "UPDATE tbl_transaction_product SET nameProduct = ?, amountProduct = ?, priceProduct = ? "
-                + "WHERE idTransaction = ?";
+                + "WHERE idTransaction = ? AND idProductTransaction = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
@@ -20,6 +20,7 @@ public class cUpdateProductTransaction {
             state.setInt(2, amountProduct);
             state.setInt(3, priceProduct);
             state.setInt(4, idTransaction);
+            state.setInt(5, idProductTransaction);
 
             if (state.executeUpdate() > 0) {
                 data = true;

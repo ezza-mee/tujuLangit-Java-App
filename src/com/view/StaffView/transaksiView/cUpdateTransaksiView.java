@@ -53,6 +53,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private cLabelInfo valueTotalTransaction = new cLabelInfo("", 280, 510, 300, 30);
 
     private int idTransaction;
+    private int idProductTransaction;
 
     public cUpdateTransaksiView(cContentStaffView parentPanel) {
         super();
@@ -61,10 +62,11 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         initsUpdateTransaksiView();
     }
 
-    public void setDataTransaction(int idTransaction, String numberSeats, String nameCustomer,
+    public void setDataTransaction(int idTransaction, int idProductTransaction, String numberSeats, String nameCustomer,
             int amountTransaction, int priceTransaction, String description,
             String nameProduct, int amountProduct, int priceProduct) {
         this.idTransaction = idTransaction;
+        this.idProductTransaction = idProductTransaction;
         txtNameTransaksi.setText(nameCustomer);
         txtDeskripsiTransaksi.setText(description);
         valueNumberSeats.setText(numberSeats);
@@ -357,6 +359,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             // Update or insert products for the transaction
             for (CartItem item : cartItems) {
                 boolean isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
+                        idProductTransaction,
                         idTransaction,
                         item.getNameProduct(),
                         item.getCount(),

@@ -3,6 +3,7 @@ package com.view.StaffView.transaksiView;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.ModuleLayer.Controller;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
-
+import com.view.StaffView.cDashboardStaffView;
 import com.main.database.transaction.cDataSeatsTransaction;
 import com.main.database.transaction.cInsertProductTransaction;
 import com.main.database.transaction.cInsertDataTransaction;
@@ -304,7 +305,16 @@ public class cInputTransaksiView extends cPanelContentApp {
                 return;
             }
 
+            cDashboardStaffView dashboardStaffView = new cDashboardStaffView();
+
+            String nameStaff = dashboardStaffView.getStaffName();
+            int idStaff = dashboardStaffView.getIdStaff();
+
+            dashboardStaffView.setVisible(false);
+
             int idTransaction = cInsertDataTransaction.handleTransaction(
+                    idStaff,
+                    nameStaff,
                     Integer.parseInt(selectedSeat),
                     nameCustomer,
                     cartItems.size(),
