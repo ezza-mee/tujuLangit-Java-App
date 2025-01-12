@@ -10,7 +10,7 @@ public class App {
         // Controller.showLoginAdmin();
         Controller.hiddenDashboardStaffView();
         Controller.hiddenDashboardAdmin();
-        Controller.showLoginAdmin();
+        Controller.showLogin();
         // Controller.showcDashboardStaffView();
         // Controller.showDashboardAdmin();
 
