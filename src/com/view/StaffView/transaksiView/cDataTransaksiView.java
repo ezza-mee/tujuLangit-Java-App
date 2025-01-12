@@ -122,6 +122,7 @@ public class cDataTransaksiView extends cPanelContentApp {
 
         System.out.println("archo suka sedot timun.");
         System.out.println("archo suka sedot timun.");
+        System.out.println("archo suka sedot timun.");
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
