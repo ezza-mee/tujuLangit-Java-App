@@ -1,4 +1,4 @@
-package com.view.StaffView.transaksiView;
+package com.view.staffView.transaksiView;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -121,7 +121,6 @@ public class cDataTransaksiView extends cPanelContentApp {
                 }
             }
         });
-
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);

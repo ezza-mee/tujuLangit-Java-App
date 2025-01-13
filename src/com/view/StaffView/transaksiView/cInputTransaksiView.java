@@ -1,9 +1,8 @@
-package com.view.StaffView.transaksiView;
+package com.view.staffView.transaksiView;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.ModuleLayer.Controller;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
-import com.view.StaffView.cDashboardStaffView;
+import com.view.staffView.cDashboardStaffView;
 import com.main.database.transaction.cDataSeatsTransaction;
 import com.main.database.transaction.cInsertProductTransaction;
 import com.main.database.transaction.cUpdateStockProduct;

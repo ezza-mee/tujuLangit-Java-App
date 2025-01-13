@@ -1,4 +1,4 @@
-package com.view.StaffView.seatsView;
+package com.view.staffView.seatsView;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

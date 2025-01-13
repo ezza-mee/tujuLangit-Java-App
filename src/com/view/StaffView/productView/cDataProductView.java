@@ -1,4 +1,4 @@
-package com.view.StaffView.productView;
+package com.view.staffView.productView;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
