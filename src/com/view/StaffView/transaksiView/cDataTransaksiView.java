@@ -165,21 +165,25 @@ public class cDataTransaksiView extends cPanelContentApp {
         tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
         tblTransaction.getColumnModel().getColumn(1).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(2).setMinWidth(80);
-        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(80);
-        tblTransaction.getColumnModel().getColumn(2).setWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(2).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(3).setMinWidth(150);
-        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(150);
-        tblTransaction.getColumnModel().getColumn(3).setWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(80);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(80);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(80);
 
-        tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(4).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(4).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(4).setWidth(150);
 
-        tblTransaction.getColumnModel().getColumn(8).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(8).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(5).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(5).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(5).setWidth(90);
+
+        tblTransaction.getColumnModel().getColumn(6).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(6).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(6).setWidth(90);
 
     }
 }
