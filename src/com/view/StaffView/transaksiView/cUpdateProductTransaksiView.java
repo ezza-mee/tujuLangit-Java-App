@@ -177,16 +177,4 @@ public class cUpdateProductTransaksiView extends cPanelContentApp {
         panelProduct.revalidate();
         panelProduct.repaint();
     }
-
-    public static boolean handleUpdateTransactionProduct(int idTransaction, String nameProduct, int count,
-            int unitPrice) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handleUpdateTransactionProduct'");
-    }
-
-    public static int handleUpdateTransaction(int idTransaction, int int1, String nameCustomer, int size,
-            int calculateTotalPrice, String description) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handleUpdateTransaction'");
-    }
 }

@@ -20,6 +20,7 @@ import com.partials.*;
 import com.view.StaffView.cDashboardStaffView;
 import com.main.database.transaction.cDataSeatsTransaction;
 import com.main.database.transaction.cInsertProductTransaction;
+import com.main.database.transaction.cUpdateStockProduct;
 import com.main.database.transaction.cInsertDataTransaction;
 
 public class cInputTransaksiView extends cPanelContentApp {
@@ -331,6 +332,7 @@ public class cInputTransaksiView extends cPanelContentApp {
 
             for (CartItem item : cartItems) {
                 boolean isProductInserted = cInsertProductTransaction.insertProductTransaction(
+                        item.getIdProduct(),
                         idTransaction,
                         item.getNameProduct(),
                         item.getCount(),
@@ -339,6 +341,18 @@ public class cInputTransaksiView extends cPanelContentApp {
                 if (!isProductInserted) {
                     JOptionPane.showMessageDialog(null,
                             "Gagal menyimpan produk: " + item.getNameProduct(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                int idProduct = item.getIdProduct(); 
+                int amountSold = item.getCount();
+                boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idProduct, amountSold);
+
+                if (!isStockUpdated) {
+                    JOptionPane.showMessageDialog(null,
+                            "Gagal mengupdate stok produk: " + item.getNameProduct(),
                             "Error",
                             JOptionPane.ERROR_MESSAGE);
                     return;

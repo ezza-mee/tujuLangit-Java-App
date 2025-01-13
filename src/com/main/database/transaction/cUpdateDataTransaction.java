@@ -6,30 +6,36 @@ import java.sql.SQLException;
 import com.main.database.cConnectionDatabase;
 
 public class cUpdateDataTransaction {
-    public static boolean handleUpdateTransaction(int idTransaction, int numberSeats, String nameCustomer,
+    public static boolean handleUpdateTransaction(int idTransaction, int idStaff, String nameStaff, int numberSeats,
+            String nameCustomer,
             int amountTransaction, int priceTransaction, String description) {
         boolean data = false;
 
-        String query = "UPDATE tbl_transaction SET numberSeats = ?, nameCustomer = ?, amountTransaction = ?,  priceTransaction = ?, description = ? WHERE idTransaction = ?";
+        String updateQuery = "UPDATE tbl_transaction SET idStaff = ?, nameStaff = ?, numberSeats = ?, "
+                + "nameCustomer = ?, amountTransaction = ?, priceTransaction = ?, description = ?, status = 'Process' "
+                + "WHERE idTransaction = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
-                PreparedStatement state = conn.prepareStatement(query)) {
+                PreparedStatement state = conn.prepareStatement(updateQuery)) {
 
-            state.setInt(1, numberSeats);
-            state.setString(2, nameCustomer);
-            state.setInt(3, amountTransaction);
-            state.setInt(4, priceTransaction);
-            state.setString(5, description);
-            state.setInt(6, idTransaction);
+            state.setInt(1, idStaff);
+            state.setString(2, nameStaff);
+            state.setInt(3, numberSeats);
+            state.setString(4, nameCustomer);
+            state.setInt(5, amountTransaction);
+            state.setInt(6, priceTransaction);
+            state.setString(7, description);
+            state.setInt(8, idTransaction);
 
-            if (state.executeUpdate() > 0) {
+            int rowsAffected = state.executeUpdate();
+            if (rowsAffected > 0) {
                 data = true;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return data;
+
     }
 }
