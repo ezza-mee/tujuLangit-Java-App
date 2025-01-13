@@ -1,11 +1,13 @@
 package com.model;
 
 import com.main.resources.templates.cPanelContentApp;
-import com.view.StaffView.cHistoryTransaksiView;
-import com.view.StaffView.cHomeView;
-import com.view.StaffView.productView.*;
-import com.view.StaffView.seatsView.*;
-import com.view.StaffView.transaksiView.*;
+import com.view.staffView.cHistoryTransaksiView;
+import com.view.staffView.cHomeView;
+import com.view.staffView.productView.*;
+import com.view.staffView.reportView.cReportSeatsView;
+import com.view.staffView.reportView.cReportTransactionView;
+import com.view.staffView.seatsView.*;
+import com.view.staffView.transaksiView.*;
 
 public class cContentStaffView extends cPanelContentApp {
 
@@ -23,6 +25,9 @@ public class cContentStaffView extends cPanelContentApp {
     private cInsertProductTransaksiView componentInsertProductTransaksiView;
     private cUpdateProductTransaksiView componentUpdateProductTransaksiView;
 
+    private cReportTransactionView componentReportTransactionView;
+    private cReportSeatsView componentReportSeatsView;
+
     public cContentStaffView() {
         super();
         componentProductView = new cDataProductView(this);
@@ -36,6 +41,9 @@ public class cContentStaffView extends cPanelContentApp {
         componentUpdateTransaksiView = new cUpdateTransaksiView(this);
         componentInsertProductTransaksiView = new cInsertProductTransaksiView(this, componentInputTransaksiView);
         componentUpdateProductTransaksiView = new cUpdateProductTransaksiView(this, componentUpdateTransaksiView);
+
+        componentReportTransactionView = new cReportTransactionView(this);
+        componentReportSeatsView = new cReportSeatsView(this);
 
     }
 
@@ -160,6 +168,24 @@ public class cContentStaffView extends cPanelContentApp {
     public void showUpdateProductTransaksiView() {
         refreshContent();
         bgPanel.add(componentUpdateProductTransaksiView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+    
+    public void showReportDataSeatsView() {
+        refreshContent();
+        bgPanel.add(componentReportSeatsView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showReportDataTransactionView() {
+        refreshContent();
+        bgPanel.add(componentReportTransactionView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

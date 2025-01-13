@@ -9,6 +9,9 @@ import com.view.adminView.cTransactionsView;
 import com.view.adminView.dataProductView.*;
 import com.view.adminView.dataStaffView.*;
 import com.view.adminView.dataSupplierView.*;
+import com.view.adminView.reportAdmin.cReportProductView;
+import com.view.adminView.reportAdmin.cReportStaffView;
+import com.view.adminView.reportAdmin.cReportSupplierView;
 
 public class cContentAdminView extends cPanelContentApp {
 
@@ -31,6 +34,10 @@ public class cContentAdminView extends cPanelContentApp {
 
     private cTransactionsView componentTransactionsView = new cTransactionsView();
 
+    private cReportProductView componentReportProductView;
+    private cReportSupplierView componentReportSupplierView;
+    private cReportStaffView componentReportDataStaffView;
+
     public cContentAdminView() {
         super();
 
@@ -48,6 +55,11 @@ public class cContentAdminView extends cPanelContentApp {
         componentInputStaffView = new cInputStaffView(this);
         componentUpdateStaffView = new cUpdateStaffView(this);
         componentDeleteStaffView = new cDeleteStaffView(this);
+
+        componentReportProductView = new cReportProductView(this);
+        componentReportSupplierView = new cReportSupplierView(this);
+        componentReportDataStaffView = new cReportStaffView(this);
+
     }
 
     private void refreshContent() {
@@ -205,5 +217,38 @@ public class cContentAdminView extends cPanelContentApp {
 
         setVisible(true);
     }
+
+
+
+    public void showReportDataStaffView() {
+        refreshContent();
+        bgPanel.add(componentReportDataStaffView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    public void showReportDataProductView() {
+        refreshContent();
+        bgPanel.add(componentReportProductView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    
+
+    public void showReportDataSupplierView() {
+        refreshContent();
+        bgPanel.add(componentReportSupplierView);
+        bgPanel.revalidate();
+        bgPanel.repaint();
+
+        setVisible(true);
+    }
+
+    
 
 }

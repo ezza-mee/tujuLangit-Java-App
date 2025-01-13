@@ -1,4 +1,4 @@
-package com.view.StaffView.transaksiView;
+package com.view.staffView.transaksiView;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ import com.main.database.transaction.cUpdateStockProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
-import com.view.StaffView.cDashboardStaffView;
+import com.view.staffView.cDashboardStaffView;
 
 public class cUpdateTransaksiView extends cPanelContentApp {
 
