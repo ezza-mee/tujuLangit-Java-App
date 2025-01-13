@@ -126,12 +126,12 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateTransaksiView(int idTransaction, int idProductTransaction, String numberSeats, String nameCustomer,
+    public void showUpdateTransaksiView(int idTransaction, int idProduct, int idProductTransaction, String numberSeats, String nameCustomer,
             int amountTransaction, int priceTransaction, String description,
             String nameProduct, int amountProduct, int priceProduct) {
         refreshContent();
         bgPanel.add(componentUpdateTransaksiView);
-        componentUpdateTransaksiView.setDataTransaction(idTransaction, idProductTransaction, numberSeats,
+        componentUpdateTransaksiView.setDataTransaction(idTransaction, idProduct, idProductTransaction, numberSeats,
                 nameCustomer, amountTransaction, priceTransaction, description,
                 nameProduct, amountProduct, priceProduct);
         bgPanel.revalidate();
