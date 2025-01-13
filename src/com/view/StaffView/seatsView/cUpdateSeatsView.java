@@ -1,4 +1,4 @@
-package com.view.StaffView.seatsView;
+package com.view.staffView.seatsView;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;

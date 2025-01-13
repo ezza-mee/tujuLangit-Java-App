@@ -1,4 +1,4 @@
-package com.view.StaffView;
+package com.view.staffView;
 
 import com.main.resources.templates.cPanelContentApp;
 

@@ -26,6 +26,8 @@ public class cSidebarAdminView extends cPanelSidebarApp {
             iconImage.iconHistoryHover,
             "History",
             150 + 50 + 50 + 50 + 50);
+            private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconReportDefault, iconImage.iconReportHover,
+            "Report", 150 + 50 + 50 + 50 + 50 + 50);
 
     private void resetSidebar() {
         setVisible(false);
@@ -49,6 +51,10 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuHistorySupplier.setForeground(cColor.WHITE);
         menuHistorySupplier.setBackground(cColor.GREEN);
         menuHistorySupplier.setSidebarInAktif();
+
+        menuReport.setForeground(cColor.WHITE);
+        menuReport.setBackground(cColor.GREEN);
+        menuReport.setSidebarInAktif();
     }
 
     public cSidebarAdminView(cContentAdminView contentView) {
@@ -90,11 +96,19 @@ public class cSidebarAdminView extends cPanelSidebarApp {
             }
         });
 
+        menuReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent me) {
+                initsReportView();
+            }
+        });
+
         bgPanel.add(menuHome);
         bgPanel.add(menuKaryawan);
         bgPanel.add(menuSupplier);
         bgPanel.add(menuStaff);
         bgPanel.add(menuHistorySupplier);
+        bgPanel.add(menuReport);
         initsHomeView();
     }
 
@@ -159,6 +173,18 @@ public class cSidebarAdminView extends cPanelSidebarApp {
 
         setVisible(true);
 
+    }
+
+    private void initsReportView() {
+        resetSidebar();
+
+        menuReport.setForeground(cColor.GREEN);
+        menuReport.setBackground(cColor.WHITE);
+        menuReport.setSidebarAktif();
+
+        contentView.showReportDataProductView();
+
+        setVisible(true);
     }
 
 }

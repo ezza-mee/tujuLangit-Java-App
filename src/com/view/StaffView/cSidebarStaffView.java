@@ -1,4 +1,4 @@
-package com.view.StaffView;
+package com.view.staffView;
 
 import com.main.resources.templates.cPanelSidebarApp;
 import com.model.cContentStaffView;
@@ -181,6 +181,8 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                 menuReport.setForeground(cColor.GREEN);
                 menuReport.setBackground(cColor.WHITE);
                 menuReport.setSidebarAktif();
+
+                contentView.showReportDataSeatsView();
 
                 setVisible(true);
         }

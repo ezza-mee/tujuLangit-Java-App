@@ -1,4 +1,4 @@
-package com.view.StaffView.transaksiView;
+package com.view.staffView.transaksiView;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
