@@ -59,7 +59,7 @@ public class cUpdateProductTransaksiView extends cPanelContentApp {
     }
 
     public void initsDataTransaksiProductView() {
-        setVisible(true);
+        refreshContent();
 
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             @Override
