@@ -12,11 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.util.ArrayList;
 import com.main.database.transaction.cDataSeatsTransaction;
+import com.main.database.transaction.cDeleteProductTransaction;
+import com.main.database.transaction.cInsertProductTransaction;
 import com.main.database.transaction.cUpdateDataTransaction;
 import com.main.database.transaction.cUpdateProductTransaction;
+import com.main.database.transaction.cUpdateStockProduct;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
+import com.view.StaffView.cDashboardStaffView;
 
 public class cUpdateTransaksiView extends cPanelContentApp {
 
@@ -54,6 +58,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
     private int idTransaction;
     private int idProductTransaction;
+    private int idUnitProduct;
 
     public cUpdateTransaksiView(cContentStaffView parentPanel) {
         super();
@@ -62,11 +67,13 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         initsUpdateTransaksiView();
     }
 
-    public void setDataTransaction(int idTransaction, int idProductTransaction, String numberSeats, String nameCustomer,
+    public void setDataTransaction(int idTransaction, int idProduct, int idProductTransaction, String numberSeats,
+            String nameCustomer,
             int amountTransaction, int priceTransaction, String description,
             String nameProduct, int amountProduct, int priceProduct) {
         this.idTransaction = idTransaction;
         this.idProductTransaction = idProductTransaction;
+        this.idUnitProduct = idProduct;
         txtNameTransaksi.setText(nameCustomer);
         txtDeskripsiTransaksi.setText(description);
         valueNumberSeats.setText(numberSeats);
@@ -100,6 +107,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             if (item.getIdProductTransaction() == idProductTransaction && item.getNameProduct().equals(nameProduct)) {
                 item.setCount(item.getCount() + quantity);
                 item.setPrice(item.getCount() * item.getUnitPrice());
+                System.out.println(item.getIdProduct());
                 productExists = true;
                 break;
             }
@@ -164,8 +172,29 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             cButtonRounded deleteButton = new cButtonRounded("", 300, 50, 60, 30, 10);
             deleteButton.setIcon(iconDelete);
             deleteButton.addActionListener(e -> {
-                cartItems.remove(item);
-                updateCartDisplay();
+                int idDeleteCart = item.getIdProduct(); // ID produk yang ada di cart
+
+                // Menghapus produk dari database berdasarkan idProductTransaction
+                boolean deleteSuccess = cDeleteProductTransaction
+                        .handleDeleteDataProductTransaction(idProductTransaction);
+
+                System.out.println("ID Produk: " + idDeleteCart);
+
+                // Cek apakah penghapusan produk dari database berhasil
+                if (deleteSuccess) {
+                    // Hapus item dari cartItems jika penghapusan berhasil
+                    cartItems.remove(item);
+                    updateCartDisplay();
+                } else {
+                    // Jika produk tidak terhapus dari database, cek apakah produk ada di cart
+                    if (cartItems.contains(item) && idDeleteCart == item.getIdProduct()) {
+                        cartItems.remove(item);
+                        updateCartDisplay();
+                        System.out.println("Produk berhasil dihapus dari cart.");
+                    } else {
+                        System.out.println("Produk tidak ditemukan di cart atau ID tidak cocok.");
+                    }
+                }
             });
 
             cardPanel.add(productLabel);
@@ -339,9 +368,17 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 return;
             }
 
+            cDashboardStaffView dashboardStaffView = new cDashboardStaffView();
+            String nameStaff = dashboardStaffView.getStaffName();
+            int idStaff = dashboardStaffView.getIdStaff();
+
+            dashboardStaffView.setVisible(false);
+
             // Update transaction data
             boolean isTransactionUpdated = cUpdateDataTransaction.handleUpdateTransaction(
                     idTransaction,
+                    idStaff,
+                    nameStaff,
                     Integer.parseInt(selectedSeat),
                     nameCustomer,
                     cartItems.size(),
@@ -358,16 +395,49 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
             // Update or insert products for the transaction
             for (CartItem item : cartItems) {
-                boolean isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
-                        idProductTransaction,
-                        idTransaction,
-                        item.getNameProduct(),
-                        item.getCount(),
-                        item.getUnitPrice());
+                // Cek apakah produk sudah ada dalam transaksi
+                boolean isProductExist = cUpdateProductTransaction.isProductExistInTransaction(idProductTransaction,
+                        idUnitProduct);
 
-                if (!isProductUpdated) {
+                boolean isProductUpdated = false;
+                if (isProductExist) {
+                    // Jika produk sudah ada, lakukan update
+                    isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
+                            idProductTransaction, // ID transaksi produk
+                            idUnitProduct, // ID produk yang sudah ada
+                            idTransaction, // ID transaksi
+                            item.getNameProduct(),
+                            item.getCount(),
+                            item.getUnitPrice());
+                }
+
+                boolean isProductInserted = false;
+                if (isProductExist) {
+                    // Jika produk tidak ada, lakukan insert
+                    isProductInserted = cInsertProductTransaction.insertProductTransaction(
+                            item.getIdProduct(), // ID produk baru
+                            idTransaction, // ID transaksi
+                            item.getNameProduct(),
+                            item.getCount(),
+                            item.getUnitPrice());
+                }
+
+                if (!isProductInserted && !isProductUpdated) {
                     JOptionPane.showMessageDialog(null,
-                            "Gagal menyimpan produk: " + item.getNameProduct(),
+                            "Gagal menyimpan produk baru: " + item.getNameProduct(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Update stock if product is updated or inserted
+                int amountSold = item.getCount();
+                boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idUnitProduct,amountSold);
+                boolean isStockInsert = cUpdateStockProduct.updateProductStock(item.getIdProduct(), amountSold);
+
+                if (!isStockUpdated && !isStockInsert) {
+                    JOptionPane.showMessageDialog(null,
+                            "Gagal mengupdate stok produk: " + item.getNameProduct(),
                             "Error",
                             JOptionPane.ERROR_MESSAGE);
                     return;

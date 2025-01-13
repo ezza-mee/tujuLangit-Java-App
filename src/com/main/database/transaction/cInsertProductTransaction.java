@@ -7,21 +7,23 @@ import java.sql.SQLException;
 import com.main.database.cConnectionDatabase;
 
 public class cInsertProductTransaction {
-    public static boolean insertProductTransaction(int idTransaction, String nameProduct, int amountProduct, int priceProduct) {
+    public static boolean insertProductTransaction(int idProduct, int idTransaction, String nameProduct,
+            int amountProduct, int priceProduct) {
         boolean data = false;
 
-        String query = "INSERT INTO tbl_transaction_product (idTransaction, nameProduct, amountProduct, priceProduct) VALUES (?, ?, ?,?)";
+        String query = "INSERT INTO tbl_transaction_product (idProduct, idTransaction, nameProduct, amountProduct, priceProduct) VALUES (?, ?, ?, ?,?)";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
 
-            state.setInt(1, idTransaction); 
-            state.setString(2, nameProduct); 
-            state.setInt(3, amountProduct);
-            state.setInt(4, priceProduct);
+            state.setInt(1, idProduct);
+            state.setInt(2, idTransaction);
+            state.setString(3, nameProduct);
+            state.setInt(4, amountProduct);
+            state.setInt(5, priceProduct);
 
             if (state.executeUpdate() > 0) {
-                data = true; 
+                data = true;
             }
 
         } catch (SQLException e) {
