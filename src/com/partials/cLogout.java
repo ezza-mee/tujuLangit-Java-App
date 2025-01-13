@@ -23,7 +23,7 @@ public class cLogout extends JLabel {
 
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 Object[] options = { "IYA", "KEMBALI" };
-                int konfirmasi = JOptionPane.showOptionDialog(null, "Yakin ingin keluar aplikasi", "Konfirmasi Keluar",
+                int konfirmasi = JOptionPane.showOptionDialog(null, "Yakin ingin keluar aplikasi ini?", "Konfirmasi Keluar",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if (konfirmasi == 0) {
                     Controller.hiddenDashboardAdmin();
