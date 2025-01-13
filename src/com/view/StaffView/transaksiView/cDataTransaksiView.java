@@ -122,6 +122,8 @@ public class cDataTransaksiView extends cPanelContentApp {
             }
         });
 
+        System.out.println("Archo Ngawi 456");
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
