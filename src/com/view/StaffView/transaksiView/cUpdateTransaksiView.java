@@ -59,6 +59,10 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private int idTransaction;
     private int idProductTransaction;
     private int idUnitProduct;
+    private String oldNameProduct;
+    private int oldAmountProduct;
+    private int oldPriceProduct;
+    private int oldPriceTransaction;
 
     public cUpdateTransaksiView(cContentStaffView parentPanel) {
         super();
@@ -74,6 +78,10 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         this.idTransaction = idTransaction;
         this.idProductTransaction = idProductTransaction;
         this.idUnitProduct = idProduct;
+        this.oldNameProduct = nameProduct;
+        this.oldAmountProduct = amountProduct;
+        this.oldPriceProduct = priceProduct;
+        this.oldPriceTransaction = priceTransaction;
         txtNameTransaksi.setText(nameCustomer);
         txtDeskripsiTransaksi.setText(description);
         valueNumberSeats.setText(numberSeats);
@@ -85,9 +93,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     public void addProductToCart(int idProduct, String nameProduct, int price) {
         boolean productExists = false;
         for (CartItem item : cartItems) {
-            if (item.getIdProduct() == idProduct) {
+            if (item.getIdProductTransaction() == idProductTransaction) {
                 item.setCount(item.getCount() + 1);
-                item.setPrice(item.getCount() * item.getUnitPrice());
+                item.setPrice(item.getPrice());
                 productExists = true;
                 break;
             }
@@ -100,13 +108,13 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         updateCartDisplay();
     }
 
-    public void addOrUpdateProductToCart(int idProductTransaction, String nameProduct, int price, int quantity) {
+    public void addOrUpdateProductToCart(int idProduct, String nameProduct, int price, int quantity) {
         boolean productExists = false;
 
         for (CartItem item : cartItems) {
-            if (item.getIdProductTransaction() == idProductTransaction && item.getNameProduct().equals(nameProduct)) {
+            if (item.getIdProduct() == idProduct && item.getNameProduct().equals(nameProduct)) {
                 item.setCount(item.getCount() + quantity);
-                item.setPrice(item.getCount() * item.getUnitPrice());
+                item.setPrice(item.getPrice());
                 System.out.println(item.getIdProduct());
                 productExists = true;
                 break;
@@ -139,7 +147,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             productLabel.setFont(cFonts.FONT_SIZE_15);
             productLabel.setBounds(20, 10, 200, 30);
 
-            JLabel priceLabel = new JLabel("Rp. " + item.getPrice());
+            JLabel priceLabel = new JLabel("Rp. " + item.getUnitPrice());
             priceLabel.setFont(cFonts.FONT_SIZE_15);
             priceLabel.setBounds(240, 10, 100, 30);
 
@@ -399,6 +407,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 boolean isProductExist = cUpdateProductTransaction.isProductExistInTransaction(idProductTransaction,
                         idUnitProduct);
 
+                int finalAmountProduct = oldAmountProduct + item.getCount() - oldAmountProduct;
+
                 boolean isProductUpdated = false;
                 if (isProductExist) {
                     // Jika produk sudah ada, lakukan update
@@ -406,9 +416,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                             idProductTransaction, // ID transaksi produk
                             idUnitProduct, // ID produk yang sudah ada
                             idTransaction, // ID transaksi
-                            item.getNameProduct(),
-                            item.getCount(),
-                            item.getUnitPrice());
+                            oldNameProduct,
+                            finalAmountProduct,
+                            oldPriceProduct);
                 }
 
                 boolean isProductInserted = false;
@@ -432,7 +442,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
                 // Update stock if product is updated or inserted
                 int amountSold = item.getCount();
-                boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idUnitProduct,amountSold);
+                int finalAmountSold = oldAmountProduct - item.getCount();
+                boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idUnitProduct, finalAmountSold);
                 boolean isStockInsert = cUpdateStockProduct.updateProductStock(item.getIdProduct(), amountSold);
 
                 if (!isStockUpdated && !isStockInsert) {
@@ -473,7 +484,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private int calculateTotalPrice() {
         int total = 0;
         for (CartItem item : cartItems) {
-            total += item.getPrice();
+            total += item.getPrice() + oldPriceTransaction - oldPriceTransaction;
         }
         return total;
     }
