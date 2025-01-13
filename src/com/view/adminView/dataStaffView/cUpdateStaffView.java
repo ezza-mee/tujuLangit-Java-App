@@ -15,7 +15,7 @@ public class cUpdateStaffView extends cPanelContentApp {
 
     // component label header Data Staff
     private cBigFont labelHeaderDataStaff = new cBigFont("Staff", 40, 5);
-    private cBigFont labelInputDataStaff = new cBigFont("Input Data Staff", 180, 20);
+    private cBigFont labelInputDataStaff = new cBigFont("Update Data Staff", 180, 20);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
@@ -226,7 +226,7 @@ public class cUpdateStaffView extends cPanelContentApp {
                 groupStatusStaff.clearSelection();
                 boxJobdeskStaff.setSelectedItem("Jobdesk");
 
-                JOptionPane.showMessageDialog(this, "Input Data successfully!");
+                JOptionPane.showMessageDialog(this, "Saved Data successfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to Input Data.");
             }

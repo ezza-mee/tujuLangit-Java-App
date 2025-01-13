@@ -10,11 +10,11 @@ public class cLoginAdminView extends cPanelCardLogin {
     private cContentLoginView parentPanel;
 
     // component Label Header
-    private cLabelInfo labelHeaderLogin = new cLabelInfo("Sign In", 200, 60, 300, 60);
-    private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 250);
-    private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 270, 320);
+    private cLabelInfo labelHeaderLogin = new cLabelInfo("Sign In", 210, 60, 300, 60);
+    private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 190);
+    private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 120, 420);
 
-    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIcon.png", 90, 340, 160, 160);
+    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIcon.png", 90, 270, 160, 160);
 
     // component panel login admin
     private cPanelRounded panelShapeLogin = new cPanelRounded(0, 0, 530, 700, 0, 340);

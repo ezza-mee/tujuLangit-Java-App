@@ -14,7 +14,7 @@ public class cUpdateSupplierView extends cPanelContentApp {
 
     // component label header Input Supplier
     private cBigFont labelHeaderInputSupplier = new cBigFont("Input Data", 40, 5);
-    private cBigFont labelInputSupplier = new cBigFont("Input Data Supplier", 180, 20);
+    private cBigFont labelInputSupplier = new cBigFont("Update Data Supplier", 180, 20);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);

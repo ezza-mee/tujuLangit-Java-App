@@ -10,18 +10,18 @@ public class cLoginStaffView extends cPanelCardLogin {
 
     private cContentLoginView parentPanel;
 
-    private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 250);
-    private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 270, 320);
+    private cBigFont labelHeaderTujuLangit = new cBigFont("TujuLangit", 70, 190);
+    private cBigFont labelHeaderForestpark = new cBigFont("Forestpark", 120, 420);
 
-    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIcon.png", 90, 340, 160, 160);
+    private cImage imgBrand = new cImage("src/com/main/resources/images/brandIcon.png", 90, 270, 160, 160);
 
     // component panel login admin
     private cPanelRounded panelShapeLogin = new cPanelRounded(0, 0, 530, 700, 0, 340);
-    private cPanelRounded panelCardLogin = new cPanelRounded(560, 90, 500, 580, 10, 10);
-    private cPanelRounded panelListLogin = new cPanelRounded(195, 70, 100, 7, 5, 5);
+    private cPanelRounded panelCardLogin = new cPanelRounded(560, 70, 500, 600, 10, 10);
+    private cPanelRounded panelListLogin = new cPanelRounded(195, 110, 100, 7, 5, 5);
 
     // component Label Header
-    private cLabelInfo labelHeaderLogin = new cLabelInfo("Sign In", 200, 20, 300, 60);
+    private cLabelInfo labelHeaderLogin = new cLabelInfo("Sign In", 210, 60, 300, 60);
 
     // component of login admin
     private cFormLabel labelEmailStaff = new cFormLabel("Email", 100, 150, 200);

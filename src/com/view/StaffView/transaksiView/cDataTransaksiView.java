@@ -112,7 +112,7 @@ public class cDataTransaksiView extends cPanelContentApp {
                         DefaultTableModel model = (DefaultTableModel) tblTransaction.getModel();
                         model.removeRow(selectedRow);
                         loadDataTransaction();
-                        JOptionPane.showMessageDialog(null, "Staff berhasil dihapus!");
+                        JOptionPane.showMessageDialog(null, "Staff Berhasil dihapus!");
                     } else {
                         JOptionPane.showMessageDialog(null, "Gagal Menghapus Transaksi.");
                     }
@@ -122,18 +122,6 @@ public class cDataTransaksiView extends cPanelContentApp {
             }
         });
 
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
-        System.out.println("archo suka sedot timun.");
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
