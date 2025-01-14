@@ -19,13 +19,21 @@ public class cReportStaffView extends cPanelContentApp {
         // componet panel data Staff
         private cPanelRounded panelDataStaff = new cPanelRounded(40, 80, 1050, 560, 10, 10);
         private cPanelRounded panelTableStaff = new cPanelRounded(0, 80, 1050, 560, 10, 10);
+
+        // component button Cetak Staff
+        private cButtonRounded btnPrintStaff = new cButtonRounded("Print", 410, 25, 110, 40, 10);
     
         // component label data Staff
         private cLabelInfo labelDataStaff = new cLabelInfo("Data Staff", 40, 30, 300, 30);
     
-        // component tabel data supplier
+        // component tabel data staff
         private cTable tblDataStaff;
         private cScrollTable spDataStaff;
+
+        // add combobox Report Staff
+        private cComboBox boxReportStaff = new cComboBox(
+            new String[] { "Product", "Staff", "Supplier" }, 180, 30,
+            200, 30);
 
     private cContentAdminView parentPanel;
 
@@ -46,6 +54,10 @@ public class cReportStaffView extends cPanelContentApp {
 
         panelDataStaff.add(labelDataStaff);
         panelDataStaff.add(spDataStaff);
+
+        panelDataStaff.add(boxReportStaff);
+
+        panelDataStaff.add(btnPrintStaff);
 
         bgPanel.add(panelDataStaff);
         bgPanel.add(labelHeaderDataStaff);

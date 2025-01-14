@@ -1,16 +1,88 @@
 package com.view.adminView.reportAdmin;
 
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
+import com.main.database.supplier.cDataSupplier;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentAdminView;
+import com.partials.*;
 
 public class cReportSupplierView extends cPanelContentApp {
+
     private cContentAdminView parentPanel;
+        // component label header Data Supplier
+    private cBigFont labelHeaderDataSupplier = new cBigFont("Report", 40, 5);
+
+    // component copyright
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+
+    // component panel data Supplier
+    private cPanelRounded panelDataSupplier = new cPanelRounded(40, 80, 1050, 560, 10, 10);
+    private cPanelRounded panelTableSupplier = new cPanelRounded(0, 80, 1050, 560, 10, 10);
+
+    // component button Cetak Supplier
+    private cButtonRounded btnPrintSupplier = new cButtonRounded("Print", 410, 25, 110, 40, 10);
+
+    // component label data Supplier
+    private cLabelInfo labelDataSupplier = new cLabelInfo("Data Supplier", 40, 30, 300, 30);
+
+    // component tabel data supplier
+    private cTable tblDataSupplier;
+    private cScrollTable spDataSupplier;
+
+    // add combobox Cetak Supplier
+    private cComboBox boxReportSupplier = new cComboBox(
+            new String[] { "Product", "Staff", "Supplier" }, 180, 30,
+            200, 30);
 
     public cReportSupplierView(cContentAdminView parentPanel) {
         super();
         this.parentPanel = parentPanel;
 
         initsReportDataSupplierView();
+        tblDataSupplier = new cTable(cDataSupplier.getAllSupplier());
+        spDataSupplier = new cScrollTable(tblDataSupplier, 0, 10, 1050, 400);
+
+        labelCopyright.setHorizontalAlignment(JLabel.CENTER);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
+
+        panelTableSupplier.add(spDataSupplier);
+        panelDataSupplier.add(panelTableSupplier);
+
+        panelDataSupplier.add(boxReportSupplier );
+
+        panelDataSupplier.add(btnPrintSupplier);
+
+        bgPanel.add(panelDataSupplier);
+        bgPanel.add(labelHeaderDataSupplier);
+        bgPanel.add(labelCopyright);
+    }
+
+     public void loadDataSuppliers() {
+        DefaultTableModel modelTable = cDataSupplier.getAllSupplier();
+
+        tblDataSupplier.setModel(modelTable);
+
+        panelDataSupplier.revalidate();
+        panelDataSupplier.repaint();
+
+        tblDataSupplier.getColumnModel().getColumn(0).setMinWidth(80);
+        tblDataSupplier.getColumnModel().getColumn(0).setMaxWidth(80);
+        tblDataSupplier.getColumnModel().getColumn(0).setWidth(80);
+
+        tblDataSupplier.getColumnModel().getColumn(1).setMinWidth(220);
+        tblDataSupplier.getColumnModel().getColumn(1).setMaxWidth(220);
+        tblDataSupplier.getColumnModel().getColumn(1).setWidth(220);
+
+        tblDataSupplier.getColumnModel().getColumn(2).setMinWidth(120);
+        tblDataSupplier.getColumnModel().getColumn(2).setMaxWidth(120);
+        tblDataSupplier.getColumnModel().getColumn(2).setWidth(120);
+
+        tblDataSupplier.getColumnModel().getColumn(3).setMinWidth(180);
+        tblDataSupplier.getColumnModel().getColumn(3).setMaxWidth(180);
+        tblDataSupplier.getColumnModel().getColumn(3).setWidth(180);
+
     }
 
     private void initsReportDataSupplierView() {
