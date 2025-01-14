@@ -182,7 +182,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuReport.setBackground(cColor.WHITE);
         menuReport.setSidebarAktif();
 
-        contentView.showReportDataStaffView();
+        contentView.showReportDataProductView();
 
         setVisible(true);
     }
