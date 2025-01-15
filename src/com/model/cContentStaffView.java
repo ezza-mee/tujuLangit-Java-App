@@ -4,8 +4,7 @@ import com.main.resources.templates.cPanelContentApp;
 import com.view.staffView.cHistoryTransaksiView;
 import com.view.staffView.cHomeView;
 import com.view.staffView.productView.*;
-import com.view.staffView.reportView.cReportSeatsView;
-import com.view.staffView.reportView.cReportTransactionView;
+import com.view.staffView.reportView.cDataReportStaffView;
 import com.view.staffView.seatsView.*;
 import com.view.staffView.transaksiView.*;
 
@@ -25,8 +24,7 @@ public class cContentStaffView extends cPanelContentApp {
     private cInsertProductTransaksiView componentInsertProductTransaksiView;
     private cUpdateProductTransaksiView componentUpdateProductTransaksiView;
 
-    private cReportTransactionView componentReportTransactionView;
-    private cReportSeatsView componentReportSeatsView;
+    private cDataReportStaffView componentReportSeatsView;
 
     public cContentStaffView() {
         super();
@@ -42,8 +40,7 @@ public class cContentStaffView extends cPanelContentApp {
         componentInsertProductTransaksiView = new cInsertProductTransaksiView(this, componentInputTransaksiView);
         componentUpdateProductTransaksiView = new cUpdateProductTransaksiView(this, componentUpdateTransaksiView);
 
-        componentReportTransactionView = new cReportTransactionView(this);
-        componentReportSeatsView = new cReportSeatsView(this);
+        componentReportSeatsView = new cDataReportStaffView(this);
 
     }
 
@@ -134,7 +131,8 @@ public class cContentStaffView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showUpdateTransaksiView(int idTransaction, int idProduct, int idProductTransaction, String numberSeats, String nameCustomer,
+    public void showUpdateTransaksiView(int idTransaction, int idProduct, int idProductTransaction, String numberSeats,
+            String nameCustomer,
             int amountTransaction, int priceTransaction, String description,
             String nameProduct, int amountProduct, int priceProduct) {
         refreshContent();
@@ -173,19 +171,10 @@ public class cContentStaffView extends cPanelContentApp {
 
         setVisible(true);
     }
-    
+
     public void showReportDataSeatsView() {
         refreshContent();
         bgPanel.add(componentReportSeatsView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    public void showReportDataTransactionView() {
-        refreshContent();
-        bgPanel.add(componentReportTransactionView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
