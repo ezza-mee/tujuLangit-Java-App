@@ -11,7 +11,7 @@ public class cUpdateDataSeats {
             String statusSeats) {
         boolean result = false;
 
-        String query = "UPDATE tbl_seats SET numberSeats = ?, amountSeats = ?, descriptionSeats = ?, statusSeats = ? WHERE idSeats = ?";
+        String query = "UPDATE tbl_seats SET  dateTime = NOW(), numberSeats = ?, amountSeats = ?, descriptionSeats = ?, statusSeats = ? WHERE idSeats = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {

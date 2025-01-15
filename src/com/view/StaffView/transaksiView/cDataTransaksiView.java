@@ -77,16 +77,16 @@ public class cDataTransaksiView extends cPanelContentApp {
 
                     int idProductTransaction = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 1).toString());
                     int idProduct = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 2).toString());
-                    String numberSeats = tblTransaction.getValueAt(selectedIndex, 3).toString();
-                    String nameCustomer = tblTransaction.getValueAt(selectedIndex, 4).toString();
-                    int amountTransaction = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 5).toString());
-                    String priceTotalString = tblTransaction.getValueAt(selectedIndex, 6).toString();
+                    String numberSeats = tblTransaction.getValueAt(selectedIndex, 4).toString();
+                    String nameCustomer = tblTransaction.getValueAt(selectedIndex, 5).toString();
+                    int amountTransaction = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 6).toString());
+                    String priceTotalString = tblTransaction.getValueAt(selectedIndex, 7).toString();
                     priceTotalString = priceTotalString.replaceAll("[^0-9]", "");
                     int priceTransaction = Integer.parseInt(priceTotalString);
-                    String description = tblTransaction.getValueAt(selectedIndex, 7).toString();
-                    String nameProduct = tblTransaction.getValueAt(selectedIndex, 8).toString();
-                    int amountProduct = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 9).toString());
-                    String priceProductString = tblTransaction.getValueAt(selectedIndex, 10).toString();
+                    String description = tblTransaction.getValueAt(selectedIndex, 8).toString();
+                    String nameProduct = tblTransaction.getValueAt(selectedIndex, 9).toString();
+                    int amountProduct = Integer.parseInt(tblTransaction.getValueAt(selectedIndex, 10).toString());
+                    String priceProductString = tblTransaction.getValueAt(selectedIndex, 11).toString();
                     priceProductString = priceProductString.replaceAll("[^0-9]", "");
                     int priceProduct = Integer.parseInt(priceProductString);
 

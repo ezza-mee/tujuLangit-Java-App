@@ -10,7 +10,7 @@ public class cInsertDataSeats {
     public static boolean dataSeats(int numberSeats, int amountSeats, String descriptionSeats, String statusSeats) {
         boolean data = false;
         
-        String query = "INSERT INTO tbl_seats (numberSeats, amountSeats, descriptionSeats, statusSeats) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO tbl_seats (dateTime, numberSeats, amountSeats, descriptionSeats, statusSeats) VALUES (NOW(), ?, ?, ?, ?)";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query);) {

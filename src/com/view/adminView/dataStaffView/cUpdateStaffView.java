@@ -129,6 +129,7 @@ public class cUpdateStaffView extends cPanelContentApp {
         panelInputStaff.add(labelNomorHpStaff);
         panelInputStaff.add(labelJobdeskStaff);
         panelInputStaff.add(labelAddressStaff);
+        panelInputStaff.add(labelPasswordStaff);
         panelInputStaff.add(labelStatusStaff);
 
         panelInputStaff.add(txtNameStaff);
@@ -215,7 +216,8 @@ public class cUpdateStaffView extends cPanelContentApp {
                 status = "Inactive";
             }
 
-            boolean saveData = cUpdateDataStaff.handleUpdateStaff(idStaff, nameStaff, phoneNumber, email, password, jobdesk,
+            boolean saveData = cUpdateDataStaff.handleUpdateStaff(idStaff, nameStaff, phoneNumber, email, password,
+                    jobdesk,
                     address, status);
             if (saveData) {
                 txtNameStaff.setText(null);

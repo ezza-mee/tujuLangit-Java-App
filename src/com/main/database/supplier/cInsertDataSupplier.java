@@ -10,7 +10,7 @@ public class cInsertDataSupplier {
     public static boolean dataSupplier(String typeSupplier, int supplierAmount, int priceTotal, String descriptionProduct) {
         boolean data = false;
 
-        String query = "INSERT INTO tbl_supplier (typeSupplier, supplierAmount, priceTotal, descriptionProduct) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO tbl_supplier (dateTime, typeSupplier, supplierAmount, priceTotal, descriptionProduct) VALUES (NOW(), ?, ?, ?, ?)";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                     PreparedStatement state = conn.prepareStatement(query);) { 

@@ -95,6 +95,7 @@ public class cContentStaffView extends cPanelContentApp {
 
     public void showHistoryTransaksiView() {
         refreshContent();
+        componentHistoryTransaksiView.loadDataTransaction();
         bgPanel.add(componentHistoryTransaksiView);
         bgPanel.revalidate();
         bgPanel.repaint();

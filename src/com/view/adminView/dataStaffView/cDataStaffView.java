@@ -72,12 +72,12 @@ public class cDataStaffView extends cPanelContentApp {
                     String idString = tblDataStaff.getValueAt(selectedIndex, 0).toString();
                     int idStaff = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
 
-                    String nameStaff = tblDataStaff.getValueAt(selectedIndex, 1).toString();
-                    String phoneNumber = tblDataStaff.getValueAt(selectedIndex, 2).toString();
-                    String email = tblDataStaff.getValueAt(selectedIndex, 3).toString();
-                    String jobdesk = tblDataStaff.getValueAt(selectedIndex, 4).toString();
-                    String address = tblDataStaff.getValueAt(selectedIndex, 5).toString();
-                    String status = tblDataStaff.getValueAt(selectedIndex, 6).toString();
+                    String nameStaff = tblDataStaff.getValueAt(selectedIndex, 2).toString();
+                    String phoneNumber = tblDataStaff.getValueAt(selectedIndex, 3).toString();
+                    String email = tblDataStaff.getValueAt(selectedIndex, 4).toString();
+                    String jobdesk = tblDataStaff.getValueAt(selectedIndex, 5).toString();
+                    String address = tblDataStaff.getValueAt(selectedIndex, 6).toString();
+                    String status = tblDataStaff.getValueAt(selectedIndex, 7).toString();
 
                     parentPanel.showUpdateDataStaffView(idStaff, nameStaff, phoneNumber, email, address, jobdesk,
                             status);

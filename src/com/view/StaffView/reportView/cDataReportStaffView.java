@@ -72,14 +72,17 @@ public class cDataReportStaffView extends cPanelContentApp {
     private void initsDataReportView() {
         refreshContent();
 
+        labelCopyright.setHorizontalAlignment(JLabel.CENTER);
+        labelCopyright.setFont(cFonts.FONT_SIZE_10);
+
         boxDataReport.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 String selectedItem = (String) boxDataReport.getSelectedItem();
 
-                if ("Data Seats".equals(selectedItem)) {
+                if ("Seats".equals(selectedItem)) {
                     initsReportDataSeatsView();
-                } else if ("Data Transaction".equals(selectedItem)) {
+                } else if ("Transaction".equals(selectedItem)) {
                     initsReportDataTransactionView();
                 }
             }
@@ -88,6 +91,7 @@ public class cDataReportStaffView extends cPanelContentApp {
         panelListReport.add(boxDataReport);
         panelListReport.add(labelListDataReport);
 
+        bgPanel.add(labelCopyright);
         bgPanel.add(panelListReport);
         bgPanel.add(labelHeaderDataReport);
 
@@ -99,9 +103,6 @@ public class cDataReportStaffView extends cPanelContentApp {
     private void initsReportDataSeatsView() {
 
         labelHeaderDataReport.setText("Data Seats");
-
-        labelCopyright.setHorizontalAlignment(JLabel.CENTER);
-        labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         tblDataSeats = new cTable(cDataSeats.getAllSeats());
         spDataSeats = new cScrollTable(tblDataSeats, 0, 0, 1050, 400);

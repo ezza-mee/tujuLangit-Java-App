@@ -82,24 +82,24 @@ public class cDataSeatsView extends cPanelContentApp {
                     String idString = tblDataSeats.getValueAt(selectAllDataSeat, 0).toString();
                     int idSeats = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
 
-                    String typeSeats = tblDataSeats.getValueAt(selectAllDataSeat, 1).toString();
-                    int amountSeats = Integer.parseInt(tblDataSeats.getValueAt(selectAllDataSeat, 2).toString());
-                    String descriptionSeats = tblDataSeats.getValueAt(selectAllDataSeat, 3).toString();
-                    String statusSeats = tblDataSeats.getValueAt(selectAllDataSeat, 4).toString();
+                    String numberSeats = tblDataSeats.getValueAt(selectAllDataSeat, 2).toString();
+                    int amountSeats = Integer.parseInt(tblDataSeats.getValueAt(selectAllDataSeat, 3).toString());
+                    String descriptionSeats = tblDataSeats.getValueAt(selectAllDataSeat, 4).toString();
+                    String statusSeats = tblDataSeats.getValueAt(selectAllDataSeat, 5).toString();
 
-                    parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
+                    parentPanel.showUpdateDataSeatsView(idSeats, numberSeats, amountSeats,
                             descriptionSeats, statusSeats);
 
                 } else if (selectAllDataSeatsUsed != -1) {
                     String idString = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 0).toString();
                     int idSeats = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
 
-                    String typeSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 1).toString();
-                    int amountSeats = Integer.parseInt(tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 2).toString());
-                    String descriptionSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 3).toString();
-                    String statusSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 4).toString();
+                    String numberSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 2).toString();
+                    int amountSeats = Integer.parseInt(tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 3).toString());
+                    String descriptionSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 4).toString();
+                    String statusSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 5).toString();
 
-                    parentPanel.showUpdateDataSeatsView(idSeats, typeSeats, amountSeats,
+                    parentPanel.showUpdateDataSeatsView(idSeats, numberSeats, amountSeats,
                             descriptionSeats, statusSeats);
 
                 } else {

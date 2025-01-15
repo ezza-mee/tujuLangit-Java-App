@@ -12,7 +12,7 @@ public class cUpdateDataStaff {
             String jobdesk, String address, String status) {
         boolean result = false;
 
-        String query = "UPDATE tbl_Staff SET nameStaff = ?, phoneNumber = ?, email = ?, password = ?, jobdesk = ?, address = ?, status = ? WHERE idStaff = ?";
+        String query = "UPDATE tbl_Staff SET dateTime = NOW(), nameStaff = ?, phoneNumber = ?, email = ?, password = ?, jobdesk = ?, address = ?, status = ? WHERE idStaff = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
