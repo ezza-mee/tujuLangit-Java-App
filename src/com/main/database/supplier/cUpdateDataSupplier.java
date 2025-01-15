@@ -11,7 +11,7 @@ public class cUpdateDataSupplier {
             String descriptionSupplier) {
         boolean result = false;
 
-        String query = "UPDATE tbl_supplier SET typeSupplier = ?, supplierAmount = ?, priceTotal = ?, descriptionProduct = ? WHERE idSupplier = ?";
+        String query = "UPDATE tbl_supplier SET dateTime = NOW(), typeSupplier = ?, supplierAmount = ?, priceTotal = ?, descriptionProduct = ? WHERE idSupplier = ?";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {

@@ -15,7 +15,7 @@ public class cUpdateDataProduct {
             int priceProduct, String descriptionProduct, String typeProduct, String statusProduct) {
         boolean data = false;
 
-        String query = "UPDATE tbl_product SET nameProduct = ?, imageProduct = ?, countProduct = ?, priceProduct = ?, descriptionProduct = ?, typeProduct = ?, statusProduct = ? WHERE idProduct = ?";
+        String query = "UPDATE tbl_product SET dateTime = NOW(), nameProduct = ?, imageProduct = ?, countProduct = ?, priceProduct = ?, descriptionProduct = ?, typeProduct = ?, statusProduct = ? WHERE idProduct = ?";
 
         File imageFile = new File(imageProduct);
         if (!imageFile.exists()) {

@@ -11,7 +11,7 @@ import com.main.database.cConnectionDatabase;
 public class cDataTransaction {
     public static DefaultTableModel getAllTransaction() {
 
-        String[] dataHeader = { "ID", "ID", "ID", "Number", "Customer", "Amount", "Price", "Description", "Product", "Amount",
+        String[] dataHeader = { "ID", "ID", "ID", "Date", "Number", "Customer", "Amount", "Price", "Description", "Product", "Amount",
                 "price" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
@@ -25,6 +25,7 @@ public class cDataTransaction {
                 Object[] rowData = { "T00" + resultData.getInt("idTransaction"),
                         resultData.getInt("idProductTransaction"),
                         resultData.getInt("idProduct"),
+                        resultData.getString("dateTime"),
                         resultData.getInt("numberSeats"),
                         resultData.getString("nameCustomer"),
                         resultData.getInt("amountTransaction"),

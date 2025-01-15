@@ -15,7 +15,7 @@ public class cInsertDataProduct {
             String descriptionProduct, String typeProduct, String statusProduct) {
         boolean data = false;
 
-        String query = "INSERT INTO tbl_product (nameProduct, imageProduct, countProduct, priceProduct, descriptionProduct, typeProduct, statusProduct) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO tbl_product (dateTime, nameProduct, imageProduct, countProduct, priceProduct, descriptionProduct, typeProduct, statusProduct) VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?)";
 
         File imageFile = new File(imageProduct);
         if (!imageFile.exists()) {

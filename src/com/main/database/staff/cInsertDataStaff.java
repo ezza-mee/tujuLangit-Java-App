@@ -12,7 +12,7 @@ public class cInsertDataStaff {
             String status) {
         boolean data = false;
 
-        String query = "INSERT INTO tbl_staff (nameStaff, phoneNumber, email, password, jobdesk, address, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO tbl_staff (dateTime, nameStaff, phoneNumber, email, password, jobdesk, address, status) VALUES (now(), ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query);) {

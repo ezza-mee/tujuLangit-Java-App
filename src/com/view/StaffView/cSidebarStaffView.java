@@ -1,5 +1,6 @@
 package com.view.staffView;
 
+import com.main.database.transaction.cDataTransaction;
 import com.main.resources.templates.cPanelSidebarApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -26,6 +27,8 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                         150 + 50 + 50 + 50 + 50);
         private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconReportDefault, iconImage.iconReportHover,
                         "Report", 150 + 50 + 50 + 50 + 50 + 50);
+
+        private cDateTime labelDateTime = new cDateTime(0, 680, 240);
 
         private void resetSidebar() {
                 setVisible(false);
@@ -102,6 +105,7 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                         }
                 });
 
+                bgPanel.add(labelDateTime);
                 bgPanel.add(menuHome);
                 bgPanel.add(menuProduct);
                 bgPanel.add(menuSeats);
