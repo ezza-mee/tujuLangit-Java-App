@@ -17,7 +17,10 @@ public class cHistoryTransaksiView extends cPanelContentApp {
 
     // ini adalah component data transaksi
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 1050, 560, 10, 10);
-    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 80, 1050, 400, 0, 0);
+    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 120, 1050, 350, 0, 0);
+
+    // component Search Data
+    private cTextField txtSearchData = new cTextField(75, 75, 300);
 
     // ini adalah component label data transaksi
     private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
@@ -52,8 +55,11 @@ public class cHistoryTransaksiView extends cPanelContentApp {
         panelListTransaksi.add(labelDataTransaksi);
         panelListTransaksi.add(panelTableTransaksi);
 
+        panelListTransaksi.add(txtSearchData);
+        panelTableTransaksi.setBackground(cColor.GREEN);
+
         tblTransaction = new cTable(cDataTransaction.getAllTransaction());
-        spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 400);
+        spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 350);
 
         panelTableTransaksi.add(spTransaction);
 

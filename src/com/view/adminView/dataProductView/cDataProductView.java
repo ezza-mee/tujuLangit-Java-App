@@ -35,6 +35,9 @@ public class cDataProductView extends cPanelContentApp {
     private cPanelRounded panelListProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
     private cPanelRounded panelProduct = new cPanelRounded(0, 130, 1050, 430, 0, 0);
 
+    // component Search Data
+    private cTextField txtSearchData = new cTextField(75, 75, 300);
+
     // component label data Product
     private cLabelInfo labelListDataProduct = new cLabelInfo("List Data Product", 30, 30, 580, 30);
 
@@ -64,6 +67,7 @@ public class cDataProductView extends cPanelContentApp {
         panelListProduct.add(labelListDataProduct);
         panelListProduct.add(btnAddDataProduct);
         panelListProduct.add(panelProduct);
+        panelListProduct.add(txtSearchData);
 
         bgPanel.add(labelHeaderDataProduct);
         bgPanel.add(panelListProduct);

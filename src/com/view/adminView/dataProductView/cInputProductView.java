@@ -47,8 +47,8 @@ public class cInputProductView extends cPanelContentApp {
     private cRadioButton statusReadyProduct = new cRadioButton("Ready", "Active", 180, 405, 100);
     private cRadioButton statusSoldProduct = new cRadioButton("Sold", "Inactive", 320, 405, 100);
     private cRadioButton typeCoffeProduct = new cRadioButton("Coffe", "Active", 580, 405, 100);
-    private cRadioButton typeFoodProduct = new cRadioButton("Drink", "Inactive", 700, 405, 100);
-    private cRadioButton typeDrinkProduct = new cRadioButton("Food", "Inactive", 820, 405, 100);
+    private cRadioButton typeFoodProduct = new cRadioButton("Food", "Inactive", 700, 405, 100);
+    private cRadioButton typeDrinkProduct = new cRadioButton("Drink", "Inactive", 820, 405, 100);
 
     // component button Input Product
     private cButtonRounded btnSaveProduct = new cButtonRounded("Save", 780, 480, 110, 40, 10);

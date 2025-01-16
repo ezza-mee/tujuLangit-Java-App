@@ -23,7 +23,10 @@ public class cDataTransaksiView extends cPanelContentApp {
 
     // ini adalah component data transaksi
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 1050, 560, 10, 10);
-    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 80, 1050, 400, 0, 0);
+    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 120, 1050, 400, 0, 0);
+
+    // component Search Data
+    private cTextField txtSearchData = new cTextField(75, 75, 300);
 
     // ini adalah component label data transaksi
     private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
@@ -122,7 +125,6 @@ public class cDataTransaksiView extends cPanelContentApp {
             }
         });
 
-        System.out.println("Archo Ngawi 456");
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
@@ -131,11 +133,14 @@ public class cDataTransaksiView extends cPanelContentApp {
         btnUpdateDataTransaksi.setFont(cFonts.FONT_SIZE_13);
         btnDeleteDataTransaksi.setFont(cFonts.FONT_SIZE_13);
 
+        panelListTransaksi.add(txtSearchData);
+
         panelListTransaksi.add(labelDataTransaksi);
         panelListTransaksi.add(btnInputDataTransaksi);
         panelListTransaksi.add(btnUpdateDataTransaksi);
         panelListTransaksi.add(btnDeleteDataTransaksi);
         panelListTransaksi.add(panelTableTransaksi);
+        panelListTransaksi.add(txtSearchData);
 
         tblTransaction = new cTable(cDataTransaction.getAllTransaction());
         spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 400);
