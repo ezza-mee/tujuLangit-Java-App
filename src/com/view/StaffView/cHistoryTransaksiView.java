@@ -1,9 +1,11 @@
 package com.view.staffView;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.transaction.cDataTransaction;
+import com.main.database.transaction.cProcessDataTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
 
@@ -25,10 +27,11 @@ public class cHistoryTransaksiView extends cPanelContentApp {
     // ini adalah component label data transaksi
     private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
 
+    private cButtonRounded btnProcessDataTransaksi = new cButtonRounded("Process", 860, 25, 110, 40, 10);
+
     // component table transaction
     private cTable tblTransaction;
     private cScrollTable spTransaction;
-
 
     public cHistoryTransaksiView() {
         super();
@@ -49,11 +52,45 @@ public class cHistoryTransaksiView extends cPanelContentApp {
     public void initsHistoryTransaksiView() {
         setVisible(true);
 
+        btnProcessDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                int selectedRow = tblTransaction.getSelectedRow(); // Mendapatkan baris yang dipilih
+
+                if (selectedRow == -1) {
+                    JOptionPane.showMessageDialog(null,
+                            "Pilih transaksi terlebih dahulu!",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                String idString = tblTransaction.getValueAt(selectedRow, 0).toString();
+                int idTransaction = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
+
+                boolean isProcessed = cProcessDataTransaction.processTransaction(idTransaction);
+
+                if (isProcessed) {
+                    JOptionPane.showMessageDialog(null,
+                            "Transaksi berhasil diproses!",
+                            "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    loadDataTransaction(); // Refresh data transaksi
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Gagal memproses transaksi!",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         panelListTransaksi.add(labelDataTransaksi);
         panelListTransaksi.add(panelTableTransaksi);
+        panelListTransaksi.add(btnProcessDataTransaksi);
 
         panelListTransaksi.add(txtSearchData);
         panelTableTransaksi.setBackground(cColor.GREEN);
