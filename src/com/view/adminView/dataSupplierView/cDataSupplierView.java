@@ -24,6 +24,9 @@ public class cDataSupplierView extends cPanelContentApp {
     private cPanelRounded panelDataSupplier = new cPanelRounded(40, 80, 1050, 560, 10, 10);
     private cPanelRounded panelTableSupplier = new cPanelRounded(0, 80, 1050, 560, 10, 10);
 
+    // component Search Data
+    private cTextField txtSearchData = new cTextField(75, 75, 300);
+
     // component label data Supplier
     private cLabelInfo labelDataSupplier = new cLabelInfo("Data Supplier", 40, 30, 300, 30);
 
@@ -111,7 +114,7 @@ public class cDataSupplierView extends cPanelContentApp {
         });
 
         tblDataSupplier = new cTable(cDataSupplier.getAllSupplier());
-        spDataSupplier = new cScrollTable(tblDataSupplier, 0, 10, 1050, 400);
+        spDataSupplier = new cScrollTable(tblDataSupplier, 0, 50, 1050, 400);
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
@@ -125,6 +128,7 @@ public class cDataSupplierView extends cPanelContentApp {
         panelDataSupplier.add(btnInputDataSupplier);
         panelDataSupplier.add(btnUpdateDataSupplier);
         panelDataSupplier.add(btnDeleteDataSupplier);
+        panelDataSupplier.add(txtSearchData);
 
         panelTableSupplier.add(spDataSupplier);
         panelDataSupplier.add(panelTableSupplier);

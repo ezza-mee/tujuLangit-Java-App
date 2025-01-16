@@ -24,6 +24,9 @@ public class cDataStaffView extends cPanelContentApp {
     private cPanelRounded panelDataStaff = new cPanelRounded(40, 80, 1050, 560, 10, 10);
     private cPanelRounded panelTableStaff = new cPanelRounded(0, 80, 1050, 560, 10, 10);
 
+    // component Search Data
+    private cTextField txtSearchData = new cTextField(75, 75, 300);
+
     // component label data Staff
     private cLabelInfo labelDataStaff = new cLabelInfo("Data Staff", 40, 30, 300, 30);
 
@@ -111,7 +114,7 @@ public class cDataStaffView extends cPanelContentApp {
         });
 
         tblDataStaff = new cTable(cDataStaff.getAllStaff());
-        spDataStaff = new cScrollTable(tblDataStaff, 0, 80, 1050, 400);
+        spDataStaff = new cScrollTable(tblDataStaff, 0, 130, 1050, 400);
 
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
@@ -126,6 +129,7 @@ public class cDataStaffView extends cPanelContentApp {
         panelDataStaff.add(btnInputDataStaff);
         panelDataStaff.add(btnUpdateDataStaff);
         panelDataStaff.add(btnDeleteDataStaff);
+        panelDataStaff.add(txtSearchData);
 
         bgPanel.add(panelDataStaff);
         bgPanel.add(labelHeaderDataStaff);
