@@ -39,13 +39,13 @@ public class cDataReportStaffView extends cPanelContentApp {
     // ini adalah component data transaksi
     private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 80, 1050, 400, 0, 0);
     private cButtonRounded btnPrintDataTransaction = new cButtonRounded("Print", 410, 25, 110, 40, 10);
-    
+
     // component table transaction
     private cTable tblTransaction;
     private cScrollTable spTransaction;
 
     private cComboBox boxDataReport = new cComboBox(
-            new String[] { "Data Seats", "Data Transaction" }, 180, 30,
+            new String[] { "Seats", "Transaction" }, 180, 30,
             200, 30);
 
     public cDataReportStaffView(cContentStaffView parentPanel) {
@@ -81,6 +81,13 @@ public class cDataReportStaffView extends cPanelContentApp {
             public void actionPerformed(java.awt.event.ActionEvent ae) {
                 String selectedItem = (String) boxDataReport.getSelectedItem();
 
+                panelListReport.removeAll();
+                panelListReport.revalidate();
+                panelListReport.repaint();
+
+                panelListReport.add(boxDataReport);
+                panelListReport.add(labelListDataReport);
+
                 if ("Seats".equals(selectedItem)) {
                     initsReportDataSeatsView();
                 } else if ("Transaction".equals(selectedItem)) {
@@ -111,7 +118,6 @@ public class cDataReportStaffView extends cPanelContentApp {
         panelTableSeats.add(spDataSeats);
         panelListReport.add(btnPrintDataSeats);
         panelListReport.add(panelTableSeats);
-        panelListReport.add(boxDataReport);
 
         loadDataSeats();
 
@@ -132,7 +138,6 @@ public class cDataReportStaffView extends cPanelContentApp {
 
         panelListReport.add(panelTableTransaksi);
         panelListReport.add(btnPrintDataTransaction);
-        panelListReport.add(boxDataReport);
 
         loadDataTransaction();
 
@@ -144,37 +149,12 @@ public class cDataReportStaffView extends cPanelContentApp {
 
         tblDataSeats.setModel(modelTableSeats);
 
-        panelListReport.revalidate();
-        panelListReport.repaint();
-
-        tblDataSeats.getColumnModel().getColumn(0).setMinWidth(65);
-        tblDataSeats.getColumnModel().getColumn(0).setMaxWidth(65);
-        tblDataSeats.getColumnModel().getColumn(0).setWidth(65);
-
-        tblDataSeats.getColumnModel().getColumn(1).setMinWidth(140);
-        tblDataSeats.getColumnModel().getColumn(1).setMaxWidth(140);
-        tblDataSeats.getColumnModel().getColumn(1).setWidth(140);
-
-        tblDataSeats.getColumnModel().getColumn(2).setMinWidth(110);
-        tblDataSeats.getColumnModel().getColumn(2).setMaxWidth(110);
-        tblDataSeats.getColumnModel().getColumn(2).setWidth(110);
-
-        tblDataSeats.getColumnModel().getColumn(3).setMinWidth(600);
-        tblDataSeats.getColumnModel().getColumn(3).setMaxWidth(600);
-        tblDataSeats.getColumnModel().getColumn(3).setWidth(600);
-
-        tblDataSeats.getColumnModel().getColumn(4).setMinWidth(130);
-        tblDataSeats.getColumnModel().getColumn(4).setMaxWidth(130);
-        tblDataSeats.getColumnModel().getColumn(4).setWidth(130);
     }
 
     public void loadDataTransaction() {
         DefaultTableModel modelTableTransaction = cDataTransaction.getAllTransaction();
 
         tblTransaction.setModel(modelTableTransaction);
-
-        panelTableTransaksi.revalidate();
-        panelTableTransaksi.repaint();
 
         tblTransaction.getColumnModel().getColumn(0).setMinWidth(65);
         tblTransaction.getColumnModel().getColumn(0).setMaxWidth(65);
