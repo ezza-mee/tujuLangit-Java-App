@@ -13,8 +13,8 @@ public class cInsertDataTransaction {
             int amountTransaction, int priceTransaction, String description) {
         int idTransaction = -1;
 
-        String query = "INSERT INTO tbl_transaction (idStaff, dateTime, nameStaff, numberSeats, nameCustomer, amountTransaction, priceTransaction, description, status) "
-                + "VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, 'Process')";
+        String query = "INSERT INTO tbl_transaction (idStaff, nameStaff, dateTime, numberSeats, nameCustomer, amountTransaction, priceTransaction, description, status) "
+                + "VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, 'Process')";
 
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {

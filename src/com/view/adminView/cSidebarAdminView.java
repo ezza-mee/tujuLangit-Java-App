@@ -26,7 +26,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
             iconImage.iconHistoryHover,
             "History",
             150 + 50 + 50 + 50 + 50);
-            private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconReportDefault, iconImage.iconReportHover,
+    private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconReportDefault, iconImage.iconReportHover,
             "Report", 150 + 50 + 50 + 50 + 50 + 50);
 
     private void resetSidebar() {
@@ -169,7 +169,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuHistorySupplier.setBackground(cColor.WHITE);
         menuHistorySupplier.setSidebarAktif();
 
-        contentView.showTransactionsView();
+        contentView.showHistoryTransactionView();
 
         setVisible(true);
 
@@ -182,7 +182,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
         menuReport.setBackground(cColor.WHITE);
         menuReport.setSidebarAktif();
 
-        contentView.showReportDataProductView();
+        contentView.showReportDataView();
 
         setVisible(true);
     }
