@@ -39,6 +39,7 @@ public class cDataReportStaffView extends cPanelContentApp {
     // ini adalah component data transaksi
     private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 80, 1050, 400, 0, 0);
     private cButtonRounded btnPrintDataTransaction = new cButtonRounded("Print", 410, 25, 110, 40, 10);
+    
     // component table transaction
     private cTable tblTransaction;
     private cScrollTable spTransaction;

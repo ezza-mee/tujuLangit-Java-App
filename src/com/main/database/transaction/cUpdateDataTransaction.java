@@ -11,7 +11,7 @@ public class cUpdateDataTransaction {
             int amountTransaction, int priceTransaction, String description) {
         boolean data = false;
 
-        String updateQuery = "UPDATE tbl_transaction SET idStaff = ?, dateTime = NOW(), nameStaff = ?, numberSeats = ?, "
+        String updateQuery = "UPDATE tbl_transaction SET idStaff = ?, nameStaff = ?, dateTime = NOW(), numberSeats = ?, "
                 + "nameCustomer = ?, amountTransaction = ?, priceTransaction = ?, description = ?, status = 'Process' "
                 + "WHERE idTransaction = ?";
 

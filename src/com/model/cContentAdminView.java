@@ -5,13 +5,11 @@ import javax.swing.JPanel;
 import com.main.database.product.cLoadDataProduct.Product;
 import com.main.resources.templates.cPanelContentApp;
 import com.view.adminView.cHomeView;
-import com.view.adminView.cTransactionsView;
+import com.view.adminView.cHistoryTransactionView;
 import com.view.adminView.dataProductView.*;
 import com.view.adminView.dataStaffView.*;
 import com.view.adminView.dataSupplierView.*;
-import com.view.adminView.reportAdmin.cReportProductView;
-import com.view.adminView.reportAdmin.cReportStaffView;
-import com.view.adminView.reportAdmin.cReportSupplierView;
+import com.view.adminView.reportAdmin.cDataReportAdminView;
 
 public class cContentAdminView extends cPanelContentApp {
 
@@ -32,11 +30,9 @@ public class cContentAdminView extends cPanelContentApp {
     private cUpdateStaffView componentUpdateStaffView;
     private cDeleteStaffView componentDeleteStaffView;
 
-    private cTransactionsView componentTransactionsView = new cTransactionsView();
+    private cHistoryTransactionView componentHistoryTransactionView = new cHistoryTransactionView();
 
-    private cReportProductView componentReportProductView;
-    private cReportSupplierView componentReportSupplierView;
-    private cReportStaffView componentReportDataStaffView;
+    private cDataReportAdminView componentReportView;
 
     public cContentAdminView() {
         super();
@@ -56,9 +52,7 @@ public class cContentAdminView extends cPanelContentApp {
         componentUpdateStaffView = new cUpdateStaffView(this);
         componentDeleteStaffView = new cDeleteStaffView(this);
 
-        componentReportProductView = new cReportProductView(this);
-        componentReportSupplierView = new cReportSupplierView(this);
-        componentReportDataStaffView = new cReportStaffView(this);
+        componentReportView = new cDataReportAdminView(this);
 
     }
 
@@ -120,9 +114,9 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showTransactionsView() {
+    public void showHistoryTransactionView() {
         refreshContent();
-        bgPanel.add(componentTransactionsView);
+        bgPanel.add(componentHistoryTransactionView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
@@ -218,31 +212,9 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-
-
-    public void showReportDataStaffView() {
+    public void showReportDataView() {
         refreshContent();
-        bgPanel.add(componentReportDataStaffView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    public void showReportDataProductView() {
-        refreshContent();
-        bgPanel.add(componentReportProductView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    
-
-    public void showReportDataSupplierView() {
-        refreshContent();
-        bgPanel.add(componentReportSupplierView);
+        bgPanel.add(componentReportView);
         bgPanel.revalidate();
         bgPanel.repaint();
 

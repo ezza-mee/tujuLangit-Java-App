@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
 
-public class cTransactionsView extends cPanelContentApp {
+public class cHistoryTransactionView extends cPanelContentApp {
 
     // component label header Data Transactions
     private cBigFont labelHeaderDataTransactions = new cBigFont("History Transactions", 40, 5);
@@ -19,7 +19,7 @@ public class cTransactionsView extends cPanelContentApp {
     // component label data Transactions
     private cLabelInfo labelDataTransactions = new cLabelInfo("Data Transactions", 40, 30, 300, 30);
 
-    public cTransactionsView() {
+    public cHistoryTransactionView() {
         super();
         initsTrancationView();
     }

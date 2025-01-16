@@ -26,8 +26,8 @@ public class cDashboardStaffView extends cFrameDashboardApp {
     }
 
     public void initsViewDashboardStaff() {
-        if (staffDetails != null && staffDetails[1] != null) {
-            labelRoleStaff.setText("Welcome, " + staffDetails[1]);
+        if (staffDetails != null && staffDetails[2] != null) {
+            labelRoleStaff.setText("Welcome, " + staffDetails[2]);
         }
 
         labelRoleStaff.setFont(cFonts.FONT_SIZE_18);
@@ -44,9 +44,9 @@ public class cDashboardStaffView extends cFrameDashboardApp {
     }
 
     public String getStaffName() {
-        return staffDetails != null && staffDetails[1] != null ? staffDetails[1].toString() : "Unknown";
+        return staffDetails != null && staffDetails[2] != null ? staffDetails[2].toString() : "Unknown";
     }
-    
+
     public Integer getIdStaff() {
         return idStaff;
     }
