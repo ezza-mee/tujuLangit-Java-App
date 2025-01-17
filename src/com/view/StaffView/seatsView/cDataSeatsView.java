@@ -19,7 +19,7 @@ public class cDataSeatsView extends cPanelContentApp {
     private cBigFont labelHeaderDataSeats = new cBigFont("Seats", 40, 5);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // component Data Seats
     private cPanelRounded panelListSeats = new cPanelRounded(40, 80, 600, 560, 10, 10);

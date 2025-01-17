@@ -9,13 +9,13 @@ import com.partials.cLabelInfo;
 
 public class cDashboardStaffView extends cFrameDashboardApp {
 
-    private Integer idStaff = null; // Inisialisasi sebagai null
-    private Object[] staffDetails = null; // Data detail staff
+    private Integer idStaff = null; 
+    private Object[] staffDetails = null; 
 
     private cContentStaffView componentContentView = new cContentStaffView();
     private cSidebarStaffView componentSidebarView = new cSidebarStaffView(componentContentView);
 
-    private cLabelInfo labelRoleStaff = new cLabelInfo("", 40, 20, 500, 30); // Label untuk nama staff
+    private cLabelInfo labelRoleStaff = new cLabelInfo("", 40, 20, 500, 30); 
 
     public cDashboardStaffView() {
         super();

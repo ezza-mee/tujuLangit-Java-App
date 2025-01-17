@@ -21,7 +21,7 @@ public class cUpdateProductView extends cPanelContentApp {
 
     private cBigFont labelHeaderDataProduct = new cBigFont("Data Product", 40, 5);
     private cBigFont labelUpdateDataProduct = new cBigFont("Update Data Product", 180, 20);
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     private cPanelRounded panelUpdateDataProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 

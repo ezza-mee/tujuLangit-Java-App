@@ -18,7 +18,7 @@ public class cUpdateStaffView extends cPanelContentApp {
     private cBigFont labelInputDataStaff = new cBigFont("Update Data Staff", 180, 20);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // component panel Data Staff
     private cPanelRounded panelInputStaff = new cPanelRounded(40, 80, 1050, 560, 10, 10);
