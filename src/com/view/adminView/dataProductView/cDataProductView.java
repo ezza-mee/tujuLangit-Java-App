@@ -29,7 +29,7 @@ public class cDataProductView extends cPanelContentApp {
     private cBigFont labelHeaderDataProduct = new cBigFont("Data Product", 40, 5);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // component Data Product
     private cPanelRounded panelListProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
@@ -188,7 +188,7 @@ public class cDataProductView extends cPanelContentApp {
         cLoadDataProduct dataProductLoader = new cLoadDataProduct();
         List<cLoadDataProduct.Product> products = dataProductLoader.loadProducts();
 
-        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); // 3 kartu per baris
+        cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); 
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
         cardContainer.setBackground(cColor.GREEN);
 

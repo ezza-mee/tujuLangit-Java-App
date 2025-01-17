@@ -20,7 +20,7 @@ public class cInputProductView extends cPanelContentApp {
     private cBigFont labelInputDataProduct = new cBigFont("Input Data Product", 180, 20);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // add panel Input
     private cPanelRounded panelInputDataProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
