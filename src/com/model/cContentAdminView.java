@@ -75,6 +75,7 @@ public class cContentAdminView extends cPanelContentApp {
 
     public void showHomeView() {
         refreshContent();
+        componentHomeView.loadData();
         bgPanel.add(componentHomeView);
         bgPanel.revalidate();
         bgPanel.repaint();

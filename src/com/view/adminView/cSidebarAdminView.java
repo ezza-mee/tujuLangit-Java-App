@@ -29,6 +29,8 @@ public class cSidebarAdminView extends cPanelSidebarApp {
     private cSidebarMenu menuReport = new cSidebarMenu(iconImage.iconReportDefault, iconImage.iconReportHover,
             "Report", 150 + 50 + 50 + 50 + 50 + 50);
 
+    private cDateTime labelDateTime = new cDateTime(0, 680, 240);
+
     private void resetSidebar() {
         setVisible(false);
 
@@ -103,6 +105,7 @@ public class cSidebarAdminView extends cPanelSidebarApp {
             }
         });
 
+        bgPanel.add(labelDateTime);
         bgPanel.add(menuHome);
         bgPanel.add(menuKaryawan);
         bgPanel.add(menuSupplier);

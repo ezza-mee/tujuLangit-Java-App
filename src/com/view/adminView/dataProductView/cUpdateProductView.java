@@ -19,7 +19,7 @@ public class cUpdateProductView extends cPanelContentApp {
 
     private cContentAdminView parentPanel;
 
-    private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
+    private cBigFont labelHeaderDataProduct = new cBigFont("Data Product", 40, 5);
     private cBigFont labelUpdateDataProduct = new cBigFont("Update Data Product", 180, 20);
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
 

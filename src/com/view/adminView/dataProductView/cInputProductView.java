@@ -16,7 +16,7 @@ public class cInputProductView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // add label header product
-    private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
+    private cBigFont labelHeaderDataProduct = new cBigFont("Data Product", 40, 5);
     private cBigFont labelInputDataProduct = new cBigFont("Input Data Product", 180, 20);
 
     // component copyright

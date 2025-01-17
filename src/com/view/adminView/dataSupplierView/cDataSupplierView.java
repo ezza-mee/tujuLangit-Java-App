@@ -15,7 +15,7 @@ public class cDataSupplierView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // component label header Data Supplier
-    private cBigFont labelHeaderDataSupplier = new cBigFont("Supplier", 40, 5);
+    private cBigFont labelHeaderDataSupplier = new cBigFont("Data Supplier", 40, 5);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);

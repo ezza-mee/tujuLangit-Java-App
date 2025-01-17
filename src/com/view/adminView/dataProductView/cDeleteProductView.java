@@ -11,7 +11,7 @@ public class cDeleteProductView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // add label header
-    private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
+    private cBigFont labelHeaderDataProduct = new cBigFont("Data Product", 40, 5);
     private cBigFont labelDeleteDataProduct = new cBigFont("Delete Data Product", 40, 20);
 
     // component copyright

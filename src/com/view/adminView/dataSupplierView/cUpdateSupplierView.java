@@ -13,7 +13,7 @@ public class cUpdateSupplierView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // component label header Input Supplier
-    private cBigFont labelHeaderInputSupplier = new cBigFont("Input Data", 40, 5);
+    private cBigFont labelHeaderInputSupplier = new cBigFont("Data Supplier", 40, 5);
     private cBigFont labelInputSupplier = new cBigFont("Update Data Supplier", 180, 20);
 
     // component copyright
