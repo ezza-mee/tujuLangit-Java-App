@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.main.database.transaction.cDataTransaction;
 import com.main.database.transaction.cDeleteTransaction;
+import com.main.database.transaction.cSearchDataTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -62,8 +63,56 @@ public class cDataTransaksiView extends cPanelContentApp {
     }
 
     public void initsDataTransaksiView() {
-
         refreshContent();
+
+        txtSearchData.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                String keyword = txtSearchData.getText();
+
+                tblTransaction.setModel(cSearchDataTransaction.searchTransaction(keyword));
+
+                tblTransaction.getColumnModel().getColumn(0).setMinWidth(65);
+                tblTransaction.getColumnModel().getColumn(0).setMaxWidth(65);
+                tblTransaction.getColumnModel().getColumn(0).setWidth(65);
+
+                tblTransaction.getColumnModel().getColumn(1).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(1).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(2).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(2).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(2).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(3).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(3).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(3).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
+                tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
+                tblTransaction.getColumnModel().getColumn(4).setWidth(90);
+
+                tblTransaction.getColumnModel().getColumn(5).setMinWidth(150);
+                tblTransaction.getColumnModel().getColumn(5).setMaxWidth(150);
+                tblTransaction.getColumnModel().getColumn(5).setWidth(150);
+
+                tblTransaction.getColumnModel().getColumn(8).setMinWidth(65);
+                tblTransaction.getColumnModel().getColumn(8).setMaxWidth(65);
+                tblTransaction.getColumnModel().getColumn(8).setWidth(65);
+
+                tblTransaction.getColumnModel().getColumn(10).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(10).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(10).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(12).setMinWidth(65);
+                tblTransaction.getColumnModel().getColumn(12).setMaxWidth(65);
+                tblTransaction.getColumnModel().getColumn(12).setWidth(65);
+
+                tblTransaction.getColumnModel().getColumn(14).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(14).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(14).setWidth(0);
+            }
+        });
 
         btnInputDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -96,7 +145,8 @@ public class cDataTransaksiView extends cPanelContentApp {
                     priceProductString = priceProductString.replaceAll("[^0-9]", "");
                     int priceProduct = Integer.parseInt(priceProductString);
 
-                    parentPanel.showUpdateTransaksiView(idTransaction, idProduct, idProductTransaction, numberSeats, nameCustomer,
+                    parentPanel.showUpdateTransaksiView(idTransaction, idProduct, idProductTransaction, numberSeats,
+                            nameCustomer,
                             amountTransaction, priceTransaction, description, nameProduct, amountProduct, priceProduct);
                 } else {
                     JOptionPane.showMessageDialog(null, "Pilih transaksi yang akan diperbarui.");
@@ -128,15 +178,12 @@ public class cDataTransaksiView extends cPanelContentApp {
             }
         });
 
-
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
 
         btnInputDataTransaksi.setFont(cFonts.FONT_SIZE_13);
         btnUpdateDataTransaksi.setFont(cFonts.FONT_SIZE_13);
         btnDeleteDataTransaksi.setFont(cFonts.FONT_SIZE_13);
-
-        
 
         panelListTransaksi.add(labelDataTransaksi);
         panelListTransaksi.add(btnInputDataTransaksi);

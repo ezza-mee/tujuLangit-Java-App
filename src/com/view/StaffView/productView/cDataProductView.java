@@ -32,9 +32,6 @@ public class cDataProductView extends cPanelContentApp {
     private cPanelRounded panelListProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
     private cPanelRounded panelProduct = new cPanelRounded(0, 130, 1050, 430, 0, 0);
 
-    // component Search Data
-    private cTextField txtSearchData = new cTextField(75, 75, 300);
-
     // component label data Product
     private cLabelInfo labelListDataProduct = new cLabelInfo("List Data Product", 30, 30, 580, 30);
 
@@ -66,7 +63,6 @@ public class cDataProductView extends cPanelContentApp {
 
         panelListProduct.add(labelListDataProduct);
         panelListProduct.add(panelProduct);
-        panelListProduct.add(txtSearchData);
 
         bgPanel.add(labelHeaderDataProduct);
         bgPanel.add(panelListProduct);
@@ -131,7 +127,7 @@ public class cDataProductView extends cPanelContentApp {
 
         cardContainer = new JPanel(new GridLayout(0, 3, 40, 40)); 
         cardContainer.setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
-        cardContainer.setBackground(cColor.GREEN);
+        cardContainer.setBackground(cColor.WHITE);
 
         for (cLoadDataProduct.Product product : products) {
             JPanel productCard = createProductCard(
@@ -148,7 +144,7 @@ public class cDataProductView extends cPanelContentApp {
 
         cScrollPane scrollPanel = new cScrollPane(cardContainer, 0, 0, 1050, 430);
         scrollPanel.getVerticalScrollBar().setUnitIncrement(10);
-        scrollPanel.setBackground(cColor.GREEN);
+        scrollPanel.setBackground(cColor.WHITE);
         scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
