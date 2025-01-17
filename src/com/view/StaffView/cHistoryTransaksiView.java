@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.main.database.transaction.cDataTransaction;
 import com.main.database.transaction.cProcessDataTransaction;
+import com.main.database.transaction.cSearchHistoryTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
 
@@ -53,12 +54,60 @@ public class cHistoryTransaksiView extends cPanelContentApp {
     }
 
     public void initsHistoryTransaksiView() {
-        setVisible(true);
+
+        txtSearchData.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                String keyword = txtSearchData.getText();
+
+                tblTransaction.setModel(cSearchHistoryTransaction.searchTransaction(keyword));
+
+                tblTransaction.getColumnModel().getColumn(0).setMinWidth(65);
+                tblTransaction.getColumnModel().getColumn(0).setMaxWidth(65);
+                tblTransaction.getColumnModel().getColumn(0).setWidth(65);
+
+                tblTransaction.getColumnModel().getColumn(1).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(1).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(2).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(2).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(2).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(3).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(3).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(3).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
+                tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
+                tblTransaction.getColumnModel().getColumn(4).setWidth(90);
+
+                tblTransaction.getColumnModel().getColumn(5).setMinWidth(150);
+                tblTransaction.getColumnModel().getColumn(5).setMaxWidth(150);
+                tblTransaction.getColumnModel().getColumn(5).setWidth(150);
+
+                tblTransaction.getColumnModel().getColumn(8).setMinWidth(65);
+                tblTransaction.getColumnModel().getColumn(8).setMaxWidth(65);
+                tblTransaction.getColumnModel().getColumn(8).setWidth(65);
+
+                tblTransaction.getColumnModel().getColumn(10).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(10).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(10).setWidth(0);
+
+                tblTransaction.getColumnModel().getColumn(12).setMinWidth(65);
+                tblTransaction.getColumnModel().getColumn(12).setMaxWidth(65);
+                tblTransaction.getColumnModel().getColumn(12).setWidth(65);
+
+                tblTransaction.getColumnModel().getColumn(14).setMinWidth(0);
+                tblTransaction.getColumnModel().getColumn(14).setMaxWidth(0);
+                tblTransaction.getColumnModel().getColumn(14).setWidth(0);
+            }
+        });
 
         btnProcessDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                int selectedRow = tblTransaction.getSelectedRow(); 
+                int selectedRow = tblTransaction.getSelectedRow();
 
                 if (selectedRow == -1) {
                     JOptionPane.showMessageDialog(null,
@@ -78,7 +127,7 @@ public class cHistoryTransaksiView extends cPanelContentApp {
                             "Transaksi berhasil diproses!",
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
-                    loadDataTransaction(); 
+                    loadDataTransaction();
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "Gagal memproses transaksi!",
