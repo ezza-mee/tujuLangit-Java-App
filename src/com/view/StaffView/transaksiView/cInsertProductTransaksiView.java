@@ -26,7 +26,7 @@ public class cInsertProductTransaksiView extends cPanelContentApp {
     private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // component Data Product
     private cPanelRounded panelListProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);

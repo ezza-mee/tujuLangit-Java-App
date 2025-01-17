@@ -27,7 +27,7 @@ public class cDataReportAdminView extends cPanelContentApp {
     private cLabelInfo labelListDataReport = new cLabelInfo("List Data Report", 30, 25, 300, 40);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // componet panel report
     private cPanelRounded panelListReport = new cPanelRounded(40, 80, 1050, 560, 10, 10);
@@ -72,7 +72,7 @@ public class cDataReportAdminView extends cPanelContentApp {
 
         boxDataReport.addActionListener(ae -> {
             String selectedItem = (String) boxDataReport.getSelectedItem();
-            clearTablePanels(); // Bersihkan tabel sebelumnya
+            clearTablePanels();
 
             if ("Product".equals(selectedItem)) {
                 initsDataProductView();
@@ -82,7 +82,6 @@ public class cDataReportAdminView extends cPanelContentApp {
                 initsDataSupplierView();
             }
 
-            // Perbarui tampilan panel
             panelListReport.revalidate();
             panelListReport.repaint();
         });
@@ -94,12 +93,12 @@ public class cDataReportAdminView extends cPanelContentApp {
         bgPanel.add(panelListReport);
         bgPanel.add(labelHeaderDataReport);
 
-        initsDataProductView(); // Default view
+        initsDataProductView();
         setVisible(true);
     }
 
     private void clearTablePanels() {
-        // Bersihkan semua tabel dari panel
+        
         panelTableProduct.removeAll();
         panelTableStaff.removeAll();
         panelTableSupplier.removeAll();
@@ -163,7 +162,7 @@ public class cDataReportAdminView extends cPanelContentApp {
         }
     }
 
-    // Load data methods remain unchanged
+    
     public void loadDataProduct() {
         DefaultTableModel modelTableProduct = cDataProduct.getAllDataProduct();
         tblDataProduct.setModel(modelTableProduct);

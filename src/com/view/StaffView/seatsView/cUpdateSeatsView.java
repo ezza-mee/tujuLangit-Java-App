@@ -18,7 +18,7 @@ public class cUpdateSeatsView extends cPanelContentApp {
     private cBigFont labelUpdateDataSeats = new cBigFont("Update Data Seats", 40, 20);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     private cPanelRounded panelUpdateSeats = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 
@@ -31,7 +31,6 @@ public class cUpdateSeatsView extends cPanelContentApp {
     // add textfield Update Seats
     private cTextField txtNumberSeats = new cTextField(180, 145, 300);
     private cTextField txtAmountSeats = new cTextField(180, 220, 300);
-
     private cTextArea txtDescriptionSeats = new cTextArea(580, 145, 300, 200, true);
 
     // add radion button Update Seats

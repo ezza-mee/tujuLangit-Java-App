@@ -29,7 +29,7 @@ public class cInputTransaksiView extends cPanelContentApp {
     private cBigFont labelHeaderTransaksi = new cBigFont("Transaksi", 40, 5);
     private cBigFont labelInputTransaksi = new cBigFont("Input Data Transaksi", 40, 20);
     private cBigFont labelListOrderTransaksi = new cBigFont("List Order", 40, 20);
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     private cPanelRounded panelInputTransaksi = new cPanelRounded(40, 80, 600, 560, 10, 10);
     private cPanelRounded panelListOrderTransaksi = new cPanelRounded(660, 80, 430, 560, 10, 10);
@@ -314,14 +314,12 @@ public class cInputTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            // Mendapatkan data staf dari cDashboardStaffView
             cDashboardStaffView dashboardStaffView = new cDashboardStaffView();
             String nameStaff = dashboardStaffView.getStaffName();
             int idStaff = dashboardStaffView.getIdStaff();
 
             dashboardStaffView.setVisible(false);
 
-            // Menyimpan transaksi utama
             int idTransaction = cInsertDataTransaction.handleTransaction(
                     idStaff,
                     nameStaff,
@@ -339,7 +337,6 @@ public class cInputTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            // Menyimpan data pembayaran
             boolean isPaymentInserted = cInsertPaymentTransaction.handlePayment(idTransaction, selectedPaymentMethod);
             
             if (!isPaymentInserted) {
@@ -350,14 +347,13 @@ public class cInputTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            // Menyimpan item produk dalam transaksi
             for (CartItem item : cartItems) {
                 boolean isProductInserted = cInsertProductTransaction.insertProductTransaction(
                         item.getIdProduct(),
                         idTransaction,
                         item.getNameProduct(),
                         item.getCount(),
-                        item.getUnitPrice() // Harga unit
+                        item.getUnitPrice() 
                 );
 
                 if (!isProductInserted) {
@@ -368,7 +364,6 @@ public class cInputTransaksiView extends cPanelContentApp {
                     return;
                 }
 
-                // Update stok produk
                 int idProduct = item.getIdProduct();
                 int amountSold = item.getCount();
                 boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idProduct, amountSold);
@@ -382,17 +377,15 @@ public class cInputTransaksiView extends cPanelContentApp {
                 }
             }
 
-            // Menampilkan pesan sukses
             JOptionPane.showMessageDialog(null,
                     "Transaksi berhasil disimpan!",
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE);
 
-            // Reset form
             txtNameTransaksi.setText("");
             txtDeskripsiTransaksi.setText("");
             boxSeatsTransaksi.setSelectedIndex(0);
-            boxPaymentMethod.setSelectedIndex(0); // Reset metode pembayaran
+            boxPaymentMethod.setSelectedIndex(0); 
             cartItems.clear();
             updateCartDisplay();
 

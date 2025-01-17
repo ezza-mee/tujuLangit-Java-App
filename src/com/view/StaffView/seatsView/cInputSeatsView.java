@@ -18,7 +18,7 @@ public class cInputSeatsView extends cPanelContentApp {
     private cBigFont labelInputDataSeats = new cBigFont("Input Data Seats", 40, 20);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     private cPanelRounded panelInputSeats = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 

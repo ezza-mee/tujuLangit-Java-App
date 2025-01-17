@@ -15,7 +15,7 @@ public class cHistoryTransaksiView extends cPanelContentApp {
     private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaksi", 40, 5);
 
     // ini adalah component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // ini adalah component data transaksi
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 1050, 560, 10, 10);
@@ -55,7 +55,7 @@ public class cHistoryTransaksiView extends cPanelContentApp {
         btnProcessDataTransaksi.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent ae) {
-                int selectedRow = tblTransaction.getSelectedRow(); // Mendapatkan baris yang dipilih
+                int selectedRow = tblTransaction.getSelectedRow(); 
 
                 if (selectedRow == -1) {
                     JOptionPane.showMessageDialog(null,
@@ -75,7 +75,7 @@ public class cHistoryTransaksiView extends cPanelContentApp {
                             "Transaksi berhasil diproses!",
                             "Success",
                             JOptionPane.INFORMATION_MESSAGE);
-                    loadDataTransaction(); // Refresh data transaksi
+                    loadDataTransaction(); 
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "Gagal memproses transaksi!",

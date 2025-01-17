@@ -15,7 +15,7 @@ public class cDeleteProductView extends cPanelContentApp {
     private cBigFont labelDeleteDataProduct = new cBigFont("Delete Data Product", 40, 20);
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     private cPanelRounded panelDataProduct = new cPanelRounded(40, 80, 1050, 560, 10, 10);
 

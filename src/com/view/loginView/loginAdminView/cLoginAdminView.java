@@ -31,7 +31,6 @@ public class cLoginAdminView extends cPanelCardLogin {
     private cButtonRounded btnLoginAdmin = new cButtonRounded("Login", 100, 350, 300, 40, 10);
 
     // component of error label admin
-
     private cErrorLabel incorrectLabelUsername = new cErrorLabel("Username is Incorrect and Empty!", 100, 205, 300);
     private cErrorLabel incorrectLabelPassword = new cErrorLabel("Password is Incorrect and Empty!", 100, 295, 300);
 

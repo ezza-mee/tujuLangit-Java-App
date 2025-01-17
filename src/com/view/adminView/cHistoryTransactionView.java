@@ -13,7 +13,7 @@ public class cHistoryTransactionView extends cPanelContentApp {
     private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaction", 40, 5);
 
     // ini adalah component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // ini adalah component data transaksi
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 1050, 560, 10, 10);

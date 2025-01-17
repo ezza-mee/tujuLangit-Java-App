@@ -28,7 +28,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private cBigFont labelHeaderTransaksi = new cBigFont("Transaksi", 40, 5);
     private cBigFont labelUpdateTransaksi = new cBigFont("Update Data Transaksi", 40, 20);
     private cBigFont labelListOrderTransaksi = new cBigFont("List Order", 40, 20);
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     private cPanelRounded panelUpdateTransaksi = new cPanelRounded(40, 80, 600, 560, 10, 10);
     private cPanelRounded panelListOrderTransaksi = new cPanelRounded(660, 80, 430, 560, 10, 10);
@@ -180,21 +180,17 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             cButtonRounded deleteButton = new cButtonRounded("", 300, 50, 60, 30, 10);
             deleteButton.setIcon(iconDelete);
             deleteButton.addActionListener(e -> {
-                int idDeleteCart = item.getIdProduct(); // ID produk yang ada di cart
+                int idDeleteCart = item.getIdProduct(); 
 
-                // Menghapus produk dari database berdasarkan idProductTransaction
                 boolean deleteSuccess = cDeleteProductTransaction
                         .handleDeleteDataProductTransaction(idProductTransaction);
 
                 System.out.println("ID Produk: " + idDeleteCart);
 
-                // Cek apakah penghapusan produk dari database berhasil
                 if (deleteSuccess) {
-                    // Hapus item dari cartItems jika penghapusan berhasil
                     cartItems.remove(item);
                     updateCartDisplay();
                 } else {
-                    // Jika produk tidak terhapus dari database, cek apakah produk ada di cart
                     if (cartItems.contains(item) && idDeleteCart == item.getIdProduct()) {
                         cartItems.remove(item);
                         updateCartDisplay();
@@ -382,7 +378,6 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
             dashboardStaffView.setVisible(false);
 
-            // Update transaction data
             boolean isTransactionUpdated = cUpdateDataTransaction.handleUpdateTransaction(
                     idTransaction,
                     idStaff,
@@ -401,9 +396,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 return;
             }
 
-            // Update or insert products for the transaction
             for (CartItem item : cartItems) {
-                // Cek apakah produk sudah ada dalam transaksi
                 boolean isProductExist = cUpdateProductTransaction.isProductExistInTransaction(idProductTransaction,
                         idUnitProduct);
 
@@ -411,11 +404,10 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
                 boolean isProductUpdated = false;
                 if (isProductExist) {
-                    // Jika produk sudah ada, lakukan update
                     isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
-                            idProductTransaction, // ID transaksi produk
-                            idUnitProduct, // ID produk yang sudah ada
-                            idTransaction, // ID transaksi
+                            idProductTransaction, 
+                            idUnitProduct, 
+                            idTransaction, 
                             oldNameProduct,
                             finalAmountProduct,
                             oldPriceProduct);
@@ -423,10 +415,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
                 boolean isProductInserted = false;
                 if (isProductExist) {
-                    // Jika produk tidak ada, lakukan insert
                     isProductInserted = cInsertProductTransaction.insertProductTransaction(
-                            item.getIdProduct(), // ID produk baru
-                            idTransaction, // ID transaksi
+                            item.getIdProduct(), 
+                            idTransaction, 
                             item.getNameProduct(),
                             item.getCount(),
                             item.getUnitPrice());
@@ -440,7 +431,6 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                     return;
                 }
 
-                // Update stock if product is updated or inserted
                 int amountSold = item.getCount();
                 int finalAmountSold = oldAmountProduct - item.getCount();
                 boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idUnitProduct, finalAmountSold);
@@ -460,7 +450,6 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE);
 
-            // Reset form and cart
             txtNameTransaksi.setText("");
             txtDeskripsiTransaksi.setText("");
             boxSeatsTransaksi.setSelectedIndex(0);

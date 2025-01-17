@@ -13,7 +13,7 @@ import com.main.resources.templates.cPanelContentApp;
 public class cHomeView extends cPanelContentApp {
 
     // component copyright
-    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);
+    private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
 
     // component beranda
     private cPanelRounded panelDataProduct = new cPanelRounded(40, 40, 240, 130, 10, 10);
@@ -23,7 +23,7 @@ public class cHomeView extends cPanelContentApp {
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 210, 1050, 430, 10, 10);
 
     // component label beranda
-    private cLabelInfo labelDataProduct = new cLabelInfo("Data aProduct", 0, 10, 240, 40);
+    private cLabelInfo labelDataProduct = new cLabelInfo("Data Product", 0, 10, 240, 40);
     private cLabelInfo labelDataSeats = new cLabelInfo("Data Seats", 0, 10, 240, 40);
     private cLabelInfo labelDataTransaksi = new cLabelInfo("Data Transaksi", 0, 10, 240, 40);
     private cLabelInfo labelDataHistory = new cLabelInfo("Data History", 0, 10, 240, 40);
