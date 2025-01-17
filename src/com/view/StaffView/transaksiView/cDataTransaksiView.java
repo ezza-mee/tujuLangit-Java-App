@@ -16,7 +16,7 @@ public class cDataTransaksiView extends cPanelContentApp {
     private cContentStaffView parentPanel;
 
     // ini adalah component data transaksi
-    private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaksi", 40, 5);
+    private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaction", 40, 5);
 
     // ini adalah component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
@@ -26,10 +26,11 @@ public class cDataTransaksiView extends cPanelContentApp {
     private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 120, 1050, 400, 0, 0);
 
     // component Search Data
-    private cTextField txtSearchData = new cTextField(75, 75, 300);
+    private cPanelRounded panelSearch = new cPanelRounded(10, 75, 600, 80, 0, 0);
+    private cTextField txtSearchData = new cTextField(75, 13, 300);
 
     // ini adalah component label data transaksi
-    private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
+    private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaction", 30, 30, 600, 40);
 
     // ini adalah component button data transaksi
     private cButtonRounded btnInputDataTransaksi = new cButtonRounded("Input", 860, 25, 110, 40, 10);
@@ -39,6 +40,8 @@ public class cDataTransaksiView extends cPanelContentApp {
     // component table transaction
     private cTable tblTransaction;
     private cScrollTable spTransaction;
+
+    private cImage imgSearch = new cImage("src/com/main/resources/images/search(green).png", 40, 18, 18, 18);
 
     public cDataTransaksiView(cContentStaffView parentPanel) {
         super();
@@ -133,7 +136,7 @@ public class cDataTransaksiView extends cPanelContentApp {
         btnUpdateDataTransaksi.setFont(cFonts.FONT_SIZE_13);
         btnDeleteDataTransaksi.setFont(cFonts.FONT_SIZE_13);
 
-        panelListTransaksi.add(txtSearchData);
+        
 
         panelListTransaksi.add(labelDataTransaksi);
         panelListTransaksi.add(btnInputDataTransaksi);
@@ -146,6 +149,10 @@ public class cDataTransaksiView extends cPanelContentApp {
         spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 400);
 
         panelTableTransaksi.add(spTransaction);
+
+        panelListTransaksi.add(panelSearch);
+        panelSearch.add(imgSearch);
+        panelSearch.add(txtSearchData);
 
         bgPanel.add(panelListTransaksi);
         bgPanel.add(labelHeaderDataTransaksi);
@@ -176,21 +183,33 @@ public class cDataTransaksiView extends cPanelContentApp {
         tblTransaction.getColumnModel().getColumn(2).setMaxWidth(0);
         tblTransaction.getColumnModel().getColumn(2).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(3).setMinWidth(80);
-        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(80);
-        tblTransaction.getColumnModel().getColumn(3).setWidth(80);
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(4).setMinWidth(150);
-        tblTransaction.getColumnModel().getColumn(4).setMaxWidth(150);
-        tblTransaction.getColumnModel().getColumn(4).setWidth(150);
+        tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setWidth(90);
 
-        tblTransaction.getColumnModel().getColumn(5).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(5).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(5).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(5).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(5).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(5).setWidth(150);
 
-        tblTransaction.getColumnModel().getColumn(6).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(6).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(6).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(8).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(8).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(10).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(10).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(10).setWidth(0);
+
+        tblTransaction.getColumnModel().getColumn(12).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(12).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(12).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(14).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(14).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(14).setWidth(0);
 
     }
 }
