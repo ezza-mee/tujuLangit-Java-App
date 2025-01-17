@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 import com.main.database.transaction.cDataTransaction;
+import com.main.database.transaction.cSearchDataTransaction;
 import com.main.resources.templates.cPanelContentApp;
 import com.partials.*;
 
@@ -20,10 +21,13 @@ public class cHistoryTransactionView extends cPanelContentApp {
     private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 120, 1050, 350, 0, 0);
 
     // component Search Data
-    private cTextField txtSearchData = new cTextField(75, 75, 300);
+    private cPanelRounded panelSearch = new cPanelRounded(10, 75, 600, 80, 0, 0);
+    private cTextField txtSearchData = new cTextField(75, 13, 300);
 
     // ini adalah component label data transaksi
     private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
+
+    private cImage imgSearch = new cImage("src/com/main/resources/images/search(green).png", 40, 18, 18, 18);
 
     // component table transaction
     private cTable tblTransaction;
@@ -48,19 +52,30 @@ public class cHistoryTransactionView extends cPanelContentApp {
     public void initsHistoryTransaksiView() {
         setVisible(true);
 
+        txtSearchData.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent ae) {
+                String keyword = txtSearchData.getText();
+
+                tblTransaction.setModel(cSearchDataTransaction.searchTransaction(keyword));
+
+            }
+        });
+
         labelCopyright.setHorizontalAlignment(JLabel.CENTER);
         labelCopyright.setFont(cFonts.FONT_SIZE_10);
-
-        panelListTransaksi.add(labelDataTransaksi);
-        panelListTransaksi.add(panelTableTransaksi);
-
-        panelListTransaksi.add(txtSearchData);
-        panelTableTransaksi.setBackground(cColor.GREEN);
 
         tblTransaction = new cTable(cDataTransaction.getAllTransaction());
         spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 350);
 
+        panelListTransaksi.add(labelDataTransaksi);
+        panelListTransaksi.add(panelTableTransaksi);
         panelTableTransaksi.add(spTransaction);
+
+        panelSearch.add(imgSearch);
+        panelSearch.add(txtSearchData);
+
+        panelListTransaksi.add(panelSearch);
 
         bgPanel.add(panelListTransaksi);
         bgPanel.add(labelHeaderDataTransaksi);
