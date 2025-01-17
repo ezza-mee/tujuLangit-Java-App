@@ -12,7 +12,7 @@ import com.partials.*;
 public class cHistoryTransaksiView extends cPanelContentApp {
 
     // ini adalah component data transaksi
-    private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaksi", 40, 5);
+    private cBigFont labelHeaderDataTransaksi = new cBigFont("Data Transaction", 40, 5);
 
     // ini adalah component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2025. TujuLangit ForestPark", 0, 650, 1126, 40);
@@ -22,16 +22,19 @@ public class cHistoryTransaksiView extends cPanelContentApp {
     private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 120, 1050, 350, 0, 0);
 
     // component Search Data
-    private cTextField txtSearchData = new cTextField(75, 75, 300);
+    private cPanelRounded panelSearch = new cPanelRounded(10, 75, 600, 80, 0, 0);
+    private cTextField txtSearchData = new cTextField(75, 13, 300);
 
     // ini adalah component label data transaksi
-    private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaksi", 30, 30, 600, 40);
+    private cLabelInfo labelDataTransaksi = new cLabelInfo("List Transaction", 30, 30, 600, 40);
 
     private cButtonRounded btnProcessDataTransaksi = new cButtonRounded("Process", 860, 25, 110, 40, 10);
 
     // component table transaction
     private cTable tblTransaction;
     private cScrollTable spTransaction;
+
+    private cImage imgSearch = new cImage("src/com/main/resources/images/search(green).png", 40, 18, 18, 18);
 
     public cHistoryTransaksiView() {
         super();
@@ -95,6 +98,10 @@ public class cHistoryTransaksiView extends cPanelContentApp {
         panelListTransaksi.add(txtSearchData);
         panelTableTransaksi.setBackground(cColor.GREEN);
 
+        panelListTransaksi.add(panelSearch);
+        panelSearch.add(imgSearch);
+        panelSearch.add(txtSearchData);
+
         tblTransaction = new cTable(cDataTransaction.getAllTransaction());
         spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 350);
 
@@ -125,21 +132,37 @@ public class cHistoryTransaksiView extends cPanelContentApp {
         tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
         tblTransaction.getColumnModel().getColumn(1).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(2).setMinWidth(80);
-        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(80);
-        tblTransaction.getColumnModel().getColumn(2).setWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(2).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(3).setMinWidth(150);
-        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(150);
-        tblTransaction.getColumnModel().getColumn(3).setWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(0);
 
         tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
         tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
         tblTransaction.getColumnModel().getColumn(4).setWidth(90);
 
-        tblTransaction.getColumnModel().getColumn(8).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(8).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(5).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(5).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(5).setWidth(150);
+
+        tblTransaction.getColumnModel().getColumn(8).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(8).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(10).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(10).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(10).setWidth(0);
+
+        tblTransaction.getColumnModel().getColumn(12).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(12).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(12).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(14).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(14).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(14).setWidth(0);
 
     }
 }

@@ -18,7 +18,7 @@ public class cHistoryTransactionView extends cPanelContentApp {
 
     // ini adalah component data transaksi
     private cPanelRounded panelListTransaksi = new cPanelRounded(40, 80, 1050, 560, 10, 10);
-    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 120, 1050, 350, 0, 0);
+    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 130, 1050, 350, 0, 0);
 
     // component Search Data
     private cPanelRounded panelSearch = new cPanelRounded(10, 75, 600, 80, 0, 0);
@@ -72,6 +72,7 @@ public class cHistoryTransactionView extends cPanelContentApp {
         panelListTransaksi.add(panelTableTransaksi);
         panelTableTransaksi.add(spTransaction);
 
+        panelListTransaksi.add(panelSearch);
         panelSearch.add(imgSearch);
         panelSearch.add(txtSearchData);
 
@@ -102,20 +103,36 @@ public class cHistoryTransactionView extends cPanelContentApp {
         tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
         tblTransaction.getColumnModel().getColumn(1).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(2).setMinWidth(80);
-        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(80);
-        tblTransaction.getColumnModel().getColumn(2).setWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(2).setWidth(0);
 
-        tblTransaction.getColumnModel().getColumn(3).setMinWidth(150);
-        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(150);
-        tblTransaction.getColumnModel().getColumn(3).setWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(0);
 
         tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
         tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
         tblTransaction.getColumnModel().getColumn(4).setWidth(90);
 
-        tblTransaction.getColumnModel().getColumn(8).setMinWidth(90);
-        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(90);
-        tblTransaction.getColumnModel().getColumn(8).setWidth(90);
+        tblTransaction.getColumnModel().getColumn(5).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(5).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(5).setWidth(150);
+
+        tblTransaction.getColumnModel().getColumn(8).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(8).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(10).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(10).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(10).setWidth(0);
+
+        tblTransaction.getColumnModel().getColumn(12).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(12).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(12).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(14).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(14).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(14).setWidth(0);
     }
 }
