@@ -1,6 +1,5 @@
 package com.view.staffView;
 
-import com.main.database.transaction.cDataTransaction;
 import com.main.resources.templates.cPanelSidebarApp;
 import com.model.cContentStaffView;
 import com.partials.*;
@@ -98,9 +97,9 @@ public class cSidebarStaffView extends cPanelSidebarApp {
                         }
                 });
 
-                menuReport.addMouseListener(new java.awt.event.MouseAdapter(){
+                menuReport.addMouseListener(new java.awt.event.MouseAdapter() {
                         @Override
-                        public void mouseClicked(java.awt.event.MouseEvent me){
+                        public void mouseClicked(java.awt.event.MouseEvent me) {
                                 initsReportView();
                         }
                 });
@@ -179,7 +178,7 @@ public class cSidebarStaffView extends cPanelSidebarApp {
 
         }
 
-        private void initsReportView(){
+        private void initsReportView() {
                 resetSidebar();
 
                 menuReport.setForeground(cColor.GREEN);

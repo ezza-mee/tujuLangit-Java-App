@@ -26,7 +26,7 @@ public class cDataProductView extends cPanelContentApp {
     private JPanel cardContainer;
 
     // component label header Data Product
-    private cBigFont labelHeaderDataProduct = new cBigFont("Product", 40, 5);
+    private cBigFont labelHeaderDataProduct = new cBigFont("Data Product", 40, 5);
 
     // component copyright
     private cLabelInfo labelCopyright = new cLabelInfo("CopyRight 2024. TujuLangit ForestPark", 0, 650, 1126, 40);

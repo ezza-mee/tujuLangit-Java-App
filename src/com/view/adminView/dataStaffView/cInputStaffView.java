@@ -14,7 +14,7 @@ public class cInputStaffView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // component label header Data Staff
-    private cBigFont labelHeaderDataStaff = new cBigFont("Staff", 40, 5);
+    private cBigFont labelHeaderDataStaff = new cBigFont("Data Staff", 40, 5);
     private cBigFont labelInputDataStaff = new cBigFont("Input Data Staff", 180, 20);
 
     // component copyright

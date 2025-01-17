@@ -11,7 +11,7 @@ public class cDeleteStaffView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // add label header Staff
-    private cBigFont labelHeaderStaff = new cBigFont("Staff", 40, 5);
+    private cBigFont labelHeaderStaff = new cBigFont("Data Staff", 40, 5);
     private cBigFont labelDeleteStaff = new cBigFont("Delete Data Staff", 40, 20);
 
     // component copyright

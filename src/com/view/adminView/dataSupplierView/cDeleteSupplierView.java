@@ -11,7 +11,7 @@ public class cDeleteSupplierView extends cPanelContentApp {
     private cContentAdminView parentPanel;
 
     // add label header supplier
-    private cBigFont labelHeaderDataSupplier = new cBigFont("Supplier", 40, 5);
+    private cBigFont labelHeaderDataSupplier = new cBigFont("Data Supplier", 40, 5);
     private cBigFont labelDeleteDataSupplier = new cBigFont("Delete Data Supplier", 40, 20);
 
     // component copyright
