@@ -8,22 +8,46 @@ import javax.swing.table.DefaultTableModel;
 
 import com.main.database.cConnectionDatabase;
 
-public class cDataTransaction {
-    public static DefaultTableModel getAllTransaction() {
+public class cSearchDataTransaction {
+    public static DefaultTableModel searchTransaction(String keyword) {
 
-        String[] dataHeader = { "ID", "ID", "ID", "Date", "Number", "Customer", "Amount", "Price", "Description",
-                "Product", "Amount",
-                "price", "ID", "Pyament", "Status" };
+        String[] dataHeader = { "ID", "ID Product Transaction", "ID Product", "Date", "Number", "Customer", "Amount",
+                "Price Transaction", "Description", "Product", "Amount Product", "Price Product", "ID Payment",
+                "Payment", "Status" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
-        String query = "SELECT * FROM vwalltransaction";
+
+        // Query mencakup semua kolom untuk pencarian
+        String query = "SELECT * FROM vwalltransaction WHERE " +
+                "idTransaction LIKE ? OR " +
+                "idProductTransaction LIKE ? OR " +
+                "idProduct LIKE ? OR " +
+                "dateTime LIKE ? OR " +
+                "numberSeats LIKE ? OR " +
+                "nameCustomer LIKE ? OR " +
+                "amountTransaction LIKE ? OR " +
+                "priceTransaction LIKE ? OR " +
+                "description LIKE ? OR " +
+                "nameProduct LIKE ? OR " +
+                "amountProduct LIKE ? OR " +
+                "priceProduct LIKE ? OR " +
+                "idPayment LIKE ? OR " +
+                "payment LIKE ? OR " +
+                "status LIKE ?";
+
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
 
-            ResultSet resultData = state.executeQuery(query);
+            // Menambahkan wildcard untuk pencarian pada setiap parameter
+            for (int i = 1; i <= 15; i++) {
+                state.setString(i, "%" + keyword + "%");
+            }
+
+            ResultSet resultData = state.executeQuery();
 
             while (resultData.next()) {
-                Object[] rowData = { "T00" + resultData.getInt("idTransaction"),
+                Object[] rowData = {
+                        "T00" + resultData.getInt("idTransaction"),
                         resultData.getInt("idProductTransaction"),
                         resultData.getInt("idProduct"),
                         resultData.getString("dateTime"),
@@ -46,4 +70,5 @@ public class cDataTransaction {
         }
         return tm;
     }
+
 }

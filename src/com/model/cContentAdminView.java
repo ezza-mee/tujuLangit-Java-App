@@ -18,17 +18,14 @@ public class cContentAdminView extends cPanelContentApp {
     private cDataProductView componentDataProductView;
     private cInputProductView componentInputProductView;
     private cUpdateProductView componentUpdateProductView;
-    private cDeleteProductView componentDeleteProductView;
 
     private cDataSupplierView componentDataSupplierView;
     private cInputSupplierView componentInputSupplierView;
     private cUpdateSupplierView componentUpdateSupplierView;
-    private cDeleteSupplierView componentDeleteSupplierView;
 
     private cDataStaffView componentDataStaffView;
     private cInputStaffView componentInputStaffView;
     private cUpdateStaffView componentUpdateStaffView;
-    private cDeleteStaffView componentDeleteStaffView;
 
     private cHistoryTransactionView componentHistoryTransactionView = new cHistoryTransactionView();
 
@@ -40,17 +37,14 @@ public class cContentAdminView extends cPanelContentApp {
         componentDataProductView = new cDataProductView(this);
         componentInputProductView = new cInputProductView(this);
         componentUpdateProductView = new cUpdateProductView(this);
-        componentDeleteProductView = new cDeleteProductView(this);
 
         componentDataSupplierView = new cDataSupplierView(this);
         componentInputSupplierView = new cInputSupplierView(this);
         componentUpdateSupplierView = new cUpdateSupplierView(this);
-        componentDeleteSupplierView = new cDeleteSupplierView(this);
 
         componentDataStaffView = new cDataStaffView(this);
         componentInputStaffView = new cInputStaffView(this);
         componentUpdateStaffView = new cUpdateStaffView(this);
-        componentDeleteStaffView = new cDeleteStaffView(this);
 
         componentReportView = new cDataReportAdminView(this);
 
@@ -76,6 +70,7 @@ public class cContentAdminView extends cPanelContentApp {
     public void showHomeView() {
         refreshContent();
         componentHomeView.loadData();
+        componentHomeView.loadDataTransaction();
         bgPanel.add(componentHomeView);
         bgPanel.revalidate();
         bgPanel.repaint();
@@ -145,15 +140,6 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showDeleteDataProductView() {
-        refreshContent();
-        bgPanel.add(componentDeleteProductView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
     public void showInputDataStaffView() {
         refreshContent();
         bgPanel.add(componentInputStaffView);
@@ -168,15 +154,6 @@ public class cContentAdminView extends cPanelContentApp {
         refreshContent();
         bgPanel.add(componentUpdateStaffView);
         componentUpdateStaffView.setDataStaff(idStaff, nameStaff, phoneNumber, email, address, jobdesk, status);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
-    public void showDeleteDataStaffView() {
-        refreshContent();
-        bgPanel.add(componentDeleteStaffView);
         bgPanel.revalidate();
         bgPanel.repaint();
 
@@ -204,15 +181,6 @@ public class cContentAdminView extends cPanelContentApp {
         setVisible(true);
     }
 
-    public void showDeleteDataSupplierView() {
-        refreshContent();
-        bgPanel.add(componentDeleteSupplierView);
-        bgPanel.revalidate();
-        bgPanel.repaint();
-
-        setVisible(true);
-    }
-
     public void showReportDataView() {
         refreshContent();
         bgPanel.add(componentReportView);
@@ -221,7 +189,5 @@ public class cContentAdminView extends cPanelContentApp {
 
         setVisible(true);
     }
-
-    
 
 }

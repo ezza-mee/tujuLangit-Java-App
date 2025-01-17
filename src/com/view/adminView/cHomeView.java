@@ -1,11 +1,13 @@
 package com.view.adminView;
 
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 
 import com.main.database.product.cCountDataProduct;
 import com.main.database.staff.cCountDataStaff;
 import com.main.database.supplier.cCountDataSupplier;
 import com.main.database.transaction.cCountDataTransaction;
+import com.main.database.transaction.cDataTransaction;
 import com.main.resources.templates.cPanelContentApp;
 
 import com.partials.*;
@@ -20,14 +22,15 @@ public class cHomeView extends cPanelContentApp {
     private cPanelRounded panelDataStaff = new cPanelRounded(310, 40, 240, 130, 10, 10);
     private cPanelRounded panelDataSupplier = new cPanelRounded(580, 40, 240, 130, 10, 10);
     private cPanelRounded panelDataHistory = new cPanelRounded(850, 40, 240, 130, 10, 10);
-    private cPanelRounded panelListSupplier = new cPanelRounded(40, 210, 1050, 430, 10, 10);
+    private cPanelRounded panelListTransaction = new cPanelRounded(40, 210, 1050, 430, 10, 10);
+    private cPanelRounded panelTableTransaksi = new cPanelRounded(0, 80, 1050, 130, 0, 0);
 
     // component label beranda
     private cLabelInfo labelDataProduct = new cLabelInfo("Data Product", 0, 10, 240, 40);
     private cLabelInfo labelDataStaff = new cLabelInfo("Data Staff", 0, 10, 240, 40);
     private cLabelInfo labelDataSupplier = new cLabelInfo("Data Supplier", 0, 10, 240, 40);
     private cLabelInfo labelDataHistory = new cLabelInfo("Data History", 0, 10, 240, 40);
-    private cLabelInfo labelListSupplier = new cLabelInfo("List Supplier", 30, 20, 580, 40);
+    private cLabelInfo labelListTransaction = new cLabelInfo("List Transaction", 30, 20, 580, 40);
 
     // component value data beranda
     private cLabelInfo valueDataProduct = new cLabelInfo("0", 0, 60, 240, 40);
@@ -43,7 +46,10 @@ public class cHomeView extends cPanelContentApp {
     private cImage imgDataHistory = new cImage("src/com/main/resources/images/history(green).png", 20, 50, 55, 50);
 
     // component button data beranda
-    private cButtonRounded btnListSupplier = new cButtonRounded("see all", 900, 20, 110, 40, 10);
+    private cButtonRounded btnListTransaction = new cButtonRounded("see all", 900, 20, 110, 40, 10);
+
+    private cTable tblTransaction;
+    private cScrollTable spTransaction;
 
     public cHomeView() {
         super();
@@ -111,14 +117,21 @@ public class cHomeView extends cPanelContentApp {
         panelDataSupplier.add(valueDataSupplier);
         panelDataHistory.add(valueDataHistory);
 
-        panelListSupplier.add(labelListSupplier);
-        panelListSupplier.add(btnListSupplier);
+        panelListTransaction.add(labelListTransaction);
+        panelListTransaction.add(btnListTransaction);
+        
+        tblTransaction = new cTable(cDataTransaction.getAllTransaction());
+        spTransaction = new cScrollTable(tblTransaction, 0, 0, 1050, 130);
+
+        panelTableTransaksi.add(spTransaction);
+
+        panelListTransaction.add(panelTableTransaksi);
 
         bgPanel.add(panelDataProduct);
         bgPanel.add(panelDataStaff);
         bgPanel.add(panelDataSupplier);
         bgPanel.add(panelDataHistory);
-        bgPanel.add(panelListSupplier);
+        bgPanel.add(panelListTransaction);
         bgPanel.add(labelCopyright);
 
         loadData();
@@ -145,5 +158,38 @@ public class cHomeView extends cPanelContentApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void loadDataTransaction() {
+        DefaultTableModel modelTableTransaction = cDataTransaction.getAllTransaction();
+
+        tblTransaction.setModel(modelTableTransaction);
+
+        panelTableTransaksi.revalidate();
+        panelTableTransaksi.repaint();
+
+        tblTransaction.getColumnModel().getColumn(0).setMinWidth(65);
+        tblTransaction.getColumnModel().getColumn(0).setMaxWidth(65);
+        tblTransaction.getColumnModel().getColumn(0).setWidth(65);
+
+        tblTransaction.getColumnModel().getColumn(1).setMinWidth(0);
+        tblTransaction.getColumnModel().getColumn(1).setMaxWidth(0);
+        tblTransaction.getColumnModel().getColumn(1).setWidth(0);
+
+        tblTransaction.getColumnModel().getColumn(2).setMinWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setMaxWidth(80);
+        tblTransaction.getColumnModel().getColumn(2).setWidth(80);
+
+        tblTransaction.getColumnModel().getColumn(3).setMinWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setMaxWidth(150);
+        tblTransaction.getColumnModel().getColumn(3).setWidth(150);
+
+        tblTransaction.getColumnModel().getColumn(4).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(4).setWidth(90);
+
+        tblTransaction.getColumnModel().getColumn(8).setMinWidth(90);
+        tblTransaction.getColumnModel().getColumn(8).setMaxWidth(90);
+        tblTransaction.getColumnModel().getColumn(8).setWidth(90);
     }
 }
