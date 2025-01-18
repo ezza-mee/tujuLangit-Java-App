@@ -135,7 +135,8 @@ public class cHomeView extends cPanelContentApp {
         bgPanel.add(labelCopyright);
 
         loadData();
-
+        loadDataTransaction();
+        
         setVisible(true);
     }
 
