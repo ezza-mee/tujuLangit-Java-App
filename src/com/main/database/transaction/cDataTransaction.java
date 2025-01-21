@@ -12,8 +12,7 @@ public class cDataTransaction {
     public static DefaultTableModel getAllTransaction() {
 
         String[] dataHeader = { "ID", "ID", "ID", "ID", "Staff", "Date", "Number", "Customer", "Amount", "Price", "Description",
-                "Product", "Amount",
-                "price", "ID", "Pyament", "Status" };
+                "Product", "Amount", "price", "ID", "Pyament", "Status" };
 
         DefaultTableModel tm = new DefaultTableModel(null, dataHeader);
         String query = "SELECT * FROM vwalltransaction";

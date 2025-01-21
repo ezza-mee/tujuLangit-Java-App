@@ -15,6 +15,7 @@ import com.main.database.transaction.cDataSeatsTransaction;
 import com.main.database.transaction.cDeleteProductTransaction;
 import com.main.database.transaction.cInsertProductTransaction;
 import com.main.database.transaction.cUpdateDataTransaction;
+import com.main.database.transaction.cUpdatePaymentTransaction;
 import com.main.database.transaction.cUpdateProductTransaction;
 import com.main.database.transaction.cUpdateStockProduct;
 import com.main.resources.templates.cPanelContentApp;
@@ -56,6 +57,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
     private cLabelInfo labelTotalTransaction = new cLabelInfo("Total Transaction : ", 40, 510, 300, 30);
     private cLabelInfo valueTotalTransaction = new cLabelInfo("", 280, 510, 300, 30);
 
+    private cComboBox boxPaymentMethod = new cComboBox(
+            new String[] { "Select Payment Method", "Cash", "Credit Card", "E-Wallet" }, 40, 430, 520, 30);
+
     private int idTransaction;
     private int idProductTransaction;
     private int idUnitProduct;
@@ -71,10 +75,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         initsUpdateTransaksiView();
     }
 
-    public void setDataTransaction(int idTransaction, int idProduct, int idProductTransaction, String numberSeats,
-            String nameCustomer,
-            int amountTransaction, int priceTransaction, String description,
-            String nameProduct, int amountProduct, int priceProduct) {
+    public void setDataTransaction(int idTransaction, int idProductTransaction, int idProduct, String numberSeats,
+            String nameCustomer, int amountTransaction, int priceTransaction, String description,
+            String nameProduct, int amountProduct, int priceProduct, String payment) {
         this.idTransaction = idTransaction;
         this.idProductTransaction = idProductTransaction;
         this.idUnitProduct = idProduct;
@@ -85,7 +88,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         txtNameTransaksi.setText(nameCustomer);
         txtDeskripsiTransaksi.setText(description);
         valueNumberSeats.setText(numberSeats);
+        boxSeatsTransaksi.setSelectedItem(numberSeats);
         valueTotalTransaction.setText("Rp. " + priceTransaction);
+        boxPaymentMethod.setSelectedItem(payment);
 
         addOrUpdateProductToCart(idTransaction, nameProduct, priceProduct, amountProduct);
     }
@@ -180,7 +185,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             cButtonRounded deleteButton = new cButtonRounded("", 300, 50, 60, 30, 10);
             deleteButton.setIcon(iconDelete);
             deleteButton.addActionListener(e -> {
-                int idDeleteCart = item.getIdProduct(); 
+                int idDeleteCart = item.getIdProduct();
 
                 boolean deleteSuccess = cDeleteProductTransaction
                         .handleDeleteDataProductTransaction(idProductTransaction);
@@ -344,6 +349,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
         panelUpdateTransaksi.add(txtNameTransaksi);
         panelUpdateTransaksi.add(txtDeskripsiTransaksi);
+        panelUpdateTransaksi.add(boxPaymentMethod);
 
         panelListOrderTransaksi.add(labelListOrderTransaksi);
         panelListOrderTransaksi.add(panelListCardOrder);
@@ -363,8 +369,10 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             String nameCustomer = txtNameTransaksi.getText().trim();
             String description = txtDeskripsiTransaksi.getText().trim();
             String selectedSeat = boxSeatsTransaksi.getSelectedItem().toString();
+            String selectedPaymentMethod = boxPaymentMethod.getSelectedItem().toString();
 
-            if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("-")) {
+            if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("-")
+                    || selectedPaymentMethod.equals("Select Payment Method")) {
                 JOptionPane.showMessageDialog(null,
                         "Semua field harus diisi dengan benar!",
                         "Error",
@@ -396,6 +404,18 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 return;
             }
 
+            boolean isPaymentUpdated = cUpdatePaymentTransaction.updatePayment(
+                    idTransaction,
+                    selectedPaymentMethod);
+
+            if (!isPaymentUpdated) {
+                JOptionPane.showMessageDialog(null,
+                        "Gagal menyimpan transaksi utama!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             for (CartItem item : cartItems) {
                 boolean isProductExist = cUpdateProductTransaction.isProductExistInTransaction(idProductTransaction,
                         idUnitProduct);
@@ -405,9 +425,9 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 boolean isProductUpdated = false;
                 if (isProductExist) {
                     isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
-                            idProductTransaction, 
-                            idUnitProduct, 
-                            idTransaction, 
+                            idProductTransaction,
+                            idUnitProduct,
+                            idTransaction,
                             oldNameProduct,
                             finalAmountProduct,
                             oldPriceProduct);
@@ -416,8 +436,8 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 boolean isProductInserted = false;
                 if (isProductExist) {
                     isProductInserted = cInsertProductTransaction.insertProductTransaction(
-                            item.getIdProduct(), 
-                            idTransaction, 
+                            item.getIdProduct(),
+                            idTransaction,
                             item.getNameProduct(),
                             item.getCount(),
                             item.getUnitPrice());
