@@ -36,24 +36,4 @@ public class cUpdateProductTransaction {
         return data;
     }
 
-    public static boolean isProductExistInTransaction(int idProductTransaction, int idProduct) {
-        boolean exists = false;
-        String query = "SELECT 1 FROM tbl_transaction_product WHERE idProductTransaction = ? AND idProduct = ? LIMIT 1";
-
-        try (Connection conn = cConnectionDatabase.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, idProductTransaction);
-            stmt.setInt(2, idProduct);
-
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                exists = true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return exists;
-    }
-
 }

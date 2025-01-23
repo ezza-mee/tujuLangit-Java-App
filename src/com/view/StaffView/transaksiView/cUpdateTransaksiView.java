@@ -92,22 +92,42 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         valueTotalTransaction.setText("Rp. " + priceTransaction);
         boxPaymentMethod.setSelectedItem(payment);
 
-        addOrUpdateProductToCart(idTransaction, nameProduct, priceProduct, amountProduct);
+        addOrUpdateProductToCart(idProduct, nameProduct, priceProduct, amountProduct);
     }
 
     public void addProductToCart(int idProduct, String nameProduct, int price) {
         boolean productExists = false;
         for (CartItem item : cartItems) {
-            if (item.getIdProductTransaction() == idProductTransaction) {
+            if (item.getIdProduct() == idProduct) {
                 item.setCount(item.getCount() + 1);
-                item.setPrice(item.getPrice());
                 productExists = true;
-                break;
+            } else {
+                addProductNewsToCart(idProduct, nameProduct, price);
             }
+            break;
         }
 
         if (!productExists) {
-            cartItems.add(new CartItem(idProduct, price, nameProduct, 1, price));
+            cartItems.add(new CartItem(idProduct, idProduct, nameProduct, 1, price));
+        }
+
+        updateCartDisplay();
+    }
+
+    public void addProductNewsToCart(int idProduct, String nameProduct, int price) {
+        boolean productNews = false;
+
+        for (CartItem item : cartItems) {
+            if (item.getIdProductTransaction() == idProductTransaction) {
+                item.setCount(item.getCount() + 1);
+                item.setPrice(item.getUnitPrice());
+                productNews = true;
+            }
+            break;
+        }
+
+        if (!productNews) {
+            cartItems.add(new CartItem(idProduct, idProductTransaction, nameProduct, 1, price));
         }
 
         updateCartDisplay();
@@ -117,17 +137,16 @@ public class cUpdateTransaksiView extends cPanelContentApp {
         boolean productExists = false;
 
         for (CartItem item : cartItems) {
-            if (item.getIdProduct() == idProduct && item.getNameProduct().equals(nameProduct)) {
+            if (item.getIdProduct() == idProduct) {
                 item.setCount(item.getCount() + quantity);
-                item.setPrice(item.getPrice());
-                System.out.println(item.getIdProduct());
+                item.setPrice(item.getUnitPrice());
                 productExists = true;
                 break;
             }
         }
 
         if (!productExists) {
-            cartItems.add(new CartItem(idProductTransaction, quantity, nameProduct, quantity, price));
+            cartItems.add(new CartItem(idProduct, idProductTransaction, nameProduct, quantity, price));
         }
 
         updateCartDisplay();
@@ -371,6 +390,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
             String selectedSeat = boxSeatsTransaksi.getSelectedItem().toString();
             String selectedPaymentMethod = boxPaymentMethod.getSelectedItem().toString();
 
+            // Validasi input
             if (nameCustomer.isEmpty() || description.isEmpty() || selectedSeat.equals("-")
                     || selectedPaymentMethod.equals("Select Payment Method")) {
                 JOptionPane.showMessageDialog(null,
@@ -386,6 +406,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
 
             dashboardStaffView.setVisible(false);
 
+            // Update transaksi utama
             boolean isTransactionUpdated = cUpdateDataTransaction.handleUpdateTransaction(
                     idTransaction,
                     idStaff,
@@ -404,46 +425,39 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 return;
             }
 
+            // Update metode pembayaran
             boolean isPaymentUpdated = cUpdatePaymentTransaction.updatePayment(
                     idTransaction,
                     selectedPaymentMethod);
 
             if (!isPaymentUpdated) {
                 JOptionPane.showMessageDialog(null,
-                        "Gagal menyimpan transaksi utama!",
+                        "Gagal menyimpan metode pembayaran!",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
+            // Iterasi produk dalam keranjang
             for (CartItem item : cartItems) {
-                boolean isProductExist = cUpdateProductTransaction.isProductExistInTransaction(idProductTransaction,
-                        idUnitProduct);
+                int amountProduct = item.getCount() + oldAmountProduct - oldAmountProduct - oldAmountProduct;
 
-                int finalAmountProduct = oldAmountProduct + item.getCount() - oldAmountProduct;
+                boolean isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
+                        idProductTransaction, 
+                        idUnitProduct,
+                        idTransaction,
+                        oldNameProduct,
+                        amountProduct,
+                        item.getUnitPrice());
 
-                boolean isProductUpdated = false;
-                if (isProductExist) {
-                    isProductUpdated = cUpdateProductTransaction.handleUpdateProductTransaction(
-                            idProductTransaction,
-                            idUnitProduct,
-                            idTransaction,
-                            oldNameProduct,
-                            finalAmountProduct,
-                            oldPriceProduct);
-                }
+                boolean isProductInserted = cInsertProductTransaction.insertProductTransaction(
+                        item.getIdProduct(),
+                        idTransaction,
+                        item.getNameProduct(),
+                        item.getCount(),
+                        item.getUnitPrice());
 
-                boolean isProductInserted = false;
-                if (isProductExist) {
-                    isProductInserted = cInsertProductTransaction.insertProductTransaction(
-                            item.getIdProduct(),
-                            idTransaction,
-                            item.getNameProduct(),
-                            item.getCount(),
-                            item.getUnitPrice());
-                }
-
-                if (!isProductInserted && !isProductUpdated) {
+                if (!isProductUpdated & !isProductInserted) {
                     JOptionPane.showMessageDialog(null,
                             "Gagal menyimpan produk baru: " + item.getNameProduct(),
                             "Error",
@@ -456,7 +470,7 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 boolean isStockUpdated = cUpdateStockProduct.updateProductStock(idUnitProduct, finalAmountSold);
                 boolean isStockInsert = cUpdateStockProduct.updateProductStock(item.getIdProduct(), amountSold);
 
-                if (!isStockUpdated && !isStockInsert) {
+                if (!isStockUpdated & !isStockInsert) {
                     JOptionPane.showMessageDialog(null,
                             "Gagal mengupdate stok produk: " + item.getNameProduct(),
                             "Error",
@@ -465,11 +479,13 @@ public class cUpdateTransaksiView extends cPanelContentApp {
                 }
             }
 
+            // Berhasil
             JOptionPane.showMessageDialog(null,
                     "Transaksi berhasil disimpan!",
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE);
 
+            // Reset form
             txtNameTransaksi.setText("");
             txtDeskripsiTransaksi.setText("");
             boxSeatsTransaksi.setSelectedIndex(0);
