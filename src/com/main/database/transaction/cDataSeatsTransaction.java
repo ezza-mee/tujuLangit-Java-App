@@ -9,7 +9,7 @@ import com.main.database.cConnectionDatabase;
 
 public class cDataSeatsTransaction {
     public static ArrayList<String> getNumberSeats() {
-        ArrayList<String> numberSeatsList = new ArrayList<>(); 
+        ArrayList<String> numberSeatsList = new ArrayList<>();
         String query = "SELECT numberSeats FROM tbl_seats";
         try (Connection conn = cConnectionDatabase.getConnection();
                 PreparedStatement state = conn.prepareStatement(query)) {
@@ -17,12 +17,12 @@ public class cDataSeatsTransaction {
             ResultSet resultData = state.executeQuery();
 
             while (resultData.next()) {
-                numberSeatsList.add(String.valueOf(resultData.getInt("numberSeats"))); 
+                numberSeatsList.add(String.valueOf(resultData.getInt("numberSeats")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return numberSeatsList; 
+        return numberSeatsList;
     }
 
 }

@@ -95,7 +95,8 @@ public class cDataSeatsView extends cPanelContentApp {
                     int idSeats = Integer.parseInt(idString.replaceAll("[^0-9]", ""));
 
                     String numberSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 2).toString();
-                    int amountSeats = Integer.parseInt(tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 3).toString());
+                    int amountSeats = Integer
+                            .parseInt(tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 3).toString());
                     String descriptionSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 4).toString();
                     String statusSeats = tblDataUsedSeats.getValueAt(selectAllDataSeatsUsed, 5).toString();
 
@@ -184,21 +185,25 @@ public class cDataSeatsView extends cPanelContentApp {
         tblDataSeats.getColumnModel().getColumn(0).setMaxWidth(65);
         tblDataSeats.getColumnModel().getColumn(0).setWidth(65);
 
-        tblDataSeats.getColumnModel().getColumn(1).setMinWidth(120);
-        tblDataSeats.getColumnModel().getColumn(1).setMaxWidth(120);
-        tblDataSeats.getColumnModel().getColumn(1).setWidth(120);
+        tblDataSeats.getColumnModel().getColumn(1).setMinWidth(150);
+        tblDataSeats.getColumnModel().getColumn(1).setMaxWidth(150);
+        tblDataSeats.getColumnModel().getColumn(1).setWidth(150);
 
         tblDataSeats.getColumnModel().getColumn(2).setMinWidth(75);
         tblDataSeats.getColumnModel().getColumn(2).setMaxWidth(75);
         tblDataSeats.getColumnModel().getColumn(2).setWidth(75);
 
-        tblDataSeats.getColumnModel().getColumn(3).setMinWidth(250);
-        tblDataSeats.getColumnModel().getColumn(3).setMaxWidth(250);
-        tblDataSeats.getColumnModel().getColumn(3).setWidth(250);
+        tblDataSeats.getColumnModel().getColumn(3).setMinWidth(70);
+        tblDataSeats.getColumnModel().getColumn(3).setMaxWidth(70);
+        tblDataSeats.getColumnModel().getColumn(3).setWidth(70);
 
-        tblDataSeats.getColumnModel().getColumn(4).setMinWidth(90);
-        tblDataSeats.getColumnModel().getColumn(4).setMaxWidth(90);
-        tblDataSeats.getColumnModel().getColumn(4).setWidth(90);
+        tblDataSeats.getColumnModel().getColumn(4).setMinWidth(130);
+        tblDataSeats.getColumnModel().getColumn(4).setMaxWidth(130);
+        tblDataSeats.getColumnModel().getColumn(4).setWidth(130);
+
+        tblDataSeats.getColumnModel().getColumn(5).setMinWidth(80);
+        tblDataSeats.getColumnModel().getColumn(5).setMaxWidth(80);
+        tblDataSeats.getColumnModel().getColumn(5).setWidth(80);
 
         tblDataUsedSeats.getColumnModel().getColumn(0).setMinWidth(65);
         tblDataUsedSeats.getColumnModel().getColumn(0).setMaxWidth(65);
@@ -216,9 +221,9 @@ public class cDataSeatsView extends cPanelContentApp {
         tblDataUsedSeats.getColumnModel().getColumn(3).setMaxWidth(0);
         tblDataUsedSeats.getColumnModel().getColumn(3).setWidth(0);
 
-        tblDataUsedSeats.getColumnModel().getColumn(4).setMinWidth(120);
-        tblDataUsedSeats.getColumnModel().getColumn(4).setMaxWidth(120);
-        tblDataUsedSeats.getColumnModel().getColumn(4).setWidth(120);
+        tblDataUsedSeats.getColumnModel().getColumn(4).setMinWidth(0);
+        tblDataUsedSeats.getColumnModel().getColumn(4).setMaxWidth(0);
+        tblDataUsedSeats.getColumnModel().getColumn(4).setWidth(0);
 
     }
 
